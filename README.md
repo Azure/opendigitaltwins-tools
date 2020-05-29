@@ -3,9 +3,11 @@ page_type: sample
 languages:
 - csharp
 products:
-- dotnet
-description: "Add 150 character max description"
-urlFragment: "update-this-to-unique-url-stub"
+- azure-digital-twins
+- azure-iot-pnp
+name: DTDL Validator
+description: A code sample for validating DTDL model code
+urlFragment: dtdl-validator
 ---
 
 # Official Microsoft Sample
