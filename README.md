@@ -37,7 +37,3 @@ Run
 dotnet publish -r win-x64 -c Release /p:PublishSingleFile=true
 ```
 in the root folder of the repo.
-
-# To-do
-* Update the location of the NuGet file to the official location
-* Better error handling in the interactive part
