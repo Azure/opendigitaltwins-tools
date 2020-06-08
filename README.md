@@ -11,7 +11,9 @@ urlFragment: dtdl-validator
 ---
 
 # Introduction 
-This project demonstrates use of the Azure Digital Twins DTDL parser, available [here](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/) on NuGet.
+This project demonstrates use of the Azure Digital Twins DTDL parser, available [here](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/) on NuGet. It  is language-agnostic, and can be used as a command line utility to validate a directory tree of DTDL files. It also provides an interactive mode.
+
+The source code shows examples for how to use the parser library, and can validate model documents to make sure the DTDL is valid.
 
 # Getting started
 The program is a command line application that can be used in normal or interactive mode.
