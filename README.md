@@ -25,7 +25,7 @@ Interactive mode is entered with the -i option. Type help for information on int
 
 # What the code demonstrates
 * Basic use of the DTDL parser for validation of DTDL
-* Basic use of the object model to access information about DTDL content (see the interactive moduel, in particular the list and show/showinfo commands)
+* Basic use of the object model to access information about DTDL content (see the interactive module, in particular the list and show/showinfo commands)
 
 # Build and test
 Build the project and run the application from the command line.
