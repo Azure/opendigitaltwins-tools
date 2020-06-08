@@ -11,7 +11,7 @@ urlFragment: dtdl-validator
 ---
 
 # Introduction 
-This project demonstrates use of the Azure Digital Twins DTDL parser
+This project demonstrates use of the Azure Digital Twins DTDL parser, available [here](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/) on NuGet.
 
 # Getting started
 The program is a command line application that can be used in normal or interactive mode.
