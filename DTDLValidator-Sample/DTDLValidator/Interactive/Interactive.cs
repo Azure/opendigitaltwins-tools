@@ -30,11 +30,13 @@ namespace DTDLValidator.Interactive
                 string commandLine = Console.ReadLine();
                 Task commandTask = Task.FromResult<object>(null);
                 Parser.Default.ParseArguments<
+                    CompareCommand,
                     ListCommand,
                     LoadCommand,
                     ShowCommand,
                     ShowInfoCommand,
                     ExitCommand>(SplitArgs(commandLine))
+                    .WithParsed<CompareCommand>(command => commandTask = command.Run(this))
                     .WithParsed<ListCommand>(command => commandTask = command.Run(this))
                     .WithParsed<LoadCommand>(command => commandTask = command.Run(this))
                     .WithParsed<ShowCommand>(command => commandTask = command.Run(this))

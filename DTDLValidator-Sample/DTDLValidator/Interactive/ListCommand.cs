@@ -23,6 +23,6 @@ namespace DTDLValidator.Interactive
             return Task.FromResult<object>(null);
         }
 
-        private const string listFormat = "{0,-50}{1}";
+        private const string listFormat = "{0,-80}{1}";
     }
 }
