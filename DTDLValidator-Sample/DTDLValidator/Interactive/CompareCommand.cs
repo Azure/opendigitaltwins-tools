@@ -6,7 +6,6 @@ using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using VDS.RDF.Query.Expressions.Functions.Sparql.String;
 
 namespace DTDLValidator.Interactive
 {
@@ -54,8 +53,8 @@ namespace DTDLValidator.Interactive
                 return Task.FromResult<object>(null);
             }
 
-            SortedDictionary<string, DTContentInfo> con1 = dt1.Contents;
-            SortedDictionary<string, DTContentInfo> con2 = dt2.Contents;
+            Dictionary<string, DTContentInfo> con1 = dt1.Contents;
+            Dictionary<string, DTContentInfo> con2 = dt2.Contents;
             
             var props1 = con1
                             .Where(p => p.Value.EntityKind == DTEntityKind.Property)

@@ -31,7 +31,7 @@ namespace DTDLValidator.Interactive
                     {
                         Log.Ok($"    {parent.Id}");
                     }
-                    SortedDictionary<string, DTContentInfo> contents = dti.Contents;
+                    Dictionary<string, DTContentInfo> contents = dti.Contents;
                     Log.Alert($"  Properties:");
                     var props = contents
                                     .Where(p => p.Value.EntityKind == DTEntityKind.Property)
