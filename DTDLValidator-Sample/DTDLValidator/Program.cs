@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text.Json;
 using System.Threading.Tasks;
 
@@ -38,7 +39,14 @@ namespace DTDLValidator
 
         static void RunOptions(Options opts)
         {
-            Log.Ok("Simple DTDL Validator");
+            Assembly[] assemblies = AppDomain.CurrentDomain.GetAssemblies();
+            string dtdlParserVersion = "<unknown>";
+            foreach (Assembly a in assemblies)
+            {
+                if (a.GetName().Name.EndsWith("DigitalTwins.Parser"))
+                    dtdlParserVersion = a.GetName().Version.ToString();
+            }
+            Log.Ok($"Simple DTDL Validator (dtdl parser library version {dtdlParserVersion})");
 
             if (opts.Interactive == true)
             {
