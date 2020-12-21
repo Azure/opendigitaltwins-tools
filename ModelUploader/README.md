@@ -1,6 +1,6 @@
 # The ADT Model Uploader
 
-**Author:** [Karl Hammar](https://karlhammar.com), Akshay Johar (https://github.com/Azure/opendigitaltwins-building-tools/commits?author=akshayj-MSFT)
+**Author:** [Karl Hammar](https://karlhammar.com), [Akshay Johar](https://github.com/Azure/opendigitaltwins-building-tools/commits?author=akshayj-MSFT)
 
 This tool simplifies batch uploading of DTDL models, such as the [RealEstateCore DTDL models](https://github.com/Azure/opendigitaltwins-building), into an Azure Digital Twins instance.
 
