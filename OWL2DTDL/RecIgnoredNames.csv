@@ -16,3 +16,4 @@ http://www.opengis.net/ont/geosparql#Geometry;
 https://w3id.org/rec/core/Software;
 https://w3id.org/rec/core/Service;
 https://w3id.org/rec/asset/ElectricalCircuit;Filtered out for v1.0 of DTDL model set, at Willow's request, until we figure out where it belongs.
+https://w3id.org/rec/agents/name;Filtered out in preference of generic top-level name property added by OWL2DTDL.

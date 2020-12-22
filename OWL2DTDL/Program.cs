@@ -135,11 +135,11 @@ namespace OWL2DTDL
             { QUDT.QuantityKindNS.ElectricCurrent, DTDL.Current },
             { QUDT.QuantityKindNS.Energy, DTDL.Energy },
             { QUDT.QuantityKindNS.Illuminance, DTDL.Illuminance },
-            { QUDT.QuantityKindNS.PlaneAngle, DTDL.Angle },
+            { QUDT.QuantityKindNS.Angle, DTDL.Angle },
             { QUDT.QuantityKindNS.Voltage, DTDL.Voltage },
             { QUDT.QuantityKindNS.Power, DTDL.Power },
             { QUDT.QuantityKindNS.Mass, DTDL.Mass },
-            { QUDT.QuantityKindNS.MassPerTime, DTDL.MassFlowRate },
+            { QUDT.QuantityKindNS.MassFlowRate, DTDL.MassFlowRate },
             //{ QUDT.QuantityKindNS.Pressure, DTDL.Pressure },
             //{ QUDT.QuantityKindNS.Length, DTDL.Length },
             //{ QUDT.QuantityKindNS.Temperature, DTDL.Temperature },
@@ -473,7 +473,7 @@ namespace OWL2DTDL
                 }
 
                 // For any outgoing data properties from the class to datatypes, create corresponding DTDL Properties
-                foreach (Relationship relationship in oClass.GetRelationships().Where(relationship => relationship.Property.IsDataProperty() && !relationship.Property.IsDeprecated()))
+                foreach (Relationship relationship in oClass.GetRelationships().Where(relationship => relationship.Property.IsDataProperty() && !relationship.Property.IsDeprecated() && !IsIgnored(relationship.Property)))
                 {
                     OntologyProperty oProperty = relationship.Property;
 

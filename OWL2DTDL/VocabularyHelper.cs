@@ -93,12 +93,12 @@ namespace OWL2DTDL.VocabularyHelper
             public static readonly Uri AngularVelocity = new Uri("http://qudt.org/vocab/quantitykind/AngularVelocity");
             public static readonly Uri ElectricCurrent = new Uri("http://qudt.org/vocab/quantitykind/ElectricCurrent");
             public static readonly Uri Illuminance = new Uri("http://qudt.org/vocab/quantitykind/Illuminance");
-            public static readonly Uri PlaneAngle = new Uri("http://qudt.org/vocab/quantitykind/PlaneAngle");
+            public static readonly Uri Angle = new Uri("http://qudt.org/vocab/quantitykind/Angle");
             public static readonly Uri Energy = new Uri("http://qudt.org/vocab/quantitykind/Energy");
             public static readonly Uri Power = new Uri("http://qudt.org/vocab/quantitykind/Power");
             public static readonly Uri Length = new Uri("http://qudt.org/vocab/quantitykind/Length");
             public static readonly Uri Mass = new Uri("http://qudt.org/vocab/quantitykind/Mass");
-            public static readonly Uri MassPerTime = new Uri("http://qudt.org/vocab/quantitykind/MassPerTime");
+            public static readonly Uri MassFlowRate = new Uri("http://qudt.org/vocab/quantitykind/MassFlowRate");
             public static readonly Uri Pressure = new Uri("http://qudt.org/vocab/quantitykind/Pressure");
             public static readonly Uri Time = new Uri("http://qudt.org/vocab/quantitykind/Time");
             public static readonly Uri Temperature = new Uri("http://qudt.org/vocab/quantitykind/Temperature");
