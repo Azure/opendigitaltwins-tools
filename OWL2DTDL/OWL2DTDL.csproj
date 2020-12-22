@@ -7,7 +7,7 @@
 
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
     <StartAction>Project</StartAction>
-    <StartArguments>-u https://w3id.org/rec/full/3.3/ -i ./RecIgnoredNames.csv -o ../Ontology/</StartArguments>
+    <StartArguments>-u https://w3id.org/rec/full/3.3/ -i ./RecIgnoredNames.csv -s rec_3_3 -o /Users/karl/Documents/GitHub/Azure/opendigitaltwins-building/Ontology</StartArguments>
     <ExternalConsole>true</ExternalConsole>
   </PropertyGroup>
   <ItemGroup>
