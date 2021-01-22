@@ -128,6 +128,9 @@ namespace OWL2DTDL.VocabularyHelper
         public static readonly Uri minMultiplicity = new Uri("dtmi:dtdl:property:minMultiplicity;2");
         public static readonly Uri target = new Uri("dtmi:dtdl:property:target;2");
         public static readonly Uri schema = new Uri("dtmi:dtdl:property:schema;2");
+        public static readonly Uri Map = new Uri("dtmi:dtdl:class:Map;2");
+        public static readonly Uri MapKey = new Uri("dtmi:dtdl:class:MapKey;2");
+        public static readonly Uri MapValue = new Uri("dtmi:dtdl:class:MapValue;2");
         public static readonly Uri Enum = new Uri("dtmi:dtdl:class:Enum;2");
         public static readonly Uri EnumValue = new Uri("dtmi:dtdl:class:EnumValue;2");
         public static readonly Uri valueSchema = new Uri("dtmi:dtdl:property:valueSchema;2");
