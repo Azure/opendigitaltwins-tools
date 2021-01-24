@@ -268,14 +268,14 @@ namespace OWL2DTDL
             IUriNode dtdl_Enum = dtdlModel.CreateUriNode(DTDL.Enum);
             IUriNode dtdl_EnumValue = dtdlModel.CreateUriNode(DTDL.EnumValue);
             IUriNode dtdl_Map = dtdlModel.CreateUriNode(DTDL.Map);
-            IUriNode dtdl_MapKey = dtdlModel.CreateUriNode(DTDL.MapKey);
-            IUriNode dtdl_MapValue = dtdlModel.CreateUriNode(DTDL.MapValue);
 
             // DTDL properties
             IUriNode dtdl_contents = dtdlModel.CreateUriNode(DTDL.contents);
             IUriNode dtdl_name = dtdlModel.CreateUriNode(DTDL.name);
             IUriNode dtdl_displayName = dtdlModel.CreateUriNode(DTDL.displayName);
             IUriNode dtdl_properties = dtdlModel.CreateUriNode(DTDL.properties);
+            IUriNode dtdl_mapKey = dtdlModel.CreateUriNode(DTDL.mapKey);
+            IUriNode dtdl_mapValue = dtdlModel.CreateUriNode(DTDL.mapValue);
 
             IUriNode dtdl_extends = dtdlModel.CreateUriNode(DTDL.extends);
             IUriNode dtdl_maxMultiplicity = dtdlModel.CreateUriNode(DTDL.maxMultiplicity);
@@ -346,14 +346,14 @@ namespace OWL2DTDL
                     dtdlModel.Assert(new Triple(schemaNode, rdfType, dtdl_Map));
                     // Map key
                     IBlankNode schemaMapKey = dtdlModel.CreateBlankNode();
-                    dtdlModel.Assert(new Triple(schemaNode, dtdl_MapKey, schemaMapKey));
+                    dtdlModel.Assert(new Triple(schemaNode, dtdl_mapKey, schemaMapKey));
                     ILiteralNode schemaMapKeyName = dtdlModel.CreateLiteralNode("externalIdName");
                     dtdlModel.Assert(new Triple(schemaMapKey, dtdl_name, schemaMapKeyName));
                     IUriNode schemaMapKeySchema = dtdlModel.CreateUriNode(DTDL._string);
                     dtdlModel.Assert(new Triple(schemaMapKey, dtdl_schema, schemaMapKeySchema));
                     // Map value
                     IBlankNode schemaMapValue = dtdlModel.CreateBlankNode();
-                    dtdlModel.Assert(new Triple(schemaNode, dtdl_MapValue, schemaMapValue));
+                    dtdlModel.Assert(new Triple(schemaNode, dtdl_mapValue, schemaMapValue));
                     ILiteralNode schemaMapValueName = dtdlModel.CreateLiteralNode("externalIdValue");
                     dtdlModel.Assert(new Triple(schemaMapValue, dtdl_name, schemaMapValueName));
                     IUriNode schemaMapValueSchema = dtdlModel.CreateUriNode(DTDL._string);

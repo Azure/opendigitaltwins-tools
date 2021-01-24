@@ -129,8 +129,6 @@ namespace OWL2DTDL.VocabularyHelper
         public static readonly Uri target = new Uri("dtmi:dtdl:property:target;2");
         public static readonly Uri schema = new Uri("dtmi:dtdl:property:schema;2");
         public static readonly Uri Map = new Uri("dtmi:dtdl:class:Map;2");
-        public static readonly Uri MapKey = new Uri("dtmi:dtdl:class:MapKey;2");
-        public static readonly Uri MapValue = new Uri("dtmi:dtdl:class:MapValue;2");
         public static readonly Uri Enum = new Uri("dtmi:dtdl:class:Enum;2");
         public static readonly Uri EnumValue = new Uri("dtmi:dtdl:class:EnumValue;2");
         public static readonly Uri valueSchema = new Uri("dtmi:dtdl:property:valueSchema;2");
@@ -140,6 +138,8 @@ namespace OWL2DTDL.VocabularyHelper
         public static readonly Uri writable = new Uri("dtmi:dtdl:property:writable;2");
         public static readonly Uri unit = new Uri("dtmi:dtdl:property:unit;2");
         public static readonly Uri properties = new Uri("dtmi:dtdl:property:properties;2");
+        public static readonly Uri mapKey = new Uri("dtmi:dtdl:property:mapKey;2");
+        public static readonly Uri mapValue = new Uri("dtmi:dtdl:property:mapValue;2");
 
         public static readonly Uri _string = new Uri("dtmi:dtdl:instance:Schema:string;2");
         public static readonly Uri _boolean = new Uri("dtmi:dtdl:instance:Schema:boolean;2");
