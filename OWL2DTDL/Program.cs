@@ -561,6 +561,8 @@ namespace OWL2DTDL
                     List<string> parentDirectories = oClass.LongestParentPathToOwlThing();
                     string modelPath = string.Join("/", parentDirectories);
                     string modelOutputPath = $"{_outputPath}/{modelPath}/";
+                    // If the class has subclasses, place it with them
+                    if (oClass.DirectSubClasses.Any()) { modelOutputPath += $"{oClass.GetLocalName()}/"; }
                     Directory.CreateDirectory(modelOutputPath);
                     string outputFileName = modelOutputPath + oClass.GetLocalName() + ".json";
                     using (StreamWriter file = File.CreateText(outputFileName))
