@@ -1,4 +1,4 @@
-# Tools for Open Digital Twins Definition Language (DTDL) RealEstateCore Ontology 
+# Tools for Open Digital Twins Definition Language (DTDL) based Ontologies
 
 ## Motivation and purpose
 
@@ -6,7 +6,7 @@
 
 DTDL is the language by which developers can define the language of the entities they expect to use in their topologies. Since DTDL is a blank canvas which can model any entity, it is important to accelerate developers' time to results by providing a common domain-specific ontology to bootstrap solution building, as well as seamless integration between DTDL-based solutions from different vendors.
 
-This is a set of open-source ontology tools which one can use to operate on [Real Estate Core Ontology](https://github.com/Azure/opendigitaltwins-building)
+This is a set of open-source ontology tools which one can use to operate on any ontologies, including the [Real Estate Core Ontology](https://github.com/Azure/opendigitaltwins-building)
 
 ## Upload the models to Azure Digital Twins
 You can upload this ontology into your own instance of ADT by using [Model Uploader](ModelUploader). Follow the instructions on ModelUploader to upload all of these models into your own instance. Here is [an article](https://docs.microsoft.com/en-us/azure/digital-twins/how-to-manage-model) on how to manage models, update, retrieve, update, decommission and delete models.
