@@ -226,8 +226,8 @@ namespace ModelUploader
             }
             else
             {
-                Log.Error($"extends section not found in Model {file.Split("\\").Last()}!");
-                exitProcess = true;
+                Log.Ok($"extends section not found in Model {file.Split("\\").Last()}, proceeding");
+                exitProcess = false;
             }
             return exitProcess;
         }
