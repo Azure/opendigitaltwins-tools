@@ -48,7 +48,10 @@ namespace ModelUploader
             {
                 int width = Math.Min(Console.LargestWindowWidth, 150);
                 int height = Math.Min(Console.LargestWindowHeight, 40);
-                Console.SetWindowSize(width, height);
+                if ( (width > 0) && (height > 0) )
+                {
+                    Console.SetWindowSize(width, height);
+                }
             }
 
             try
@@ -73,8 +76,12 @@ namespace ModelUploader
             Log.Ok("Authenticating...");
             try
             {
-                var credential = new InteractiveBrowserCredential(tenantId, clientId);
-                client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credential);
+                // Only when a tenant is specified in the configuration, try to use InteractiveBrowserCredential. Otherwise go with default Azure Credential
+                if (tenantId.Length > 0)
+                    client = new DigitalTwinsClient(new Uri(adtInstanceUrl), new InteractiveBrowserCredential(tenantId, clientId));
+                else
+                    client = new DigitalTwinsClient(new Uri(adtInstanceUrl), new DefaultAzureCredential());
+
                 // force authentication to happen here
                 try
                 {
