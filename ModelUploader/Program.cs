@@ -171,11 +171,11 @@ namespace ModelUploader
         private static bool ProcessExtendsSection(string file, string dtdl)
         {
             bool exitProcess = false;
-            MatchCollection extendsSection = Regex.Matches(dtdl, "extends[\" :[\r\na-zA-Z0-9;_,]*]", RegexOptions.Singleline);
+            MatchCollection extendsSection = Regex.Matches(dtdl, "\"extends\":[ \"a-zA-Z0-9:;_,]*", RegexOptions.Singleline);
             if (extendsSection.Count > 0)
             {
                 string extendsSectionFull = extendsSection[0].Value;
-                MatchCollection dtmiExtends = Regex.Matches(extendsSectionFull, "dtmi:[ :[a-zA-Z0-9;_]*", RegexOptions.Singleline);
+                MatchCollection dtmiExtends = Regex.Matches(extendsSectionFull, "dtmi:[:a-zA-Z0-9;_]*", RegexOptions.Singleline);
 
                 foreach (Match dtmiExtendsMatch in dtmiExtends)
                 {
