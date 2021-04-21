@@ -132,6 +132,8 @@ namespace ModelUploader
             string dtdl = r.ReadToEnd();
             r.Close();
 
+            object dtdlObj = JsonSerializer.Deserialize<object>(dtdl);
+
             try
             {
                 Response<ModelData[]> res = client.CreateModels(new List<string>() { dtdl });
@@ -151,7 +153,7 @@ namespace ModelUploader
                         // Model could not be uploaded because of a dependency 
 
                         // first inspect Extends Section
-                        exitProcess = ProcessExtendsSection(file, dtdl);
+                        exitProcess = ProcessExtendsSection(file, (JsonElement)dtdlObj);
                         if (exitProcess) return true;
 
                         exitProcess = ProcessPropertiesSection(file, dtdl);
@@ -168,70 +170,99 @@ namespace ModelUploader
             return exitProcess;
         }
 
-        private static bool ProcessExtendsSection(string file, string dtdl)
+        private static bool ProcessExtendsSection(string file, JsonElement dtdl)
         {
             bool exitProcess = false;
-            MatchCollection extendsSection = Regex.Matches(dtdl, "\"extends\":[ \"a-zA-Z0-9:;_,]*", RegexOptions.Singleline);
-            if (extendsSection.Count > 0)
+            JsonElement extendsSection;
+
+            if (dtdl.TryGetProperty("extends", out extendsSection))
             {
-                string extendsSectionFull = extendsSection[0].Value;
-                MatchCollection dtmiExtends = Regex.Matches(extendsSectionFull, "dtmi:[:a-zA-Z0-9;_]*", RegexOptions.Singleline);
-
-                foreach (Match dtmiExtendsMatch in dtmiExtends)
+                switch(extendsSection.ValueKind)
                 {
-                    // find this model
-                    try
-                    {
-                        Response<ModelData> res = client.GetModel(dtmiExtendsMatch.Value);
-                        // model found! keep going
-                    }
-                    catch (RequestFailedException e)
-                    {
-                        // Model Not Found - find it in the directory and call Upload Model
-                        if (e.Status == 404)
+                    case JsonValueKind.Array:
+                        foreach (JsonElement item in extendsSection.EnumerateArray())
                         {
-                            string missingInterface = dtmiExtendsMatch.Value;
-                            int missingPartIndex = missingInterface.LastIndexOf(":");
-                            missingInterface = missingInterface.Substring(missingPartIndex + 1).Replace(";1", "");
-                            missingInterface = missingInterface.Replace(";", "");
-
-                            string[] missingFile = Directory.GetFiles(modelPath, missingInterface + ".json*", SearchOption.AllDirectories);
-                            if (missingFile.Count<string>() == 0)
+                            if (item.ValueKind == JsonValueKind.String)
                             {
-                                // no file found, perhaps the definition of the schema is contained within the current file, lets try
-                                exitProcess = UploadModel(file);
-                                if (exitProcess == true)
-                                {
-                                    Log.Error($"Could not find a definition for Interace {" + missingInterface + "}");
-                                }
+                                exitProcess = exitProcess || ProcessExtendsSectionItem(file, item.GetString());
                             }
-                            else {
-                                if (missingFile.Count<string>() > 1)
-                                {
-                                    // More than one file was matched, log a warning
-                                    Log.Alert("More than one file matched the prefix " + missingInterface + ".json in the ModelPath directory. Processing only the first");
-                                }
-                                // try to Upload the Model in the extends section
-                                exitProcess = UploadModel(missingFile[0]);
+                            else
+                            {
+                                exitProcess = true;
+                                Log.Error(String.Format("Unexpected extends value type {0}", item.ValueKind));
+                            }
+                        }
+                        break;
+
+                    case JsonValueKind.String:
+                        exitProcess = ProcessExtendsSectionItem(file, extendsSection.GetString());
+                        break;
+
+                    default:
+                        exitProcess = true;
+                        Log.Error(String.Format("Unexpected extends value type {0}", extendsSection.ValueKind));
+                        break;
+                }
+            }
+           
+            return exitProcess;
+        }
+
+
+        private static bool ProcessExtendsSectionItem(string file, string extendsSectionItem)
+        {
+            bool exitProcess = false;
+            MatchCollection dtmiExtends = Regex.Matches(extendsSectionItem, "dtmi:[:a-zA-Z0-9;_]*", RegexOptions.Singleline);
+
+            foreach (Match dtmiExtendsMatch in dtmiExtends)
+            {
+                // find this model
+                try
+                {
+                    Response<ModelData> res = client.GetModel(dtmiExtendsMatch.Value);
+                    // model found! keep going
+                }
+                catch (RequestFailedException e)
+                {
+                    // Model Not Found - find it in the directory and call Upload Model
+                    if (e.Status == 404)
+                    {
+                        string missingInterface = dtmiExtendsMatch.Value;
+                        int missingPartIndex = missingInterface.LastIndexOf(":");
+                        missingInterface = missingInterface.Substring(missingPartIndex + 1).Replace(";1", "");
+                        missingInterface = missingInterface.Replace(";", "");
+
+                        string[] missingFile = Directory.GetFiles(modelPath, missingInterface + ".json*", SearchOption.AllDirectories);
+                        if (missingFile.Count<string>() == 0)
+                        {
+                            // no file found, perhaps the definition of the schema is contained within the current file, lets try
+                            exitProcess = UploadModel(file);
+                            if (exitProcess == true)
+                            {
+                                Log.Error($"Could not find a definition for Interace {" + missingInterface + "}");
                             }
                         }
                         else
                         {
-                            Log.Error($"Error in extends section in Model {file.Split("\\").Last()}");
-                            Log.Error($"Response {e.Status}: {e.Message}");
-                            exitProcess = true;
+                            if (missingFile.Count<string>() > 1)
+                            {
+                                // More than one file was matched, log a warning
+                                Log.Alert("More than one file matched the prefix " + missingInterface + ".json in the ModelPath directory. Processing only the first");
+                            }
+                            // try to Upload the Model in the extends section
+                            exitProcess = UploadModel(missingFile[0]);
                         }
+                    }
+                    else
+                    {
+                        Log.Error($"Error in extends section in Model {file.Split("\\").Last()}");
+                        Log.Error($"Response {e.Status}: {e.Message}");
+                        exitProcess = true;
                     }
                 }
             }
-            else
-            {
-                Log.Ok($"extends section not found in Model {file.Split("\\").Last()}, proceeding");
-                exitProcess = false;
-            }
             return exitProcess;
         }
-
         private static bool ProcessPropertiesSection(string file, string dtdl)
         {
             bool exitProcess = false;
@@ -300,15 +331,15 @@ namespace ModelUploader
 
         private static void LogResponse(string res, string type = "")
         {
+            if (res == null)
+                return;
+            
             if (type != "")
                 Log.Alert($"{type}: \n");
             else
                 Log.Alert("Response:");
 
-            if (res == null)
-                Log.Out("Null response");
-            else
-                Console.WriteLine(PrettifyJson(res));
+            Console.WriteLine(PrettifyJson(res));
         }
 
         private static string PrettifyJson(string json)
