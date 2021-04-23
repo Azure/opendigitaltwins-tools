@@ -139,7 +139,7 @@ namespace OWL2DTDL
             { QUDT.QuantityKindNS.Voltage, DTDL.Voltage },
             { QUDT.QuantityKindNS.Power, DTDL.Power },
             { QUDT.QuantityKindNS.Mass, DTDL.Mass },
-            { QUDT.QuantityKindNS.MassFlowRate, DTDL.MassFlowRate },
+            //{ QUDT.QuantityKindNS.MassFlowRate, DTDL.MassFlowRate },
             //{ QUDT.QuantityKindNS.Pressure, DTDL.Pressure },
             //{ QUDT.QuantityKindNS.Length, DTDL.Length },
             //{ QUDT.QuantityKindNS.Temperature, DTDL.Temperature },
