@@ -16,7 +16,8 @@ Modeluploader simply traverses the contents of a directory tree via a breadth-fi
 
 In order for this tool to operate, the user must:
 
-1. Update the [serviceConfig.json](serviceConfig.json) file to include connection details for their ADT Instance. The `tenantId` field is filled with the GUID of the Microsoft 365 tenant's Active Directory. The value of `clientId` is the GUID given by the App Registration for ADT. The value of `instanceUrl` is the DNS name of the ADT instance, prepended by `https://`.
+1. Update the [serviceConfig.json](serviceConfig.json) file to include connection details for their ADT Instance. The `tenantId` field is filled with the GUID of the Microsoft 365 tenant's Active Directory. The value of `clientId` is the GUID given by the App Registration for ADT. The value of `instanceUrl` is the DNS name of the ADT instance, prepended by `https://`. if the `tenantId` field is empty, the [default Azure credentials](https://docs.microsoft.com/en-us/dotnet/api/overview/azure/identity-readme) will be used.
+
 2. Ensure that `serviceConfig.json` is copied to the output directory from which the ModelUploader is executed. This is set under [ModelUploader.csproj](ModelUploader.csproj) and should be activated by default.
 
 ## Example usage

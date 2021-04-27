@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 
 namespace ModelUploader
@@ -25,6 +26,8 @@ namespace ModelUploader
         private static DigitalTwinsClient client;
         private static string modelPath;
         private static bool deleteFirst;
+
+        private static Dictionary<string, string> modelFileMap = new Dictionary<string, string>();
 
         private class CliOptions
         {
@@ -48,7 +51,10 @@ namespace ModelUploader
             {
                 int width = Math.Min(Console.LargestWindowWidth, 150);
                 int height = Math.Min(Console.LargestWindowHeight, 40);
-                Console.SetWindowSize(width, height);
+                if ( (width > 0) && (height > 0) )
+                {
+                    Console.SetWindowSize(width, height);
+                }
             }
 
             try
@@ -73,8 +79,12 @@ namespace ModelUploader
             Log.Ok("Authenticating...");
             try
             {
-                var credential = new InteractiveBrowserCredential(tenantId, clientId);
-                client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credential);
+                // Only when a tenant is specified in the configuration, try to use InteractiveBrowserCredential. Otherwise go with default Azure Credential
+                if (tenantId.Length > 0)
+                    client = new DigitalTwinsClient(new Uri(adtInstanceUrl), new InteractiveBrowserCredential(tenantId, clientId));
+                else
+                    client = new DigitalTwinsClient(new Uri(adtInstanceUrl), new DefaultAzureCredential());
+
                 // force authentication to happen here
                 try
                 {
@@ -107,6 +117,8 @@ namespace ModelUploader
                 if (deleteFirst)
                     DeleteAllModels(1);
 
+                PopulateModelFileMap(modelPath);
+
                 // Go over directories
                 EnumerationOptions options = new EnumerationOptions() { RecurseSubdirectories = true };
                 foreach (string file in Directory.EnumerateFiles(modelPath, "*.json", options))
@@ -123,6 +135,17 @@ namespace ModelUploader
                 Log.Error($"Error: {ex.Message}");
             }
 
+        }
+
+        private static void PopulateModelFileMap(string modelPath)
+        {
+            // Go over directories
+            EnumerationOptions options = new EnumerationOptions() { RecurseSubdirectories = true };
+            foreach (string file in Directory.EnumerateFiles(modelPath, "*.json", options))
+            {
+                BasicModelInterface modelInterface = JsonSerializer.Deserialize<BasicModelInterface>(File.ReadAllText(file));
+                modelFileMap.Add(modelInterface.Id, file);
+            }
         }
 
         private static bool UploadModel(string file)
@@ -228,12 +251,8 @@ namespace ModelUploader
                     if (e.Status == 404)
                     {
                         string missingInterface = dtmiExtendsMatch.Value;
-                        int missingPartIndex = missingInterface.LastIndexOf(":");
-                        missingInterface = missingInterface.Substring(missingPartIndex + 1).Replace(";1", "");
-                        missingInterface = missingInterface.Replace(";", "");
 
-                        string[] missingFile = Directory.GetFiles(modelPath, missingInterface + ".json*", SearchOption.AllDirectories);
-                        if (missingFile.Count<string>() == 0)
+                        if (!modelFileMap.ContainsKey(missingInterface))
                         {
                             // no file found, perhaps the definition of the schema is contained within the current file, lets try
                             exitProcess = UploadModel(file);
@@ -244,13 +263,8 @@ namespace ModelUploader
                         }
                         else
                         {
-                            if (missingFile.Count<string>() > 1)
-                            {
-                                // More than one file was matched, log a warning
-                                Log.Alert("More than one file matched the prefix " + missingInterface + ".json in the ModelPath directory. Processing only the first");
-                            }
                             // try to Upload the Model in the extends section
-                            exitProcess = UploadModel(missingFile[0]);
+                            exitProcess = UploadModel(modelFileMap[missingInterface]);
                         }
                     }
                     else
@@ -268,17 +282,14 @@ namespace ModelUploader
             bool exitProcess = false;
             // Model could not be uploaded because of a dependency
             
-            MatchCollection matches = Regex.Matches(dtdl.Replace(" ", ""), "\"schema\":\"dtmi:.*;");            
+            MatchCollection matches = Regex.Matches(dtdl.Replace(" ", ""), "\"schema\":\"dtmi:.*;\\d*");            
             // first find if there are multiple other references
             foreach (Match match in matches)
             {
                 // find the missing dependency Model in the message
-                string missingInterface = match.ToString();
-                int missingPartIndex = missingInterface.LastIndexOf(":");
-                missingInterface = missingInterface.Substring(missingPartIndex + 1).Replace(";", "");
-
-                string[] missingFile = Directory.GetFiles(modelPath, missingInterface + ".json*", SearchOption.AllDirectories);
-                if (missingFile.Count<string>() == 0)
+                string missingInterface = match.Value.Substring(10);
+                
+                if (!modelFileMap.ContainsKey(missingInterface))
                 {
                     // no file found, perhaps the definition of the schema is contained within the current file, lets try
                     exitProcess = UploadModel(file);
@@ -288,14 +299,9 @@ namespace ModelUploader
                     }
                 }
                 else
-                {
-                    if (missingFile.Count<string>() > 1)
-                    {
-                        // More than one file was matched, log a warning
-                        Log.Alert("More than one file matched the prefix " + missingInterface + ".json in the ModelPath directory. Processing only the first");
-                    }                    
+                {                   
                     // try to Upload the Model that is referred in the Properties section
-                    exitProcess = UploadModel(missingFile[0]);
+                    exitProcess = UploadModel(modelFileMap[missingInterface]);
                 }
             }
             return exitProcess;
@@ -310,7 +316,7 @@ namespace ModelUploader
                     client.DeleteModel(md.Id);
                     Log.Ok("Successfully deleted Model {" + md.Id + "}. Attempt [" + iteration + "]");
                 }
-                catch (RequestFailedException e2)
+                catch (RequestFailedException)
                 {
                     //Log.Error("Failed to delete Model {" + md.Id + "}");
                     //Log.Error(e2.Message);
@@ -346,6 +352,14 @@ namespace ModelUploader
         {
             object jsonObj = JsonSerializer.Deserialize<object>(json);
             return JsonSerializer.Serialize(jsonObj, new JsonSerializerOptions { WriteIndented = true });
+        }
+        
+        public class BasicModelInterface {
+
+            public BasicModelInterface() {}
+
+            [JsonPropertyName("@id")]
+            public string Id { get; set; }
         }
     }
 }
