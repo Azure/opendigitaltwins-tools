@@ -202,13 +202,11 @@
   },
   "description": {
     "@id": "dtmi:dtdl:property:description;2",
-    "@container": "@language",
-    "@language": "en"
+    "@container": "@language"
   },
   "displayName": {
     "@id": "dtmi:dtdl:property:displayName;2",
-    "@container": "@language",
-    "@language": "en"
+    "@container": "@language"
   },
   "elementSchema": {
     "@id": "dtmi:dtdl:property:elementSchema;2",
