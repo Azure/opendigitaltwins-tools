@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace UploadModels
 {
-    class Options
+    internal class Options
     {
         [Option('t', "tenantId", SetName = "upload", Required = true, HelpText = "The application's tenant id for connecting to Azure Digital Twins.")]
         public string TenantId { get; set; }
@@ -16,9 +16,6 @@ namespace UploadModels
 
         [Option('b', "batchSize", SetName = "upload", Default = 100, HelpText = "The maximum number of models uploaded in each batch (default 100).")]
         public int BatchSize { get; set; }
-
-        [Option('d', "deleteFirst", SetName = "upload", Required = false, Default = false, HelpText = "Delete the models before uploading (default false).")]
-        public bool DeleteFirst { get; set; }
 
         [Option('w', "whatIf", SetName = "whatif", Required = true, Default = false, HelpText = "Display the order of the models that would be uploaded, but do not upload.")]
         public bool WhatIf { get; set; }

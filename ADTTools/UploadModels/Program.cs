@@ -16,7 +16,7 @@ namespace UploadModels
 {
     class Program
     {
-        private Options options;
+        private readonly Options options;
 
         static async Task Main(string[] args)
         {
