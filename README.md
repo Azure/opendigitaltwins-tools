@@ -8,8 +8,11 @@ DTDL is the language by which developers can define the language of the entities
 
 This is a set of open-source ontology tools which one can use to operate on any ontologies, including the [Real Estate Core Ontology](https://github.com/Azure/opendigitaltwins-building)
 
-## Upload the models to Azure Digital Twins
-You can upload this ontology into your own instance of ADT by using [Model Uploader](ModelUploader). Follow the instructions on ModelUploader to upload all of these models into your own instance. Here is [an article](https://docs.microsoft.com/en-us/azure/digital-twins/how-to-manage-model) on how to manage models, update, retrieve, update, decommission and delete models.
+## Uploading models to Azure Digital Twins
+You can upload this ontology into your own instance of ADT by using [UploadModels](https://github.com/Azure/opendigitaltwins-tools/tree/master/ADTTools/UploadModels). Follow the [instructions](https://github.com/Azure/opendigitaltwins-tools/tree/master/ADTTools#azure-digital-twins-tools) on Upload to upload all of these models into your own instance. Here is [an article](https://docs.microsoft.com/en-us/azure/digital-twins/how-to-manage-model) on how to manage models, update, retrieve, update, decommission and delete models.
+
+## Deleting models in bulk
+You can also delete models that are previously uploaded to an instance of ADT. For this you can use the [DeleteModels](https://github.com/Azure/opendigitaltwins-tools/tree/master/ADTTools/DeleteModels) tool. Instructions of how this can be run are found [here](https://github.com/Azure/opendigitaltwins-tools/tree/master/ADTTools#deletemodels)
 
 ## Visualizing the models
 Once you have uploaded these models into your Azure Digital Twins instance, you can view the ontology using [ADT Model Visualizer](AdtModelVisualizer). This tool is a draft version (read-only visualizer, no edits) and we invite you to contribute to it to make it better.
