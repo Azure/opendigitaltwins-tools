@@ -104,6 +104,28 @@ namespace OWL2DTDL
         #endregion
 
         #region OntologyResource extensions
+
+        public static bool HasOwlVersionInfo(this OntologyResource resource)
+        {
+            INode owlVersionInfo = resource.Graph.CreateUriNode(VocabularyHelper.OWL.versionInfo);
+            IEnumerable<INode> owlVersionInfos = resource.GetNodesViaPredicate(owlVersionInfo);
+            if (owlVersionInfos.LiteralNodes().Any()) {
+                return true;
+            }
+            return false;
+        }
+
+        public static string GetOwlVersionInfo(this OntologyResource resource) {
+
+            if (!resource.HasOwlVersionInfo())
+            {
+                throw new RdfException($"Resource {resource} does not have an owl:versionInfo annotation");
+            }
+
+            INode owlVersionInfo = resource.Graph.CreateUriNode(VocabularyHelper.OWL.versionInfo);
+            return resource.GetNodesViaPredicate(owlVersionInfo).LiteralNodes().First().Value;
+        }
+        
         public static bool IsNamed(this OntologyResource ontResource)
         {
             return ontResource.Resource.IsUri();

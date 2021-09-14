@@ -1076,8 +1076,13 @@ namespace OWL2DTDL
             }
             dtmi = string.Join(':', pathSegments);
 
+            string dtmiVersion = "1";
+            if (resource.HasOwlVersionInfo()) {
+                dtmiVersion = resource.GetOwlVersionInfo();;
+            }
+
             // Add prefix and suffix
-            return $"dtmi:digitaltwins:{dtmi};1";
+            return $"dtmi:digitaltwins:{dtmi};{dtmiVersion}";
         }
 
         /// <summary>

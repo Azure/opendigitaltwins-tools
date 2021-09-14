@@ -36,6 +36,7 @@ namespace OWL2DTDL.VocabularyHelper
         public static readonly Uri Restriction = new Uri("http://www.w3.org/2002/07/owl#Restriction");
         public static readonly Uri FunctionalProperty = new Uri("http://www.w3.org/2002/07/owl#FunctionalProperty");
         public static readonly Uri versionIRI = new Uri("http://www.w3.org/2002/07/owl#versionIRI");
+        public static readonly Uri versionInfo = new Uri("http://www.w3.org/2002/07/owl#versionInfo");
         public static readonly Uri deprecated = new Uri("http://www.w3.org/2002/07/owl#deprecated");
         public static readonly Uri oneOf = new Uri("http://www.w3.org/2002/07/owl#oneOf");
 
