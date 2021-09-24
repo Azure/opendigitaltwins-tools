@@ -367,6 +367,37 @@ namespace OWL2DTDL
                     // Name is writeable
                     ILiteralNode externalIdsTrue = dtdlModel.CreateLiteralNode("true", new Uri(XmlSpecsHelper.XmlSchemaDataTypeBoolean));
                     dtdlModel.Assert(new Triple(externalIds, dtdl_writable, externalIdsTrue));
+
+                    // Create customTags
+                    IBlankNode customTags = dtdlModel.CreateBlankNode();
+                    dtdlModel.Assert(new Triple(interfaceNode, dtdl_contents, customTags));
+                    dtdlModel.Assert(new Triple(customTags, rdfType, dtdl_Property));
+                    ILiteralNode customTagsDtdlName = dtdlModel.CreateLiteralNode("customTags");
+                    dtdlModel.Assert(new Triple(customTags, dtdl_name, customTagsDtdlName));
+                    // Custom tags is map
+                    IBlankNode customTagsSchemaNode = dtdlModel.CreateBlankNode();
+                    dtdlModel.Assert(new Triple(customTagsSchemaNode, rdfType, dtdl_Map));
+                    // Map key
+                    IBlankNode customTagsSchemaMapKey = dtdlModel.CreateBlankNode();
+                    dtdlModel.Assert(new Triple(customTagsSchemaNode, dtdl_mapKey, customTagsSchemaMapKey));
+                    ILiteralNode customTagsSchemaMapKeyName = dtdlModel.CreateLiteralNode("tagName");
+                    dtdlModel.Assert(new Triple(customTagsSchemaMapKey, dtdl_name, customTagsSchemaMapKeyName));
+                    IUriNode customTagsSchemaMapKeySchema = dtdlModel.CreateUriNode(DTDL._string);
+                    dtdlModel.Assert(new Triple(customTagsSchemaMapKey, dtdl_schema, customTagsSchemaMapKeySchema));
+                    // Map value
+                    IBlankNode customTagsSchemaMapValue = dtdlModel.CreateBlankNode();
+                    dtdlModel.Assert(new Triple(customTagsSchemaNode, dtdl_mapValue, customTagsSchemaMapValue));
+                    ILiteralNode customTagsSchemaMapValueName = dtdlModel.CreateLiteralNode("tagValue");
+                    dtdlModel.Assert(new Triple(customTagsSchemaMapValue, dtdl_name, customTagsSchemaMapValueName));
+                    IUriNode customTagsSchemaMapValueSchema = dtdlModel.CreateUriNode(DTDL._string);
+                    dtdlModel.Assert(new Triple(customTagsSchemaMapValue, dtdl_schema, customTagsSchemaMapValueSchema));
+                    dtdlModel.Assert(new Triple(customTags, dtdl_schema, customTagsSchemaNode));
+                    // Display name of custom tags is hardcoded to "Custom Tags".
+                    ILiteralNode customTagsDisplayName = dtdlModel.CreateLiteralNode("Custom Tags", "en");
+                    dtdlModel.Assert(new Triple(customTags, dtdl_displayName, customTagsDisplayName));
+                    // Name is writeable
+                    ILiteralNode customTagsTrue = dtdlModel.CreateLiteralNode("true", new Uri(XmlSpecsHelper.XmlSchemaDataTypeBoolean));
+                    dtdlModel.Assert(new Triple(customTags, dtdl_writable, customTagsTrue));
                 }
 
                 // If the class has direct superclasses, implement DTDL extends (for at most two, see limitation in DTDL spec)
