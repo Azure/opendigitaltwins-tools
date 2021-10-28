@@ -27,7 +27,19 @@ namespace DeleteModels
         {
             try
             {
-                var credential = new InteractiveBrowserCredential(options.TenantId, options.ClientId);
+                var credential = new DefaultAzureCredential(new DefaultAzureCredentialOptions
+                {
+                    ExcludeManagedIdentityCredential = false,
+                    ExcludeAzureCliCredential = false,
+                    ExcludeVisualStudioCredential = false,
+                    ExcludeEnvironmentCredential = true,
+                    ExcludeSharedTokenCacheCredential = true,
+                    ExcludeInteractiveBrowserCredential = true,
+                    ExcludeVisualStudioCodeCredential = true,
+                    ExcludeAzurePowerShellCredential = true,
+                    SharedTokenCacheTenantId = options.TenantId,
+                    VisualStudioTenantId = options.TenantId
+                });
                 var client = new DigitalTwinsClient(new UriBuilder("https", options.HostName).Uri, credential);
                 DeleteAllModels(client, 1);
             }

@@ -1,5 +1,6 @@
 ﻿using ADTToolsLibrary;
 using Azure;
+using Azure.Core;
 using Azure.DigitalTwins.Core;
 using Azure.Identity;
 using CommandLine;
@@ -81,13 +82,38 @@ namespace UploadModels
             Log.Write("Uploaded interfaces:");
             try
             {
-                var credential = new InteractiveBrowserCredential(options.TenantId, options.ClientId);
-                var client = new DigitalTwinsClient(new UriBuilder("https", options.HostName).Uri, credential);
+                var credential = new DefaultAzureCredential(new DefaultAzureCredentialOptions
+                {
+                    ExcludeManagedIdentityCredential = false,
+                    ExcludeAzureCliCredential = false,
+                    ExcludeVisualStudioCredential = false,
+                    ExcludeEnvironmentCredential = true,
+                    ExcludeSharedTokenCacheCredential = true,
+                    ExcludeInteractiveBrowserCredential = true,
+                    ExcludeVisualStudioCodeCredential = true,
+                    ExcludeAzurePowerShellCredential = true,
+                    SharedTokenCacheTenantId = options.TenantId,
+                    VisualStudioTenantId = options.TenantId
+                });
 
+                var client = new DigitalTwinsClient(new UriBuilder("https", options.HostName).Uri, credential);
                 for (int i = 0; i < (orderedInterfaces.Count() / options.BatchSize) + 1; i++)
                 {
                     IEnumerable<DTInterfaceInfo> batch = orderedInterfaces.Skip(i * options.BatchSize).Take(options.BatchSize);
-                    Response<DigitalTwinsModelData[]> response = await client.CreateModelsAsync(batch.Select(i => i.GetJsonLdText()));
+                    try
+                    {
+                        Response<DigitalTwinsModelData[]> response = await client.CreateModelsAsync(batch.Select(i => i.GetJsonLdText()));
+                    }
+                    catch (RequestFailedException requestFailedException)
+                    {
+                        // Ignore 409: Model already exists.
+                        if (requestFailedException.Status == 409)
+                        {
+                            continue;
+                        }
+
+                        throw;
+                    }
                     foreach (DTInterfaceInfo @interface in batch)
                     {
                         Log.Ok(@interface.Id.AbsoluteUri);
