@@ -10,7 +10,7 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/bin/Debug/netcoreapp3.1/OWL2DTDL.dll",
+            "program": "${workspaceFolder}/bin/Debug/net6.0/OWL2DTDL.dll",
             "args": ["-u", "https://w3id.org/rec/full/3.3/", "-o", "/Users/karl/Desktop/DTDL/"],
             "cwd": "${workspaceFolder}",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
