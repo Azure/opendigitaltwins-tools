@@ -11,23 +11,38 @@ The OWL2DTDL converter is a tool that translates an OWL ontology or an ontology 
 ## Options
 
 ```
-  -n, --no-imports       Sets program to not follow owl:imports declarations.
+  -n, --no-imports        Sets program to not follow owl:Imports declarations.
 
-  -f, --file-path        Required. The path to the on-disk root ontology file to
-                         translate.
+  -f, --file-path         Required. The path to the on-disk root ontology file
+                          to translate.
 
-  -u, --uri-path         Required. The URI of the root ontology file to
-                         translate.
+  -u, --uri-path          Required. The URI of the root ontology file to
+                          translate.
 
-  -o, --outputPath       Required. The directory in which to create DTDL models.
+  -o, --outputPath        Required. The directory in which to create DTDL
+                          models.
 
-  -m, --merged-output    Sets program to output one merged JSON-LD file for
-                         batch import into ADT.
+  -m, --merged-output     Sets program to output one merged JSON-LD file for
+                          batch import into ADT.
 
-  -i, --ignorefile       Path to a CSV file, the first column of which lists
-                         (whole or partial) IRI:s that should be ignored by this
-                         tool and not translated into DTDL output.
+  -i, --ignorefile        Path to a CSV file, the first column of which lists
+                          (whole or partial) IRI:s that should be ignored by
+                          this tool and not translated into DTDL output.
+
+  -s, --ontologySource    An identifier for the ontology source; will be used to
+                          generate DTMI:s per the following design, where
+                          interfaceName is the local name of a translated OWL
+                          class, and ontologyName is the last segment of the
+                          translated class's namespace:
+                          <dtmi:digitaltwins:{ontologySource}:{ontologyName}:{in
+                          terfaceName};1>.
+
+  --help                  Display this help screen.
+
+  --version               Display version information.
 ```
+
+**Note:** The `-f` and `-u` options are mutually exclusive; only one of the two should be provided. If both are given, `-f` takes priority.
 
 ## Supported OWL features
 
