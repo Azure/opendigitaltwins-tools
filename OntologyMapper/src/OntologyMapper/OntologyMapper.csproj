@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Version>$(VersionPrefix)</Version>
+    <Authors>Microsoft Corporation</Authors>
+    <Description>Support for converting from one DTDL-based Ontology to a different DTDL Based Ontology</Description>
+    <AssemblyVersion>0.1.0</AssemblyVersion>
+    <RepositoryUrl>https://github.com/Azure/opendigitaltwins-tools</RepositoryUrl>
+    <Copyright>Copyright (c) Microsoft Corporation.  All rights reserved.</Copyright>
+  </PropertyGroup>
+	
+  <ItemGroup>
+    <EmbeddedResource Include="Mappings\Mapped\Json\v0\Dtdlv2\BrickRec\dtdlv2_Brick_1_3-REC_4_0.json" />
+    <EmbeddedResource Include="Mappings\Mapped\Json\v0\Dtdlv3\BrickRec\dtdlv3_Brick_1_3-REC_4_0.json" />
+  </ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Azure.DigitalTwins.Parser" Version="6.3.3-preview" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.1" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+	</ItemGroup>
+</Project>
