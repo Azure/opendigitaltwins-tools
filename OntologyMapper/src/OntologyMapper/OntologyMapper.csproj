@@ -11,6 +11,8 @@
     <AssemblyVersion>0.1.0</AssemblyVersion>
     <RepositoryUrl>https://github.com/Azure/opendigitaltwins-tools</RepositoryUrl>
     <Copyright>Copyright (c) Microsoft Corporation.  All rights reserved.</Copyright>
+    <AssemblyName>Microsoft.Azure.Aspen.OntologyMapper</AssemblyName>
+    <RootNamespace>Microsoft.Azure.Aspen.OntologyMapper</RootNamespace>
   </PropertyGroup>
 	
   <ItemGroup>
