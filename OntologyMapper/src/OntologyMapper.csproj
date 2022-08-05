@@ -16,8 +16,7 @@
   </PropertyGroup>
 	
   <ItemGroup>
-    <EmbeddedResource Include="Mappings\Mapped\Json\v0\BrickRec\mapped_json_v0_dtdlv2_Brick_1_3-REC_4_0.json" />
-    <EmbeddedResource Include="Mappings\Mapped\Json\v0\BrickRec\mapped_json_v0_dtdlv3_Brick_1_3-REC_4_0.json" />
+    <EmbeddedResource Include="Mappings\**\*.json" />
   </ItemGroup>
 
 	<ItemGroup>
