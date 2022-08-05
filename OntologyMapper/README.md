@@ -8,8 +8,7 @@ This may be needed in cases where cloning a topology which uses a propriety onto
 
 These conversion rules are defined in a series of Mappings files here in the repo, which are currently embedded in the assembly to make versioning easier.
 
-The key is that these files describe exceptions only. If the source DTMI and Target DTMI are identical, nothing needs to appear for the mapping between the two. Thus, if an source and target use the 
-same ontology and version, the mapping file will have very little content.
+The key is that these files describe exceptions only. If the source DTMI and Target DTMI are identical, nothing needs to appear for the mapping between the two. Thus, if an source and target use the same ontology and version, the mapping file will have very little content.
 
 ## Mappings Folder
 

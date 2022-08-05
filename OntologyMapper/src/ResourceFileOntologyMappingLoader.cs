@@ -17,7 +17,7 @@ namespace Microsoft.SmartFacilities.OntologyMapper
 
         public ResourceFileOntologyMappingLoader(ILogger logger, string resourcePath)
         {
-            if (string.IsNullOrEmpty(resourcePath))
+            if (string.IsNullOrWhiteSpace(resourcePath))
             {
                 throw new ArgumentNullException(nameof(resourcePath));
             }
