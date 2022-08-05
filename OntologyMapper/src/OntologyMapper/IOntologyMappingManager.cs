@@ -36,7 +36,7 @@ namespace Microsoft.SmartFacilities.OntologyMapper
         /// <param name="inputRelationship">The name of the relationship in the input ontology. i.e. "hasPart"</param>
         /// <param name="outputRelationship">The name of the relationship in the output ontology. i.e. "isLocationOf"</param>
         /// <returns></returns>
-        public bool TryGetRelationshipRemapDtmi(string inputRelationship, out string outputRelationship);
+        public bool TryGetRelationshipRemap(string inputRelationship, out string outputRelationship);
 
         /// <summary>
         /// In some cases, the contents of one input property may need to be copied to multiple other fields in the target ontology. For instance, if 

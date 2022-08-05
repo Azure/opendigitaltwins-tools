@@ -6,21 +6,16 @@
 
 namespace Microsoft.SmartFacilities.OntologyMapper
 {
-    using System.Reflection;
     using Microsoft.Azure.DigitalTwins.Parser;
     using Microsoft.Azure.DigitalTwins.Parser.Models;
-    using Microsoft.Extensions.Logging;
-    using Newtonsoft.Json;
 
     public class OntologyMappingManager : IOntologyMappingManager
     {
-        private readonly ILogger logger;
         private OntologyMapping ontologyMapping;
 
-        public OntologyMappingManager(ILogger logger, string exceptionsFileName)
+        public OntologyMappingManager(IOntologyMappingLoader mappingLoader)
         {
-            this.logger = logger;
-            ontologyMapping = LoadOntologyMapping(logger, exceptionsFileName);
+            ontologyMapping = mappingLoader.LoadOntologyMapping();
         }
 
         public bool TryGetInterfaceRemapDtmi(Dtmi inputDtmi, out DtmiRemap? dtmiRemap)
@@ -35,7 +30,7 @@ namespace Microsoft.SmartFacilities.OntologyMapper
             return false;
         }
 
-        public bool TryGetRelationshipRemapDtmi(string inputRelationship, out string outputRelationship)
+        public bool TryGetRelationshipRemap(string inputRelationship, out string outputRelationship)
         {
             outputRelationship = string.Empty;
 
@@ -101,40 +96,6 @@ namespace Microsoft.SmartFacilities.OntologyMapper
             }
 
             return !invalidTargets.Any();
-        }
-
-        private OntologyMapping LoadOntologyMapping(ILogger logger, string ontologyFileName)
-        {
-            logger.LogInformation("Loading Ontology Mapping file: {fileName}", ontologyFileName);
-
-            var assembly = Assembly.GetExecutingAssembly();
-            var resourceName = assembly.GetManifestResourceNames().Single(str => str.EndsWith(ontologyFileName));
-
-            using (Stream? stream = assembly.GetManifestResourceStream(resourceName))
-            {
-                if (stream != null)
-                {
-                    using (StreamReader reader = new StreamReader(stream))
-                    {
-                        string result = reader.ReadToEnd();
-                        var mappings = JsonConvert.DeserializeObject<OntologyMapping>(result);
-
-                        if (mappings != null)
-                        {
-                            return mappings;
-                        }
-                        else
-                        {
-                            var error = $"Mappings file '{ontologyFileName}' is empty or poorly formed.";
-                            throw new Exception(error);
-                        }
-                    }
-                }
-                else
-                {
-                    throw new FileNotFoundException(ontologyFileName);
-                }
-            }
         }
     }
 }
