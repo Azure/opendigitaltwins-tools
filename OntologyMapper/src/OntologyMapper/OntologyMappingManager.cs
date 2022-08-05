@@ -4,7 +4,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace Microsoft.Azure.Aspen.OntologyMapper
+namespace Microsoft.SmartFacilities.OntologyMapper
 {
     using System.Reflection;
     using Microsoft.Azure.DigitalTwins.Parser;

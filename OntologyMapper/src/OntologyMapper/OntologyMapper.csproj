@@ -11,13 +11,13 @@
     <AssemblyVersion>0.1.0</AssemblyVersion>
     <RepositoryUrl>https://github.com/Azure/opendigitaltwins-tools</RepositoryUrl>
     <Copyright>Copyright (c) Microsoft Corporation.  All rights reserved.</Copyright>
-    <AssemblyName>Microsoft.Azure.Aspen.OntologyMapper</AssemblyName>
-    <RootNamespace>Microsoft.Azure.Aspen.OntologyMapper</RootNamespace>
+    <AssemblyName>Microsoft.SmartFacilities.OntologyMapper</AssemblyName>
+    <RootNamespace>Microsoft.SmartFacilities.OntologyMapper</RootNamespace>
   </PropertyGroup>
 	
   <ItemGroup>
-    <EmbeddedResource Include="Mappings\Mapped\Json\v0\Dtdlv2\BrickRec\dtdlv2_Brick_1_3-REC_4_0.json" />
-    <EmbeddedResource Include="Mappings\Mapped\Json\v0\Dtdlv3\BrickRec\dtdlv3_Brick_1_3-REC_4_0.json" />
+    <EmbeddedResource Include="Mappings\Mapped\Json\v0\BrickRec\mapped_json_v0_dtdlv2_Brick_1_3-REC_4_0.json" />
+    <EmbeddedResource Include="Mappings\Mapped\Json\v0\BrickRec\mapped_json_v0_dtdlv3_Brick_1_3-REC_4_0.json" />
   </ItemGroup>
 
 	<ItemGroup>

@@ -4,9 +4,9 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace OntologyMapper.Test
+namespace Microsoft.SmartFacilities.OntologyMapper.Test
 {
-    using Microsoft.Azure.Aspen.OntologyMapper;
+    using Microsoft.SmartFacilities.OntologyMapper;
     using Newtonsoft.Json;
     using Xunit;
     using Xunit.Abstractions;
