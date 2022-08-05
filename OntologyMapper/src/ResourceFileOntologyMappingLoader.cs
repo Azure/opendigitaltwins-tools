@@ -48,8 +48,7 @@ namespace Microsoft.SmartFacilities.OntologyMapper
                         }
                         else
                         {
-                            var error = $"Mappings file '{resourcePath}' is empty or poorly formed.";
-                            throw new Exception(error);
+                            throw new MappingFileException("Mappings file is empty or poorly formed.", resourcePath);
                         }
                     }
                 }

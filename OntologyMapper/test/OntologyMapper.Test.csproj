@@ -23,7 +23,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\src\OntologyMapper\OntologyMapper.csproj" />
+		<ProjectReference Include="..\src\OntologyMapper.csproj" />
 	</ItemGroup>
 
 </Project>
