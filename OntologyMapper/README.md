@@ -144,7 +144,7 @@ Includes the following elements
     {
       "OutputDtmiFilter": "*",
       "OutputPropertyName": "name",
-      "InputPropertyNames": "name description"
+      "InputPropertyNames": [ "name", "description" ]
     }
   ]
 
