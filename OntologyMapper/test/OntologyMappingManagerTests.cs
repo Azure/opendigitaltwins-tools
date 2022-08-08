@@ -7,9 +7,11 @@
 namespace Microsoft.SmartFacilities.OntologyMapper.Test
 {
     using Microsoft.Azure.DigitalTwins.Parser;
+    using Microsoft.Azure.DigitalTwins.Parser.Models;
     using Microsoft.Extensions.Logging;
     using Microsoft.SmartFacilities.OntologyMapper;
     using Moq;
+    using System.Reflection;
     using Xunit;
     using Xunit.Abstractions;
 
@@ -217,6 +219,37 @@ namespace Microsoft.SmartFacilities.OntologyMapper.Test
             Assert.Empty(exceptions);
         }
 
+        [Fact]
+        public void ValidateTargetOntologyMapping_ReturnsTrue_ForValidOntologyMapping()
+        {
+            var targetObjectModel = GetTargetObjectModel();
+            var mockOntologyLoader = new Mock<IOntologyMappingLoader>();
+            mockOntologyLoader.Setup(m => m.LoadOntologyMapping()).Returns(GetSpaceOnlyMapping);
+
+            var ontologyMappingManager = new OntologyMappingManager(mockOntologyLoader.Object);
+
+            var result = ontologyMappingManager.ValidateTargetOntologyMapping(targetObjectModel, out var invalidTargets);
+            
+            Assert.True(result);
+            Assert.False(invalidTargets.Any());
+        }
+
+        [Fact]
+        public void ValidateTargetOntologyMapping_ReturnsFalse_ForInvalidOntologyMapping()
+        {
+            var targetObjectModel = GetTargetObjectModel();
+            var mockOntologyLoader = new Mock<IOntologyMappingLoader>();
+            mockOntologyLoader.Setup(m => m.LoadOntologyMapping()).Returns(GetBuildingOnlyMapping);
+
+            var ontologyMappingManager = new OntologyMappingManager(mockOntologyLoader.Object);
+
+            var result = ontologyMappingManager.ValidateTargetOntologyMapping(targetObjectModel, out var invalidTargets);
+
+            Assert.False(result);
+            Assert.Equal(1, invalidTargets.Count);
+            Assert.Equal("dtmi:org:w3id:rec:Building;1", invalidTargets[0]);
+        }
+
         private OntologyMapping GetOntologyMapping()
         {
             var ontologyMapping = new OntologyMapping();
@@ -237,13 +270,56 @@ namespace Microsoft.SmartFacilities.OntologyMapper.Test
             return ontologyMapping;
         }
 
-        //private IReadOnlyDictionary<Dtmi, DTEntityInfo> GetTargetObjectModel()
-        //{
-        //    var targetObjectModel = new Dictionary<Dtmi, DTEntityInfo>();
+        private OntologyMapping GetSpaceOnlyMapping()
+        {
+            var ontologyMapping = new OntologyMapping();
 
-        //    targetObjectModel.Add(new Dtmi("dtmi:mapped:core:AblutionsRoom;1"), new DTEntityInfo());
+            ontologyMapping.Header.InputOntologies.Add(new Ontology { DtdlVersion = "v2", Name = "twin", Version = "1.0" });
+            ontologyMapping.Header.OutputOntologies.Add(new Ontology { DtdlVersion = "v2", Name = "org1", Version = "1.1" });
+            ontologyMapping.Header.OutputOntologies.Add(new Ontology { DtdlVersion = "v3", Name = "org2", Version = "1.2" });
+            ontologyMapping.InterfaceRemaps.Add(new DtmiRemap { InputDtmi = "dtmi:twin:main:CleaningRoom;1", OutputDtmi = "dtmi:org:w3id:rec:Space;1" });
+            return ontologyMapping;
+        }
 
-        //    return targetObjectModel;
-        //}
+        private OntologyMapping GetBuildingOnlyMapping()
+        {
+            var ontologyMapping = new OntologyMapping();
+
+            ontologyMapping.Header.InputOntologies.Add(new Ontology { DtdlVersion = "v2", Name = "twin", Version = "1.0" });
+            ontologyMapping.Header.OutputOntologies.Add(new Ontology { DtdlVersion = "v2", Name = "org1", Version = "1.1" });
+            ontologyMapping.Header.OutputOntologies.Add(new Ontology { DtdlVersion = "v3", Name = "org2", Version = "1.2" });
+            ontologyMapping.InterfaceRemaps.Add(new DtmiRemap { InputDtmi = "dtmi:twin:main:Tower;1", OutputDtmi = "dtmi:org:w3id:rec:Building;1" });
+            return ontologyMapping;
+        }
+
+        private IReadOnlyDictionary<Dtmi, DTEntityInfo> GetTargetObjectModel()
+        {
+            var objectModelParser = new ModelParser();
+            var jsonTexts = LoadDtdl("Space.json");
+            return objectModelParser.Parse(jsonTexts);
+        }
+
+        private List<string> LoadDtdl(string fileName)
+        {
+            var assembly = Assembly.GetExecutingAssembly();
+            var resources = assembly.GetManifestResourceNames();
+            var resourceName = resources.Single(str => str.EndsWith(fileName));
+            var jsonTexts = new List<string>();
+
+            using (Stream? stream = assembly.GetManifestResourceStream(resourceName))
+            {
+                if (stream != null)
+                {
+                    using (StreamReader reader = new StreamReader(stream))
+                    {
+                        string? result = reader.ReadToEnd();
+
+                        jsonTexts.Add(result);
+                    }
+                }
+            }
+
+            return jsonTexts;
+        }
     }
 }
