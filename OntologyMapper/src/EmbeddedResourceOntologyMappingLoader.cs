@@ -10,12 +10,12 @@ namespace Microsoft.SmartFacilities.OntologyMapper
     using Newtonsoft.Json;
     using System.Reflection;
 
-    public class ResourceFileOntologyMappingLoader : IOntologyMappingLoader
+    public class EmbeddedResourceOntologyMappingLoader : IOntologyMappingLoader
     {
         private readonly ILogger logger;
         private readonly string resourcePath = string.Empty;
 
-        public ResourceFileOntologyMappingLoader(ILogger logger, string resourcePath)
+        public EmbeddedResourceOntologyMappingLoader(ILogger logger, string resourcePath)
         {
             if (string.IsNullOrWhiteSpace(resourcePath))
             {
@@ -31,7 +31,8 @@ namespace Microsoft.SmartFacilities.OntologyMapper
             logger.LogInformation("Loading Ontology Mapping file: {fileName}", resourcePath);
 
             var assembly = Assembly.GetExecutingAssembly();
-            var resourceName = assembly.GetManifestResourceNames().Single(str => str.EndsWith(resourcePath));
+            var resources = assembly.GetManifestResourceNames();
+            var resourceName = resources.Single(str => str.EndsWith(resourcePath));
 
             using (Stream? stream = assembly.GetManifestResourceStream(resourceName))
             {

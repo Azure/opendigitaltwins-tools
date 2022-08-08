@@ -11,16 +11,16 @@ namespace Microsoft.SmartFacilities.OntologyMapper
 
     public class OntologyMappingManager : IOntologyMappingManager
     {
-        private OntologyMapping ontologyMapping;
+        public OntologyMapping OntologyMapping { get; }
 
         public OntologyMappingManager(IOntologyMappingLoader mappingLoader)
         {
-            ontologyMapping = mappingLoader.LoadOntologyMapping();
+            OntologyMapping = mappingLoader.LoadOntologyMapping();
         }
 
         public bool TryGetInterfaceRemapDtmi(Dtmi inputDtmi, out DtmiRemap? dtmiRemap)
         {
-            dtmiRemap = ontologyMapping.InterfaceRemaps.FirstOrDefault(r => r.InputDtmi == inputDtmi.ToString() && !r.IsIgnored);
+            dtmiRemap = OntologyMapping.InterfaceRemaps.FirstOrDefault(r => r.InputDtmi == inputDtmi.ToString() && !r.IsIgnored);
 
             if (dtmiRemap != null)
             {
@@ -34,7 +34,7 @@ namespace Microsoft.SmartFacilities.OntologyMapper
         {
             outputRelationship = string.Empty;
 
-            var result = ontologyMapping.RelationshipRemaps.FirstOrDefault(r => r.InputRelationship == inputRelationship.ToString());
+            var result = OntologyMapping.RelationshipRemaps.FirstOrDefault(r => r.InputRelationship == inputRelationship.ToString());
 
             if (result != null)
             {
@@ -49,7 +49,7 @@ namespace Microsoft.SmartFacilities.OntologyMapper
         {
             propertyProjection = null;
 
-            var result = ontologyMapping.PropertyProjections.FirstOrDefault(e => e.OutputDtmiFilter == outputDtmiFilter && e.OutputPropertyName == outputPropertyName);
+            var result = OntologyMapping.PropertyProjections.FirstOrDefault(e => e.OutputDtmiFilter == outputDtmiFilter && e.OutputPropertyName == outputPropertyName);
 
             if (result != null)
             {
@@ -64,7 +64,7 @@ namespace Microsoft.SmartFacilities.OntologyMapper
         {
             inputPropertyNames = new List<string>();
 
-            var result = ontologyMapping.FillProperties.FirstOrDefault(e => e.OutputDtmiFilter == outputDtmiFilter && e.OutputPropertyName == outputPropertyName);
+            var result = OntologyMapping.FillProperties.FirstOrDefault(e => e.OutputDtmiFilter == outputDtmiFilter && e.OutputPropertyName == outputPropertyName);
 
             if (result != null)
             {
@@ -79,7 +79,7 @@ namespace Microsoft.SmartFacilities.OntologyMapper
         {
             invalidTargets = new List<string>();
 
-            foreach (var interfaceRemap in ontologyMapping.InterfaceRemaps.Where(ir => !ir.IsIgnored))
+            foreach (var interfaceRemap in OntologyMapping.InterfaceRemaps.Where(ir => !ir.IsIgnored))
             {
                 try
                 {

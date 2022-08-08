@@ -3832,11 +3832,11 @@
       "OutputDtmi": "dtmi:org:brickschema:schema:Brick:PM1_Sensor;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:PM2.5LevelSensor;1",
+      "InputDtmi": "dtmi:mapped:core:PM2_5LevelSensor;1",
       "OutputDtmi": "dtmi:org:brickschema:schema:Brick:PM25_Level_Sensor;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:PM2.5Sensor;1",
+      "InputDtmi": "dtmi:mapped:core:PM2_5Sensor;1",
       "OutputDtmi": "dtmi:org:brickschema:schema:Brick:PM25_Sensor;1"
     },
     {

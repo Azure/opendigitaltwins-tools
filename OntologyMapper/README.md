@@ -14,7 +14,7 @@ The key is that these files describe exceptions only. If the source DTMI and Tar
 
 The Mappings folder is a hierarchy which goes from the Input Ontology, format, and version, to the output ontology. A version of the file should exist for each combination of versions of the source to target ontology for each combination actually in use. 
 
-The name of the file is currently important, as it is used as part of the start up configuration for processes using these files, so changing the name (or having duplicate names anywhere in the assembly), will cause runtime errors.
+When loading
 
 ## Mapping Classes
 
@@ -153,3 +153,25 @@ Includes the following elements
 ### OntologyMappingManager
 
 This class defines an implementation of the IOntologyMappingManager, and provides simplified calls for clients to make to use the OntologyMapping
+
+### EmbeddedResourceOntologyMappingLoader
+
+This class enables selection and loading of the Ontology Mappings from the Embedded Resources files. When instantiating this class, specify the full path of the resource to be loaded. 
+i.e.
+
+``` csharp
+
+var resourceManager = new EmbeddedResourceOntologyMappingLoader(logger, "Mappings.Mapped.Json.v0.BrickRec.mapped_json_v0_dtdlv2_Brick_1_3-REC_4_0.json");
+
+```
+
+### FileOntologyMappingLoader
+
+This class enables selection and loading of the Ontology Mappings from an external json file. When instantiating this class, specify the full path of the file to be loaded. 
+i.e.
+
+``` csharp
+
+var fileLoader = new FileOntologyMappingLoader(logger, "c:\mappings\mapped_json_v0_dtdlv2_Brick_1_3-REC_4_0.json");
+
+```

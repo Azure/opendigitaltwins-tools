@@ -7,7 +7,7 @@
 namespace Microsoft.SmartFacilities.OntologyMapper.Test
 {
     using Microsoft.Azure.DigitalTwins.Parser;
-    using Microsoft.Azure.DigitalTwins.Parser.Models;
+    using Microsoft.Extensions.Logging;
     using Microsoft.SmartFacilities.OntologyMapper;
     using Moq;
     using Xunit;
@@ -30,8 +30,8 @@ namespace Microsoft.SmartFacilities.OntologyMapper.Test
 
             var ontologyMappingManager = new OntologyMappingManager(mockOntologyLoader.Object);
 
-            var inputDtmi = new Dtmi("dtmi:mapped:core:AblutionsRoom;1");
-            var outputDtmi = new Dtmi("dtmi:org:w3id:rec:ShowerRoom;1");
+            var inputDtmi = new Dtmi("dtmi:twin:main:CleaningRoom;1");
+            var outputDtmi = new Dtmi("dtmi:org:w3id:rec:CleanRoom;1");
 
             var result = ontologyMappingManager.TryGetInterfaceRemapDtmi(inputDtmi, out var dtmiRemap);
 
@@ -50,7 +50,7 @@ namespace Microsoft.SmartFacilities.OntologyMapper.Test
 
             var ontologyMappingManager = new OntologyMappingManager(mockOntologyLoader.Object);
 
-            var inputDtmi = new Dtmi("dtmi:mapped:core:AbsorptionChiller;1");
+            var inputDtmi = new Dtmi("dtmi:twin:main:RandomEquipment;1");
 
             var result = ontologyMappingManager.TryGetInterfaceRemapDtmi(inputDtmi, out var dtmiRemap);
 
@@ -66,7 +66,7 @@ namespace Microsoft.SmartFacilities.OntologyMapper.Test
 
             var ontologyMappingManager = new OntologyMappingManager(mockOntologyLoader.Object);
 
-            var inputDtmi = new Dtmi("dtmi:mapped:core:AblutionsSpace;1");
+            var inputDtmi = new Dtmi("dtmi:twin:main:FishCleaningRoom;1");
 
             var result = ontologyMappingManager.TryGetInterfaceRemapDtmi(inputDtmi, out var dtmiRemap);
 
@@ -117,7 +117,7 @@ namespace Microsoft.SmartFacilities.OntologyMapper.Test
 
             var outputDtmiFilter = "*";
             var outputPropertyName = "externalIds";
-            var inputPropertyName = "mappingKey";
+            var inputPropertyName = "deviceKey";
 
             var result = ontologyMappingManager.TryGetPropertyProjection(outputDtmiFilter, outputPropertyName, out var propertyProjection);
 
@@ -183,20 +183,54 @@ namespace Microsoft.SmartFacilities.OntologyMapper.Test
             Assert.Empty(propertyFill);
         }
 
+        [Theory]
+        [InlineData("Mappings.Mapped.Json.v0.BrickRec.mapped_json_v0_dtdlv2_Brick_1_3-REC_4_0.json")]
+        [InlineData("Mappings.Mapped.Json.v0.BrickRec.mapped_json_v0_dtdlv3_Brick_1_3-REC_4_0.json")]
+        public void ValidateEmbeddedResourceDtmisAreValidFormat(string resourcePath)
+        {
+            var mockLogger = new Mock<ILogger>();
+            var resourceLoader = new EmbeddedResourceOntologyMappingLoader(mockLogger.Object, resourcePath);
+            var ontologyMappingManager = new OntologyMappingManager(resourceLoader);
+
+            var exceptions = new List<string>();
+            foreach (var mapping in ontologyMappingManager.OntologyMapping.InterfaceRemaps)
+            {
+                try
+                {
+                    var inputDtmi = new Dtmi(mapping.InputDtmi);
+                }
+                catch (ParsingException)
+                {
+                    exceptions.Add($"Invalid input DTMI: {mapping.InputDtmi}");
+                }
+
+                try
+                {
+                    var outputDtmi = new Dtmi(mapping.OutputDtmi);
+                }
+                catch (ParsingException)
+                {
+                    exceptions.Add($"Invalid output DTMI: {mapping.OutputDtmi}");
+                }
+            }
+
+            Assert.Empty(exceptions);
+        }
+
         private OntologyMapping GetOntologyMapping()
         {
             var ontologyMapping = new OntologyMapping();
 
-            ontologyMapping.Header.InputOntologies.Add(new Ontology { DtdlVersion = "v0", Name = "mapped", Version = "1.0" });
-            ontologyMapping.Header.OutputOntologies.Add(new Ontology { DtdlVersion = "v3", Name = "brick", Version = "1.3" });
-            ontologyMapping.Header.OutputOntologies.Add(new Ontology { DtdlVersion = "v3", Name = "rec", Version = "4.0" });
+            ontologyMapping.Header.InputOntologies.Add(new Ontology { DtdlVersion = "v2", Name = "twin", Version = "1.0" });
+            ontologyMapping.Header.OutputOntologies.Add(new Ontology { DtdlVersion = "v2", Name = "org1", Version = "1.1" });
+            ontologyMapping.Header.OutputOntologies.Add(new Ontology { DtdlVersion = "v3", Name = "org2", Version = "1.2" });
 
-            ontologyMapping.PropertyProjections.Add(new PropertyProjection { OutputDtmiFilter = "*", InputPropertyName = "mappingKey", OutputPropertyName = "externalIds", IsOutputPropertyCollection = true });
+            ontologyMapping.PropertyProjections.Add(new PropertyProjection { OutputDtmiFilter = "*", InputPropertyName = "deviceKey", OutputPropertyName = "externalIds", IsOutputPropertyCollection = true });
 
             ontologyMapping.FillProperties.Add(new FillProperty { OutputDtmiFilter = "*", OutputPropertyName = "name", InputPropertyNames = "name description" });
 
-            ontologyMapping.InterfaceRemaps.Add(new DtmiRemap { InputDtmi = "dtmi:mapped:core:AblutionsRoom;1", OutputDtmi = "dtmi:org:w3id:rec:ShowerRoom;1" });
-            ontologyMapping.InterfaceRemaps.Add(new DtmiRemap { InputDtmi = "dtmi:mapped:core:AbsorptionChiller;1", OutputDtmi = "dtmi:org:brickschema:schema:Brick:Absorption_Chiller;1", IsIgnored=true });
+            ontologyMapping.InterfaceRemaps.Add(new DtmiRemap { InputDtmi = "dtmi:twin:main:CleaningRoom;1", OutputDtmi = "dtmi:org:w3id:rec:CleanRoom;1" });
+            ontologyMapping.InterfaceRemaps.Add(new DtmiRemap { InputDtmi = "dtmi:twin:main:RandomRoom;1", OutputDtmi = "dtmi:org:org1:schema:test:Office;1", IsIgnored = true });
 
             ontologyMapping.RelationshipRemaps.Add(new RelationshipRemap { InputRelationship = "isA", OutputRelationship = "wasA" });
 
