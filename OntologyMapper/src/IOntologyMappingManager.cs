@@ -36,7 +36,7 @@ namespace Microsoft.SmartFacilities.OntologyMapper
         /// <param name="inputRelationship">The name of the relationship in the input ontology. i.e. "hasPart"</param>
         /// <param name="outputRelationship">The name of the relationship in the output ontology. i.e. "isLocationOf"</param>
         /// <returns></returns>
-        public bool TryGetRelationshipRemap(string inputRelationship, out string outputRelationship);
+        public bool TryGetRelationshipRemap(string inputRelationship, out RelationshipRemap? outputRelationship);
 
         /// <summary>
         /// In some cases, the contents of one input property may need to be copied to multiple other fields in the target ontology. For instance, if 
@@ -47,7 +47,7 @@ namespace Microsoft.SmartFacilities.OntologyMapper
         /// <param name="outputPropertyName">The target property name</param>
         /// <param name="inputPropertyNames">A space-delimited, ordered, list of fields which declare the backfill precedence</param>
         /// <returns>true if a mapping exists, false otherwise</returns>
-        public bool TryGetFillProperty(string outputDtmiFilter, string outputPropertyName, out IEnumerable<string> inputPropertyNames);
+        public bool TryGetFillProperty(string outputDtmiFilter, string outputPropertyName, out FillProperty? fillProperty);
 
         /// <summary>
         /// In some cases, a property of the input model needs to be put into a different field or collection in the target model. A declaration can be made to map the input field to the appropriate output field

@@ -30,15 +30,12 @@ namespace Microsoft.SmartFacilities.OntologyMapper
             return false;
         }
 
-        public bool TryGetRelationshipRemap(string inputRelationship, out string outputRelationship)
+        public bool TryGetRelationshipRemap(string inputRelationship, out RelationshipRemap? outputRelationship)
         {
-            outputRelationship = string.Empty;
+            outputRelationship = OntologyMapping.RelationshipRemaps.FirstOrDefault(r => r.InputRelationship == inputRelationship);
 
-            var result = OntologyMapping.RelationshipRemaps.FirstOrDefault(r => r.InputRelationship == inputRelationship.ToString());
-
-            if (result != null)
+            if (outputRelationship != null)
             {
-                outputRelationship = result.OutputRelationship;
                 return true;
             }
 
@@ -47,28 +44,22 @@ namespace Microsoft.SmartFacilities.OntologyMapper
 
         public bool TryGetPropertyProjection(string outputDtmiFilter, string outputPropertyName, out PropertyProjection? propertyProjection)
         {
-            propertyProjection = null;
+            propertyProjection = OntologyMapping.PropertyProjections.FirstOrDefault(e => e.OutputDtmiFilter == outputDtmiFilter && e.OutputPropertyName == outputPropertyName);
 
-            var result = OntologyMapping.PropertyProjections.FirstOrDefault(e => e.OutputDtmiFilter == outputDtmiFilter && e.OutputPropertyName == outputPropertyName);
-
-            if (result != null)
+            if (propertyProjection != null)
             {
-                propertyProjection = result;
                 return true;
             }
 
             return false;
         }
 
-        public bool TryGetFillProperty(string outputDtmiFilter, string outputPropertyName, out IEnumerable<string> inputPropertyNames)
+        public bool TryGetFillProperty(string outputDtmiFilter, string outputPropertyName, out FillProperty? inputPropertyNames)
         {
-            inputPropertyNames = new List<string>();
+            inputPropertyNames = OntologyMapping.FillProperties.FirstOrDefault(e => e.OutputDtmiFilter == outputDtmiFilter && e.OutputPropertyName == outputPropertyName);
 
-            var result = OntologyMapping.FillProperties.FirstOrDefault(e => e.OutputDtmiFilter == outputDtmiFilter && e.OutputPropertyName == outputPropertyName);
-
-            if (result != null)
+            if (inputPropertyNames != null)
             {
-                inputPropertyNames = result.InputPropertyNames.Split(" ").ToList();
                 return true;
             }
 

@@ -88,7 +88,8 @@ namespace Microsoft.SmartFacilities.OntologyMapper.Test
             var result = ontologyMappingManager.TryGetRelationshipRemap(inputRelationship, out var outputRelationship);
 
             Assert.True(result);
-            Assert.Equal(expectedOutputRelationship, outputRelationship);
+            Assert.NotNull(outputRelationship);
+            Assert.Equal(expectedOutputRelationship, outputRelationship.OutputRelationship);
         }
 
         [Fact]
@@ -104,7 +105,7 @@ namespace Microsoft.SmartFacilities.OntologyMapper.Test
             var result = ontologyMappingManager.TryGetRelationshipRemap(inputRelationship, out var outputRelationship);
 
             Assert.False(result);
-            Assert.Equal(string.Empty, outputRelationship);
+            Assert.Null(outputRelationship);
         }
 
         [Fact]
@@ -160,9 +161,9 @@ namespace Microsoft.SmartFacilities.OntologyMapper.Test
 
             Assert.True(result);
             Assert.NotNull(propertyFill);
-            Assert.Equal(2, propertyFill.Count());
-            Assert.Equal("name", propertyFill.ToList()[0]);
-            Assert.Equal("description", propertyFill.ToList()[1]);
+            Assert.Equal(2, propertyFill.InputPropertyNames.Count());
+            Assert.Equal("name", propertyFill.InputPropertyNames.ToList()[0]);
+            Assert.Equal("description", propertyFill.InputPropertyNames.ToList()[1]);
         }
 
         [Fact]
@@ -179,8 +180,7 @@ namespace Microsoft.SmartFacilities.OntologyMapper.Test
             var result = ontologyMappingManager.TryGetFillProperty(outputDtmiFilter, outputPropertyName, out var propertyFill);
 
             Assert.False(result);
-            Assert.NotNull(propertyFill);
-            Assert.Empty(propertyFill);
+            Assert.Null(propertyFill);
         }
 
         [Theory]
@@ -227,7 +227,7 @@ namespace Microsoft.SmartFacilities.OntologyMapper.Test
 
             ontologyMapping.PropertyProjections.Add(new PropertyProjection { OutputDtmiFilter = "*", InputPropertyName = "deviceKey", OutputPropertyName = "externalIds", IsOutputPropertyCollection = true });
 
-            ontologyMapping.FillProperties.Add(new FillProperty { OutputDtmiFilter = "*", OutputPropertyName = "name", InputPropertyNames = "name description" });
+            ontologyMapping.FillProperties.Add(new FillProperty { OutputDtmiFilter = "*", OutputPropertyName = "name", InputPropertyNames = new string[] { "name", "description" } });
 
             ontologyMapping.InterfaceRemaps.Add(new DtmiRemap { InputDtmi = "dtmi:twin:main:CleaningRoom;1", OutputDtmi = "dtmi:org:w3id:rec:CleanRoom;1" });
             ontologyMapping.InterfaceRemaps.Add(new DtmiRemap { InputDtmi = "dtmi:twin:main:RandomRoom;1", OutputDtmi = "dtmi:org:org1:schema:test:Office;1", IsIgnored = true });

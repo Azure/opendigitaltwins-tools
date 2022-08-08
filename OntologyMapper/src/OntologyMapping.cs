@@ -105,7 +105,7 @@ namespace Microsoft.SmartFacilities.OntologyMapper
         /// <summary>
         /// A space delimited, ordered, list of input properties to be assigned to the output property (loop until one is not empty)
         /// </summary>
-        public string InputPropertyNames { get; set; } = string.Empty;
+        public IEnumerable<string> InputPropertyNames { get; set; } = new List<string>();
     }
 
     /// <summary>
