@@ -6,6 +6,8 @@ on:
   pull_request:
     branches: [ "master" ]
 
+env: 
+  WORKING_DIRECTORY: OntologyMapper
 jobs:
   build:
 
@@ -18,8 +20,8 @@ jobs:
       with:
         dotnet-version: 6.0.x
     - name: Restore dependencies
-      run: dotnet restore OntologyMapper\OntologyMapper.sln
+      run: dotnet restore "${{ env.WORKING_DIRECTORY }}"
     - name: Build
-      run: dotnet build OntologyMapper\OntologyMapper.sln --no-restore
+      run: dotnet build "${{ env.WORKING_DIRECTORY }}" --no-restore
     - name: Test
-      run: dotnet test OntologyMapper\OntologyMapper.sln --no-build --verbosity normal
+      run: dotnet test "${{ env.WORKING_DIRECTORY }}" --no-build --verbosity normal
