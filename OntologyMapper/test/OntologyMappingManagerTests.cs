@@ -246,7 +246,7 @@ namespace Microsoft.SmartFacilities.OntologyMapper.Test
             var result = ontologyMappingManager.ValidateTargetOntologyMapping(targetObjectModel, out var invalidTargets);
 
             Assert.False(result);
-            Assert.Equal(1, invalidTargets.Count);
+            Assert.Single(invalidTargets);
             Assert.Equal("dtmi:org:w3id:rec:Building;1", invalidTargets[0]);
         }
 
