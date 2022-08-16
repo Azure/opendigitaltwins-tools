@@ -111,7 +111,7 @@ namespace Microsoft.SmartFacilities.OntologyMapper.Test
         }
 
         [Fact]
-        public void TryGetPropertyProjection_ReturnsTrue_When_Found()
+        public void TryGetPropertyProjection_ReturnsTrue_WhenFound()
         {
             var mockOntologyLoader = new Mock<IOntologyMappingLoader>();
             mockOntologyLoader.Setup(m => m.LoadOntologyMapping()).Returns(GetOntologyMapping);
@@ -128,7 +128,30 @@ namespace Microsoft.SmartFacilities.OntologyMapper.Test
             Assert.NotNull(propertyProjection);
             Assert.Equal(outputDtmiFilter, propertyProjection.OutputDtmiFilter);
             Assert.Equal(outputPropertyName, propertyProjection.OutputPropertyName);
-            Assert.Equal(inputPropertyName, propertyProjection.InputPropertyName);
+            Assert.Equal(inputPropertyName, propertyProjection.InputPropertyNames[0]);
+        }
+
+        [Fact]
+        public void TryGetPropertyProjection_ReturnsTrue_WhenFoundMultiple()
+        {
+            var mockOntologyLoader = new Mock<IOntologyMappingLoader>();
+            mockOntologyLoader.Setup(m => m.LoadOntologyMapping()).Returns(GetOntologyMappingWithMultipleProjections);
+
+            var ontologyMappingManager = new OntologyMappingManager(mockOntologyLoader.Object);
+
+            var outputDtmiFilter = "*";
+            var outputPropertyName = "externalIds";
+            var inputPropertyName1 = "deviceKey";
+            var inputPropertyName2 = "deviceId";
+
+            var result = ontologyMappingManager.TryGetPropertyProjection(outputDtmiFilter, outputPropertyName, out var propertyProjections);
+
+            Assert.True(result);
+            Assert.NotNull(propertyProjections);
+            Assert.Equal(outputDtmiFilter, propertyProjections.OutputDtmiFilter);
+            Assert.Equal(outputPropertyName, propertyProjections.OutputPropertyName);
+            Assert.Equal(inputPropertyName1, propertyProjections.InputPropertyNames[0]);
+            Assert.Equal(inputPropertyName2, propertyProjections.InputPropertyNames[1]);
         }
 
         [Fact]
@@ -216,6 +239,46 @@ namespace Microsoft.SmartFacilities.OntologyMapper.Test
                 }
             }
 
+            // Verify that the Interface Remaps are unique for an input interface
+            foreach (var interfaceRemap in ontologyMappingManager.OntologyMapping.InterfaceRemaps)
+            {
+                var matchingRemapsCount = ontologyMappingManager.OntologyMapping.InterfaceRemaps.Count(p => p.InputDtmi == interfaceRemap.InputDtmi);
+                if (matchingRemapsCount > 1)
+                {
+                    exceptions.Add($"Duplicate InterfaceRemap: {interfaceRemap.InputDtmi}");
+                }
+            }
+
+            // Verify that the Interface Remaps are unique for an input interface
+            foreach (var relationshipRemap in ontologyMappingManager.OntologyMapping.RelationshipRemaps)
+            {
+                var matchingRemapsCount = ontologyMappingManager.OntologyMapping.RelationshipRemaps.Count(p => p.InputRelationship == relationshipRemap.InputRelationship);
+                if (matchingRemapsCount > 1)
+                {
+                    exceptions.Add($"Duplicate RelationshipRemap: {relationshipRemap.InputRelationship}");
+                }
+            }
+
+            // Verify that the property projections are unique for an output property
+            foreach (var projection in ontologyMappingManager.OntologyMapping.PropertyProjections)
+            {
+                var matchingProjectionsCount = ontologyMappingManager.OntologyMapping.PropertyProjections.Count(p => p.OutputPropertyName == projection.OutputPropertyName);
+                if (matchingProjectionsCount > 1)
+                {
+                    exceptions.Add($"Duplicate PropertyProjection: {projection.OutputPropertyName}");
+                }
+            }
+
+            // Verify that the fill properties are unique for an output property
+            foreach (var fillProperty in ontologyMappingManager.OntologyMapping.FillProperties)
+            {
+                var matchingFillPropertyCount = ontologyMappingManager.OntologyMapping.FillProperties.Count(p => p.OutputPropertyName == fillProperty.OutputPropertyName);
+                if (matchingFillPropertyCount > 1)
+                {
+                    exceptions.Add($"Duplicate FillProperty: {fillProperty.OutputPropertyName}");
+                }
+            }
+
             Assert.Empty(exceptions);
         }
 
@@ -258,7 +321,27 @@ namespace Microsoft.SmartFacilities.OntologyMapper.Test
             ontologyMapping.Header.OutputOntologies.Add(new Ontology { DtdlVersion = "v2", Name = "org1", Version = "1.1" });
             ontologyMapping.Header.OutputOntologies.Add(new Ontology { DtdlVersion = "v3", Name = "org2", Version = "1.2" });
 
-            ontologyMapping.PropertyProjections.Add(new PropertyProjection { OutputDtmiFilter = "*", InputPropertyName = "deviceKey", OutputPropertyName = "externalIds", IsOutputPropertyCollection = true });
+            ontologyMapping.PropertyProjections.Add(new PropertyProjection { OutputDtmiFilter = "*", InputPropertyNames = new List<string> { "deviceKey" }, OutputPropertyName = "externalIds", IsOutputPropertyCollection = true });
+
+            ontologyMapping.FillProperties.Add(new FillProperty { OutputDtmiFilter = "*", OutputPropertyName = "name", InputPropertyNames = new string[] { "name", "description" } });
+
+            ontologyMapping.InterfaceRemaps.Add(new DtmiRemap { InputDtmi = "dtmi:twin:main:CleaningRoom;1", OutputDtmi = "dtmi:org:w3id:rec:CleanRoom;1" });
+            ontologyMapping.InterfaceRemaps.Add(new DtmiRemap { InputDtmi = "dtmi:twin:main:RandomRoom;1", OutputDtmi = "dtmi:org:org1:schema:test:Office;1", IsIgnored = true });
+
+            ontologyMapping.RelationshipRemaps.Add(new RelationshipRemap { InputRelationship = "isA", OutputRelationship = "wasA" });
+
+            return ontologyMapping;
+        }
+
+        private OntologyMapping GetOntologyMappingWithMultipleProjections()
+        {
+            var ontologyMapping = new OntologyMapping();
+
+            ontologyMapping.Header.InputOntologies.Add(new Ontology { DtdlVersion = "v2", Name = "twin", Version = "1.0" });
+            ontologyMapping.Header.OutputOntologies.Add(new Ontology { DtdlVersion = "v2", Name = "org1", Version = "1.1" });
+            ontologyMapping.Header.OutputOntologies.Add(new Ontology { DtdlVersion = "v3", Name = "org2", Version = "1.2" });
+
+            ontologyMapping.PropertyProjections.Add(new PropertyProjection { OutputDtmiFilter = "*", InputPropertyNames = new List<string> { "deviceKey", "deviceId" }, OutputPropertyName = "externalIds", IsOutputPropertyCollection = true });
 
             ontologyMapping.FillProperties.Add(new FillProperty { OutputDtmiFilter = "*", OutputPropertyName = "name", InputPropertyNames = new string[] { "name", "description" } });
 
