@@ -1,4 +1,4 @@
-name: .NET
+name: Build, Package, and Push to Feed
 
 on:
   push:

@@ -1,4 +1,4 @@
-name: .NET
+name: Pull Request Build Only
 
 on:
   pull_request:
