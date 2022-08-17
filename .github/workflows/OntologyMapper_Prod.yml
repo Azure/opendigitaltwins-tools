@@ -32,7 +32,7 @@ jobs:
       - name: dotnet build and publish
         run: |
           dotnet restore "${{ env.WORKING_DIRECTORY }}"
-          dotnet build "${{ env.WORKING_DIRECTORY }}" --configuration '${{ env.BUILD_CONFIGURATION }}'
+          dotnet build "${{ env.WORKING_DIRECTORY }}" -c '${{ env.BUILD_CONFIGURATION }}'
           dotnet pack "${{ env.WORKING_DIRECTORY }}" -c '${{ env.BUILD_CONFIGURATION }}' --version-suffix $GITHUB_RUN_ID
       # Publish the package to Azure Artifacts
       - name: 'dotnet publish'
