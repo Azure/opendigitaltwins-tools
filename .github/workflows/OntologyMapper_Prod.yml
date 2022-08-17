@@ -16,31 +16,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v2
-      with:
-        dotnet-version: 6.0.x
-      env:
-        NUGET_AUTH_TOKEN: ${{ secrets.AZURE_ARTIFACTS_PAT }} 
+      # Checkout the repo
+      - uses: actions/checkout@v3
 
-    # Restore dependencies
-    - name: Restore dependencies
-      run: dotnet restore "${{ env.WORKING_DIRECTORY }}"
+      # Setup .NET Core SDK
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+          source-url: ${{ env.AZURE_ARTIFACTS_FEED_URL }}
+        env:
+          NUGET_AUTH_TOKEN: ${{ secrets.AZURE_ARTIFACTS_PAT }} 
 
-    # Run dotnet build
-    - name: Build
-      run: dotnet build "${{ env.WORKING_DIRECTORY }}" -c '${{ env.BUILD_CONFIGURATION }}' --no-restore
-
-    # Run dotnet test
-    - name: Test
-      run: dotnet test "${{ env.WORKING_DIRECTORY }}" -c '${{ env.BUILD_CONFIGURATION }}' --no-build --verbosity normal
-
-    # Run dotnet package
-    - name: dotnet pack
-      run: |
-        dotnet pack "${{ env.WORKING_DIRECTORY }}" -c '${{ env.BUILD_CONFIGURATION }}' --version-suffix $GITHUB_RUN_ID
-
-    # Publish the package to Azure Artifacts
-    - name: 'dotnet publish'
-      run: dotnet nuget push --api-key AzureArtifacts OntologyMapper/src/bin/Release/*.nupkg
+      # Run dotnet build and package
+      - name: dotnet build and publish
+        run: |
+          dotnet restore "${{ env.WORKING_DIRECTORY }}"
+          dotnet build "${{ env.WORKING_DIRECTORY }}" -c '${{ env.BUILD_CONFIGURATION }}'
+          dotnet pack "${{ env.WORKING_DIRECTORY }}" -c '${{ env.BUILD_CONFIGURATION }}' --version-suffix $GITHUB_RUN_ID
+      # Publish the package to Azure Artifacts
+      - name: 'dotnet publish'
+        run: dotnet nuget push --api-key AzureArtifacts OntologyMapper/src/bin/Release/*.nupkg
