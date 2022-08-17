@@ -1,13 +1,14 @@
-name: .NET
+name: Pull Request Build
 
 on:
-  push:
-    branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
 
 env: 
+  BUILD_CONFIGURATION: 'Release'    # set this to the appropriate build configuration
   WORKING_DIRECTORY: OntologyMapper
+  DOTNET_VERSION: '6.x' 
+
 jobs:
   build:
 

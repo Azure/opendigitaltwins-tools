@@ -74,9 +74,9 @@ namespace Microsoft.SmartFacilities.OntologyMapper
         public string OutputPropertyName { get; set; } = string.Empty;
 
         /// <summary>
-        /// The name of the input property in the source ontology
+        /// The name of the input properties in the source ontology that map to the target. If target is a collection, this can also be a collection
         /// </summary>
-        public string InputPropertyName { get; set; } = string.Empty;
+        public List<string> InputPropertyNames { get; set; } = new List<string>();
 
         /// <summary>
         /// If the output is a collection, and the input is a value type, set this to 

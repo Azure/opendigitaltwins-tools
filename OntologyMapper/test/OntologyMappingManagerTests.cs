@@ -111,7 +111,7 @@ namespace Microsoft.SmartFacilities.OntologyMapper.Test
         }
 
         [Fact]
-        public void TryGetPropertyProjection_ReturnsTrue_When_Found()
+        public void TryGetPropertyProjection_ReturnsTrue_WhenFound()
         {
             var mockOntologyLoader = new Mock<IOntologyMappingLoader>();
             mockOntologyLoader.Setup(m => m.LoadOntologyMapping()).Returns(GetOntologyMapping);
@@ -128,7 +128,30 @@ namespace Microsoft.SmartFacilities.OntologyMapper.Test
             Assert.NotNull(propertyProjection);
             Assert.Equal(outputDtmiFilter, propertyProjection.OutputDtmiFilter);
             Assert.Equal(outputPropertyName, propertyProjection.OutputPropertyName);
-            Assert.Equal(inputPropertyName, propertyProjection.InputPropertyName);
+            Assert.Equal(inputPropertyName, propertyProjection.InputPropertyNames[0]);
+        }
+
+        [Fact]
+        public void TryGetPropertyProjection_ReturnsTrue_WhenFoundMultiple()
+        {
+            var mockOntologyLoader = new Mock<IOntologyMappingLoader>();
+            mockOntologyLoader.Setup(m => m.LoadOntologyMapping()).Returns(GetOntologyMappingWithMultipleProjections);
+
+            var ontologyMappingManager = new OntologyMappingManager(mockOntologyLoader.Object);
+
+            var outputDtmiFilter = "*";
+            var outputPropertyName = "externalIds";
+            var inputPropertyName1 = "deviceKey";
+            var inputPropertyName2 = "deviceId";
+
+            var result = ontologyMappingManager.TryGetPropertyProjection(outputDtmiFilter, outputPropertyName, out var propertyProjections);
+
+            Assert.True(result);
+            Assert.NotNull(propertyProjections);
+            Assert.Equal(outputDtmiFilter, propertyProjections.OutputDtmiFilter);
+            Assert.Equal(outputPropertyName, propertyProjections.OutputPropertyName);
+            Assert.Equal(inputPropertyName1, propertyProjections.InputPropertyNames[0]);
+            Assert.Equal(inputPropertyName2, propertyProjections.InputPropertyNames[1]);
         }
 
         [Fact]
@@ -185,40 +208,6 @@ namespace Microsoft.SmartFacilities.OntologyMapper.Test
             Assert.Null(propertyFill);
         }
 
-        [Theory]
-        [InlineData("Mappings.Mapped.Json.v0.BrickRec.mapped_json_v0_dtdlv2_Brick_1_3-REC_4_0.json")]
-        [InlineData("Mappings.Mapped.Json.v0.BrickRec.mapped_json_v0_dtdlv3_Brick_1_3-REC_4_0.json")]
-        public void ValidateEmbeddedResourceDtmisAreValidFormat(string resourcePath)
-        {
-            var mockLogger = new Mock<ILogger>();
-            var resourceLoader = new EmbeddedResourceOntologyMappingLoader(mockLogger.Object, resourcePath);
-            var ontologyMappingManager = new OntologyMappingManager(resourceLoader);
-
-            var exceptions = new List<string>();
-            foreach (var mapping in ontologyMappingManager.OntologyMapping.InterfaceRemaps)
-            {
-                try
-                {
-                    var inputDtmi = new Dtmi(mapping.InputDtmi);
-                }
-                catch (ParsingException)
-                {
-                    exceptions.Add($"Invalid input DTMI: {mapping.InputDtmi}");
-                }
-
-                try
-                {
-                    var outputDtmi = new Dtmi(mapping.OutputDtmi);
-                }
-                catch (ParsingException)
-                {
-                    exceptions.Add($"Invalid output DTMI: {mapping.OutputDtmi}");
-                }
-            }
-
-            Assert.Empty(exceptions);
-        }
-
         [Fact]
         public void ValidateTargetOntologyMapping_ReturnsTrue_ForValidOntologyMapping()
         {
@@ -258,7 +247,27 @@ namespace Microsoft.SmartFacilities.OntologyMapper.Test
             ontologyMapping.Header.OutputOntologies.Add(new Ontology { DtdlVersion = "v2", Name = "org1", Version = "1.1" });
             ontologyMapping.Header.OutputOntologies.Add(new Ontology { DtdlVersion = "v3", Name = "org2", Version = "1.2" });
 
-            ontologyMapping.PropertyProjections.Add(new PropertyProjection { OutputDtmiFilter = "*", InputPropertyName = "deviceKey", OutputPropertyName = "externalIds", IsOutputPropertyCollection = true });
+            ontologyMapping.PropertyProjections.Add(new PropertyProjection { OutputDtmiFilter = "*", InputPropertyNames = new List<string> { "deviceKey" }, OutputPropertyName = "externalIds", IsOutputPropertyCollection = true });
+
+            ontologyMapping.FillProperties.Add(new FillProperty { OutputDtmiFilter = "*", OutputPropertyName = "name", InputPropertyNames = new string[] { "name", "description" } });
+
+            ontologyMapping.InterfaceRemaps.Add(new DtmiRemap { InputDtmi = "dtmi:twin:main:CleaningRoom;1", OutputDtmi = "dtmi:org:w3id:rec:CleanRoom;1" });
+            ontologyMapping.InterfaceRemaps.Add(new DtmiRemap { InputDtmi = "dtmi:twin:main:RandomRoom;1", OutputDtmi = "dtmi:org:org1:schema:test:Office;1", IsIgnored = true });
+
+            ontologyMapping.RelationshipRemaps.Add(new RelationshipRemap { InputRelationship = "isA", OutputRelationship = "wasA" });
+
+            return ontologyMapping;
+        }
+
+        private OntologyMapping GetOntologyMappingWithMultipleProjections()
+        {
+            var ontologyMapping = new OntologyMapping();
+
+            ontologyMapping.Header.InputOntologies.Add(new Ontology { DtdlVersion = "v2", Name = "twin", Version = "1.0" });
+            ontologyMapping.Header.OutputOntologies.Add(new Ontology { DtdlVersion = "v2", Name = "org1", Version = "1.1" });
+            ontologyMapping.Header.OutputOntologies.Add(new Ontology { DtdlVersion = "v3", Name = "org2", Version = "1.2" });
+
+            ontologyMapping.PropertyProjections.Add(new PropertyProjection { OutputDtmiFilter = "*", InputPropertyNames = new List<string> { "deviceKey", "deviceId" }, OutputPropertyName = "externalIds", IsOutputPropertyCollection = true });
 
             ontologyMapping.FillProperties.Add(new FillProperty { OutputDtmiFilter = "*", OutputPropertyName = "name", InputPropertyNames = new string[] { "name", "description" } });
 
@@ -292,14 +301,14 @@ namespace Microsoft.SmartFacilities.OntologyMapper.Test
             return ontologyMapping;
         }
 
-        private IReadOnlyDictionary<Dtmi, DTEntityInfo> GetTargetObjectModel()
+        private static IReadOnlyDictionary<Dtmi, DTEntityInfo> GetTargetObjectModel()
         {
             var objectModelParser = new ModelParser();
             var jsonTexts = LoadDtdl("Space.json");
             return objectModelParser.Parse(jsonTexts);
         }
 
-        private List<string> LoadDtdl(string fileName)
+        private static List<string> LoadDtdl(string fileName)
         {
             var assembly = Assembly.GetExecutingAssembly();
             var resources = assembly.GetManifestResourceNames();
@@ -310,12 +319,10 @@ namespace Microsoft.SmartFacilities.OntologyMapper.Test
             {
                 if (stream != null)
                 {
-                    using (StreamReader reader = new StreamReader(stream))
-                    {
-                        string? result = reader.ReadToEnd();
+                    using StreamReader reader = new(stream);
+                    string? result = reader.ReadToEnd();
 
-                        jsonTexts.Add(result);
-                    }
+                    jsonTexts.Add(result);
                 }
             }
 

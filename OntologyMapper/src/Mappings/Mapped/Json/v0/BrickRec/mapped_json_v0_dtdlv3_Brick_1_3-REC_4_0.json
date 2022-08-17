@@ -5480,7 +5480,7 @@
     {
       "OutputDtmiFilter": "*",
       "OutputPropertyName": "externalIds",
-      "InputPropertyName": "mappingKey",
+      "InputPropertyNames": [ "mappingKey" ],
       "IsOutputPropertyCollection": true
     }
   ],
@@ -5488,7 +5488,7 @@
     {
       "OutputDtmiFilter": "*",
       "OutputPropertyName": "name",
-      "InputPropertyNames": [ "name, description" ]
+      "InputPropertyNames": [ "name", "description" ]
     }
   ]
 }
