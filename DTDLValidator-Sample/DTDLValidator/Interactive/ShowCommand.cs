@@ -1,10 +1,11 @@
-﻿using CommandLine;
-using Microsoft.Azure.DigitalTwins.Parser;
-using System;
-using System.Threading.Tasks;
-
-namespace DTDLValidator.Interactive
+﻿namespace DTDLValidator.Interactive
 {
+    using CommandLine;
+    using Microsoft.Azure.DigitalTwins.Parser;
+    using Microsoft.Azure.DigitalTwins.Parser.Models;
+    using System;
+    using System.Threading.Tasks;
+
     [Verb("show", HelpText = "Display model definition.")]
     internal class ShowCommand
     {
@@ -18,6 +19,7 @@ namespace DTDLValidator.Interactive
                 Log.Error("Please specify a valid model id");
                 return Task.FromResult<object>(null);
             }
+
             try
             {
                 Dtmi modelId = new Dtmi(ModelId);
@@ -27,7 +29,7 @@ namespace DTDLValidator.Interactive
                     Console.WriteLine(@interface.GetJsonLdText());
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 Log.Error($"{ModelId} is not a valid dtmi");
             }

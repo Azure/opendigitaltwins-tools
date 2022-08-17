@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace DTDLValidator
+﻿namespace DTDLValidator
 {
+    using System;
+
     public static class Log
     {
         static public void Out(string s, ConsoleColor col = ConsoleColor.White)
@@ -27,6 +25,5 @@ namespace DTDLValidator
         {
             Out(s, ConsoleColor.DarkGreen);
         }
-
     }
 }

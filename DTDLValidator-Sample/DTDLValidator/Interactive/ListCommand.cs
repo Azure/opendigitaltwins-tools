@@ -1,12 +1,10 @@
-﻿using CommandLine;
-using Microsoft.Azure.DigitalTwins.Parser;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DTDLValidator.Interactive
+﻿namespace DTDLValidator.Interactive
 {
+    using CommandLine;
+    using Microsoft.Azure.DigitalTwins.Parser.Models;
+    using System;
+    using System.Threading.Tasks;
+
     [Verb("list", HelpText = "List models.")]
     internal class ListCommand
     {

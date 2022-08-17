@@ -1,14 +1,15 @@
-﻿using CommandLine;
-using Microsoft.Azure.DigitalTwins.Parser;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace DTDLValidator.Interactive
+﻿namespace DTDLValidator.Interactive
 {
+    using CommandLine;
+    using Microsoft.Azure.DigitalTwins.Parser;
+    using Microsoft.Azure.DigitalTwins.Parser.Models;
+    using System;
+    using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
+    using System.IO;
+    using System.Linq;
+    using System.Threading.Tasks;
+
     [Verb("load", HelpText = "Load models.")]
     internal class LoadCommand
     {
