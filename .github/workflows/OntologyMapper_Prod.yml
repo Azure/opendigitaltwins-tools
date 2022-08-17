@@ -30,11 +30,11 @@ jobs:
 
     # Run dotnet build
     - name: Build
-      run: dotnet build "${{ env.WORKING_DIRECTORY }}" --no-restore
+      run: dotnet build "${{ env.WORKING_DIRECTORY }}" -c '${{ env.BUILD_CONFIGURATION }}' --no-restore
 
     # Run dotnet test
     - name: Test
-      run: dotnet test "${{ env.WORKING_DIRECTORY }}" --no-build --verbosity normal
+      run: dotnet test "${{ env.WORKING_DIRECTORY }}" -c '${{ env.BUILD_CONFIGURATION }}' --no-build --verbosity normal
 
     # Run dotnet package
     - name: dotnet pack
