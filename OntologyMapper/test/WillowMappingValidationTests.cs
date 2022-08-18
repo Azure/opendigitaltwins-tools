@@ -13,18 +13,17 @@ namespace Microsoft.SmartFacilities.OntologyMapper.Test
     using Xunit;
     using Xunit.Abstractions;
 
-    public class BrickRecMappingValidationTests
+    public class WillowMappingValidationTests
     {
         private readonly ITestOutputHelper output;
 
-        public BrickRecMappingValidationTests(ITestOutputHelper output)
+        public WillowMappingValidationTests(ITestOutputHelper output)
         {
             this.output = output;
         }
 
         [Theory]
-        [InlineData("Mappings.Mapped.Json.v0.BrickRec.mapped_json_v0_dtdlv2_Brick_1_3-REC_4_0.json")]
-        [InlineData("Mappings.Mapped.Json.v0.BrickRec.mapped_json_v0_dtdlv3_Brick_1_3-REC_4_0.json")]
+        [InlineData("Mappings.Mapped.Json.v0.Willow.mapped_json_v0_dtdlv2_Willow.json")]
         public void ValidateEmbeddedResourceDtmisAreValidFormat(string resourcePath)
         {
             var mockLogger = new Mock<ILogger>();
