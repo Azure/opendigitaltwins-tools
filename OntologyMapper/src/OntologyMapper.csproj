@@ -8,8 +8,8 @@
 		<Version>$(VersionPrefix)</Version>
 		<Authors>Microsoft Corporation</Authors>
 		<Description>Support for converting from one DTDL-based Ontology to a different DTDL Based Ontology</Description>
-		<AssemblyVersion>0.2.3</AssemblyVersion>
-		<PackageVersion>0.2.3-preview</PackageVersion>
+		<AssemblyVersion>0.2.4</AssemblyVersion>
+		<PackageVersion>0.2.4-preview</PackageVersion>
 		<RepositoryUrl>https://github.com/Azure/opendigitaltwins-tools</RepositoryUrl>
 		<Copyright>Copyright (c) Microsoft Corporation.  All rights reserved.</Copyright>
 		<AssemblyName>Microsoft.SmartFacilities.OntologyMapper</AssemblyName>
@@ -18,6 +18,10 @@
 
 	<ItemGroup>
 		<EmbeddedResource Include="Mappings\**\*.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Mappings\Mapped\Json\v0\Willow\mapped_json_v0_dtdlv2_willow.json" />
 	</ItemGroup>
 
 	<ItemGroup>
