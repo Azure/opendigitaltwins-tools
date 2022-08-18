@@ -2,7 +2,7 @@ name: Pull Request Build
 
 on:
   pull_request:
-    branches: [ "master" ]
+    branches: [ "main" ]
 
 env: 
   BUILD_CONFIGURATION: 'Release'    # set this to the appropriate build configuration

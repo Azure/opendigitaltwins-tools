@@ -1,5 +1,5 @@
 # NOTICE! THIS TOOL WILL BE DEPRECATED ON AUGUST 1st 2021
-# Please refer to [ADTTools](https://github.com/Azure/opendigitaltwins-tools/tree/master/ADTTools) for a replacement set of tools
+# Please refer to [ADTTools](https://github.com/Azure/opendigitaltwins-tools/tree/main/ADTTools) for a replacement set of tools
 
 
 # The ADT Model Uploader
