@@ -32,7 +32,7 @@ namespace Microsoft.SmartFacilities.OntologyMapper
 
             var assembly = Assembly.GetExecutingAssembly();
             var resources = assembly.GetManifestResourceNames();
-            var resourceName = resources.Single(str => str.EndsWith(resourcePath));
+            var resourceName = resources.Single(str => str.ToLowerInvariant().EndsWith(resourcePath.ToLowerInvariant()));
 
             using (Stream? stream = assembly.GetManifestResourceStream(resourceName))
             {
