@@ -3836,7 +3836,7 @@
     },
     {
       "InputDtmi": "dtmi:mapped:core:Point;1",
-      "OutputDtmi": "dtmi:com:willowinc:Point;1"
+      "OutputDtmi": "dtmi:com:willowinc:Capability;1"
     },
     {
       "InputDtmi": "dtmi:mapped:core:Portfolio;1",
@@ -4986,7 +4986,7 @@
     {
       "InputDtmi": "dtmi:mapped:core:TestPoint;1",
       // Mapped to Base - Review needed
-      "OutputDtmi": "dtmi:com:willowinc:Point;1"
+      "OutputDtmi": "dtmi:com:willowinc:Capability;1"
     },
     {
       "InputDtmi": "dtmi:mapped:core:TETRARoom;1",
