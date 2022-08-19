@@ -124,9 +124,8 @@
     },
     {
       "InputDtmi": "dtmi:mapped:core:AirFlowAlarmSetpoint;1",
-      // Invalid Output DTMI - Post Brick 1.3
-      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Air_Flow_Alarm_Setpoint;1",
-      "IsIgnored": true
+      // Temporary until further decision with Brick
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Setpoint;1"
     },
     {
       "InputDtmi": "dtmi:mapped:core:AirFlowDeadbandSetpoint;1",
@@ -147,9 +146,8 @@
     },
     {
       "InputDtmi": "dtmi:mapped:core:AirFlowRateCommand;1",
-      // Invalid Output DTMI - Review Needed
-      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Air_Flow_Rate_Command;1",
-      "IsIgnored": true
+      // Temporary until further decision with Brick
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Command;1"
     },
     {
       "InputDtmi": "dtmi:mapped:core:AirFlowSensor;1",
@@ -799,9 +797,8 @@
     },
     {
       "InputDtmi": "dtmi:mapped:core:CondenserWaterFlowCommand;1",
-      // Invalid Output DTMI - Post Brick 1.3
-      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Condenser_Water_Flow_Command;1",
-      "IsIgnored": true
+      // Temporary until further decision with Brick
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Command;1"
     },
     {
       "InputDtmi": "dtmi:mapped:core:CondenserWaterFlowStatus;1",
@@ -818,15 +815,13 @@
     },
     {
       "InputDtmi": "dtmi:mapped:core:CondenserWaterSupplyTemperatureSensor;1",
-      // Invalid Output DTMI - Review Needed
-      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Condenser_Water_Supply_Temperature_Sensor;1",
-      "IsIgnored": true
+      // Missing deep class - Review Needed
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Condenser_Water_Temperature_Sensor;1"
     },
     {
       "InputDtmi": "dtmi:mapped:core:CondenserWaterSupplyTemperatureSetpoint;1",
-      // Invalid Output DTMI - Review Needed
-      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Condenser_Water_Supply_Temperature_Setpoint;1",
-      "IsIgnored": true
+      // Missing deep class - Review Needed
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Water_Temperature_Setpoint;1"
     },
     {
       "InputDtmi": "dtmi:mapped:core:CondenserWaterSystem;1",
@@ -895,9 +890,8 @@
     },
     {
       "InputDtmi": "dtmi:mapped:core:CoolingAirTemperatureSetpointOffset;1",
-      // Invalid Output DTMI - Post Brick 1.3
-      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Cooling_Air_Temperature_Setpoint_Offset;1",
-      "IsIgnored": true
+      // Temporary until further decision with Brick
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Parameter;1"
     },
     {
       "InputDtmi": "dtmi:mapped:core:CoolingCoil;1",
@@ -990,9 +984,8 @@
     },
     {
       "InputDtmi": "dtmi:mapped:core:Count;1",
-      // Invalid Output DTMI - Post Brick 1.3
-      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Count;1",
-      "IsIgnored": true
+      // Temporary until further decision with Brick
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Status;1"
     },
     {
       "InputDtmi": "dtmi:mapped:core:CRAC;1",
@@ -1333,9 +1326,8 @@
     },
     {
       "InputDtmi": "dtmi:mapped:core:DischargeAirTemperatureResetSetpoint;1",
-      // Invalid Output DTMI - Post Brick 1.3
-      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Discharge_Air_Temperature_Reset_Setpoint;1",
-      "IsIgnored": true
+      // Temporary until further decision with Brick
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Reset_Setpoint;1"
     },
     {
       "InputDtmi": "dtmi:mapped:core:DischargeAirTemperatureSensor;1",
@@ -1891,15 +1883,13 @@
     },
     {
       "InputDtmi": "dtmi:mapped:core:ExhaustFanDisableCommand;1",
-      // Invalid Output DTMI - Review Needed
-      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Exhaust_Fan_Disable_Command;1",
-      "IsIgnored": true
+      // Mapped to Base - Review needed
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Disable_Command;1"
     },
     {
       "InputDtmi": "dtmi:mapped:core:ExhaustFanEnableCommand;1",
-      // Invalid Output DTMI - Review Needed
-      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Exhaust_Fan_Enable_Command;1",
-      "IsIgnored": true
+      // Mapped to Base - Review needed
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Enable_Command;1"
     },
     {
       "InputDtmi": "dtmi:mapped:core:EyeWashStation;1",
@@ -1923,9 +1913,8 @@
     },
     {
       "InputDtmi": "dtmi:mapped:core:FanRequest;1",
-      // Invalid Output DTMI - Post Brick 1.3
-      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Fan_Request;1",
-      "IsIgnored": true
+      // Temporary until further decision with Brick
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Status;1"
     },
     {
       "InputDtmi": "dtmi:mapped:core:FanSpeedCommand;1",
@@ -2775,9 +2764,8 @@
     },
     {
       "InputDtmi": "dtmi:mapped:core:LockUnlockCommand;1",
-      // Invalid Output DTMI - Review Needed
-      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Lock_Unlock_Command;1",
-      "IsIgnored": true
+      // Mapped to Base - Review needed
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Command;1"
     },
     {
       "InputDtmi": "dtmi:mapped:core:Loop;1",
@@ -2935,9 +2923,8 @@
     },
     {
       "InputDtmi": "dtmi:mapped:core:MaxAirTemperatureSetpointLimit;1",
-      // Invalid Output DTMI - Post Brick 1.3
-      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Max_Air_Temperature_Setpoint_Limit;1",
-      "IsIgnored": true
+      // Temporary until further decision with Brick
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Max_Limit;1"
     },
     {
       "InputDtmi": "dtmi:mapped:core:MaxChilledWaterDifferentialPressureSetpointLimit;1",
@@ -2945,21 +2932,18 @@
     },
     {
       "InputDtmi": "dtmi:mapped:core:MaxCoolingAirTemperatureSetpointLimit;1",
-      // Invalid Output DTMI - Post Brick 1.3
-      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Max_Cooling_Air_Temperature_Setpoint_Limit;1",
-      "IsIgnored": true
+      // Temporary until further decision with Brick
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Max_Limit;1"
     },
     {
       "InputDtmi": "dtmi:mapped:core:MaxCoolingDischargeAirFlowSetpointLimit;1",
-      // Invalid Output DTMI - Review Needed
-      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Max_Cooling_Discharge_Air_Flow_Setpoint_Limit;1",
-      "IsIgnored": true
+      // Temporary until further decision with Brick
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Max_Limit;1"
     },
     {
       "InputDtmi": "dtmi:mapped:core:MaxCoolingDischargeAirTemperatureSetpointLimit;1",
-      // Invalid Output DTMI - Review Needed
-      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Max_Cooling_Discharge_Air_Temperature_Setpoint_Limit;1",
-      "IsIgnored": true
+      // Temporary until further decision with Brick
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Max_Limit;1"
     },
     {
       "InputDtmi": "dtmi:mapped:core:MaxCoolingSupplyAirFlowSetpointLimit;1",
@@ -2979,9 +2963,8 @@
     },
     {
       "InputDtmi": "dtmi:mapped:core:MaxHeatingAirTemperatureSetpointLimit;1",
-      // Invalid Output DTMI - Post Brick 1.3
-      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Max_Heating_Air_Temperature_Setpoint_Limit;1",
-      "IsIgnored": true
+      // Temporary until further decision with Brick
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Max_Limit;1"
     },
     {
       "InputDtmi": "dtmi:mapped:core:MaxHeatingDischargeAirFlowSetpointLimit;1",
@@ -2997,9 +2980,7 @@
     },
     {
       "InputDtmi": "dtmi:mapped:core:MaxLimit;1",
-      // Invalid Output DTMI - Post Brick 1.3
-      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Max_Limit;1",
-      "IsIgnored": true
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Max_Limit;1"
     },
     {
       "InputDtmi": "dtmi:mapped:core:MaxLoadSetpoint;1",
@@ -3027,9 +3008,8 @@
     },
     {
       "InputDtmi": "dtmi:mapped:core:MaxPowerLimit;1",
-      // Invalid Output DTMI - Review Needed
-      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Max_Power_Limit;1",
-      "IsIgnored": true
+      // Temporary until further decision with Brick
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Max_Limit;1"
     },
     {
       "InputDtmi": "dtmi:mapped:core:MaxSpeedSetpointLimit;1",
@@ -3185,9 +3165,8 @@
     },
     {
       "InputDtmi": "dtmi:mapped:core:MinAirTemperatureSetpointLimit;1",
-      // Invalid Output DTMI - Post Brick 1.3
-      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Min_Air_Temperature_Setpoint_Limit;1",
-      "IsIgnored": true
+      // Temporary until further decision with Brick
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Min_Limit;1"
     },
     {
       "InputDtmi": "dtmi:mapped:core:MinChilledWaterDifferentialPressureSetpointLimit;1",
@@ -3195,15 +3174,13 @@
     },
     {
       "InputDtmi": "dtmi:mapped:core:MinCoolingAirTemperatureSetpointLimit;1",
-      // Invalid Output DTMI - Post Brick 1.3
-      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Min_Cooling_Air_Temperature_Setpoint_Limit;1",
-      "IsIgnored": true
+      // Temporary until further decision with Brick
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Min_Limit;1"
     },
     {
       "InputDtmi": "dtmi:mapped:core:MinCoolingDischargeAirFlowSetpointLimit;1",
-      // Invalid Output DTMI - Review Needed
-      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Min_Cooling_Discharge_Air_Flow_Setpoint_Limit;1",
-      "IsIgnored": true
+      // Temporary until further decision with Brick
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Min_Limit;1"
     },
     {
       "InputDtmi": "dtmi:mapped:core:MinCoolingSupplyAirFlowSetpointLimit;1",
@@ -3211,9 +3188,8 @@
     },
     {
       "InputDtmi": "dtmi:mapped:core:MinCoolingSupplyAirTemperatureSetpointLimit;1",
-      // Invalid Output DTMI - Review Needed
-      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Min_Cooling_Supply_Air_Temperature_Setpoint_Limit;1",
-      "IsIgnored": true
+      // Temporary until further decision with Brick
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Min_Limit;1"
     },
     {
       "InputDtmi": "dtmi:mapped:core:MinDischargeAirStaticPressureSetpointLimit;1",
@@ -3229,9 +3205,8 @@
     },
     {
       "InputDtmi": "dtmi:mapped:core:MinHeatingAirTemperatureSetpointLimit;1",
-      // Invalid Output DTMI - Post Brick 1.3
-      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Min_Heating_Air_Temperature_Setpoint_Limit;1",
-      "IsIgnored": true
+      // Temporary until further decision with Brick
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Min_Limit;1"
     },
     {
       "InputDtmi": "dtmi:mapped:core:MinHeatingDischargeAirFlowSetpointLimit;1",
@@ -3560,9 +3535,8 @@
     },
     {
       "InputDtmi": "dtmi:mapped:core:Offset;1",
-      // Invalid Output DTMI - Post Brick 1.3
-      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Offset;1",
-      "IsIgnored": true
+      // Temporary until further decision with Brick
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Parameter;1"
     },
     {
       "InputDtmi": "dtmi:mapped:core:OffStatus;1",
@@ -4355,9 +4329,8 @@
     },
     {
       "InputDtmi": "dtmi:mapped:core:RunCommand;1",
-      // Invalid Output DTMI - Review Needed
-      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Run_Command;1",
-      "IsIgnored": true
+      // Mapped to Base - Review needed
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Command;1"
     },
     {
       "InputDtmi": "dtmi:mapped:core:RunEnableCommand;1",
@@ -4443,9 +4416,8 @@
     },
     {
       "InputDtmi": "dtmi:mapped:core:SetpointOffset;1",
-      // Invalid Output DTMI - Post Brick 1.3
-      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Setpoint_Offset;1",
-      "IsIgnored": true
+      // Temporary until further decision with Brick
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Parameter;1"
     },
     {
       "InputDtmi": "dtmi:mapped:core:ShadingSystem;1",
@@ -4935,9 +4907,8 @@
     },
     {
       "InputDtmi": "dtmi:mapped:core:TemperatureAlarmCount;1",
-      // Invalid Output DTMI - Post Brick 1.3
-      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Temperature_Alarm_Count;1",
-      "IsIgnored": true
+      // Temporary until further decision with Brick
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Status;1"
     },
     {
       "InputDtmi": "dtmi:mapped:core:TemperatureAlarmSetpoint;1",
