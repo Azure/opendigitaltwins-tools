@@ -8,7 +8,6 @@ namespace Microsoft.SmartFacilities.OntologyMapper.Test
 {
     using Microsoft.Azure.DigitalTwins.Parser;
     using Microsoft.Azure.DigitalTwins.Parser.Models;
-    using Microsoft.Extensions.Logging;
     using Microsoft.SmartFacilities.OntologyMapper;
     using Moq;
     using System.Reflection;
@@ -218,7 +217,7 @@ namespace Microsoft.SmartFacilities.OntologyMapper.Test
             var ontologyMappingManager = new OntologyMappingManager(mockOntologyLoader.Object);
 
             var result = ontologyMappingManager.ValidateTargetOntologyMapping(targetObjectModel, out var invalidTargets);
-            
+
             Assert.True(result);
             Assert.False(invalidTargets.Any());
         }

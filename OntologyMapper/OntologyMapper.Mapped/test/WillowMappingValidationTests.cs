@@ -1,14 +1,13 @@
 // -----------------------------------------------------------------------
-// <copyright file="OntologyMappingTests.cs" company="Microsoft">
+// <copyright file="WillowMappingValidationTests.cs" company="Microsoft">
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace Microsoft.SmartFacilities.OntologyMapper.Test
+namespace Microsoft.SmartFacilities.OntologyMapper.Mapped.Test
 {
     using Microsoft.Azure.DigitalTwins.Parser;
     using Microsoft.Extensions.Logging;
-    using Microsoft.SmartFacilities.OntologyMapper;
     using Moq;
     using Xunit;
     using Xunit.Abstractions;
@@ -24,10 +23,10 @@ namespace Microsoft.SmartFacilities.OntologyMapper.Test
 
         [Theory]
         [InlineData("Mappings.Mapped.Json.v0.Willow.mapped_json_v0_dtdlv2_Willow.json")]
-        public void ValidateEmbeddedResourceDtmisAreValidFormat(string resourcePath)
+        public void ValidateMappedDtmisAreValidFormat(string resourcePath)
         {
             var mockLogger = new Mock<ILogger>();
-            var resourceLoader = new EmbeddedResourceOntologyMappingLoader(mockLogger.Object, resourcePath);
+            var resourceLoader = new MappedOntologyMappingLoader(mockLogger.Object, resourcePath);
             var ontologyMappingManager = new OntologyMappingManager(resourceLoader);
 
             var exceptions = new List<string>();

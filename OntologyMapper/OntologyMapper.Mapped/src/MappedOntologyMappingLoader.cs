@@ -1,5 +1,5 @@
 ﻿// -----------------------------------------------------------------------
-// <copyright file="ResourceFileOntologyMappingLoader.cs" company="Microsoft">
+// <copyright file="MappedOntologyMappingLoader.cs" company="Microsoft">
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 // </copyright>
 // -----------------------------------------------------------------------
@@ -10,12 +10,12 @@ namespace Microsoft.SmartFacilities.OntologyMapper
     using Newtonsoft.Json;
     using System.Reflection;
 
-    public class EmbeddedResourceOntologyMappingLoader : IOntologyMappingLoader
+    public class MappedOntologyMappingLoader : IOntologyMappingLoader
     {
         private readonly ILogger logger;
         private readonly string resourcePath = string.Empty;
 
-        public EmbeddedResourceOntologyMappingLoader(ILogger logger, string resourcePath)
+        public MappedOntologyMappingLoader(ILogger logger, string resourcePath)
         {
             if (string.IsNullOrWhiteSpace(resourcePath))
             {
