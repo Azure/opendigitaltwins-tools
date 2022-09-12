@@ -135,7 +135,7 @@
     },
     {
       "InputDtmi": "dtmi:mapped:core:AirFlowSensor;1",
-      "OutputDtmi": "tmi:com:willowinc:AirFlowSensor;1"
+      "OutputDtmi": "dtmi:com:willowinc:AirFlowSensor;1"
     },
     {
       "InputDtmi": "dtmi:mapped:core:AirFlowSetpoint;1",
