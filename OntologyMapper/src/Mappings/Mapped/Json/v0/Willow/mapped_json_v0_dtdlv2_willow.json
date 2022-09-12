@@ -305,7 +305,6 @@
     {
       "InputDtmi": "dtmi:mapped:core:BACnetObjectId;1",
       "OutputDtmi": "dtmi:com:willowinc:BACnetObjectId;1",
-      //"communication": "BACnet.ObjectId",
       "IsIgnored": true
     },
     {
