@@ -7,7 +7,7 @@
 namespace Microsoft.SmartFacilities.OntologyMapper
 {
     using Microsoft.Extensions.Logging;
-    using Newtonsoft.Json;
+    using System.Text.Json;
 
     public class FileOntologyMappingLoader : IOntologyMappingLoader
     {
@@ -31,7 +31,12 @@ namespace Microsoft.SmartFacilities.OntologyMapper
 
             var file = File.ReadAllText(filePath);
 
-            var mappings = JsonConvert.DeserializeObject<OntologyMapping>(file);
+            var options = new JsonSerializerOptions
+            {
+                ReadCommentHandling = JsonCommentHandling.Skip
+            };
+
+            var mappings = JsonSerializer.Deserialize<OntologyMapping>(file, options);
             if (mappings != null)
             {
                 return mappings;
