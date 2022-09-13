@@ -18,7 +18,7 @@
   "InterfaceRemaps": [
     {
       "InputDtmi": "dtmi:mapped:core:AblutionsRoom;1",
-      "OutputDtmi": "dtmi:com:willowinc:ShowerRoom;1"
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
     },
     {
       "InputDtmi": "dtmi:mapped:core:AbsorptionChiller;1",
@@ -804,7 +804,7 @@
     },
     {
       "InputDtmi": "dtmi:mapped:core:ConferenceRoom;1",
-      "OutputDtmi": "dtmi:com:willowinc:ConferenceRoom;1"
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
     },
     {
       "InputDtmi": "dtmi:mapped:core:connectedDataSourceId;1",
@@ -910,7 +910,7 @@
     },
     {
       "InputDtmi": "dtmi:mapped:core:CopyRoom;1",
-      "OutputDtmi": "dtmi:com:willowinc:CopyingRoom;1"
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
     },
     {
       "InputDtmi": "dtmi:mapped:core:CoreTemperatureSensor;1",
@@ -1484,7 +1484,7 @@
     },
     {
       "InputDtmi": "dtmi:mapped:core:ElectricalRoom;1",
-      "OutputDtmi": "dtmi:com:willowinc:ElectricityRoom;1"
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
     },
     {
       "InputDtmi": "dtmi:mapped:core:ElectricalSystem;1",
@@ -2872,7 +2872,7 @@
     },
     {
       "InputDtmi": "dtmi:mapped:core:MaxHeatingAirTemperatureSetpointLimit;1",
-      "OutputDtmi": "dtmi:com:willowinc:MaxHeatingAirTemperatureSetpointLimit;1"
+      "OutputDtmi": "dtmi:com:willowinc:MaxLimit;1"
     },
     {
       "InputDtmi": "dtmi:mapped:core:MaxHeatingDischargeAirFlowSetpointLimit;1",
