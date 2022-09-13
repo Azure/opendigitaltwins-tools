@@ -27,6 +27,5 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Azure.DigitalTwins.Parser" Version="6.3.3-preview" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.1" />
-		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
 	</ItemGroup>
 </Project>

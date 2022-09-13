@@ -7,8 +7,8 @@
 namespace Microsoft.SmartFacilities.OntologyMapper
 {
     using Microsoft.Extensions.Logging;
-    using Newtonsoft.Json;
     using System.Reflection;
+    using System.Text.Json;
 
     public class EmbeddedResourceOntologyMappingLoader : IOntologyMappingLoader
     {
@@ -33,6 +33,11 @@ namespace Microsoft.SmartFacilities.OntologyMapper
             var assembly = Assembly.GetExecutingAssembly();
             var resources = assembly.GetManifestResourceNames();
             var resourceName = resources.Single(str => str.ToLowerInvariant().EndsWith(resourcePath.ToLowerInvariant()));
+            
+            var options = new JsonSerializerOptions
+            {
+                ReadCommentHandling = JsonCommentHandling.Skip
+            };
 
             using (Stream? stream = assembly.GetManifestResourceStream(resourceName))
             {
@@ -41,7 +46,7 @@ namespace Microsoft.SmartFacilities.OntologyMapper
                     using (StreamReader reader = new StreamReader(stream))
                     {
                         string result = reader.ReadToEnd();
-                        var mappings = JsonConvert.DeserializeObject<OntologyMapping>(result);
+                        var mappings = JsonSerializer.Deserialize<OntologyMapping>(result, options);
 
                         if (mappings != null)
                         {
