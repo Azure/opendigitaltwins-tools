@@ -110,8 +110,7 @@
     },
     {
       "InputDtmi": "dtmi:mapped:core:AirFlowAlarmSetpoint;1",
-      "OutputDtmi": "dtmi:com:willowinc:AlarmSetpoint;1",
-      "IsIgnored": true
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSetpoint;1"
     },
     {
       "InputDtmi": "dtmi:mapped:core:AirFlowDeadbandSetpoint;1",
@@ -926,8 +925,7 @@
     },
     {
       "InputDtmi": "dtmi:mapped:core:Count;1",
-      "OutputDtmi": "dtmi:com:willowinc:CountSetpoint;1",
-      "IsIgnored": true
+      "OutputDtmi": "dtmi:com:willowinc:CountSetpoint;1"
     },
     {
       "InputDtmi": "dtmi:mapped:core:CRAC;1",
@@ -1266,8 +1264,7 @@
     },
     {
       "InputDtmi": "dtmi:mapped:core:DischargeAirTemperatureResetSetpoint;1",
-      "OutputDtmi": "dtmi:com:willowinc:ResetSetpoint;1",
-      "IsIgnored": true
+      "OutputDtmi": "dtmi:com:willowinc:ResetSetpoint;1"
     },
     {
       "InputDtmi": "dtmi:mapped:core:DischargeAirTemperatureSensor;1",
@@ -4767,8 +4764,7 @@
     },
     {
       "InputDtmi": "dtmi:mapped:core:TemperatureAlarmCount;1",
-      "OutputDtmi": "dtmi:com:willowinc:CountSensor;1",
-      "IsIgnored": true
+      "OutputDtmi": "dtmi:com:willowinc:CountSetpoint;1"
     },
     {
       "InputDtmi": "dtmi:mapped:core:TemperatureAlarmSetpoint;1",
@@ -5296,6 +5292,10 @@
     {
       "InputRelationship": "hasPart",
       "OutputRelationship": "isLocationOf"
+    },
+    {
+      "InputRelationship": "hasPoint",
+      "OutputRelationship": "hasCapability"
     }
   ],
   "PropertyProjections": [
