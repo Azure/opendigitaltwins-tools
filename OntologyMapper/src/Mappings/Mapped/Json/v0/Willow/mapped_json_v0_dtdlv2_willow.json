@@ -3319,7 +3319,7 @@
     },
     {
       "InputDtmi": "dtmi:mapped:core:OccupancySensingDevice;1",
-      "OutputDtmi": "dtmi:com:willowinc:OccupancySensorEquipment;1"
+      "OutputDtmi": "dtmi:com:willowinc:OccupancySensor;1"
     },
     {
       "InputDtmi": "dtmi:mapped:core:OccupancySensor;1",
