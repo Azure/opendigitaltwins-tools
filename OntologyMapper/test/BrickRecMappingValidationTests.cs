@@ -4,11 +4,10 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace Microsoft.SmartFacilities.OntologyMapper.Test
+namespace OntologyMapper.Test
 {
     using Microsoft.Azure.DigitalTwins.Parser;
     using Microsoft.Extensions.Logging;
-    using Microsoft.SmartFacilities.OntologyMapper;
     using Moq;
     using Xunit;
     using Xunit.Abstractions;

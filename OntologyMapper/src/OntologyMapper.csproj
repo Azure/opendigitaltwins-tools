@@ -8,12 +8,12 @@
 		<Version>$(VersionPrefix)</Version>
 		<Authors>Microsoft Corporation</Authors>
 		<Description>Support for converting from one DTDL-based Ontology to a different DTDL Based Ontology</Description>
-		<AssemblyVersion>0.2.12</AssemblyVersion>
-		<PackageVersion>0.2.12-preview</PackageVersion>
+		<AssemblyVersion>0.3.0</AssemblyVersion>
+		<PackageVersion>0.3.0-preview</PackageVersion>
 		<RepositoryUrl>https://github.com/Azure/opendigitaltwins-tools</RepositoryUrl>
 		<Copyright>Copyright (c) Microsoft Corporation.  All rights reserved.</Copyright>
-		<AssemblyName>Microsoft.SmartFacilities.OntologyMapper</AssemblyName>
-		<RootNamespace>Microsoft.SmartFacilities.OntologyMapper</RootNamespace>
+		<AssemblyName>Microsoft.SmartPlaces.Facilities.OntologyMapper</AssemblyName>
+		<RootNamespace>Microsoft.SmartPlaces.Facilities.OntologyMapper</RootNamespace>
 	</PropertyGroup>
 
 	<ItemGroup>

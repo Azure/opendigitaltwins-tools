@@ -4,7 +4,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace Microsoft.SmartFacilities.OntologyMapper
+namespace Microsoft.SmartPlaces.Facilities.OntologyMapper
 {
     using Microsoft.Extensions.Logging;
     using System.Reflection;
@@ -33,7 +33,7 @@ namespace Microsoft.SmartFacilities.OntologyMapper
             var assembly = Assembly.GetExecutingAssembly();
             var resources = assembly.GetManifestResourceNames();
             var resourceName = resources.Single(str => str.ToLowerInvariant().EndsWith(resourcePath.ToLowerInvariant()));
-            
+
             var options = new JsonSerializerOptions
             {
                 ReadCommentHandling = JsonCommentHandling.Skip

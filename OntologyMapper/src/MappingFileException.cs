@@ -4,7 +4,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace Microsoft.SmartFacilities.OntologyMapper
+namespace Microsoft.SmartPlaces.Facilities.OntologyMapper
 {
     /// <summary>
     /// Defines the methods to be implemented by an OntologyMappingManager
