@@ -8,6 +8,7 @@ namespace OntologyMapper.Test
 {
     using Microsoft.Azure.DigitalTwins.Parser;
     using Microsoft.Extensions.Logging;
+    using Microsoft.SmartPlaces.Facilities.OntologyMapper;
     using Moq;
     using Xunit;
     using Xunit.Abstractions;
