@@ -1,10 +1,7 @@
-﻿// -----------------------------------------------------------------------
-// <copyright file="MappingFileException.cs" company="Microsoft">
-// Copyright (c) Microsoft Corporation.  All rights reserved.
-// </copyright>
-// -----------------------------------------------------------------------
+﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
 
-namespace Microsoft.SmartFacilities.OntologyMapper
+namespace Microsoft.SmartPlaces.Facilities.OntologyMapper
 {
     /// <summary>
     /// Defines the methods to be implemented by an OntologyMappingManager

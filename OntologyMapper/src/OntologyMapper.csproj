@@ -1,19 +1,24 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
+		<Description>This is the Microsoft Smart Places Facilities Ontology Mapper library.</Description>
 		<TargetFramework>net6.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<Version>$(VersionPrefix)</Version>
-		<Authors>Microsoft Corporation</Authors>
+		<Authors>Microsoft</Authors>
 		<Description>Support for converting from one DTDL-based Ontology to a different DTDL Based Ontology</Description>
-		<AssemblyVersion>0.2.12</AssemblyVersion>
-		<PackageVersion>0.2.12-preview</PackageVersion>
+		<AssemblyVersion>0.3.0</AssemblyVersion>
+		<PackageVersion>0.3.0-preview</PackageVersion>
 		<RepositoryUrl>https://github.com/Azure/opendigitaltwins-tools</RepositoryUrl>
 		<Copyright>Copyright (c) Microsoft Corporation.  All rights reserved.</Copyright>
-		<AssemblyName>Microsoft.SmartFacilities.OntologyMapper</AssemblyName>
-		<RootNamespace>Microsoft.SmartFacilities.OntologyMapper</RootNamespace>
+		<AssemblyName>Microsoft.SmartPlaces.Facilities.OntologyMapper</AssemblyName>
+		<RootNamespace>Microsoft.SmartPlaces.Facilities.OntologyMapper</RootNamespace>
+		<projectUrl>https://github.com/Azure/opendigitaltwins-tools/</projectUrl>
+		<licenseUrl>http://www.opensource.org/licenses/MIT</licenseUrl>
+		<requireLicenseAcceptance>true</requireLicenseAcceptance>
+		<copyright>© Microsoft Corporation. All rights reserved.</copyright>
 	</PropertyGroup>
 
 	<ItemGroup>
