@@ -4297,7 +4297,7 @@
     },
     {
       "InputDtmi": "dtmi:mapped:core:Site;1",
-      "OutputDtmi": "dtmi:com:willowinc:SpaceCollection;1"
+      "OutputDtmi": "dtmi:com:willowinc:Land;1"
     },
     {
       "InputDtmi": "dtmi:mapped:core:SmokeAlarm;1",
@@ -5288,10 +5288,6 @@
     {
       "InputRelationship": "floors",
       "OutputRelationship": "hasPart"
-    },
-    {
-      "InputRelationship": "hasPart",
-      "OutputRelationship": "isLocationOf"
     },
     {
       "InputRelationship": "hasPoint",
