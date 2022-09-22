@@ -5,7 +5,7 @@ on:
     branches: [ "main" ]
 
 env: 
-  AZURE_ARTIFACTS_FEED_URL: https://pkgs.dev.azure.com/dynamicscrm/Solutions/_packaging/Solutions-SmartPlacesAndEnergy/nuget/v3/index.json
+  # AZURE_ARTIFACTS_FEED_URL: https://pkgs.dev.azure.com/dynamicscrm/Solutions/_packaging/Solutions-SmartPlacesAndEnergy/nuget/v3/index.json
   NUGET_FEED_URL: https://api.nuget.org/v3/index.json
   BUILD_CONFIGURATION: 'Release'    # set this to the appropriate build configuration
   WORKING_DIRECTORY: OntologyMapper
@@ -27,7 +27,7 @@ jobs:
           dotnet-version: ${{ env.DOTNET_VERSION }}
           source-url: ${{ env.AZURE_ARTIFACTS_FEED_URL }}
         env:
-          AZURE_ARTIFACTS_PAT: ${{ secrets.AZURE_ARTIFACTS_PAT }} 
+          # AZURE_ARTIFACTS_PAT: ${{ secrets.AZURE_ARTIFACTS_PAT }} 
           NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }} 
 
       # Run dotnet build and package
@@ -38,8 +38,8 @@ jobs:
           dotnet pack "${{ env.WORKING_DIRECTORY }}" -c '${{ env.BUILD_CONFIGURATION }}' --version-suffix $GITHUB_RUN_ID
       
       # Publish the package to Azure Artifacts
-      - name: 'dotnet publish internal'
-        run: dotnet nuget push --api-key AZURE_ARTIFACTS_PAT OntologyMapper/src/bin/Release/*.nupkg
+      # - name: 'dotnet publish internal'
+      #  run: dotnet nuget push --api-key AZURE_ARTIFACTS_PAT OntologyMapper/src/bin/Release/*.nupkg
       
       # Publish the package to Nuget
       - name: 'dotnet publish to nuget'
