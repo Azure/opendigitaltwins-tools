@@ -43,4 +43,4 @@ jobs:
       
       # Publish the package to Nuget
       - name: 'dotnet publish to nuget'
-        run: dotnet nuget push OntologyMapper/src/bin/Release/*.nupkg --source ${{ env.NUGET_FEED_URL }} --api-key ${{ env.NUGET_API_KEY }}
+        run: dotnet nuget push OntologyMapper/src/bin/Release/*.nupkg --source ${{ env.NUGET_FEED_URL }} --api-key NUGET_API_KEY
