@@ -18,7 +18,7 @@
   "InterfaceRemaps": [
     {
       "InputDtmi": "dtmi:mapped:core:AblutionsRoom;1",
-      "OutputDtmi": "dtmi:com:willowinc:ShowerRoom;1"
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
     },
     {
       "InputDtmi": "dtmi:mapped:core:AbsorptionChiller;1",
@@ -110,8 +110,7 @@
     },
     {
       "InputDtmi": "dtmi:mapped:core:AirFlowAlarmSetpoint;1",
-      "OutputDtmi": "dtmi:com:willowinc:AlarmSetpoint;1",
-      "IsIgnored": true
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSetpoint;1"
     },
     {
       "InputDtmi": "dtmi:mapped:core:AirFlowDeadbandSetpoint;1",
@@ -804,7 +803,7 @@
     },
     {
       "InputDtmi": "dtmi:mapped:core:ConferenceRoom;1",
-      "OutputDtmi": "dtmi:com:willowinc:ConferenceRoom;1"
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
     },
     {
       "InputDtmi": "dtmi:mapped:core:connectedDataSourceId;1",
@@ -910,7 +909,7 @@
     },
     {
       "InputDtmi": "dtmi:mapped:core:CopyRoom;1",
-      "OutputDtmi": "dtmi:com:willowinc:CopyingRoom;1"
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
     },
     {
       "InputDtmi": "dtmi:mapped:core:CoreTemperatureSensor;1",
@@ -926,8 +925,7 @@
     },
     {
       "InputDtmi": "dtmi:mapped:core:Count;1",
-      "OutputDtmi": "dtmi:com:willowinc:CountSetpoint;1",
-      "IsIgnored": true
+      "OutputDtmi": "dtmi:com:willowinc:CountSetpoint;1"
     },
     {
       "InputDtmi": "dtmi:mapped:core:CRAC;1",
@@ -1266,8 +1264,7 @@
     },
     {
       "InputDtmi": "dtmi:mapped:core:DischargeAirTemperatureResetSetpoint;1",
-      "OutputDtmi": "dtmi:com:willowinc:ResetSetpoint;1",
-      "IsIgnored": true
+      "OutputDtmi": "dtmi:com:willowinc:ResetSetpoint;1"
     },
     {
       "InputDtmi": "dtmi:mapped:core:DischargeAirTemperatureSensor;1",
@@ -1484,7 +1481,7 @@
     },
     {
       "InputDtmi": "dtmi:mapped:core:ElectricalRoom;1",
-      "OutputDtmi": "dtmi:com:willowinc:ElectricityRoom;1"
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
     },
     {
       "InputDtmi": "dtmi:mapped:core:ElectricalSystem;1",
@@ -2872,7 +2869,7 @@
     },
     {
       "InputDtmi": "dtmi:mapped:core:MaxHeatingAirTemperatureSetpointLimit;1",
-      "OutputDtmi": "dtmi:com:willowinc:MaxHeatingAirTemperatureSetpointLimit;1"
+      "OutputDtmi": "dtmi:com:willowinc:MaxLimit;1"
     },
     {
       "InputDtmi": "dtmi:mapped:core:MaxHeatingDischargeAirFlowSetpointLimit;1",
@@ -3322,11 +3319,11 @@
     },
     {
       "InputDtmi": "dtmi:mapped:core:OccupancySensingDevice;1",
-      "OutputDtmi": "dtmi:com:willowinc:OccupancySensorEquipment;1"
+      "OutputDtmi": "dtmi:com:willowinc:OccupancySensor;1"
     },
     {
       "InputDtmi": "dtmi:mapped:core:OccupancySensor;1",
-      "OutputDtmi": "dtmi:com:willowinc:OccupancySensorEquipment;1"
+      "OutputDtmi": "dtmi:com:willowinc:OccupancySensor;1"
     },
     {
       "InputDtmi": "dtmi:mapped:core:OccupancyStatus;1",
@@ -4300,7 +4297,7 @@
     },
     {
       "InputDtmi": "dtmi:mapped:core:Site;1",
-      "OutputDtmi": "dtmi:com:willowinc:SpaceCollection;1"
+      "OutputDtmi": "dtmi:com:willowinc:Land;1"
     },
     {
       "InputDtmi": "dtmi:mapped:core:SmokeAlarm;1",
@@ -4767,8 +4764,7 @@
     },
     {
       "InputDtmi": "dtmi:mapped:core:TemperatureAlarmCount;1",
-      "OutputDtmi": "dtmi:com:willowinc:CountSensor;1",
-      "IsIgnored": true
+      "OutputDtmi": "dtmi:com:willowinc:CountSetpoint;1"
     },
     {
       "InputDtmi": "dtmi:mapped:core:TemperatureAlarmSetpoint;1",
@@ -5294,8 +5290,8 @@
       "OutputRelationship": "hasPart"
     },
     {
-      "InputRelationship": "hasPart",
-      "OutputRelationship": "isLocationOf"
+      "InputRelationship": "hasPoint",
+      "OutputRelationship": "hasCapability"
     }
   ],
   "PropertyProjections": [

@@ -1,10 +1,7 @@
-// -----------------------------------------------------------------------
-// <copyright file="WillowMappingValidationTests.cs" company="Microsoft">
-// Copyright (c) Microsoft Corporation.  All rights reserved.
-// </copyright>
-// -----------------------------------------------------------------------
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
 
-namespace Microsoft.SmartFacilities.OntologyMapper.Mapped.Test
+namespace Microsoft.SmartPlaces.Facilities.OntologyMapper.Mapped.Test
 {
     using Microsoft.Azure.DigitalTwins.Parser;
     using Microsoft.Extensions.Logging;

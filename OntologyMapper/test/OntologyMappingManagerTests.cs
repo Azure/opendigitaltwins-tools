@@ -1,14 +1,12 @@
-// -----------------------------------------------------------------------
-// <copyright file="OntologyMappingTests.cs" company="Microsoft">
-// Copyright (c) Microsoft Corporation.  All rights reserved.
-// </copyright>
-// -----------------------------------------------------------------------
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
 
-namespace Microsoft.SmartFacilities.OntologyMapper.Test
+namespace OntologyMapper.Test
 {
     using Microsoft.Azure.DigitalTwins.Parser;
     using Microsoft.Azure.DigitalTwins.Parser.Models;
-    using Microsoft.SmartFacilities.OntologyMapper;
+    using Microsoft.Extensions.Logging;
+    using Microsoft.SmartPlaces.Facilities.OntologyMapper;
     using Moq;
     using System.Reflection;
     using Xunit;
