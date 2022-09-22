@@ -10,6 +10,8 @@ env:
   BUILD_CONFIGURATION: 'Release'    # set this to the appropriate build configuration
   WORKING_DIRECTORY: OntologyMapper
   DOTNET_VERSION: '6.x' 
+  # AZURE_ARTIFACTS_PAT: ${{ secrets.AZURE_ARTIFACTS_PAT }} 
+  NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }} 
 
 jobs:
   build:
@@ -26,9 +28,6 @@ jobs:
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
           source-url: ${{ env.AZURE_ARTIFACTS_FEED_URL }}
-        env:
-          # AZURE_ARTIFACTS_PAT: ${{ secrets.AZURE_ARTIFACTS_PAT }} 
-          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }} 
 
       # Run dotnet build and package
       - name: dotnet build and publish
