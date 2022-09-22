@@ -20,14 +20,14 @@ jobs:
       with:
         dotnet-version: 6.0.x
     - name: Restore dependencies
-      run: 
+      run: |
            dotnet restore OntologyMapper
            dotnet restore OntologyMapper.Mapped
     - name: Build
-      run: 
+      run: |
            dotnet build OntologyMapper --no-restore
            dotnet build OntologyMapper.Mapped --no-restore
     - name: Test
-      run: 
+      run: |
            dotnet test OntologyMapper --no-build --verbosity normal
            dotnet test OntologyMapper.Mapped --no-build --verbosity normal
