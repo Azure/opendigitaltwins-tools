@@ -13,8 +13,8 @@
 		<PackageVersion>0.1.0-preview</PackageVersion>
 		<RepositoryUrl>https://github.com/Azure/opendigitaltwins-tools</RepositoryUrl>
 		<Copyright>Copyright (c) Microsoft Corporation.  All rights reserved.</Copyright>
-		<AssemblyName>Microsoft.SmartFacilities.OntologyMapper.Mapped</AssemblyName>
-		<RootNamespace>Microsoft.SmartFacilities.OntologyMapper.Mapped</RootNamespace>
+		<AssemblyName>Microsoft.SmartPlaces.Facilities.OntologyMapper.Mapped</AssemblyName>
+		<RootNamespace>Microsoft.SmartPlaces.Facilities.OntologyMapper.Mapped</RootNamespace>
 		<projectUrl>https://github.com/Azure/opendigitaltwins-tools/</projectUrl>
 		<licenseUrl>http://www.opensource.org/licenses/MIT</licenseUrl>
 		<requireLicenseAcceptance>true</requireLicenseAcceptance>
