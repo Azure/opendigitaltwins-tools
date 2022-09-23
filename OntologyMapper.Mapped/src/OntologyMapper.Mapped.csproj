@@ -30,4 +30,10 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.1" />
 		<PackageReference Include="Microsoft.SmartPlaces.Facilities.OntologyMapper" Version="0.4.0-preview" />
 	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="README.md">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
 </Project>
