@@ -1,5 +1,8 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
+﻿// -----------------------------------------------------------------------
+// <copyright file="ResourceFileOntologyMappingLoader.cs" company="Microsoft">
+// Copyright (c) Microsoft Corporation.  All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 namespace Microsoft.SmartPlaces.Facilities.OntologyMapper
 {
@@ -7,12 +10,12 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper
     using System.Reflection;
     using System.Text.Json;
 
-    public class EmbeddedResourceOntologyMappingLoader : IOntologyMappingLoader
+    public class MappedOntologyMappingLoader : IOntologyMappingLoader
     {
         private readonly ILogger logger;
         private readonly string resourcePath = string.Empty;
 
-        public EmbeddedResourceOntologyMappingLoader(ILogger logger, string resourcePath)
+        public MappedOntologyMappingLoader(ILogger logger, string resourcePath)
         {
             if (string.IsNullOrWhiteSpace(resourcePath))
             {

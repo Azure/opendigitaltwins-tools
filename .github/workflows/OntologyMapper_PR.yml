@@ -6,7 +6,6 @@ on:
 
 env: 
   BUILD_CONFIGURATION: 'Release'    # set this to the appropriate build configuration
-  WORKING_DIRECTORY: OntologyMapper
   DOTNET_VERSION: '6.x' 
 
 jobs:
@@ -21,8 +20,14 @@ jobs:
       with:
         dotnet-version: 6.0.x
     - name: Restore dependencies
-      run: dotnet restore "${{ env.WORKING_DIRECTORY }}"
+      run: |
+           dotnet restore OntologyMapper
+           dotnet restore OntologyMapper.Mapped
     - name: Build
-      run: dotnet build "${{ env.WORKING_DIRECTORY }}" --no-restore
+      run: |
+           dotnet build OntologyMapper --no-restore
+           dotnet build OntologyMapper.Mapped --no-restore
     - name: Test
-      run: dotnet test "${{ env.WORKING_DIRECTORY }}" --no-build --verbosity normal
+      run: |
+           dotnet test OntologyMapper --no-build --verbosity normal
+           dotnet test OntologyMapper.Mapped --no-build --verbosity normal

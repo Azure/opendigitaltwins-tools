@@ -5,12 +5,9 @@ on:
     branches: [ "main" ]
 
 env: 
-  # AZURE_ARTIFACTS_FEED_URL: https://pkgs.dev.azure.com/dynamicscrm/Solutions/_packaging/Solutions-SmartPlacesAndEnergy/nuget/v3/index.json
   NUGET_FEED_URL: https://api.nuget.org/v3/index.json
   BUILD_CONFIGURATION: 'Release'    # set this to the appropriate build configuration
-  WORKING_DIRECTORY: OntologyMapper
   DOTNET_VERSION: '6.x' 
-  # AZURE_ARTIFACTS_PAT: ${{ secrets.AZURE_ARTIFACTS_PAT }} 
   NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }} 
 
 jobs:
@@ -32,14 +29,18 @@ jobs:
       # Run dotnet build and package
       - name: dotnet build and publish
         run: |
-          dotnet restore "${{ env.WORKING_DIRECTORY }}"
-          dotnet build "${{ env.WORKING_DIRECTORY }}" -c '${{ env.BUILD_CONFIGURATION }}'
-          dotnet pack "${{ env.WORKING_DIRECTORY }}" -c '${{ env.BUILD_CONFIGURATION }}' --version-suffix $GITHUB_RUN_ID
-      
-      # Publish the package to Azure Artifacts
-      # - name: 'dotnet publish internal'
-      #  run: dotnet nuget push --api-key AZURE_ARTIFACTS_PAT OntologyMapper/src/bin/Release/*.nupkg
-      
-      # Publish the package to Nuget
+          dotnet restore OntologyMapper
+          dotnet build OntologyMapper -c '${{ env.BUILD_CONFIGURATION }}'
+          dotnet pack OntologyMapper -c '${{ env.BUILD_CONFIGURATION }}' --version-suffix $GITHUB_RUN_ID
+
+          dotnet restore OntologyMapper.Mapped
+          dotnet build OntologyMapper.Mapped -c '${{ env.BUILD_CONFIGURATION }}'
+          dotnet pack OntologyMapper.Mapped -c '${{ env.BUILD_CONFIGURATION }}' --version-suffix $GITHUB_RUN_ID
+
+      # Publish the Microsoft.SmartPlaces.Facilities.OntologyMapper package to Nuget
       - name: 'dotnet publish to nuget'
         run: dotnet nuget push --api-key ${{ env.NUGET_API_KEY }} --source "${{ env.NUGET_FEED_URL }}" OntologyMapper/src/bin/Release/*.nupkg
+
+      # Publish the Microsoft.SmartPlaces.Facilities.OntologyMapper.Mapped package to Nuget
+      - name: 'dotnet publish to nuget'
+        run: dotnet nuget push --api-key ${{ env.NUGET_API_KEY }} --source "${{ env.NUGET_FEED_URL }}" OntologyMapper.Mapped/src/bin/Release/*.nupkg

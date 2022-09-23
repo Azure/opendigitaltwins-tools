@@ -1,31 +1,29 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-namespace OntologyMapper.Test
+namespace Microsoft.SmartPlaces.Facilities.OntologyMapper.Mapped.Test
 {
     using Microsoft.Azure.DigitalTwins.Parser;
     using Microsoft.Extensions.Logging;
-    using Microsoft.SmartPlaces.Facilities.OntologyMapper;
     using Moq;
     using Xunit;
     using Xunit.Abstractions;
 
-    public class BrickRecMappingValidationTests
+    public class WillowMappingValidationTests
     {
         private readonly ITestOutputHelper output;
 
-        public BrickRecMappingValidationTests(ITestOutputHelper output)
+        public WillowMappingValidationTests(ITestOutputHelper output)
         {
             this.output = output;
         }
 
         [Theory]
-        [InlineData("Mappings.Mapped.Json.v0.BrickRec.mapped_json_v0_dtdlv2_Brick_1_3-REC_4_0.json")]
-        [InlineData("Mappings.Mapped.Json.v0.BrickRec.mapped_json_v0_dtdlv3_Brick_1_3-REC_4_0.json")]
-        public void ValidateEmbeddedResourceDtmisAreValidFormat(string resourcePath)
+        [InlineData("Mappings.v0.Willow.mapped_json_v0_dtdlv2_Willow.json")]
+        public void ValidateMappedDtmisAreValidFormat(string resourcePath)
         {
             var mockLogger = new Mock<ILogger>();
-            var resourceLoader = new EmbeddedResourceOntologyMappingLoader(mockLogger.Object, resourcePath);
+            var resourceLoader = new MappedOntologyMappingLoader(mockLogger.Object, resourcePath);
             var ontologyMappingManager = new OntologyMappingManager(resourceLoader);
 
             var exceptions = new List<string>();
