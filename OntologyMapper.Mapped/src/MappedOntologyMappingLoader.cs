@@ -1,10 +1,10 @@
 ﻿// -----------------------------------------------------------------------
-// <copyright file="ResourceFileOntologyMappingLoader.cs" company="Microsoft">
+// <copyright file="MappedOntologyMappingLoader.cs" company="Microsoft">
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace Microsoft.SmartPlaces.Facilities.OntologyMapper
+namespace Microsoft.SmartPlaces.Facilities.OntologyMapper.Mapped
 {
     using Microsoft.Extensions.Logging;
     using System.Reflection;

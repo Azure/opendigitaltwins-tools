@@ -33,7 +33,7 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper
         /// <param name="inputRelationship">The name of the relationship in the input ontology. i.e. "hasPart"</param>
         /// <param name="outputRelationship">The name of the relationship in the output ontology. i.e. "isLocationOf"</param>
         /// <returns></returns>
-        public bool TryGetRelationshipRemap(string inputRelationship, out RelationshipRemap? outputRelationship);
+        public bool TryGetRelationshipRemap(string inputRelationship, out RelationshipRemap? relationshipRemap);
 
         /// <summary>
         /// In some cases, the contents of one input property may need to be copied to multiple other fields in the target ontology. For instance, if 
@@ -51,8 +51,8 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper
         /// </summary>
         /// <param name="outputDtmiFilter">A regex which describes which output dtmi's this rule applies to</param>
         /// <param name="outputPropertyName">The name of the output property</param>
-        /// <param name="inputProperty">The property projection for the output property</param>
+        /// <param name="propertyProjection">The property projection for the output property</param>
         /// <returns>true if a mapping exists, false otherwise</returns>
-        public bool TryGetPropertyProjection(string outputDtmiFilter, string outputPropertyName, out PropertyProjection? inputProperty);
+        public bool TryGetPropertyProjection(string outputDtmiFilter, string outputPropertyName, out PropertyProjection? propertyProjection);
     }
 }
