@@ -1,4 +1,4 @@
-name: OntologyMapper.Mapped Push To Nuget
+name: OntologyMapper Push To Nuget
 
 on:
   workflow_dispatch:    
