@@ -4,7 +4,7 @@ on:
   push:
     branches: [ "main" ]
     paths:
-      - "OntologyMapper"
+      - "OntologyMapper.Mapped"
 
 env: 
   NUGET_FEED_URL: https://api.nuget.org/v3/index.json
@@ -31,10 +31,10 @@ jobs:
       # Run dotnet build and package
       - name: dotnet build and publish
         run: |
-          dotnet restore OntologyMapper
-          dotnet build OntologyMapper -c '${{ env.BUILD_CONFIGURATION }}'
-          dotnet pack OntologyMapper -c '${{ env.BUILD_CONFIGURATION }}' --version-suffix $GITHUB_RUN_ID
+          dotnet restore OntologyMapper.Mapped
+          dotnet build OntologyMapper.Mapped -c '${{ env.BUILD_CONFIGURATION }}'
+          dotnet pack OntologyMapper.Mapped -c '${{ env.BUILD_CONFIGURATION }}' --version-suffix $GITHUB_RUN_ID
 
-      # Publish the Microsoft.SmartPlaces.Facilities.OntologyMapper package to Nuget
+      # Publish the Microsoft.SmartPlaces.Facilities.OntologyMapper.Mapped package to Nuget
       - name: 'dotnet publish to nuget'
-        run: dotnet nuget push --api-key ${{ env.NUGET_API_KEY }} --source "${{ env.NUGET_FEED_URL }}" OntologyMapper/src/bin/Release/*.nupkg
+        run: dotnet nuget push --api-key ${{ env.NUGET_API_KEY }} --source "${{ env.NUGET_FEED_URL }}" OntologyMapper.Mapped/src/bin/Release/*.nupkg
