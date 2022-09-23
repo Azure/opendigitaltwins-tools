@@ -1,6 +1,7 @@
-name: Build, Package, and Push to Feed
+name: OntologyMapper Push To Nuget
 
 on:
+  workflow_dispatch:    
   push:
     branches: [ "main" ]
     paths:
