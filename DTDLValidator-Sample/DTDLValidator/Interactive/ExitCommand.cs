@@ -1,7 +1,7 @@
-﻿using CommandLine;
-
-namespace DTDLValidator.Interactive
+﻿namespace DTDLValidator.Interactive
 {
+    using CommandLine;
+
     [Verb("exit", HelpText = "Exit CLI.")]
     internal class ExitCommand
     {

@@ -1,14 +1,13 @@
-﻿using CommandLine;
-using Microsoft.Azure.DigitalTwins.Parser;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DTDLValidator.Interactive
+﻿namespace DTDLValidator.Interactive
 {
+    using CommandLine;
+    using Microsoft.Azure.DigitalTwins.Parser;
+    using Microsoft.Azure.DigitalTwins.Parser.Models;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+
     [Verb("compare", HelpText = "Compare two models.")]
     internal class CompareCommand
     {
@@ -53,8 +52,8 @@ namespace DTDLValidator.Interactive
                 return Task.FromResult<object>(null);
             }
 
-            Dictionary<string, DTContentInfo> con1 = dt1.Contents;
-            Dictionary<string, DTContentInfo> con2 = dt2.Contents;
+            IReadOnlyDictionary<string, DTContentInfo> con1 = dt1.Contents;
+            IReadOnlyDictionary<string, DTContentInfo> con2 = dt2.Contents;
             
             var props1 = con1
                             .Where(p => p.Value.EntityKind == DTEntityKind.Property)
@@ -142,7 +141,7 @@ namespace DTDLValidator.Interactive
                 Dtmi dt = new Dtmi(dtmi);
                 return dt;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return null;
             }

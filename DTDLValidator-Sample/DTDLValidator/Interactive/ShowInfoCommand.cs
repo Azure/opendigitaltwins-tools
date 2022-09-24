@@ -1,12 +1,13 @@
-﻿using CommandLine;
-using Microsoft.Azure.DigitalTwins.Parser;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace DTDLValidator.Interactive
+﻿namespace DTDLValidator.Interactive
 {
+    using CommandLine;
+    using Microsoft.Azure.DigitalTwins.Parser;
+    using Microsoft.Azure.DigitalTwins.Parser.Models;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+
     [Verb("showinfo", HelpText = "Display parent interfaces, properties and relationships defined in a model, taking inheritance into account")]
     internal class ShowInfoCommand
     {
@@ -20,6 +21,7 @@ namespace DTDLValidator.Interactive
                 Log.Error("Please specify a valid model id");
                 return Task.FromResult<object>(null);
             }
+
             try
             {
                 Dtmi modelId = new Dtmi(ModelId);
@@ -31,7 +33,8 @@ namespace DTDLValidator.Interactive
                     {
                         Log.Ok($"    {parent.Id}");
                     }
-                    Dictionary<string, DTContentInfo> contents = dti.Contents;
+
+                    IReadOnlyDictionary<string, DTContentInfo> contents = dti.Contents;
                     Log.Alert($"  Properties:");
                     var props = contents
                                     .Where(p => p.Value.EntityKind == DTEntityKind.Property)
@@ -41,6 +44,7 @@ namespace DTDLValidator.Interactive
                         pi.Schema.DisplayName.TryGetValue("en", out string displayName);
                         Log.Out($"    {pi.Name}: {displayName ?? pi.Schema.ToString()}");
                     }
+
                     Log.Out($"  Relationships:", ConsoleColor.DarkMagenta);
                     var rels = contents
                                     .Where(p => p.Value.EntityKind == DTEntityKind.Relationship)
@@ -54,7 +58,7 @@ namespace DTDLValidator.Interactive
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 Log.Error($"{ModelId} is not a valid dtmi");
             }

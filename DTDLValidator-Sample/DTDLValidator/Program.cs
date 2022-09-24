@@ -1,15 +1,15 @@
-﻿using CommandLine;
-using Microsoft.Azure.DigitalTwins.Parser;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Text.Json;
-using System.Threading.Tasks;
-
-namespace DTDLValidator
+﻿namespace DTDLValidator
 {
+    using CommandLine;
+    using Microsoft.Azure.DigitalTwins.Parser;
+    using Microsoft.Azure.DigitalTwins.Parser.Models;
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+    using System.Reflection;
+    using System.Text.Json;
+
     class Program
     {
         public class Options
@@ -46,6 +46,7 @@ namespace DTDLValidator
                 if (a.GetName().Name.EndsWith("DigitalTwins.Parser"))
                     dtdlParserVersion = a.GetName().Version.ToString();
             }
+
             Log.Ok($"Simple DTDL Validator (dtdl parser library version {dtdlParserVersion})");
 
             if (opts.Interactive == true)
@@ -64,6 +65,7 @@ namespace DTDLValidator
                 Log.Error($"Error accessing the target directory '{opts.Directory}': \n{e.Message}");
                 return;
             }
+
             Log.Alert($"Validating *.{opts.Extension} files in folder '{dinfo.FullName}'.\nRecursive is set to {opts.Recursive}\n");
             if (dinfo.Exists == false)
             {
@@ -79,6 +81,7 @@ namespace DTDLValidator
                     Log.Alert("No matching files found. Exiting.");
                     return;
                 }
+
                 Dictionary<FileInfo, string> modelDict = new Dictionary<FileInfo, string>();
                 int count = 0;
                 string lastFile = "<none>";
@@ -87,7 +90,8 @@ namespace DTDLValidator
                     foreach (FileInfo fi in files)
                     {
                         StreamReader r = new StreamReader(fi.FullName);
-                        string dtdl = r.ReadToEnd(); r.Close();
+                        string dtdl = r.ReadToEnd(); 
+                        r.Close();
                         modelDict.Add(fi, dtdl);
                         lastFile = fi.FullName;
                         count++;
@@ -97,6 +101,7 @@ namespace DTDLValidator
                     Log.Error($"Could not read files. \nLast file read: {lastFile}\nError: \n{e.Message}");
                     return;
                 }
+
                 Log.Ok($"Read {count} files from specified directory");
                 int errJson = 0;
                 foreach (FileInfo fi in modelDict.Keys)
@@ -111,15 +116,17 @@ namespace DTDLValidator
                         errJson++;
                     }
                 }
+
                 if (errJson>0)
                 {
                     Log.Error($"\nFound  {errJson} Json parsing errors");
                     return;
                 }
+
                 Log.Ok($"Validated JSON for all files - now validating DTDL");
                 List<string> modelList = modelDict.Values.ToList<string>();
                 ModelParser parser = new ModelParser();
-                parser.DtmiResolver = Resolver;
+                parser.DtmiResolver = new DtmiResolver(Resolver);
                 try
                 {
                     IReadOnlyDictionary<Dtmi, DTEntityInfo> om = parser.ParseAsync(modelList).GetAwaiter().GetResult();
@@ -142,22 +149,24 @@ namespace DTDLValidator
                         Log.Error($"Property: {err.Property}\n");
                         derrcount++;
                     }
+
                     return;
                 }
-                catch (ResolutionException rex)
+                catch (ResolutionException)
                 {
                     Log.Error("Could not resolve required references");
                 }
             } 
         }
 
-        static async Task<IEnumerable<string>> Resolver(IReadOnlyCollection<Dtmi> dtmis)
+        static IEnumerable<string> Resolver(IReadOnlyCollection<Dtmi> dtmis)
         {
             Log.Error($"*** Error parsing models. Missing:");
             foreach (Dtmi d in dtmis)
             {
                 Log.Error($"  {d}");
             }
+
             return null;
         }
 
@@ -166,9 +175,8 @@ namespace DTDLValidator
             Log.Error($"Invalid command line.");
             foreach (Error e in errs)
             {
-                Log.Error($"{e.Tag}: {e.ToString()}");
-            }
-            
+                Log.Error($"{e.Tag}: {e}");
+            }            
         }
     }
 }
