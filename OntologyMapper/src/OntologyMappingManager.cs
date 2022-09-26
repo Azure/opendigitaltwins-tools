@@ -5,6 +5,7 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper
 {
     using Microsoft.Azure.DigitalTwins.Parser;
     using Microsoft.Azure.DigitalTwins.Parser.Models;
+    using System.Text.RegularExpressions;
 
     public class OntologyMappingManager : IOntologyMappingManager
     {
@@ -39,9 +40,9 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper
             return false;
         }
 
-        public bool TryGetPropertyProjection(string outputDtmiFilter, string outputPropertyName, out PropertyProjection? propertyProjection)
+        public bool TryGetPropertyProjection(string outputDtmi, string outputPropertyName, out PropertyProjection? propertyProjection)
         {
-            propertyProjection = OntologyMapping.PropertyProjections.FirstOrDefault(e => e.OutputDtmiFilter == outputDtmiFilter && e.OutputPropertyName == outputPropertyName);
+            propertyProjection = OntologyMapping.PropertyProjections.FirstOrDefault(e => (e.OutputDtmiFilter == "*" || Regex.Match(outputDtmi, e.OutputDtmiFilter, RegexOptions.IgnoreCase).Success) && e.OutputPropertyName == outputPropertyName);
 
             if (propertyProjection != null)
             {
@@ -51,9 +52,9 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper
             return false;
         }
 
-        public bool TryGetFillProperty(string outputDtmiFilter, string outputPropertyName, out FillProperty? fillProperty)
+        public bool TryGetFillProperty(string outputDtmi, string outputPropertyName, out FillProperty? fillProperty)
         {
-            fillProperty = OntologyMapping.FillProperties.FirstOrDefault(e => e.OutputDtmiFilter == outputDtmiFilter && e.OutputPropertyName == outputPropertyName);
+            fillProperty = OntologyMapping.FillProperties.FirstOrDefault(e => (e.OutputDtmiFilter == "*" || Regex.Match(outputDtmi, e.OutputDtmiFilter, RegexOptions.IgnoreCase).Success) && e.OutputPropertyName == outputPropertyName);
 
             if (fillProperty != null)
             {

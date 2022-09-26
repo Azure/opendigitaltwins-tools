@@ -115,17 +115,53 @@ namespace OntologyMapper.Test
 
             var ontologyMappingManager = new OntologyMappingManager(mockOntologyLoader.Object);
 
-            var outputDtmiFilter = "*";
+            var outputDtmi = "dtmi:org:w3id:rec:Space;1";
             var outputPropertyName = "externalIds";
             var inputPropertyName = "deviceKey";
 
-            var result = ontologyMappingManager.TryGetPropertyProjection(outputDtmiFilter, outputPropertyName, out var propertyProjection);
+            var result = ontologyMappingManager.TryGetPropertyProjection(outputDtmi, outputPropertyName, out var propertyProjection);
 
             Assert.True(result);
             Assert.NotNull(propertyProjection);
-            Assert.Equal(outputDtmiFilter, propertyProjection.OutputDtmiFilter);
             Assert.Equal(outputPropertyName, propertyProjection.OutputPropertyName);
             Assert.Equal(inputPropertyName, propertyProjection.InputPropertyNames[0]);
+        }
+
+        [Fact]
+        public void TryGetPropertyProjection_ReturnsTrue_WhenRegexMatchFound()
+        {
+            var mockOntologyLoader = new Mock<IOntologyMappingLoader>();
+            mockOntologyLoader.Setup(m => m.LoadOntologyMapping()).Returns(GetOntologyMapping);
+
+            var ontologyMappingManager = new OntologyMappingManager(mockOntologyLoader.Object);
+
+            var outputDtmi = "dtmi:org:w3id:rec:Motor;1";
+            var outputPropertyName = "externalMotors";
+            var inputPropertyName = "deviceMotor";
+
+            var result = ontologyMappingManager.TryGetPropertyProjection(outputDtmi, outputPropertyName, out var propertyProjection);
+
+            Assert.True(result);
+            Assert.NotNull(propertyProjection);
+            Assert.Equal(outputPropertyName, propertyProjection.OutputPropertyName);
+            Assert.Equal(inputPropertyName, propertyProjection.InputPropertyNames[0]);
+        }
+
+        [Fact]
+        public void TryGetPropertyProjection_ReturnsTrue_WhenRegexMatchNotFound()
+        {
+            var mockOntologyLoader = new Mock<IOntologyMappingLoader>();
+            mockOntologyLoader.Setup(m => m.LoadOntologyMapping()).Returns(GetOntologyMapping);
+
+            var ontologyMappingManager = new OntologyMappingManager(mockOntologyLoader.Object);
+
+            var outputDtmi = "dtmi:org:w3id:rec:Engine;1";
+            var outputPropertyName = "externalMotors";
+
+            var result = ontologyMappingManager.TryGetPropertyProjection(outputDtmi, outputPropertyName, out var propertyProjection);
+
+            Assert.False(result);
+            Assert.Null(propertyProjection);
         }
 
         [Fact]
@@ -136,16 +172,15 @@ namespace OntologyMapper.Test
 
             var ontologyMappingManager = new OntologyMappingManager(mockOntologyLoader.Object);
 
-            var outputDtmiFilter = "*";
+            var outputDtmi = "dtmi:org:w3id:rec:Space;1";
             var outputPropertyName = "externalIds";
             var inputPropertyName1 = "deviceKey";
             var inputPropertyName2 = "deviceId";
 
-            var result = ontologyMappingManager.TryGetPropertyProjection(outputDtmiFilter, outputPropertyName, out var propertyProjections);
+            var result = ontologyMappingManager.TryGetPropertyProjection(outputDtmi, outputPropertyName, out var propertyProjections);
 
             Assert.True(result);
             Assert.NotNull(propertyProjections);
-            Assert.Equal(outputDtmiFilter, propertyProjections.OutputDtmiFilter);
             Assert.Equal(outputPropertyName, propertyProjections.OutputPropertyName);
             Assert.Equal(inputPropertyName1, propertyProjections.InputPropertyNames[0]);
             Assert.Equal(inputPropertyName2, propertyProjections.InputPropertyNames[1]);
@@ -159,10 +194,10 @@ namespace OntologyMapper.Test
 
             var ontologyMappingManager = new OntologyMappingManager(mockOntologyLoader.Object);
 
-            var outputDtmiFilter = "*";
+            var outputDtmi = "dtmi:org:w3id:rec:Space;1";
             var outputPropertyName = "external";
 
-            var result = ontologyMappingManager.TryGetPropertyProjection(outputDtmiFilter, outputPropertyName, out var propertyProjection);
+            var result = ontologyMappingManager.TryGetPropertyProjection(outputDtmi, outputPropertyName, out var propertyProjection);
 
             Assert.False(result);
             Assert.Null(propertyProjection);
@@ -176,16 +211,53 @@ namespace OntologyMapper.Test
 
             var ontologyMappingManager = new OntologyMappingManager(mockOntologyLoader.Object);
 
-            var outputDtmiFilter = "*";
+            var outputDtmi = "dtmi:org:w3id:rec:Space;1";
             var outputPropertyName = "name";
 
-            var result = ontologyMappingManager.TryGetFillProperty(outputDtmiFilter, outputPropertyName, out var propertyFill);
+            var result = ontologyMappingManager.TryGetFillProperty(outputDtmi, outputPropertyName, out var propertyFill);
 
             Assert.True(result);
             Assert.NotNull(propertyFill);
             Assert.Equal(2, propertyFill.InputPropertyNames.Count());
             Assert.Equal("name", propertyFill.InputPropertyNames.ToList()[0]);
             Assert.Equal("description", propertyFill.InputPropertyNames.ToList()[1]);
+        }
+
+        [Fact]
+        public void TryGetFillProperty_ReturnsTrue_When_FoundByRegex()
+        {
+            var mockOntologyLoader = new Mock<IOntologyMappingLoader>();
+            mockOntologyLoader.Setup(m => m.LoadOntologyMapping()).Returns(GetOntologyMapping);
+
+            var ontologyMappingManager = new OntologyMappingManager(mockOntologyLoader.Object);
+
+            var outputDtmi = "dtmi:org:w3id:rec:Motor;1";
+            var outputPropertyName = "fan";
+
+            var result = ontologyMappingManager.TryGetFillProperty(outputDtmi, outputPropertyName, out var propertyFill);
+
+            Assert.True(result);
+            Assert.NotNull(propertyFill);
+            Assert.Equal(2, propertyFill.InputPropertyNames.Count());
+            Assert.Equal("name", propertyFill.InputPropertyNames.ToList()[0]);
+            Assert.Equal("description", propertyFill.InputPropertyNames.ToList()[1]);
+        }
+
+        [Fact]
+        public void TryGetFillProperty_ReturnsTrue_When_NotFoundByRegex()
+        {
+            var mockOntologyLoader = new Mock<IOntologyMappingLoader>();
+            mockOntologyLoader.Setup(m => m.LoadOntologyMapping()).Returns(GetOntologyMapping);
+
+            var ontologyMappingManager = new OntologyMappingManager(mockOntologyLoader.Object);
+
+            var outputDtmi = "dtmi:org:w3id:rec:Motor;1";
+            var outputPropertyName = "switch";
+
+            var result = ontologyMappingManager.TryGetFillProperty(outputDtmi, outputPropertyName, out var propertyFill);
+
+            Assert.False(result);
+            Assert.Null(propertyFill);
         }
 
         [Fact]
@@ -196,10 +268,10 @@ namespace OntologyMapper.Test
 
             var ontologyMappingManager = new OntologyMappingManager(mockOntologyLoader.Object);
 
-            var outputDtmiFilter = "*";
+            var outputDtmi = "dtmi:org:w3id:rec:Space;1";
             var outputPropertyName = "channel";
 
-            var result = ontologyMappingManager.TryGetFillProperty(outputDtmiFilter, outputPropertyName, out var propertyFill);
+            var result = ontologyMappingManager.TryGetFillProperty(outputDtmi, outputPropertyName, out var propertyFill);
 
             Assert.False(result);
             Assert.Null(propertyFill);
@@ -245,8 +317,10 @@ namespace OntologyMapper.Test
             ontologyMapping.Header.OutputOntologies.Add(new Ontology { DtdlVersion = "v3", Name = "org2", Version = "1.2" });
 
             ontologyMapping.PropertyProjections.Add(new PropertyProjection { OutputDtmiFilter = "*", InputPropertyNames = new List<string> { "deviceKey" }, OutputPropertyName = "externalIds", IsOutputPropertyCollection = true });
+            ontologyMapping.PropertyProjections.Add(new PropertyProjection { OutputDtmiFilter = @"\w*Motor\w*", InputPropertyNames = new List<string> { "deviceMotor" }, OutputPropertyName = "externalMotors", IsOutputPropertyCollection = true });
 
             ontologyMapping.FillProperties.Add(new FillProperty { OutputDtmiFilter = "*", OutputPropertyName = "name", InputPropertyNames = new string[] { "name", "description" } });
+            ontologyMapping.FillProperties.Add(new FillProperty { OutputDtmiFilter = @"\w*Motor\w*", OutputPropertyName = "fan", InputPropertyNames = new string[] { "name", "description" } });
 
             ontologyMapping.InterfaceRemaps.Add(new DtmiRemap { InputDtmi = "dtmi:twin:main:CleaningRoom;1", OutputDtmi = "dtmi:org:w3id:rec:CleanRoom;1" });
             ontologyMapping.InterfaceRemaps.Add(new DtmiRemap { InputDtmi = "dtmi:twin:main:RandomRoom;1", OutputDtmi = "dtmi:org:org1:schema:test:Office;1", IsIgnored = true });
