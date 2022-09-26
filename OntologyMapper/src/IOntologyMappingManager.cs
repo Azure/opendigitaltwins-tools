@@ -23,7 +23,7 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper
         /// For a given DTMI from the source ontology, get the DTMI for the target ontology
         /// </summary>
         /// <param name="inputDtmi">The DTMI from the source ontology</param>
-        /// <param name="dtmiRemap">The Remap Entity if there is one</param>
+        /// <param name="dtmiRemap">The remap entity for the input DTMI if there is one</param>
         /// <returns>true if a remap exists, false otherwise</returns>
         public bool TryGetInterfaceRemapDtmi(Dtmi inputDtmi, out DtmiRemap? dtmiRemap);
 
@@ -31,9 +31,9 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper
         /// For a given relationship name in the input ontology, get the name of the relationship in the target ontology
         /// </summary>
         /// <param name="inputRelationship">The name of the relationship in the input ontology. i.e. "hasPart"</param>
-        /// <param name="outputRelationship">The name of the relationship in the output ontology. i.e. "isLocationOf"</param>
+        /// <param name="relationshipRemap">The remap entity for the input relationship if there is one</param>
         /// <returns></returns>
-        public bool TryGetRelationshipRemap(string inputRelationship, out RelationshipRemap? outputRelationship);
+        public bool TryGetRelationshipRemap(string inputRelationship, out RelationshipRemap? relationshipRemap);
 
         /// <summary>
         /// In some cases, the contents of one input property may need to be copied to multiple other fields in the target ontology. For instance, if 
@@ -42,7 +42,7 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper
         /// </summary>
         /// <param name="outputDtmiFilter">A regex which describes which output dtmi's this rule applies to</param>
         /// <param name="outputPropertyName">The target property name</param>
-        /// <param name="inputPropertyNames">A space-delimited, ordered, list of fields which declare the backfill precedence</param>
+        /// <param name="fillProperty">The fill property entity for the output property if there is one</param>
         /// <returns>true if a mapping exists, false otherwise</returns>
         public bool TryGetFillProperty(string outputDtmiFilter, string outputPropertyName, out FillProperty? fillProperty);
 
@@ -51,8 +51,8 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper
         /// </summary>
         /// <param name="outputDtmiFilter">A regex which describes which output dtmi's this rule applies to</param>
         /// <param name="outputPropertyName">The name of the output property</param>
-        /// <param name="inputProperty">The property projection for the output property</param>
+        /// <param name="propertyProjection">The property projection for the output property if there is one</param>
         /// <returns>true if a mapping exists, false otherwise</returns>
-        public bool TryGetPropertyProjection(string outputDtmiFilter, string outputPropertyName, out PropertyProjection? inputProperty);
+        public bool TryGetPropertyProjection(string outputDtmiFilter, string outputPropertyName, out PropertyProjection? propertyProjection);
     }
 }

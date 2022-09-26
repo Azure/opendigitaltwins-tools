@@ -27,11 +27,11 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper
             return false;
         }
 
-        public bool TryGetRelationshipRemap(string inputRelationship, out RelationshipRemap? outputRelationship)
+        public bool TryGetRelationshipRemap(string inputRelationship, out RelationshipRemap? relationshipRemap)
         {
-            outputRelationship = OntologyMapping.RelationshipRemaps.FirstOrDefault(r => r.InputRelationship == inputRelationship);
+            relationshipRemap = OntologyMapping.RelationshipRemaps.FirstOrDefault(r => r.InputRelationship == inputRelationship);
 
-            if (outputRelationship != null)
+            if (relationshipRemap != null)
             {
                 return true;
             }
@@ -51,11 +51,11 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper
             return false;
         }
 
-        public bool TryGetFillProperty(string outputDtmiFilter, string outputPropertyName, out FillProperty? inputPropertyNames)
+        public bool TryGetFillProperty(string outputDtmiFilter, string outputPropertyName, out FillProperty? fillProperty)
         {
-            inputPropertyNames = OntologyMapping.FillProperties.FirstOrDefault(e => e.OutputDtmiFilter == outputDtmiFilter && e.OutputPropertyName == outputPropertyName);
+            fillProperty = OntologyMapping.FillProperties.FirstOrDefault(e => e.OutputDtmiFilter == outputDtmiFilter && e.OutputPropertyName == outputPropertyName);
 
-            if (inputPropertyNames != null)
+            if (fillProperty != null)
             {
                 return true;
             }
