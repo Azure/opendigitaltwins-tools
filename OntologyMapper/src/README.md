@@ -14,9 +14,9 @@ A json file can be created with collections of these types of mappings, and then
 
 ### Header
 
-The header section is for informational purposes
+The header section is for informational purposes designating the source and destination DTDLs. This is to provide an at-a-glance summary of what DTDLs this file maps.
 
-#### Input Ontologies
+**Input Ontologies**
 
 A collection of what ontologies make up the input source for the conversion
 
@@ -26,7 +26,7 @@ A collection of what ontologies make up the input source for the conversion
 | Version | The version of the ontology |
 | DtdlVersion | Which version of the DTDL language is currently in use for this provider |
 
-#### Output Ontologies
+**Output Ontologies**
 
 A collection of what ontologies make up the output source for the conversion
 
@@ -129,64 +129,64 @@ A collection of mappings from one or more property names to another property nam
     
 ### Interface: IOntologyMappingManager
 
-#### Method: ValidateTargetOntologyMapping
+**Method: ValidateTargetOntologyMapping**
 
-##### Description
+*Description*
 
 Validates that all Output DTMIs listed in the Interface Remaps exist in the target object model
 
-##### Parameters
+*Parameters*
 
 | Name | Description |
 | --- | --- |
 | targetObjectModel | A dictionary of DTMI to DTEntityInfo mappings which are valid in the target ontology |
 | invalidTargets | An output listing of invalid output mappings in the InterfaceRemaps |
 
-##### Returns
+*Returns*
 
-true if all targets are valid, false otherwise</returns>
+`true` if all targets are valid, otherwise `false`</returns>
 
-#### Method: TryGetInterfaceRemapDtmi
+**Method: TryGetInterfaceRemapDtmi**
 
-##### Description
+*Description*
 
 For a given DTMI from the source ontology, get the DTMI for the target ontology
 
-##### Parameters
+*Parameters*
 
 | Name | Description |
 | --- | --- |
 | inputDtmi | The DTMI from the source ontology |
 | dtmiRemap | An InterfaceRemap if it exists |
 
-##### Returns
+*Returns*
 
-true if a remap exists, false otherwise</returns>
+`true` if a remap exists, otherwise `false`</returns>
 
-#### Method: TryGetRelationshipRemap
+**Method: TryGetRelationshipRemap**
 
-##### Description
+*Description*
 
 For a given relationship from the source ontology, get the relationship for the target ontology
 
-##### Parameters
+*Parameters*
 
 | Name | Description |
 | --- | --- |
 | inputRelationship | The relationship from the source ontology |
 | relationshipRemap | A relationshipRemap if it exists |
 
-##### Returns
+*Returns*
 
-true if a remap exists, false otherwise</returns>
+`true` if a remap exists, otherwise `false`</returns>
 
-#### Method: TryGetFillProperty
+**Method: TryGetFillProperty**
 
-##### Description
+*Description*
 
 In some cases, the contents of one input property may need to be copied to multiple other fields in the target ontology. For instance, if the target ontology requires that the name field always be populated, but the source name field may be null and the description field be more reliable, a chain of fields can be set here so that there is a priority list of fields that will backfill the name field if the input name field is null.
 
-##### Parameters
+*Parameters*
 
 | Name | Description |
 | --- | --- |
@@ -194,17 +194,17 @@ In some cases, the contents of one input property may need to be copied to multi
 | outputPropertyName | The name of the output property |
 | fillProperty | A fillProperty if it exists |
 
-##### Returns
+*Returns*
 
-true if a fillProperty exists, false otherwise</returns>
+`true` if a fillProperty exists, otherwise `false`</returns>
 
-#### Method: TryGetPropertyProjection
+**Method: TryGetPropertyProjection**
 
-##### Description
+*Description*
 
 In some cases, a property of the input model needs to be put into a different field or collection in the target model. A declaration can be made to map the input field to the appropriate output field
 
-##### Parameters
+*Parameters*
 
 | Name | Description |
 | --- | --- |
@@ -212,42 +212,42 @@ In some cases, a property of the input model needs to be put into a different fi
 | outputPropertyName | The name of the output property |
 | propertyProjection | The property projection for the output property |
 
-##### Returns
+*Returns*
 
-true if a propertyProjection exists, false otherwise</returns>
+`true` if a propertyProjection exists, otherwise `false`</returns>
 
 ### Interface: IOntologyMappingLoader
 
-#### Method: LoadOntologyMapping
+**Method: LoadOntologyMapping**
 
-##### Description
+*Description*
 
 Loads an OntologyMapping into memory
 
-##### Parameters
+*Parameters*
 
 None
 
-##### Returns
+*Returns*
 
 An ontology mapping
 
 ### Class: FileOntologyMappingLoader
 
-#### Method: LoadOntologyMapping
-
-#### Implements
+**Implements**
 
 Microsoft.SmartPlaces.Facilities.OntologyMapper.IOntologyMappingLoader
 
-##### Description
+**Method: LoadOntologyMapping**
+
+*Description*
 
 Loads an OntologyMapping into memory from an input file (specified in the constructor)
 
-##### Parameters
+*Parameters*
 
 None
 
-##### Returns
+*Returns*
 
 An ontology mapping

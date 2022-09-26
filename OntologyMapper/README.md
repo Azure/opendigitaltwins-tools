@@ -52,7 +52,7 @@ Includes the following elements
         "DtdlVersion": "v2"
       }
     ]
-  },
+  }
 
 ``` 
 
@@ -87,8 +87,8 @@ Includes the following elements
       // Invalid Output DTMI - Review Needed
       "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Access_Card_Reader;1",
       "IsIgnored": true
-    },
-],
+    }
+]
 
 ```
 
@@ -109,7 +109,7 @@ Includes the following elements
       "InputRelationship": "hasPart",
       "OutputRelationship": "isLocationOf"
     }
-  ],
+  ]
 
 ```
 
@@ -128,13 +128,13 @@ Includes the following elements
       "InputPropertyName": "mappingKey",
       "IsOutputPropertyCollection": true
     }
-  ],
+  ]
 
 ```
 
 #### FillProperties
 
-    - In some cases, the contents of one input property may need to be copied to multiple other fields in the target ontology. For instance, if the target ontology requires that the name field always be populated, but the source name field may be null and the description field be more reliable, a chain of fields can be set here so that there is a priority list of fields that will backfill the name field if the input name field is null.
+    - If the target ontology requires that a field always be populated, but the source field may be null and a different field be more reliable, a chain of fields can be set here so that there is a priority list of fields that will backfill the output field if the original input name field is null.
 
 ##### Sample FillProperties
 
