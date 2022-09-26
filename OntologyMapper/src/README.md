@@ -113,13 +113,25 @@ A collection of mappings from one or more property names to another property nam
       "OutputPropertyName": "output-property-name",
       "InputPropertyNames": [ "input-property-name1", "input-property-name2" ],
       "IsOutputPropertyCollection": true
+    },
+    {
+      "OutputDtmiFilter": "\w*Space\w*",
+      "OutputPropertyName": "output-property-name",
+      "InputPropertyNames": [ "input-property-name2" ],
+      "IsOutputPropertyCollection": true
     }
+
   ],
   "FillProperties": [
     {
       "OutputDtmiFilter": "*",
       "OutputPropertyName": "output-property-name",
       "InputPropertyNames": [ "input-property-name1, input-property-name2" ]
+    },
+    {
+      "OutputDtmiFilter": "\w*Space\w*",
+      "OutputPropertyName": "output-property-name",
+      "InputPropertyNames": [ "input-property-name2, input-property-name1" ]
     }
   ]
 }
@@ -190,7 +202,7 @@ In some cases, the contents of one input property may need to be copied to multi
 
 | Name | Description |
 | --- | --- |
-| outputDtmiFilter | A regex which describes which output dtmi's this rule applies to |
+| outputDtmi | The output dtmi to which this search will be applied |
 | outputPropertyName | The name of the output property |
 | fillProperty | A fillProperty if it exists |
 
@@ -208,7 +220,7 @@ In some cases, a property of the input model needs to be put into a different fi
 
 | Name | Description |
 | --- | --- |
-| outputDtmiFilter | A regex which describes which output dtmi's this rule applies to |
+| outputDtmi | The output dtmi to which this search will be applied |
 | outputPropertyName | The name of the output property |
 | propertyProjection | The property projection for the output property |
 
