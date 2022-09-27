@@ -42,7 +42,7 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper
 
         public bool TryGetPropertyProjection(string outputDtmi, string outputPropertyName, out PropertyProjection? propertyProjection)
         {
-            propertyProjection = OntologyMapping.PropertyProjections.OrderBy(e => e.Priority).FirstOrDefault(e => (e.OutputDtmiFilter == "*" || Regex.Match(outputDtmi, e.OutputDtmiFilter, RegexOptions.IgnoreCase).Success) && e.OutputPropertyName == outputPropertyName);
+            propertyProjection = OntologyMapping.PropertyProjections.OrderBy(e => e.Priority).FirstOrDefault(e => e.OutputPropertyName == outputPropertyName && Regex.Match(outputDtmi, e.OutputDtmiFilter, RegexOptions.IgnoreCase).Success);
 
             if (propertyProjection != null)
             {
@@ -54,7 +54,7 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper
 
         public bool TryGetFillProperty(string outputDtmi, string outputPropertyName, out FillProperty? fillProperty)
         {
-            fillProperty = OntologyMapping.FillProperties.OrderBy(e => e.Priority).FirstOrDefault(e => (e.OutputDtmiFilter == "*" || Regex.Match(outputDtmi, e.OutputDtmiFilter, RegexOptions.IgnoreCase).Success) && e.OutputPropertyName == outputPropertyName);
+            fillProperty = OntologyMapping.FillProperties.OrderBy(e => e.Priority).FirstOrDefault(e => e.OutputPropertyName == outputPropertyName && Regex.Match(outputDtmi, e.OutputDtmiFilter, RegexOptions.IgnoreCase).Success);
 
             if (fillProperty != null)
             {

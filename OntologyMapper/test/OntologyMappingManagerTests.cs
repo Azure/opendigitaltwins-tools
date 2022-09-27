@@ -356,14 +356,14 @@ namespace OntologyMapper.Test
             ontologyMapping.Header.OutputOntologies.Add(new Ontology { DtdlVersion = "v2", Name = "org1", Version = "1.1" });
             ontologyMapping.Header.OutputOntologies.Add(new Ontology { DtdlVersion = "v3", Name = "org2", Version = "1.2" });
 
-            ontologyMapping.PropertyProjections.Add(new PropertyProjection { OutputDtmiFilter = "*", InputPropertyNames = new List<string> { "deviceKey" }, OutputPropertyName = "externalIds", IsOutputPropertyCollection = true });
+            ontologyMapping.PropertyProjections.Add(new PropertyProjection { OutputDtmiFilter = ".*", InputPropertyNames = new List<string> { "deviceKey" }, OutputPropertyName = "externalIds", IsOutputPropertyCollection = true });
             ontologyMapping.PropertyProjections.Add(new PropertyProjection { OutputDtmiFilter = @"\w*Motor\w*", InputPropertyNames = new List<string> { "deviceMotor" }, OutputPropertyName = "externalMotors", IsOutputPropertyCollection = true, Priority = 0 });
-            ontologyMapping.PropertyProjections.Add(new PropertyProjection { OutputDtmiFilter = @"*", InputPropertyNames = new List<string> { "deviceStand" }, OutputPropertyName = "externalMotors", IsOutputPropertyCollection = true, Priority = 1 });
+            ontologyMapping.PropertyProjections.Add(new PropertyProjection { OutputDtmiFilter = @".*", InputPropertyNames = new List<string> { "deviceStand" }, OutputPropertyName = "externalMotors", IsOutputPropertyCollection = true, Priority = 1 });
             ontologyMapping.PropertyProjections.Add(new PropertyProjection { OutputDtmiFilter = @"\w*Drive\w*", InputPropertyNames = new List<string> { "deviceDrive" }, OutputPropertyName = "externalDrive", IsOutputPropertyCollection = true, Priority = 0 });
 
-            ontologyMapping.FillProperties.Add(new FillProperty { OutputDtmiFilter = "*", OutputPropertyName = "name", InputPropertyNames = new string[] { "name", "description" } });
+            ontologyMapping.FillProperties.Add(new FillProperty { OutputDtmiFilter = ".*", OutputPropertyName = "name", InputPropertyNames = new string[] { "name", "description" } });
             ontologyMapping.FillProperties.Add(new FillProperty { OutputDtmiFilter = @"\w*Motor\w*", OutputPropertyName = "fan", InputPropertyNames = new string[] { "name", "description" }, Priority = 1 });
-            ontologyMapping.FillProperties.Add(new FillProperty { OutputDtmiFilter = @"*", OutputPropertyName = "fan", InputPropertyNames = new string[] { "name", "size" }, Priority = 2 });
+            ontologyMapping.FillProperties.Add(new FillProperty { OutputDtmiFilter = @".*", OutputPropertyName = "fan", InputPropertyNames = new string[] { "name", "size" }, Priority = 2 });
 
             ontologyMapping.InterfaceRemaps.Add(new DtmiRemap { InputDtmi = "dtmi:twin:main:CleaningRoom;1", OutputDtmi = "dtmi:org:w3id:rec:CleanRoom;1" });
             ontologyMapping.InterfaceRemaps.Add(new DtmiRemap { InputDtmi = "dtmi:twin:main:RandomRoom;1", OutputDtmi = "dtmi:org:org1:schema:test:Office;1", IsIgnored = true });
@@ -381,9 +381,9 @@ namespace OntologyMapper.Test
             ontologyMapping.Header.OutputOntologies.Add(new Ontology { DtdlVersion = "v2", Name = "org1", Version = "1.1" });
             ontologyMapping.Header.OutputOntologies.Add(new Ontology { DtdlVersion = "v3", Name = "org2", Version = "1.2" });
 
-            ontologyMapping.PropertyProjections.Add(new PropertyProjection { OutputDtmiFilter = "*", InputPropertyNames = new List<string> { "deviceKey", "deviceId" }, OutputPropertyName = "externalIds", IsOutputPropertyCollection = true });
+            ontologyMapping.PropertyProjections.Add(new PropertyProjection { OutputDtmiFilter = ".*", InputPropertyNames = new List<string> { "deviceKey", "deviceId" }, OutputPropertyName = "externalIds", IsOutputPropertyCollection = true });
 
-            ontologyMapping.FillProperties.Add(new FillProperty { OutputDtmiFilter = "*", OutputPropertyName = "name", InputPropertyNames = new string[] { "name", "description" } });
+            ontologyMapping.FillProperties.Add(new FillProperty { OutputDtmiFilter = ".*", OutputPropertyName = "name", InputPropertyNames = new string[] { "name", "description" } });
 
             ontologyMapping.InterfaceRemaps.Add(new DtmiRemap { InputDtmi = "dtmi:twin:main:CleaningRoom;1", OutputDtmi = "dtmi:org:w3id:rec:CleanRoom;1" });
             ontologyMapping.InterfaceRemaps.Add(new DtmiRemap { InputDtmi = "dtmi:twin:main:RandomRoom;1", OutputDtmi = "dtmi:org:org1:schema:test:Office;1", IsIgnored = true });

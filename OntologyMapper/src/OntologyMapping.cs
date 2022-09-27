@@ -61,7 +61,7 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper
     public class PropertyProjection
     {
         /// <summary>
-        /// A regex describing the output DTMI's targeted by this projection. * for all
+        /// A regex describing the output DTMI's targeted by this projection. ".*" for all
         /// </summary>
         public string OutputDtmiFilter { get; set; } = string.Empty;
 
@@ -95,7 +95,7 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper
     public class FillProperty
     {
         /// <summary>
-        /// A regex describing the output DTMI's targeted by this fill. * for all
+        /// A regex describing the output DTMI's targeted by this fill. ".*" for all
         /// </summary>
         public string OutputDtmiFilter { get; set; } = string.Empty;
 
