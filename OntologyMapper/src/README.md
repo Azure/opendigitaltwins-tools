@@ -65,6 +65,7 @@ A collection of mappings from one property name to another property name. It is 
 | OutputPropertyName | The name of the output property to assign the input property to |
 | InputPropertyNames | A collection of names of the input property to assign to the output property. Can only specify multiple input properties if the output property is a collection |
 | IsOutputPropertyCollection | A flag which indicates whether or not the output property is a collection or not. This allows an input property which is not a collection to be assigned as an element in the output collection. |
+| Priority | If there are multiple projections for a single output property based on different DtmiFilters, priority is taken into account in ascending order |
 
 ### FillProperties
 
@@ -75,6 +76,7 @@ A collection of mappings from one or more property names to another property nam
 | OutputDtmiFilter | A regex filter which allows filtering so that the mapping is only applied to output property names which match the filter. * to apply to all output properties |
 | OutputPropertyName | The name of the output property to assign the input property to |
 | InputPropertyNames | A collection of names of the input property to assign to the output property. Can only specify multiple input properties if the output property is a collection |
+| Priority | If there are multiple fillproperties for a single output property based on different DtmiFilters, priority is taken into account in ascending order |
 
 ## Sample File
 
