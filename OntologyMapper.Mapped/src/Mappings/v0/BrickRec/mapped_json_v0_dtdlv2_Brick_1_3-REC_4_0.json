@@ -5449,7 +5449,7 @@
   ],
   "PropertyProjections": [
     {
-      "OutputDtmiFilter": "*",
+      "OutputDtmiFilter": ".*",
       "OutputPropertyName": "externalIds",
       "InputPropertyNames": [ "mappingKey" ],
       "IsOutputPropertyCollection": true
@@ -5457,7 +5457,7 @@
   ],
   "FillProperties": [
     {
-      "OutputDtmiFilter": "*",
+      "OutputDtmiFilter": ".*",
       "OutputPropertyName": "name",
       "InputPropertyNames": [ "name", "description" ]
     }

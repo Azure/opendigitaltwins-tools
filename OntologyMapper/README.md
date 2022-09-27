@@ -79,14 +79,11 @@ Includes the following elements
     },
     {
       "InputDtmi": "dtmi:mapped:core:AccessActivityStatus;1",
-      // Mapped to Base - Review needed
       "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Status;1"
     },
     {
       "InputDtmi": "dtmi:mapped:core:AccessCardReader;1",
-      // Invalid Output DTMI - Review Needed
       "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Access_Card_Reader;1",
-      "IsIgnored": true
     }
 ]
 
@@ -123,10 +120,11 @@ Includes the following elements
 
   "PropertyProjections": [
     {
-      "OutputDtmiFilter": "*",
+      "OutputDtmiFilter": ".*",
       "OutputPropertyName": "externalIds",
       "InputPropertyName": "mappingKey",
       "IsOutputPropertyCollection": true
+      "Priority": 1
     }
   ]
 
@@ -142,9 +140,10 @@ Includes the following elements
 
 "FillProperties": [
     {
-      "OutputDtmiFilter": "*",
+      "OutputDtmiFilter": ".*",
       "OutputPropertyName": "name",
       "InputPropertyNames": [ "name", "description" ]
+      "Priority": 1
     }
   ]
 
@@ -154,14 +153,14 @@ Includes the following elements
 
 This class defines an implementation of the IOntologyMappingManager, and provides simplified calls for clients to make to use the OntologyMapping
 
-### EmbeddedResourceOntologyMappingLoader
+### MappedOntologyMappingLoader
 
-This class enables selection and loading of the Ontology Mappings from the Embedded Resources files. When instantiating this class, specify the full path of the resource to be loaded. 
+This class enables selection and loading of the Ontology Mappings from the embedded Mapped resource files. When instantiating this class, specify the full path of the resource to be loaded. 
 i.e.
 
 ``` csharp
 
-var resourceManager = new EmbeddedResourceOntologyMappingLoader(logger, "Mappings.Mapped.Json.v0.BrickRec.mapped_json_v0_dtdlv2_Brick_1_3-REC_4_0.json");
+var resourceManager = new MappedOntologyMappingLoader(logger, "Mappings.v0.BrickRec.mapped_json_v0_dtdlv2_Brick_1_3-REC_4_0.json");
 
 ```
 

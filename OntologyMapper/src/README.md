@@ -158,7 +158,7 @@ Validates that all Output DTMIs listed in the Interface Remaps exist in the targ
 
 *Returns*
 
-`true` if all targets are valid, otherwise `false`</returns>
+`true` if all targets are valid, otherwise `false`
 
 **Method: TryGetInterfaceRemapDtmi**
 
@@ -175,7 +175,7 @@ For a given DTMI from the source ontology, get the DTMI for the target ontology
 
 *Returns*
 
-`true` if a remap exists, otherwise `false`</returns>
+`true` if a remap exists, otherwise `false`
 
 **Method: TryGetRelationshipRemap**
 
@@ -192,7 +192,7 @@ For a given relationship from the source ontology, get the relationship for the 
 
 *Returns*
 
-`true` if a remap exists, otherwise `false`</returns>
+`true` if a remap exists, otherwise `false`
 
 **Method: TryGetFillProperty**
 
@@ -210,7 +210,7 @@ In some cases, the contents of one input property may need to be copied to multi
 
 *Returns*
 
-`true` if a fillProperty exists, otherwise `false`</returns>
+`true` if a fillProperty exists, otherwise `false`
 
 **Method: TryGetPropertyProjection**
 
@@ -228,7 +228,7 @@ In some cases, a property of the input model needs to be put into a different fi
 
 *Returns*
 
-`true` if a propertyProjection exists, otherwise `false`</returns>
+`true` if a propertyProjection exists, otherwise `false`
 
 ### Interface: IOntologyMappingLoader
 
