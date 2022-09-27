@@ -61,7 +61,7 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper
     public class PropertyProjection
     {
         /// <summary>
-        /// A regex describing the output DTMI's targeted by this projection. * for all
+        /// A regex describing the output DTMI's targeted by this projection. ".*" for all
         /// </summary>
         public string OutputDtmiFilter { get; set; } = string.Empty;
 
@@ -81,6 +81,11 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper
         /// assignment to the output property
         /// </summary>
         public bool IsOutputPropertyCollection { get; set; } = false;
+
+        /// <summary>
+        /// If there are multiple projections for a single output property based on different DtmiFilters, priority is taken into account in ascending order
+        /// </summary>
+        public int Priority { get; set; } = 0;
     }
 
     /// <summary>
@@ -90,7 +95,7 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper
     public class FillProperty
     {
         /// <summary>
-        /// A regex describing the output DTMI's targeted by this fill. * for all
+        /// A regex describing the output DTMI's targeted by this fill. ".*" for all
         /// </summary>
         public string OutputDtmiFilter { get; set; } = string.Empty;
 
@@ -103,6 +108,11 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper
         /// A space delimited, ordered, list of input properties to be assigned to the output property (loop until one is not empty)
         /// </summary>
         public IEnumerable<string> InputPropertyNames { get; set; } = new List<string>();
+
+        /// <summary>
+        /// If there are multiple projections for a single output property based on different DtmiFilters, priority is taken into account in ascending order
+        /// </summary>
+        public int Priority { get; set; } = 0;
     }
 
     /// <summary>
