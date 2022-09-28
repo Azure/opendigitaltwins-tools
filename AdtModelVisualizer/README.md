@@ -1,5 +1,7 @@
 # ADT Model Visualizer
 
+_**Note:** The [Azure Digital Twins Explorer](https://explorer.digitaltwins.azure.net/) tool now contains a model graph feature that can be used for model visualization. For more information about this feature, see this section in the Azure Digital Twins Explorer documentation: [Explore models and the Model Graph](https://learn.microsoft.com/azure/digital-twins/how-to-use-azure-digital-twins-explorer#explore-models-and-the-model-graph)._
+
 Azure Digital Twins (ADT) Model Visualizer is a .NET core web application that allows you to visually view your DTDL model(s) in ADT. 
 
 It visually depicts:
