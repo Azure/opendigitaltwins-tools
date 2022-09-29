@@ -37,6 +37,17 @@ A collection of what ontologies make up the output source for the conversion
 | DtdlVersion | Which version of the DTDL language is currently in use for this provider |
 
 
+### NamespaceRemaps
+
+A collection of mappings from one namespace name to another namespace name. This is used after the explicit InterfaceRemaps to execute a simple search and replace of a string in
+an input model to convert it to an output model. That is, in those cases where the input model interface name is exactly the same as the output model interface name, but the namespace is different,
+then the input model''s namespace will be replaced by the NamespaceRemap's output namespace.
+
+| Field | Description |
+| --- | --- |
+| InputNamespace | The string to search for in the input dtmi |
+| OutputNamespace | The replacement string |
+
 ### InterfaceRemaps
 
 A collection of mappings from one interface name to another interface name. It is suggested that you only need to list mappings where the input DTMI is not the same as the output DTMI. Systems should assume that if a DTMI is not listed in the mappings, that the output DTMI will be the same as the input DTMI.
@@ -97,6 +108,12 @@ A collection of mappings from one or more property names to another property nam
       }
     ]
   },
+  "NamespaceRemaps": [
+    {
+      "InputDtmi": "dtmi:source-namespace:",
+      "OutputDtmi": "dtmi:target-namespace:"
+    },
+  ],
   "InterfaceRemaps": [
     {
       "InputDtmi": "dtmi:source-namespace:source-interface-name;1",
@@ -175,7 +192,7 @@ For a given DTMI from the source ontology, get the DTMI for the target ontology
 
 *Returns*
 
-`true` if a remap exists, otherwise `false`
+`true` if a remap exists, or if a namespaceremap exists for the namespace of the input dtmi, otherwise `false`
 
 **Method: TryGetRelationshipRemap**
 

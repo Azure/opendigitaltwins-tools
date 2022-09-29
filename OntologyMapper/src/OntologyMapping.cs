@@ -16,6 +16,11 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper
         public MappingHeader Header { get; set; } = new MappingHeader();
 
         /// <summary>
+        /// Mapping one namespace to another
+        /// </summary>
+        public List<NamespaceRemap> NamespaceRemaps { get; set; } = new List<NamespaceRemap>();
+
+        /// <summary>
         /// Mappings describing the translation from an input DTMI to an output DTMI. Note that only mappings where the input DTMI does not exactly match the output DTMI should be defined here.
         /// If the two DTMIs match exactly, they do not need to be added here
         /// </summary>
@@ -116,7 +121,7 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper
     }
 
     /// <summary>
-    /// Maps an input input from the source ontology to an output interface in the target ontology
+    /// Maps an input interface from the source ontology to an output interface in the target ontology
     /// </summary>
     public class DtmiRemap
     {
@@ -152,6 +157,22 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper
         /// The output relationship type as a string
         /// </summary>
         public string OutputRelationship { get; set; } = string.Empty;
+    }
+
+    /// <summary>
+    /// Maps an input namespace from the source ontology to an output namespace in the target ontology
+    /// </summary>
+    public class NamespaceRemap
+    {
+        /// <summary>
+        /// The input namespace as a regex string
+        /// </summary>
+        public string InputNamespace { get; set; } = string.Empty;
+
+        /// <summary>
+        /// The output namespace as a regex string
+        /// </summary>
+        public string OutputNamespace { get; set; } = string.Empty;
     }
 
     public class Ontology
