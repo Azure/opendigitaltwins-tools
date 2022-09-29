@@ -58,6 +58,23 @@ namespace OntologyMapper.Test
         }
 
         [Fact]
+        public void TryGetInterfaceRemapDtmi_ReturnsTrue_When_NamespaceRemapFound()
+        {
+            var mockOntologyLoader = new Mock<IOntologyMappingLoader>();
+            mockOntologyLoader.Setup(m => m.LoadOntologyMapping()).Returns(GetOntologyMapping);
+
+            var ontologyMappingManager = new OntologyMappingManager(mockOntologyLoader.Object);
+
+            var inputDtmi = new Dtmi("dtmi:x:core:Sparkle;1");
+
+            var result = ontologyMappingManager.TryGetInterfaceRemapDtmi(inputDtmi, out var dtmiRemap);
+
+            Assert.True(result);
+            Assert.NotNull(dtmiRemap);
+            Assert.Equal("dtmi:com:y:Sparkle;1", dtmiRemap.OutputDtmi);
+        }
+
+        [Fact]
         public void TryGetInterfaceRemapDtmi_ReturnsFalse_When_NotFound()
         {
             var mockOntologyLoader = new Mock<IOntologyMappingLoader>();
@@ -355,6 +372,8 @@ namespace OntologyMapper.Test
             ontologyMapping.Header.InputOntologies.Add(new Ontology { DtdlVersion = "v2", Name = "twin", Version = "1.0" });
             ontologyMapping.Header.OutputOntologies.Add(new Ontology { DtdlVersion = "v2", Name = "org1", Version = "1.1" });
             ontologyMapping.Header.OutputOntologies.Add(new Ontology { DtdlVersion = "v3", Name = "org2", Version = "1.2" });
+
+            ontologyMapping.NamespaceRemaps.Add(new NamespaceRemap() { InputNamespace = "dtmi:x:core:", OutputNamespace = "dtmi:com:y:" });
 
             ontologyMapping.PropertyProjections.Add(new PropertyProjection { OutputDtmiFilter = ".*", InputPropertyNames = new List<string> { "deviceKey" }, OutputPropertyName = "externalIds", IsOutputPropertyCollection = true });
             ontologyMapping.PropertyProjections.Add(new PropertyProjection { OutputDtmiFilter = @"\w*Motor\w*", InputPropertyNames = new List<string> { "deviceMotor" }, OutputPropertyName = "externalMotors", IsOutputPropertyCollection = true, Priority = 0 });

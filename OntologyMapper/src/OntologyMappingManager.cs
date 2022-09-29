@@ -25,6 +25,19 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper
                 return true;
             }
 
+            var namespaceRemap = OntologyMapping.NamespaceRemaps.FirstOrDefault(n => inputDtmi.ToString().Contains(n.InputNamespace));
+
+            if (namespaceRemap != null)
+            {
+                dtmiRemap = new DtmiRemap()
+                {
+                    InputDtmi = inputDtmi.ToString(),
+                    OutputDtmi = inputDtmi.ToString().Replace(namespaceRemap.InputNamespace, namespaceRemap.OutputNamespace)
+                };
+
+                return true;
+            }
+
             return false;
         }
 
