@@ -8,13 +8,13 @@ This project has been created to quickly delete and recreate ADT instance with t
 
 ## Usage
 Run
-    ```shell
+    ```
     pip install -r requirements.txt
     ```
 To install dependencies or use `make`
 
 Example
-    ```shell
+    ```
     python main.py <INSTANCE_NAME> <SUBSCRIPTION_ID> <RESOURCE_GROUP>
     ```
 The DigitalTwins instance name, subscription id, and resource groups are required arguments for use.
