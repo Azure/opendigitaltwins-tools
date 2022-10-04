@@ -2,7 +2,7 @@ import sys
 import time
 
 from jlog import logger
-from jlog import StatusBar
+from jlog import ProgressBar
 from jlog import Spinner
 from azure.mgmt.digitaltwins import AzureDigitalTwinsManagementClient
 from azure.mgmt.digitaltwins.v2022_05_31.models import DigitalTwinsResource
@@ -41,17 +41,17 @@ def delete_digital_twins_instance():
     delete_start = round(time.time() * 1000)
     delete_instance = dt_resource_client.digital_twins.begin_delete(resource_group, instance_name)
     cycles = 0
-    status_bar = StatusBar.init(total=10_000, msg="Deleting DigitalTwins Instance")
+    progress_bar = ProgressBar.new(total=10_000, msg="Deleting DigitalTwins Instance")
 
     while not delete_instance.done():
         if cycles < 9_900:
             time.sleep(0.1)
-            status_bar.update(25)
+            progress_bar.update(25)
             cycles += 25
 
     delete_end = round(time.time() * 1000)
-    status_bar.update(10_000 - cycles)
-    status_bar.close()
+    progress_bar.update(10_000 - cycles)
+    progress_bar.close()
 
     return delete_end - delete_start
 
@@ -63,17 +63,17 @@ def create_digital_twins_instance():
     create_start = round(time.time() * 1000)
     create_instance = dt_resource_client.digital_twins.begin_create_or_update(resource_group, instance_name, dt_resource)
     cycles = 0
-    status_bar = StatusBar.init(total=15_000, msg="Creating DigitalTwins Instance")
+    progress_bar = ProgressBar.new(total=15_000, msg="Creating DigitalTwins Instance")
 
     while not create_instance.done():
         if cycles < 14_850:
             time.sleep(0.1)
-            status_bar.update(25)
+            progress_bar.update(25)
             cycles += 25
 
     create_end = round(time.time() * 1000)
-    status_bar.update(15_000 - cycles)
-    status_bar.close()
+    progress_bar.update(15_000 - cycles)
+    progress_bar.close()
 
     return create_end - create_start
 
@@ -94,7 +94,7 @@ def create_endpoints():
 
         updated_endpoints.append(updated_endpoint)
 
-    spinner = Spinner.init("Creating Endpoints.")
+    spinner = Spinner.new("Creating Endpoints.")
     spinner.start()
 
     num_complete = 0
@@ -143,7 +143,7 @@ except:
     exit()
 
 logger.info("Successfully retrieved %s.", instance.name)
-# noinspection PyTypeChecker
+
 endpoints = list(dt_resource_client.digital_twins_endpoint.list(resource_group, instance_name))
 
 logger.info("Deleted DigitalTwins instance in %d milliseconds.", delete_digital_twins_instance())

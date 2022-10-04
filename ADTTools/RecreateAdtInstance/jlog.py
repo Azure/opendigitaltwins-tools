@@ -4,9 +4,9 @@ from tqdm import tqdm
 from halo import Halo
 
 
-class StatusBar:
+class ProgressBar:
     @staticmethod
-    def init(total, msg):
+    def new(total, msg):
         return tqdm(total=total,
                     desc=msg,
                     leave=False,
@@ -16,7 +16,7 @@ class StatusBar:
 
 class Spinner:
     @staticmethod
-    def init(msg):
+    def new(msg):
         return Halo(text=msg, spinner="dots", placement="right")
 
 
