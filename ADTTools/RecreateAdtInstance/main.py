@@ -2,6 +2,8 @@ import sys
 import time
 
 from jlog import logger
+from jlog import StatusBar
+from jlog import Spinner
 from azure.mgmt.digitaltwins import AzureDigitalTwinsManagementClient
 from azure.mgmt.digitaltwins.v2022_05_31.models import DigitalTwinsResource
 from azure.mgmt.digitaltwins.v2022_05_31.models import DigitalTwinsEndpointResource
@@ -9,12 +11,6 @@ from azure.mgmt.digitaltwins.v2022_05_31.models import EventHub
 from azure.mgmt.digitaltwins.v2022_05_31.models import EventGrid
 from azure.mgmt.digitaltwins.v2022_05_31.models import ServiceBus
 from azure.identity import DefaultAzureCredential
-from tqdm import tqdm
-from halo import Halo
-
-
-status_bar_format = "{l_bar}{bar}"
-status_bar_color = "yellow"
 
 
 def map_endpoint(resource):
@@ -45,17 +41,17 @@ def delete_digital_twins_instance():
     delete_start = round(time.time() * 1000)
     delete_instance = dt_resource_client.digital_twins.begin_delete(resource_group, instance_name)
     cycles = 0
-    d_progress_bar = tqdm(total=10_000, desc="Deleting DigitalTwins Instance", leave=False, bar_format=status_bar_format, colour=status_bar_color)
+    status_bar = StatusBar.init(total=10_000, msg="Deleting DigitalTwins Instance")
 
     while not delete_instance.done():
         if cycles < 9_900:
             time.sleep(0.1)
-            d_progress_bar.update(25)
+            status_bar.update(25)
             cycles += 25
 
     delete_end = round(time.time() * 1000)
-    d_progress_bar.update(10_000 - cycles)
-    d_progress_bar.close()
+    status_bar.update(10_000 - cycles)
+    status_bar.close()
 
     return delete_end - delete_start
 
@@ -67,17 +63,17 @@ def create_digital_twins_instance():
     create_start = round(time.time() * 1000)
     create_instance = dt_resource_client.digital_twins.begin_create_or_update(resource_group, instance_name, dt_resource)
     cycles = 0
-    c_progress_bar = tqdm(total=15_000, desc="Creating DigitalTwins Instance", leave=False, bar_format=status_bar_format, colour=status_bar_color)
+    status_bar = StatusBar.init(total=15_000, msg="Creating DigitalTwins Instance")
 
     while not create_instance.done():
         if cycles < 14_850:
             time.sleep(0.1)
-            c_progress_bar.update(25)
+            status_bar.update(25)
             cycles += 25
 
     create_end = round(time.time() * 1000)
-    c_progress_bar.update(15_000 - cycles)
-    c_progress_bar.close()
+    status_bar.update(15_000 - cycles)
+    status_bar.close()
 
     return create_end - create_start
 
@@ -98,14 +94,22 @@ def create_endpoints():
 
         updated_endpoints.append(updated_endpoint)
 
-    spinner = Halo(text='Creating Endpoints.', spinner='dots')
+    spinner = Spinner.init("Creating Endpoints.")
     spinner.start()
-    while True:
-        num_complete = 0
 
-        for endpoint in updated_endpoints:
-            if endpoint.done():
+    num_complete = 0
+    while True:
+
+        for index in range(0, num_endpoints):
+            current_request = updated_endpoints[index]
+
+            if current_request is None:
+                continue
+
+            if current_request.done():
+                updated_endpoints[index] = None
                 num_complete += 1
+                spinner.text = f"Creating Endpoints. {num_complete}/{num_endpoints}"
 
         if num_complete is num_endpoints:
             break
@@ -122,14 +126,13 @@ if len(sys.argv) < 4:
         'ADT instance name must be provided as arg[1]. SubscriptionId must be provided as arg[2] Exiting. ResourceGroup as arg[3]')
     exit()
 
-instance_name = sys.argv[1]
+instance_name   = sys.argv[1]
 subscription_id = sys.argv[2]
-resource_group = sys.argv[3]
-api_version = "2022-05-31"
+resource_group  = sys.argv[3]
 
+api_version         = "2022-05-31"
 credential_provider = DefaultAzureCredential()
-# noinspection PyTypeChecker
-dt_resource_client = AzureDigitalTwinsManagementClient(credential_provider, subscription_id, api_version)
+dt_resource_client  = AzureDigitalTwinsManagementClient(credential_provider, subscription_id, api_version)
 
 instance = None
 

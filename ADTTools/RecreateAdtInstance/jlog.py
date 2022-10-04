@@ -1,5 +1,24 @@
 import logging
 
+from tqdm import tqdm
+from halo import Halo
+
+
+class StatusBar:
+    @staticmethod
+    def init(total, msg):
+        return tqdm(total=total,
+                    desc=msg,
+                    leave=False,
+                    bar_format="{l_bar}{bar}",
+                    colour="yellow")
+
+
+class Spinner:
+    @staticmethod
+    def init(msg):
+        return Halo(text=msg, spinner="dots", placement="right")
+
 
 class LogFormat(logging.Formatter):
     grey = "\x1b[38;20m"
