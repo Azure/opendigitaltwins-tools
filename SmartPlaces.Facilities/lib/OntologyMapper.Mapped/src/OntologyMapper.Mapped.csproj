@@ -1,8 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-	<Sdk Name="Microsoft.Build.CentralPackageVersions" />
 
 	<PropertyGroup>
-		<Description>This is the Smart Facilities Ontology Mapper library for the Mapped Topology.</Description>
+		<Description>This is the Microsoft Smart Places Facilities Ontology Mapper library for the Mapped Topology.</Description>
 		<TargetFramework>net6.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
