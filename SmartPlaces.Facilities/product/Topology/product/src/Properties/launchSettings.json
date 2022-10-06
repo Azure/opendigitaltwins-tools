@@ -3,10 +3,10 @@
     "Topology": {
       "commandName": "Project",
       "environmentVariables": {
-        "AppInsightsConnectionString": "InstrumentationKey=f6bc41ee-5ffe-4009-b573-385e3bb15c66;IngestionEndpoint=https://eastus-8.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus.livediagnostics.monitor.azure.com/",
-        "KeyVaultEndpoint": "https://kv-msf-jb-eus-sf01.vault.azure.net/",
+        "AppInsightsConnectionString": "",
+        "KeyVaultEndpoint": "",
         "OntologyMappingFilename": "mapped_json_v0_dtdlv2_Brick_1_3-REC_4_0.json",
-        "AzureDigitalTwinsEndpoint": "https://adt-msf-jb-eus-sf01.api.eus.digitaltwins.azure.net",
+        "AzureDigitalTwinsEndpoint": "",
         "MappedRootUrl": "https://api.mapped.com/graphql",
         "TopologyRefreshIntervalInHours": "12"
       }
