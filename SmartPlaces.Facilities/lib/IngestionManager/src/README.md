@@ -242,7 +242,6 @@ An implementation of IIngestionManagerOptions which allows the consumer to speci
 | Name | Description |
 | --- | --- |
 | AzureDigitalTwinsEndpoint | The Url for the Azure Digital Twins instance to target. |
-| StorageAccountEndpoint | The storage account to be used during the ingestion process. |
 | MaxRetryAttempts | The number of times to retry create twin attempts per twin/relationship. |
 | RetryDelayInMs | The delay in milliseconds between retry create twin attempts per twin/relationship. Defaults to 50ms. |
 | AdtResource | Gets or sets the resource to be used when generating a Token for accessing Azure Digital Twins. This needs to be changed when working with non-public clouds. Defaults to https://digitaltwins.azure.net/.default. |
