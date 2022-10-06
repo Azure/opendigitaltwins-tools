@@ -5,6 +5,7 @@ from jlog import logger
 from jlog import ProgressBar
 from jlog import Spinner
 from azure.mgmt.digitaltwins import AzureDigitalTwinsManagementClient
+from azure.core.exceptions import HttpResponseError
 from azure.mgmt.digitaltwins.v2022_05_31.models import DigitalTwinsResource
 from azure.mgmt.digitaltwins.v2022_05_31.models import DigitalTwinsEndpointResource
 from azure.mgmt.digitaltwins.v2022_05_31.models import EventHub
@@ -138,8 +139,8 @@ instance = None
 
 try:
     instance = dt_resource_client.digital_twins.get(resource_group, instance_name)
-except:
-    logger.error("DigitalTwins instance not found. Exiting.")
+except HttpResponseError as e:
+    logger.exception(e)
     exit()
 
 logger.info("Successfully retrieved %s.", instance.name)
