@@ -15,8 +15,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Topology", "Topology", "{0BEB2A67-1E4C-4ADF-A967-E3812C7776E3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Topology", "product\Topology\product\src\Topology.csproj", "{D8DA04AA-795B-4839-A465-90307BDEA9F9}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OntologyMapper", "lib\OntologyMapper\src\OntologyMapper.csproj", "{ED573FE1-C914-4F10-9F1F-48220201E3BA}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OntologyMapper.Test", "lib\OntologyMapper\test\OntologyMapper.Test.csproj", "{577E5673-C497-481E-897F-F5EF6988B54E}"
@@ -33,16 +31,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IngestionManager.Mapped", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IngestionManager.Mapped.Test", "lib\IngestionManager.Mapped\test\IngestionManager.Mapped.Test.csproj", "{681F2179-BF8C-4D2D-A22C-FFD8A08D9FCA}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Topology", "products\Topology\src\Topology.csproj", "{1B8C3615-ED39-4AD0-81DB-DA5E38CC394C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D8DA04AA-795B-4839-A465-90307BDEA9F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D8DA04AA-795B-4839-A465-90307BDEA9F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D8DA04AA-795B-4839-A465-90307BDEA9F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D8DA04AA-795B-4839-A465-90307BDEA9F9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{ED573FE1-C914-4F10-9F1F-48220201E3BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{ED573FE1-C914-4F10-9F1F-48220201E3BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED573FE1-C914-4F10-9F1F-48220201E3BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -75,13 +71,16 @@ Global
 		{681F2179-BF8C-4D2D-A22C-FFD8A08D9FCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{681F2179-BF8C-4D2D-A22C-FFD8A08D9FCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{681F2179-BF8C-4D2D-A22C-FFD8A08D9FCA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B8C3615-ED39-4AD0-81DB-DA5E38CC394C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B8C3615-ED39-4AD0-81DB-DA5E38CC394C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B8C3615-ED39-4AD0-81DB-DA5E38CC394C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B8C3615-ED39-4AD0-81DB-DA5E38CC394C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{0BEB2A67-1E4C-4ADF-A967-E3812C7776E3} = {342FED6C-7A97-4C66-814B-EFF14DB6EAFB}
-		{D8DA04AA-795B-4839-A465-90307BDEA9F9} = {0BEB2A67-1E4C-4ADF-A967-E3812C7776E3}
 		{ED573FE1-C914-4F10-9F1F-48220201E3BA} = {5928B305-B822-4BE8-9367-B07FF0382425}
 		{577E5673-C497-481E-897F-F5EF6988B54E} = {5928B305-B822-4BE8-9367-B07FF0382425}
 		{E531FCB4-91D4-42C6-A716-8E7326348670} = {5928B305-B822-4BE8-9367-B07FF0382425}
@@ -90,6 +89,7 @@ Global
 		{05EF92F2-C4A4-4A67-97EB-F8F2A0A3E206} = {5928B305-B822-4BE8-9367-B07FF0382425}
 		{9388AA25-76AE-4CE3-A9C9-9B52F61A933E} = {5928B305-B822-4BE8-9367-B07FF0382425}
 		{681F2179-BF8C-4D2D-A22C-FFD8A08D9FCA} = {5928B305-B822-4BE8-9367-B07FF0382425}
+		{1B8C3615-ED39-4AD0-81DB-DA5E38CC394C} = {0BEB2A67-1E4C-4ADF-A967-E3812C7776E3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D6CDA0A7-BBF8-4099-87DF-01D968F4E4FD}

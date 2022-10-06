@@ -7,7 +7,7 @@
 		<Nullable>enable</Nullable>
 		<AssemblyName>$(MSBuildProjectName)</AssemblyName>
 		<RootNamespace>$(MSBuildProjectName)</RootNamespace>
-		<CodeAnalysisRuleSet>$(MSBuildThisFileDirectory)..\..\..\..\.config\CodeAnalysis.ruleset</CodeAnalysisRuleSet>
+		<CodeAnalysisRuleSet>$(MSBuildThisFileDirectory)..\..\..\.config\CodeAnalysis.ruleset</CodeAnalysisRuleSet>
 		<Deterministic>true</Deterministic>
 		<LangVersion>10</LangVersion>
 		<RepositoryRootPath>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)\..'))</RepositoryRootPath>
@@ -34,10 +34,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\..\..\lib\IngestionManager.Mapped\src\IngestionManager.Mapped.csproj" />
-		<ProjectReference Include="..\..\..\..\lib\IngestionManager\src\IngestionManager.csproj" />
-		<ProjectReference Include="..\..\..\..\lib\OntologyMapper.Mapped\src\OntologyMapper.Mapped.csproj" />
-		<ProjectReference Include="..\..\..\..\lib\OntologyMapper\src\OntologyMapper.csproj" />
+		<ProjectReference Include="..\..\..\lib\IngestionManager.Mapped\src\IngestionManager.Mapped.csproj" />
+		<ProjectReference Include="..\..\..\lib\IngestionManager\src\IngestionManager.csproj" />
+		<ProjectReference Include="..\..\..\lib\OntologyMapper.Mapped\src\OntologyMapper.Mapped.csproj" />
+		<ProjectReference Include="..\..\..\lib\OntologyMapper\src\OntologyMapper.csproj" />
 	</ItemGroup>
 
 	<PropertyGroup Condition="'$(BuildingInsideVisualStudio)' != 'true'">
