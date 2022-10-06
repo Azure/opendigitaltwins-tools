@@ -45,7 +45,6 @@ The following secrets must be defined in the KeyVault in order to run this code:
 2. Access to the App Insights instance is granted via a Managed Identity 
 3. Access to the KeyVault is granted via a Managed Identity
 4. Access to the ADT Instance is granted through a Managed Identity
-5. Access to the Storage Account is granted through a Managed Identity
 
 ## Logging and Metrics
 
