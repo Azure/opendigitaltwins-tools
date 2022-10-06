@@ -1,0 +1,101 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32414.318
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{5928B305-B822-4BE8-9367-B07FF0382425}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IngestionManager", "IngestionManager", "{42764033-2277-4585-B737-7D5EAED58D56}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IngestionManager", "lib\IngestionManager\src\IngestionManager.csproj", "{E8E33095-5D39-4829-B25C-1F71E5870B27}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "products", "products", "{342FED6C-7A97-4C66-814B-EFF14DB6EAFB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IngestionManager.Test", "lib\IngestionManager\test\IngestionManager.Test.csproj", "{3D17EF22-4165-40DE-8054-2B7F071A4E8A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0FB78792-B0EC-4CA7-8B4A-E792032B252C}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		CONTRIBUTING.md = CONTRIBUTING.md
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Topology", "Topology", "{0BEB2A67-1E4C-4ADF-A967-E3812C7776E3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IngestionManager.Mapped", "lib\IngestionManager.Mapped\src\IngestionManager.Mapped.csproj", "{375B77D6-15FD-4C8E-86ED-EC9B90B1FBA4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IngestionManager.Mapped.Test", "lib\IngestionManager.Mapped\test\IngestionManager.Mapped.Test.csproj", "{2D64B845-A0A3-4DB8-92FD-B3E84B824FA0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Topology", "product\Topology\product\src\Topology.csproj", "{D8DA04AA-795B-4839-A465-90307BDEA9F9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OntologyMapper", "lib\OntologyMapper\src\OntologyMapper.csproj", "{ED573FE1-C914-4F10-9F1F-48220201E3BA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OntologyMapper.Test", "lib\OntologyMapper\test\OntologyMapper.Test.csproj", "{577E5673-C497-481E-897F-F5EF6988B54E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OntologyMapper.Mapped", "lib\OntologyMapper.Mapped\src\OntologyMapper.Mapped.csproj", "{E531FCB4-91D4-42C6-A716-8E7326348670}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OntologyMapper.Mapped.Test", "lib\OntologyMapper.Mapped\test\OntologyMapper.Mapped.Test.csproj", "{7E443D57-4252-4540-A423-5222EBA70774}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E8E33095-5D39-4829-B25C-1F71E5870B27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8E33095-5D39-4829-B25C-1F71E5870B27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8E33095-5D39-4829-B25C-1F71E5870B27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8E33095-5D39-4829-B25C-1F71E5870B27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D17EF22-4165-40DE-8054-2B7F071A4E8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D17EF22-4165-40DE-8054-2B7F071A4E8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D17EF22-4165-40DE-8054-2B7F071A4E8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D17EF22-4165-40DE-8054-2B7F071A4E8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{375B77D6-15FD-4C8E-86ED-EC9B90B1FBA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{375B77D6-15FD-4C8E-86ED-EC9B90B1FBA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{375B77D6-15FD-4C8E-86ED-EC9B90B1FBA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{375B77D6-15FD-4C8E-86ED-EC9B90B1FBA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D64B845-A0A3-4DB8-92FD-B3E84B824FA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D64B845-A0A3-4DB8-92FD-B3E84B824FA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D64B845-A0A3-4DB8-92FD-B3E84B824FA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D64B845-A0A3-4DB8-92FD-B3E84B824FA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8DA04AA-795B-4839-A465-90307BDEA9F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8DA04AA-795B-4839-A465-90307BDEA9F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8DA04AA-795B-4839-A465-90307BDEA9F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8DA04AA-795B-4839-A465-90307BDEA9F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED573FE1-C914-4F10-9F1F-48220201E3BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED573FE1-C914-4F10-9F1F-48220201E3BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED573FE1-C914-4F10-9F1F-48220201E3BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED573FE1-C914-4F10-9F1F-48220201E3BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{577E5673-C497-481E-897F-F5EF6988B54E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{577E5673-C497-481E-897F-F5EF6988B54E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{577E5673-C497-481E-897F-F5EF6988B54E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{577E5673-C497-481E-897F-F5EF6988B54E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E531FCB4-91D4-42C6-A716-8E7326348670}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E531FCB4-91D4-42C6-A716-8E7326348670}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E531FCB4-91D4-42C6-A716-8E7326348670}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E531FCB4-91D4-42C6-A716-8E7326348670}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E443D57-4252-4540-A423-5222EBA70774}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E443D57-4252-4540-A423-5222EBA70774}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E443D57-4252-4540-A423-5222EBA70774}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E443D57-4252-4540-A423-5222EBA70774}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{42764033-2277-4585-B737-7D5EAED58D56} = {5928B305-B822-4BE8-9367-B07FF0382425}
+		{E8E33095-5D39-4829-B25C-1F71E5870B27} = {42764033-2277-4585-B737-7D5EAED58D56}
+		{3D17EF22-4165-40DE-8054-2B7F071A4E8A} = {42764033-2277-4585-B737-7D5EAED58D56}
+		{0BEB2A67-1E4C-4ADF-A967-E3812C7776E3} = {342FED6C-7A97-4C66-814B-EFF14DB6EAFB}
+		{375B77D6-15FD-4C8E-86ED-EC9B90B1FBA4} = {42764033-2277-4585-B737-7D5EAED58D56}
+		{2D64B845-A0A3-4DB8-92FD-B3E84B824FA0} = {42764033-2277-4585-B737-7D5EAED58D56}
+		{D8DA04AA-795B-4839-A465-90307BDEA9F9} = {0BEB2A67-1E4C-4ADF-A967-E3812C7776E3}
+		{ED573FE1-C914-4F10-9F1F-48220201E3BA} = {5928B305-B822-4BE8-9367-B07FF0382425}
+		{577E5673-C497-481E-897F-F5EF6988B54E} = {5928B305-B822-4BE8-9367-B07FF0382425}
+		{E531FCB4-91D4-42C6-A716-8E7326348670} = {5928B305-B822-4BE8-9367-B07FF0382425}
+		{7E443D57-4252-4540-A423-5222EBA70774} = {5928B305-B822-4BE8-9367-B07FF0382425}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D6CDA0A7-BBF8-4099-87DF-01D968F4E4FD}
+	EndGlobalSection
+EndGlobal

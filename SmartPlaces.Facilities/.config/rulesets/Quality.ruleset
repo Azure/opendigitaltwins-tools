@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RuleSet Name="Microsoft.Analyzers.ManagedCodeAnalysis" ToolsVersion="15.0">
+  <Rules AnalyzerId="Microsoft.Analyzers.ManagedCodeAnalysis" RuleNamespace="Microsoft.Rules.Managed">
+    <!-- Rule documentation can be found here: https://docs.microsoft.com/en-us/dotnet/fundamentals/code-analysis/overview -->
+
+    <!-- Must fix -->
+    <Rule Id="CA2253" Action="Error" />  <!-- Named placeholders in the logging message template should not be comprised of only numeric characters	-->
+    <Rule Id="CA2254" Action="Error" />  <!-- Dont use( $"Log: {thing}") in logs. Use ("Log: {thing}", thing) instead -->
+    <Rule Id="CA2016" Action="Error" />  <!-- Forward the 'cancellationtoken' parameter or pass in 'CancellationToken.None' explicitly to indicate intentionally not propagating the token -->
+    <Rule Id="CA2204" Action="Error" />  <!-- LiteralsShouldBeSpelledCorrectly -->
+
+    <!-- Should fix -->
+
+    <!-- Devs choice -->
+
+  </Rules>
+</RuleSet>

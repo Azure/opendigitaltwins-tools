@@ -1,0 +1,4529 @@
+{
+  "Header": {
+    "InputOntologies": [
+      {
+        "Name": "mapped",
+        "Version": "1.0",
+        "DtdlVersion": "v0"
+      }
+    ],
+    "OutputOntologies": [
+      {
+        "Name": "willow",
+        "Version": "1.0",
+        "DtdlVersion": "v0"
+      }
+    ]
+  },
+  "NamespaceRemaps": [
+    {
+      "InputNamespace": "dtmi:mapped:core:",
+      "OutputNamespace": "dtmi:com:willowinc:"
+    }
+  ],
+  "InterfaceRemaps": [
+    {
+      "InputDtmi": "dtmi:mapped:core:AblutionsRoom;1",
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:AbsorptionChiller;1",
+      "OutputDtmi": "dtmi:com:willowinc:Chiller;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:AccelerationTimeSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:TimeSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:AccessActivityStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:StateSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:AccessCardReader;1",
+      "OutputDtmi": "dtmi:com:willowinc:AccessReader;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:AccessControlSystem;1",
+      "OutputDtmi": "dtmi:com:willowinc:AccessControlPanel;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:AccessControlUnit;1",
+      "OutputDtmi": "dtmi:com:willowinc:AccessControlPanel;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:AccessControlZone;1",
+      "OutputDtmi": "dtmi:com:willowinc:Zone;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ActivePowerSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:ActiveElectricalPowerSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ActiveStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ActiveZoneStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Address;1",
+      "OutputDtmi": "dtmi:digitaltwins:rec33:addressing:Address;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:AdjustSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:Sensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:AHU;1",
+      "OutputDtmi": "dtmi:com:willowinc:AirHandlingUnit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:AirAlarm;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:AirDifferentialPressureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:AirDeltaPressureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:AirDifferentialPressureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:AirDeltaPressureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:AirFlowAlarm;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:AirFlowAlarmSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:AirFlowDemandSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:AirFlowSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:AirFlowDirectionStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:AirFlowLossAlarm;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:AirFlowRateCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:Actuator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:AirFlowSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:Limit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:AirFlowStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:AirGrainsSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:HumidityRatioSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:AirPlenum;1",
+      "OutputDtmi": "dtmi:com:willowinc:AirPlenum;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:AirQualitySensingDevice;1",
+      "OutputDtmi": "dtmi:com:willowinc:AirQualitySensor;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:AirStaticPressureStepParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:AirSystem;1",
+      "OutputDtmi": "dtmi:com:willowinc:HVACAirSystem;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:AirTemperatureAlarm;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:AirTemperatureIntegralTimeParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:AirTemperatureSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:Limit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:AirTemperatureStepParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:AirWetBulbTemperatureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:WetBulbTemperatureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Alarm;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:AlarmDelayParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:AltitudeSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:Sensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ApparentEnergySensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:ApparentElectricalEnergySensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ApparentPowerSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:ApparentElectricalPowerSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Atrium;1",
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:attachment;1",
+      "OutputDtmi": "dtmi:com:willowinc:attachment;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:AudioGainStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Auditorium;1",
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:AutomatedExternalDefibrillator;1",
+      "OutputDtmi": "dtmi:com:willowinc:AutomatedExternalDefibrillator;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:AutomaticModeCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:Actuator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:AuxiliaryHeaterStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:AuxiliaryHeatTemperatureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:TemperatureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:AvailabilityStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:AverageCoolingDemandSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:Sensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:AverageDischargeAirFlowSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:DischargeAirFlowSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:AverageExhaustAirStaticPressureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:ExhaustAirStaticPressureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:AverageHeatingDemandSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:Sensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:AverageSupplyAirFlowSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:AirFlowSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:AverageZoneAirTemperatureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:ZoneAirTemperatureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:BACnetDevice;1",
+      "OutputDtmi": "dtmi:com:willowinc:BACnetController;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:BACnetObjectId;1",
+      "OutputDtmi": "dtmi:com:willowinc:BACnetObjectId;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:BACnetVendorId;1",
+      "OutputDtmi": "dtmi:com:willowinc:BACnetVendorId;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:BaseboardRadiator;1",
+      "OutputDtmi": "dtmi:com:willowinc:BaseboardRadiator;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Basement;1",
+      "OutputDtmi": "dtmi:com:willowinc:BasementLevel;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Battery;1",
+      "OutputDtmi": "dtmi:com:willowinc:BatteryEquipment;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:BatteryEnergyStorageSystem;1",
+      "OutputDtmi": "dtmi:com:willowinc:BatterySystem;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:BatteryRoom;1",
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:BatteryStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:BatteryVoltageSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:VoltageSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:BenchSpace;1",
+      "OutputDtmi": "dtmi:com:willowinc:Space;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:BoosterFan;1",
+      "OutputDtmi": "dtmi:com:willowinc:Fan;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:BoxModeCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:ModeActuator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:BreakerPanel;1",
+      "OutputDtmi": "dtmi:com:willowinc:BreakerPanel;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:BreakRoom;1",
+      "OutputDtmi": "dtmi:com:willowinc:RestingRoom;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:BroadcastRoom;1",
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:BuildingAirHumiditySetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:AirHumiditySetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:BuildingAirStaticPressureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:AirStaticPressureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:BuildingAirStaticPressureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:AirStaticPressureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:BuildingChilledWaterMeter;1",
+      "OutputDtmi": "dtmi:com:willowinc:WaterMeter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:BuildingElectricalMeter;1",
+      "OutputDtmi": "dtmi:com:willowinc:ElectricalMeter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:BuildingGasMeter;1",
+      "OutputDtmi": "dtmi:com:willowinc:GasMeter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:BuildingHotWaterMeter;1",
+      "OutputDtmi": "dtmi:com:willowinc:ThermalMeter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:BuildingMeter;1",
+      "OutputDtmi": "dtmi:com:willowinc:MeterEquipment;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:BuildingWaterMeter;1",
+      "OutputDtmi": "dtmi:com:willowinc:WaterMeter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:BusRiser;1",
+      "OutputDtmi": "dtmi:com:willowinc:BusRiser;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:BypassAirFlowSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:AirFlowSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:BypassAirHumiditySetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:AirHumiditySetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:BypassCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:Actuator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:BypassValve;1",
+      "OutputDtmi": "dtmi:com:willowinc:Valve;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:BypassWaterFlowSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:BypassHotWaterFlowSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:BypassWaterFlowSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:WaterFlowSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Cafeteria;1",
+      "OutputDtmi": "dtmi:com:willowinc:CafeteriaRoom;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Calendar;1",
+      "OutputDtmi": "dtmi:com:willowinc:Calendar;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:CalendarEvent;1",
+      "OutputDtmi": "dtmi:com:willowinc:Event;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:CalendarEventInvitation;1",
+      "OutputDtmi": "dtmi:com:willowinc:CalendarEventInvitation;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:callInfo;1",
+      "OutputDtmi": "dtmi:com:willowinc:callInfo;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Camera;1",
+      "OutputDtmi": "dtmi:com:willowinc:VideoSurveillanceCamera;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:CAV;1",
+      "OutputDtmi": "dtmi:com:willowinc:CAVBox;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:CeilingHeightSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:HeightSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:CentrifugalChiller;1",
+      "OutputDtmi": "dtmi:com:willowinc:Chiller;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ChangeFilterAlarm;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ChilledRefrigerantSupplyTemperatureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:TemperatureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ChilledWaterCoil;1",
+      "OutputDtmi": "dtmi:com:willowinc:ChilledWaterCoil;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ChilledWaterDifferentialPressureDeadbandSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:ChilledWaterDeltaPressureDeadbandSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ChilledWaterDifferentialPressureIntegralTimeParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ChilledWaterDifferentialPressureLoadShedResetStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ChilledWaterDifferentialPressureLoadShedSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:ChilledWaterDeltaPressureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ChilledWaterDifferentialPressureLoadShedStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ChilledWaterDifferentialPressureProportionalBandParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ChilledWaterDifferentialPressureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:ChilledWaterDeltaPressureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ChilledWaterDifferentialPressureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:ChilledWaterDeltaPressureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ChilledWaterDifferentialPressureStepParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ChilledWaterDifferentialTemperatureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:DeltaChilledWaterTemperatureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ChilledWaterDischargeFlowSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:ChilledWaterFlowSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ChilledWaterDischargeFlowSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:ChilledWaterFlowSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ChilledWaterLoop;1",
+      "OutputDtmi": "dtmi:com:willowinc:ChilledWaterLoop;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ChilledWaterMeter;1",
+      "OutputDtmi": "dtmi:com:willowinc:WaterMeter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ChilledWaterPump;1",
+      "OutputDtmi": "dtmi:com:willowinc:DomesticWaterPump;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ChilledWaterPumpDifferentialPressureDeadbandSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:ChilledWaterDeltaPressureDeadbandSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ChilledWaterReturnFlowSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:LeavingChilledWaterFlowSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ChilledWaterReturnTemperatureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:LeavingChilledWaterTemperatureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ChilledWaterStaticPressureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:StaticPressureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ChilledWaterSupplyFlowSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:WaterFlowSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ChilledWaterSupplyFlowSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:WaterFlowSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ChilledWaterSupplyTemperatureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:EnteringChilledWaterTemperatureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ChilledWaterSupplyTemperatureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:EnteringChilledWaterTemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ChilledWaterSystem;1",
+      "OutputDtmi": "dtmi:com:willowinc:HVACChilledWaterSystem;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ChilledWaterSystemEnableCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:EnableActuator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ChilledWaterValve;1",
+      "OutputDtmi": "dtmi:com:willowinc:Valve;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Class;1",
+      "OutputDtmi": "dtmi:com:willowinc:Class;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:CloseLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:Limit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:CloudLayer1HeightCodeSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:CloudLayer1HeightCodeSensor;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:CloudLayer2HeightCodeSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:CloudLayer2HeightCodeSensor;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:CloudLayer3HeightCodeSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:CloudLayer3HeightCodeSensor;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:CO2Alarm;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:CO2AlarmSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:CO2DifferentialSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:CO2AirQualitySensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:CO2LevelSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:CO2AirQualitySensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:CO2Sensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:CO2AirQualitySensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:CODifferentialSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:COSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Coil;1",
+      "OutputDtmi": "dtmi:com:willowinc:FanCoilUnit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ColdBox;1",
+      "OutputDtmi": "dtmi:com:willowinc:ColdBox;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ColdestZoneAirTemperatureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:ZoneAirTemperatureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:COLevelSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:COSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:CollectionBasinWaterHeater;1",
+      "OutputDtmi": "dtmi:com:willowinc:WaterHeater;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:CollectionBasinWaterLevelAlarm;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:CollectionBasinWaterLevelSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:LevelSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:CollectionBasinWaterTemperatureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:WaterTemperatureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Command;1",
+      "OutputDtmi": "dtmi:com:willowinc:Actuator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:CommonSpace;1",
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:CommunicationLossAlarm;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Compressor;1",
+      "OutputDtmi": "dtmi:com:willowinc:AirCompressor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:CompressorStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Concession;1",
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:CondensateLeakAlarm;1",
+      "OutputDtmi": "dtmi:com:willowinc:LeakSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Condenser;1",
+      "OutputDtmi": "dtmi:com:willowinc:CondensingUnit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:CondenserHeatExchanger;1",
+      "OutputDtmi": "dtmi:com:willowinc:HeatExchanger;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:CondenserWaterBypassValve;1",
+      "OutputDtmi": "dtmi:com:willowinc:Valve;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:CondenserWaterFlowCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:CondenserWaterPumpRunActuator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:CondenserWaterFlowStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:CondenserWaterIsolationValve;1",
+      "OutputDtmi": "dtmi:com:willowinc:SprinklerGlobeValve;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:CondenserWaterPump;1",
+      "OutputDtmi": "dtmi:com:willowinc:Pump;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:CondenserWaterSupplyTemperatureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:EnteringCondenserWaterTemperatureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:CondenserWaterSupplyTemperatureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:EnteringCondenserWaterTemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:CondenserWaterSystem;1",
+      "OutputDtmi": "dtmi:com:willowinc:HVACCondenserWaterSystem;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:CondenserWaterValve;1",
+      "OutputDtmi": "dtmi:com:willowinc:Valve;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:CondensingNaturalGasBoiler;1",
+      "OutputDtmi": "dtmi:com:willowinc:Boiler;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ConferenceRoom;1",
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:connectedDataSourceId;1",
+      "OutputDtmi": "dtmi:com:willowinc:connectedDataSourceId;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ConnectedDevicesCountStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ConstantAirVolumeBox;1",
+      "OutputDtmi": "dtmi:com:willowinc:ConstantAirVolumeBox;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ControlRoom;1",
+      "OutputDtmi": "dtmi:com:willowinc:UtilitiesRoom;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:CoolingAirTemperatureSetpointOffset;1",
+      "OutputDtmi": "dtmi:com:willowinc:AirTemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:CoolingCoil;1",
+      "OutputDtmi": "dtmi:com:willowinc:FanCoilUnit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:CoolingCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:Actuator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:CoolingDemandSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:Sensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:CoolingDemandSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:Setpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:CoolingDischargeAirTemperatureDeadbandSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:AirTemperatureDeadbandSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:CoolingDischargeAirTemperatureIntegralTimeParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:CoolingDischargeAirTemperatureProportionalBandParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:CoolingRequestCountStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:CoolingStartStopStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:StartState;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:CoolingSupplyAirFlowSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:AirFlowSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:CoolingSupplyAirTemperatureDeadbandSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:AirTemperatureDeadbandSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:CoolingSupplyAirTemperatureIntegralTimeParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:CoolingSupplyAirTemperatureProportionalBandParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:CoolingTemperatureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:TemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:CoolingTowerFan;1",
+      "OutputDtmi": "dtmi:com:willowinc:Fan;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:CoolingValve;1",
+      "OutputDtmi": "dtmi:com:willowinc:Valve;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:CopyRoom;1",
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:CoreTemperatureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:TemperatureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:CoreTemperatureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:TemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Count;1",
+      "OutputDtmi": "dtmi:com:willowinc:CountSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:CRAC;1",
+      "OutputDtmi": "dtmi:com:willowinc:ComputerRoomAirConditioningUnit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Cubicle;1",
+      "OutputDtmi": "dtmi:com:willowinc:Office;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:CurrentLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:Limit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:CurrentOutputSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:CurrentSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:CurrentRatioSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:CurrentSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:CurtailmentOverrideCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:OverrideActuator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:CycleAlarm;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Damper;1",
+      "OutputDtmi": "dtmi:com:willowinc:HVACDamper;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DamperCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:DamperActuator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DamperPositionCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:DamperPositionActuator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DCBusVoltageSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:VoltageSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DecelerationTimeSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:DwellTimeSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DedicatedOutdoorAirSystemUnit;1",
+      "OutputDtmi": "dtmi:com:willowinc:DedicatedOutdoorAirSystem;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DehumidificationStartStopStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:StartStopState;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DeionisedWaterLevelSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:LevelSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DeionizedWaterAlarm;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DelayParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DemandSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:Sensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DemandSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:Setpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DerivativeGainParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DerivativeTimeParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DetentionRoom;1",
+      "OutputDtmi": "dtmi:com:willowinc:EducationalRoom;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Device;1",
+      "OutputDtmi": "dtmi:com:willowinc:Device;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DewpointSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:DewPointTemperatureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DewpointSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:DewPointTemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DifferentialAirTemperatureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:AirTemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DifferentialPressureBypassValve;1",
+      "OutputDtmi": "dtmi:com:willowinc:Valve;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DifferentialPressureDeadbandSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:AirDeltaPressureDeadbandSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DifferentialPressureIntegralTimeParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DifferentialPressureLoadShedStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DifferentialPressureProportionalBand;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DifferentialPressureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:DeltaPressureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DifferentialPressureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:DeltaPressureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DifferentialPressureSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:Limit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DifferentialPressureStepParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DifferentialSpeedSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:SpeedSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DifferentialSpeedSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:SpeedSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DifferentialSupplyReturnWaterTemperatureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:WaterTemperatureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Dimmer;1",
+      "OutputDtmi": "dtmi:com:willowinc:Dimmer;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DirectExpansionCoolingCoil;1",
+      "OutputDtmi": "dtmi:com:willowinc:FanCoilUnit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DirectExpansionHeatingCoil;1",
+      "OutputDtmi": "dtmi:com:willowinc:FanCoilUnit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DirectExpansionUnit;1",
+      "OutputDtmi": "dtmi:com:willowinc:DirectExpansionUnit;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DirectionCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:Actuator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DirectionSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:WindDirectionSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DirectionStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DisableCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:DisableActuator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DisableDifferentialEnthalpyCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:DisableActuator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DisableDifferentialTemperatureCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:DisableActuator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DisableFixedEnthalpyCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:DisableActuator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DisableFixedTemperatureCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:DisableActuator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DisableHotWaterSystemOutsideAirTemperatureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:BypassHotWaterTemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DisableStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DischargeAirDewpointSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:DewPointTemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DischargeAirDuctPressureStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DischargeAirFlowDemandSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:DischargeAirFlowSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DischargeAirFlowHighResetSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:DischargeAirFlowSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DischargeAirFlowLowResetSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:DischargeAirFlowSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DischargeAirFlowResetSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:DischargeAirFlowSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DischargeAirSmokeDetectionAlarm;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DischargeAirStaticPressureDeadbandSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:AirStaticPressureDeadbandSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DischargeAirStaticPressureIntegralTimeParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DischargeAirStaticPressureProportionalBandParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DischargeAirStaticPressureStepParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DischargeAirTemperatureAlarm;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DischargeAirTemperatureCoolingSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:DischargeAirTemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DischargeAirTemperatureDeadbandSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:DeadbandSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DischargeAirTemperatureHeatingSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:DischargeAirTemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DischargeAirTemperatureHighResetSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:ResetSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DischargeAirTemperatureLowResetSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:ResetSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DischargeAirTemperatureProportionalBandParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DischargeAirTemperatureResetDifferentialSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:ResetSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DischargeAirTemperatureResetSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:ResetSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DischargeAirTemperatureStepParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DischargeFan;1",
+      "OutputDtmi": "dtmi:com:willowinc:Fan;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DischargeWaterDifferentialPressureDeadbandSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:WaterDeltaPressureDeadbandSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DischargeWaterDifferentialPressureIntegralTimeParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DischargeWaterDifferentialPressureProportionalBandParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DischargeWaterFlowSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:WaterFlowSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DischargeWaterFlowSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:WaterFlowSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DischargeWaterTemperatureAlarm;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DischargeWaterTemperatureProportionalBandParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DischargeWaterTemperatureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:WaterTemperatureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DischargeWaterTemperatureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:WaterTemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DisplacementFlowAirDiffuser;1",
+      "OutputDtmi": "dtmi:com:willowinc:AirDiffuser;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Display;1",
+      "OutputDtmi": "dtmi:com:willowinc:Display;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DisplayResolutionStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DisplayStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DistributionFrame;1",
+      "OutputDtmi": "dtmi:com:willowinc:DistributionAsset;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DOAS;1",
+      "OutputDtmi": "dtmi:com:willowinc:DOAS;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DomesticHotWaterSupplyTemperatureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:EnteringHotWaterTemperatureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DomesticHotWaterSupplyTemperatureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:EnteringHotWaterTemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DomesticHotWaterSystemEnableCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:WaterPumpRunActuator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DomesticHotWaterTemperatureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:HotWaterTemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DomesticHotWaterValve;1",
+      "OutputDtmi": "dtmi:com:willowinc:Valve;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DomesticWaterLoop;1",
+      "OutputDtmi": "dtmi:com:willowinc:DomesticWaterLoop;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DrenchHose;1",
+      "OutputDtmi": "dtmi:com:willowinc:DrenchHose;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DriveReadyStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:DuctStaticPressureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:StaticPressureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:EconCycleStartStopStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:StartStopState;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Economizer;1",
+      "OutputDtmi": "dtmi:com:willowinc:Economizer;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:EconomizerDamper;1",
+      "OutputDtmi": "dtmi:com:willowinc:HVACDamper;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:EconomizerStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:EffectiveAirTemperatureCoolingSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:AirTemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:EffectiveAirTemperatureHeatingSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:AirTemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:EffectiveAirTemperatureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:AirTemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:EffectiveCoolingAirTemperatureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:EffectiveCoolingZoneAirTemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:EffectiveDischargeAirTemperatureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:DischargeAirTemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:EffectiveHeatingAirTemperatureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:AirTemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:EffectiveReturnAirTemperatureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:ReturnAirTemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:EffectiveRoomAirTemperatureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:AirTemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:EffectiveSupplyAirTemperatureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:InletAirTemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ElectricalRoom;1",
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ElectricBaseboardRadiator;1",
+      "OutputDtmi": "dtmi:com:willowinc:ElectricBaseboardHeater;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ElectricBoiler;1",
+      "OutputDtmi": "dtmi:com:willowinc:Boiler;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ElectricRadiator;1",
+      "OutputDtmi": "dtmi:com:willowinc:ElectricRadiator;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ElevatorSpace;1",
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Email;1",
+      "OutputDtmi": "dtmi:com:willowinc:Email;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:EmailIdentity;1",
+      "OutputDtmi": "dtmi:com:willowinc:EmailIdentity;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:EmbeddedSurfaceSystemPanel;1",
+      "OutputDtmi": "dtmi:com:willowinc:EmbeddedSurfaceSystemPanel;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:EmbeddedTemperatureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:TemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:EmergencyAirFlowSystem;1",
+      "OutputDtmi": "dtmi:com:willowinc:EmergencyAirFlowSystem;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:EmergencyAirFlowSystemStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:EmergencyAlarm;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:EmergencyGeneratorAlarm;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:EmergencyGeneratorStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:EmergencyPhone;1",
+      "OutputDtmi": "dtmi:com:willowinc:EmergencyPhone;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:EmergencyPowerOffSystem;1",
+      "OutputDtmi": "dtmi:com:willowinc:EmergencyPowerOffSystem;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:EmergencyPowerOffSystemActivatedByHighTemperatureStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:OffState;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:EmergencyPowerOffSystemActivatedByLeakDetectionSystemStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:OffState;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:EmergencyPowerOffSystemStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:OffState;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:EmergencyPushButtonStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:EmergencyWashStation;1",
+      "OutputDtmi": "dtmi:com:willowinc:EmergencyEyeWashStation;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:EmployeeEntranceLobby;1",
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:EnableCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:EnableActuator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:EnableDifferentialEnthalpyCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:EnableActuator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:EnableDifferentialTemperatureCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:EnableActuator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:EnableFixedEnthalpyCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:EnableActuator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:EnableFixedTemperatureCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:EnableActuator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:EnableHotWaterSystemOutsideAirTemperatureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:OutsideAirTemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:EnableStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:EnableState;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:EnclosedOffice;1",
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:EnergyGenerationSystem;1",
+      "OutputDtmi": "dtmi:com:willowinc:System;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:EnergyStorageSystem;1",
+      "OutputDtmi": "dtmi:com:willowinc:ElectricalGenerationStorageEquipment;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:EnergySystem;1",
+      "OutputDtmi": "dtmi:com:willowinc:Generator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:EnergyUsageSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:EnergySensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:EnergyZone;1",
+      "OutputDtmi": "dtmi:com:willowinc:Zone;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:EnteringWaterFlowSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:WaterFlowSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:EnteringWaterFlowSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:WaterFlowSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:EnteringWaterTemperatureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:EnteringWaterTemperatureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:EnteringWaterTemperatureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:WaterTemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Entrance;1",
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Entry;1",
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:EntryStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:EnvironmentBox;1",
+      "OutputDtmi": "dtmi:com:willowinc:EnvironmentBox;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:EnvironmentIndexSatisfiedTimeStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:EquipmentRoom;1",
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ESSPanel;1",
+      "OutputDtmi": "dtmi:com:willowinc:ESSPanel;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:EvaporativeHeatExchanger;1",
+      "OutputDtmi": "dtmi:com:willowinc:HeatExchanger;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:EvapotranspirationSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:Sensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:EvenMonthStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Event;1",
+      "OutputDtmi": "dtmi:com:willowinc:Event;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ExerciseRoom;1",
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ExhaustAirDewpointSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:DewPointTemperatureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ExhaustAirDifferentialPressureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:ExhaustAirDeltaPressureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ExhaustAirDifferentialPressureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:ExhaustAirDeltaPressureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ExhaustAirFlowIntegralTimeParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ExhaustAirFlowProportionalBandParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ExhaustAirStackFlowDeadbandSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:ExhaustAirFlowSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ExhaustAirStackFlowIntegralTimeParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ExhaustAirStackFlowProportionalBandParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ExhaustAirStackFlowSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:ExhaustAirFlowSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ExhaustAirStackFlowSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:ExhaustAirFlowSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ExhaustAirStaticPressureProportionalBandParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ExhaustDamper;1",
+      "OutputDtmi": "dtmi:com:willowinc:HVACDamper;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ExhaustFanDisableCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:DisableActuator;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ExhaustFanEnableCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:EnableActuator;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:EyeWashStation;1",
+      "OutputDtmi": "dtmi:com:willowinc:EmergencyEyeWashStation;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:FailureAlarm;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:FanCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:FanActuator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:FanOnOffStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:OnOffState;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:FanRequest;1",
+      "OutputDtmi": "dtmi:com:willowinc:FanRequest;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:FanSpeedCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:FanSpeedActuator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:FanStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:FanVFD;1",
+      "OutputDtmi": "dtmi:com:willowinc:FanVFD;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:FaultResetCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:FaultResetActuator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:FaultStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:FaultState;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:FCU;1",
+      "OutputDtmi": "dtmi:com:willowinc:FanCoilUnit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:FieldOfPlay;1",
+      "OutputDtmi": "dtmi:com:willowinc:FieldOfPlay;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Filter;1",
+      "OutputDtmi": "dtmi:com:willowinc:AirFilter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:FilterDifferentialPressureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:FilterAirDeltaPressureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:FilterResetCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:Actuator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:FilterStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:FinalFilter;1",
+      "OutputDtmi": "dtmi:com:willowinc:AirFilter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:FireAlarm;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:FireControlPanel;1",
+      "OutputDtmi": "dtmi:com:willowinc:FireAlarmControlPanel;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:FireSafetyEquipment;1",
+      "OutputDtmi": "dtmi:com:willowinc:FireProtectionEquipment;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:FireSafetySystem;1",
+      "OutputDtmi": "dtmi:com:willowinc:FireProtectionSystem;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:FireSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:Sensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:FireZone;1",
+      "OutputDtmi": "dtmi:com:willowinc:Zone;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:firmwareVersion;1",
+      "OutputDtmi": "dtmi:com:willowinc:firmwareVersion;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:FirstAidKit;1",
+      "OutputDtmi": "dtmi:com:willowinc:FirstAidKit;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:FirstAidRoom;1",
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Floor;1",
+      "OutputDtmi": "dtmi:com:willowinc:Level;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:FloorLevel;1",
+      "OutputDtmi": "dtmi:com:willowinc:Level;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:FloorLevelIdentity;1",
+      "OutputDtmi": "dtmi:com:willowinc:FloorLevelIdentity;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:FoodServiceRoom;1",
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:FormaldehydeLevelSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:LevelSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:FreezeStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:FrequencyCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:Actuator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:FreshAirFan;1",
+      "OutputDtmi": "dtmi:com:willowinc:Fan;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:FreshAirSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:Limit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:FrostSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:Sensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:FuelMoistureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:Sensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:FuelTemperatureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:TemperatureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:FumeHood;1",
+      "OutputDtmi": "dtmi:com:willowinc:FumeHood;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:FumeHoodAirFlowSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:AirFlowSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:GainParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:GasDistribution;1",
+      "OutputDtmi": "dtmi:com:willowinc:GasDistribution;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:GasSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:Sensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:GasValve;1",
+      "OutputDtmi": "dtmi:com:willowinc:Valve;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Gatehouse;1",
+      "OutputDtmi": "dtmi:com:willowinc:Gatehouse;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:GeneratorRoom;1",
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:GeoLocationSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:Sensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:GreaseTrapLevelSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:LevelSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HailSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:Sensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Hallway;1",
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HazardousMaterialsStorage;1",
+      "OutputDtmi": "dtmi:com:willowinc:Storage;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HeatExchanger;1",
+      "OutputDtmi": "dtmi:com:willowinc:HeatExchanger;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HeatExchangerSupplyWaterTemperatureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:WaterTemperatureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HeatExchangerSystemEnableStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:EnableState;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HeatingCoil;1",
+      "OutputDtmi": "dtmi:com:willowinc:FanCoilUnitReheat;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HeatingCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:HeatingActuator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HeatingDemandSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:Sensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HeatingDemandSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:Setpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HeatingDischargeAirTemperatureDeadbandSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:AirTemperatureDeadbandSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HeatingDischargeAirTemperatureIntegralTimeParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HeatingDischargeAirTemperatureProportionalBandParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HeatingModeStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:ModeState;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HeatingRequestCountStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HeatingStartStopStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:StartStopState;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HeatingSupplyAirFlowSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:AirFlowSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HeatingSupplyAirTemperatureDeadbandSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:AirTemperatureDeadbandSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HeatingSupplyAirTemperatureIntegralTimeParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HeatingSupplyAirTemperatureProportionalBandParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HeatingTemperatureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:TemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HeatingThermalPowerSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:ThermalPowerSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HeatingValve;1",
+      "OutputDtmi": "dtmi:com:willowinc:Valve;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HeatingVentilationAirConditioningSystem;1",
+      "OutputDtmi": "dtmi:com:willowinc:HVACSystem;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HeatRecoveryHotWaterSystem;1",
+      "OutputDtmi": "dtmi:com:willowinc:HVACHotWaterSystem;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HeatSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:Sensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HeatSinkTemperatureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:TemperatureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HeatWheel;1",
+      "OutputDtmi": "dtmi:com:willowinc:HeatWheel;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HeatWheelVFD;1",
+      "OutputDtmi": "dtmi:com:willowinc:HeatWheelVFD;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HighStaticPressureAlarm;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HighAirFlowAlarm;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HighCO2Alarm;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HighDischargeAirTemperatureAlarm;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HighHeadPressureAlarm;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HighHumidityAlarm;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HighHumidityAlarmParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HighOutsideAirLockoutTemperatureDifferentialParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HighReturnAirTemperatureAlarm;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HighStaticPressureCutoutSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:Limit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HighTemperatureAlarm;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HighTemperatureAlarmParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HighTemperatureHotWaterReturnTemperatureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:HotWaterTemperatureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HighTemperatureHotWaterSupplyTemperatureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:EnteringHotWaterTemperatureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HoldStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HospitalityBox;1",
+      "OutputDtmi": "dtmi:com:willowinc:HospitalityBox;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HotBox;1",
+      "OutputDtmi": "dtmi:com:willowinc:HotBox;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HotWaterBaseboardRadiator;1",
+      "OutputDtmi": "dtmi:com:willowinc:HotWaterBaseboardRadiator;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HotWaterCoil;1",
+      "OutputDtmi": "dtmi:com:willowinc:HotWaterCoil;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HotWaterDifferentialPressureDeadbandSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:HotWaterDeltaPressureDeadbandSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HotWaterDifferentialPressureIntegralTimeParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HotWaterDifferentialPressureLoadShedResetStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HotWaterDifferentialPressureLoadShedStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HotWaterDifferentialPressureProportionalBandParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HotWaterDifferentialPressureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:HotWaterDeltaPressureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HotWaterDifferentialPressureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:HotWaterDeltaPressureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HotWaterDifferentialTemperatureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:DeltaHotWaterTemperatureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HotWaterDischargeFlowSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:LeavingHotWaterFlowSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HotWaterDischargeTemperatureLoadShedStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HotWaterLoop;1",
+      "OutputDtmi": "dtmi:com:willowinc:HotWaterLoop;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HotWaterMeter;1",
+      "OutputDtmi": "dtmi:com:willowinc:WaterMeter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HotWaterPump;1",
+      "OutputDtmi": "dtmi:com:willowinc:Pump;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HotWaterRadiator;1",
+      "OutputDtmi": "dtmi:com:willowinc:HotWaterRadiator;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HotWaterReturnFlowSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:LeavingHotWaterFlowSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HotWaterReturnTemperatureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:LeavingHotWaterTemperatureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HotWaterStaticPressureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:StaticPressureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HotWaterSupplyFlowSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:EnteringHotWaterFlowSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HotWaterSupplyFlowSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:EnteringHotWaterFlowSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HotWaterSupplyTemperatureHighResetSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:EnteringHotWaterTemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HotWaterSupplyTemperatureLoadShedStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HotWaterSupplyTemperatureLowResetSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:EnteringHotWaterTemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HotWaterSupplyTemperatureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:EnteringHotWaterTemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HotWaterSupplyTemperatureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:EnteringHotWaterTemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HotWaterSystem;1",
+      "OutputDtmi": "dtmi:com:willowinc:HVACHotWaterSystem;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HotWaterSystemEnableCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:EnableActuator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HotWaterUsageSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:Sensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HotWaterValve;1",
+      "OutputDtmi": "dtmi:com:willowinc:Valve;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HumidificationStartStopStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:StartStopState;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HumidifierFaultStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:FaultState;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HumidifyCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:Actuator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HumidityAlarm;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HumidityDeadbandSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:DeadbandSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HumidityParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:HumidityToleranceParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:IceTankLeavingWaterTemperatureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:LeavingChilledWaterTemperatureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Identity;1",
+      "OutputDtmi": "dtmi:com:willowinc:Identity;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:IDF;1",
+      "OutputDtmi": "dtmi:com:willowinc:IDF;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:IgnitionStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ImbalanceSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:VoltageImbalanceSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:InductionUnit;1",
+      "OutputDtmi": "dtmi:com:willowinc:InductionUnit;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:InformationArea;1",
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:InsideFaceSurfaceTemperatureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:TemperatureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:InsideFaceSurfaceTemperatureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:TemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:IntakeAirFilter;1",
+      "OutputDtmi": "dtmi:com:willowinc:AirFilter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:IntakeAirTemperatureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:AirTemperatureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:IntegralGainParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:IntegralTimeParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:IntercomEquipment;1",
+      "OutputDtmi": "dtmi:com:willowinc:IntercomEquipment;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Interface;1",
+      "OutputDtmi": "dtmi:com:willowinc:Interface;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Inverter;1",
+      "OutputDtmi": "dtmi:com:willowinc:EmergencyLightingPowerInverter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:IPv4Address;1",
+      "OutputDtmi": "dtmi:com:willowinc:IPv4Address;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:IPv6Address;1",
+      "OutputDtmi": "dtmi:com:willowinc:IPv6Address;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:JanitorRoom;1",
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:JetNozzleAirDiffuser;1",
+      "OutputDtmi": "dtmi:com:willowinc:AirDiffuser;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Laboratory;1",
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:LaminarFlowAirDiffuser;1",
+      "OutputDtmi": "dtmi:com:willowinc:AirDiffuser;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:LastFaultCodeStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:FaultState;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:LeadLagCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:Actuator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:LeadLagStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:LeadOnOffCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:OffActuator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:LeakAlarm;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:LeavingWaterFlowSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:WaterFlowSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:LeavingWaterFlowSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:WaterFlowSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:LeavingWaterTemperatureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:WaterTemperatureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:LeavingWaterTemperatureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:WaterTemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Library;1",
+      "OutputDtmi": "dtmi:com:willowinc:Library;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:LightCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:Actuator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Lighting;1",
+      "OutputDtmi": "dtmi:com:willowinc:LightingController;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:LiquidDetectionAlarm;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:LoadCurrentSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:CurrentSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:LoadingDock;1",
+      "OutputDtmi": "dtmi:com:willowinc:LoadingDockEquipment;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:LoadParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:LoadSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:Setpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:LoadShedCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:Actuator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:LoadShedDifferentialPressureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:DeltaPressureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:LoadShedSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:Setpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:LoadShedStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Lobby;1",
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:LocallyOnOffStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:OnOffState;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:LocationSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:Sensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:LockoutStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:LockoutState;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:LockoutTemperatureDifferentialParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:LockUnlockCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:OnOffActuator;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Loop;1",
+      "OutputDtmi": "dtmi:com:willowinc:Loop;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Lounge;1",
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Louver;1",
+      "OutputDtmi": "dtmi:com:willowinc:Louver;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:LowAirFlowAlarm;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:LowBatteryAlarm;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:LowDischargeAirFlowAlarm;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:LowDischargeAirTemperatureAlarm;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:LowestExhaustAirStaticPressureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:ExhaustAirStaticPressureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:LowFreezeProtectTemperatureParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:LowHumidityAlarm;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:LowHumidityAlarmParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:LowOutsideAirLockoutTemperatureDifferentialParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:LowOutsideAirTemperatureEnableDifferentialSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:OutsideAirTemperatureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:LowOutsideAirTemperatureEnableSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:EnableSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:LowReturnAirTemperatureAlarm;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:LowSuctionPressureAlarm;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:LowTemperatureAlarm;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:LowTemperatureAlarmParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:LowVoltageAlarm;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:LuminaireDriver;1",
+      "OutputDtmi": "dtmi:com:willowinc:LuminaireDriver;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:LuminanceAlarm;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:LuminanceCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:Actuator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MACAddress;1",
+      "OutputDtmi": "dtmi:com:willowinc:MACAddress;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MailRoom;1",
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MaintenanceModeCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:ModeActuator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MaintenanceRequiredAlarm;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Majlis;1",
+      "OutputDtmi": "dtmi:com:willowinc:Majlis;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MakeupWaterValve;1",
+      "OutputDtmi": "dtmi:com:willowinc:Valve;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ManualAutoStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MassageRoom;1",
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MAU;1",
+      "OutputDtmi": "dtmi:com:willowinc:MAU;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MaxAirFlowSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:MaxLimit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MaxAirTemperatureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:AirTemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MaxAirTemperatureSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:MaxLimit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MaxChilledWaterDifferentialPressureSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:MaxLimit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MaxCoolingAirTemperatureSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:MaxLimit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MaxCoolingDischargeAirFlowSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:MaxLimit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MaxCoolingDischargeAirTemperatureSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:MaxLimit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MaxCoolingSupplyAirFlowSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:MaxLimit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MaxDischargeAirStaticPressureSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:MaxLimit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MaxDischargeAirTemperatureSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:MaxLimit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MaxFrequencyCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:Actuator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MaxHeatingAirTemperatureSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:MaxLimit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MaxHeatingDischargeAirFlowSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:MaxLimit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MaxHeatingSupplyAirFlowSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:MaxLimit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MaxHotWaterDifferentialPressureSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:MaxLimit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MaxLoadSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:Setpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MaxOccupiedCoolingDischargeAirFlowSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:MaxLimit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MaxOccupiedCoolingSupplyAirFlowSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:MaxLimit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MaxOccupiedHeatingDischargeAirFlowSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:MaxLimit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MaxOccupiedHeatingSupplyAirFlowSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:MaxLimit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MaxPositionSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:MaxLimit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MaxPowerLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:MaxLimit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MaxSpeedSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:MaxLimit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MaxStaticPressureSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:MaxLimit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MaxSupplyAirStaticPressureSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:MaxLimit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MaxSupplyAirTemperatureSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:MaxLimit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MaxTemperatureSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:MaxLimit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MaxUnoccupiedCoolingDischargeAirFlowSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:MaxLimit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MaxUnoccupiedCoolingSupplyAirFlowSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:MaxLimit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MaxUnoccupiedHeatingDischargeAirFlowSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:MaxLimit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MaxUnoccupiedHeatingSupplyAirFlowSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:MaxLimit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MaxWaterLevelAlarm;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MaxWaterTemperatureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:WaterTemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MDF;1",
+      "OutputDtmi": "dtmi:com:willowinc:MDF;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MechanicalRoom;1",
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MediaHotDesk;1",
+      "OutputDtmi": "dtmi:com:willowinc:MediaHotDesk;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MediaProductionRoom;1",
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MediaRoom;1",
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MedicalRoom;1",
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MediumTemperatureHotWaterDifferentialPressureLoadShedResetStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MediumTemperatureHotWaterDifferentialPressureLoadShedSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:Setpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MediumTemperatureHotWaterDifferentialPressureLoadShedStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MediumTemperatureHotWaterDifferentialPressureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:HotWaterDeltaPressureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MediumTemperatureHotWaterDifferentialPressureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:HotWaterDeltaPressureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MediumTemperatureHotWaterDischargeTemperatureHighResetSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:ResetSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MediumTemperatureHotWaterDischargeTemperatureLowResetSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:ResetSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MediumTemperatureHotWaterReturnTemperatureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:LeavingHotWaterTemperatureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MediumTemperatureHotWaterSupplyTemperatureHighResetSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:ResetSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MediumTemperatureHotWaterSupplyTemperatureLoadShedSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:Setpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MediumTemperatureHotWaterSupplyTemperatureLoadShedStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MediumTemperatureHotWaterSupplyTemperatureLowResetSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:ResetSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MediumTemperatureHotWaterSupplyTemperatureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:EnteringHotWaterTemperatureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Meta;1",
+      "OutputDtmi": "dtmi:com:willowinc:Meta;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Meter;1",
+      "OutputDtmi": "dtmi:com:willowinc:MeterEquipment;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MethaneLevelSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:LevelSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MinAirFlowSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:MinLimit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MinAirTemperatureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:AirTemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MinAirTemperatureSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:MinLimit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MinChilledWaterDifferentialPressureSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:MinLimit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MinCoolingAirTemperatureSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:MinLimit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MinCoolingDischargeAirFlowSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:MinLimit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MinCoolingSupplyAirFlowSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:MinLimit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MinCoolingSupplyAirTemperatureSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:MinLimit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MinDischargeAirStaticPressureSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:MinLimit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MinDischargeAirTemperatureSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:MinLimit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MinFreshAirSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:MinLimit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MinHeatingAirTemperatureSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:MinLimit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MinHeatingDischargeAirFlowSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:MinLimit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MinHeatingSupplyAirFlowSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:MinLimit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MinHotWaterDifferentialPressureSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:MinLimit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MinOccupiedCoolingDischargeAirFlowSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:MinLimit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MinOccupiedCoolingSupplyAirFlowSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:MinLimit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MinOccupiedHeatingDischargeAirFlowSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:MinLimit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MinOccupiedHeatingSupplyAirFlowSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:MinLimit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MinOutsideAirFlowSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:MinLimit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MinPositionSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:MinLimit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MinSpeedSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:MinLimit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MinStaticPressureSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:MinLimit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MinSupplyAirStaticPressureSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:MinLimit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MinSupplyAirTemperatureSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:MinLimit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MinTemperatureSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:MinLimit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MinUnoccupiedCoolingDischargeAirFlowSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:MinLimit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MinUnoccupiedCoolingSupplyAirFlowSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:MinLimit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MinUnoccupiedHeatingDischargeAirFlowSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:MinLimit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MinUnoccupiedHeatingSupplyAirFlowSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:MinLimit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MinWaterLevelAlarm;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MinWaterTemperatureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:WaterTemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MixedAirFilter;1",
+      "OutputDtmi": "dtmi:com:willowinc:AirFilter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MixedDamper;1",
+      "OutputDtmi": "dtmi:com:willowinc:HVACDamper;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ModeCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:ModeActuator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ModeStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:ModeState;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Motor;1",
+      "OutputDtmi": "dtmi:com:willowinc:Motor;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MotorControlCenter;1",
+      "OutputDtmi": "dtmi:com:willowinc:MotorControlCenter;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MotorCurrentSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:CurrentSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MotorDirectionStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MotorOnOffStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:OnOffState;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MotorSpeedSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:SpeedSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MotorTorqueSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:TorqueSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:MuteStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:NameIdentity;1",
+      "OutputDtmi": "dtmi:com:willowinc:NameIdentity;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:NaturalGasBoiler;1",
+      "OutputDtmi": "dtmi:com:willowinc:Boiler;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:NaturalGasFlowSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:FlowSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:NaturalGasSeismicValve;1",
+      "OutputDtmi": "dtmi:com:willowinc:HVACShutOffValve;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:NaturalGasTemperatureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:TemperatureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:NaturalGasUsageSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:Sensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:NetworkedDevice;1",
+      "OutputDtmi": "dtmi:com:willowinc:DataNetworkEquipment;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:NetworkInterface;1",
+      "OutputDtmi": "dtmi:com:willowinc:NetworkSecurityEquipment;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:NetworkVideoRecorder;1",
+      "OutputDtmi": "dtmi:com:willowinc:VideoSurveillanceNVR;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:NO2LevelSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:NO2Sensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:NoncondensingNaturalGasBoiler;1",
+      "OutputDtmi": "dtmi:com:willowinc:Boiler;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:NoWaterAlarm;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:OccupancyCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:OccupiedActuator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:OccupancyCountSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:PeopleCountSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:OccupancySensingDevice;1",
+      "OutputDtmi": "dtmi:com:willowinc:OccupancySensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:OccupancyStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:OccupiedState;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:OccupiedAirTemperatureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:Setpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:OccupiedCoolingAirTemperatureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:OccupiedCoolingSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:OccupiedCoolingDischargeAirFlowSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:CoolingDischargeAirFlowSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:OccupiedCoolingSupplyAirFlowSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:OccupiedCoolingSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:OccupiedCoolingTemperatureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:OccupiedCoolingSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:OccupiedDischargeAirFlowSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:DischargeAirFlowSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:OccupiedDischargeAirTemperatureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:DischargeAirTemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:OccupiedHeatingAirTemperatureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:OccupiedHeatingSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:OccupiedHeatingDischargeAirFlowSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:OccupiedHeatingSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:OccupiedHeatingSupplyAirFlowSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:OccupiedHeatingSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:OccupiedHeatingTemperatureDeadbandSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:OccupiedHeatingSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:OccupiedHeatingTemperatureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:OccupiedHeatingSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:OccupiedHumiditySetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:HumiditySetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:OccupiedModeStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:ModeState;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:OccupiedReturnAirTemperatureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:ReturnAirTemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:OccupiedRoomAirTemperatureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:AirTemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:OccupiedSupplyAirFlowSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:AirFlowSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:OccupiedZoneAirTemperatureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:ZoneAirTemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:OffCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:OffActuator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Office;1",
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:OfficeKitchen;1",
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Offset;1",
+      "OutputDtmi": "dtmi:com:willowinc:Offset;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:OffStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:OffState;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:OnCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:OnActuator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:OnOffCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:OnOffActuator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:OnOffStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:OnOffState;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:OnStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:OnState;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:OnTimerSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:TimerSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:OpenCloseStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:OpenCloseState;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:OpenHeatingValveOutsideAirTemperatureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:OutsideAirTemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Opening;1",
+      "OutputDtmi": "dtmi:com:willowinc:Opening;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:OpenOffice;1",
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:OperatingModeStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:ModeState;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:OutputFrequencySensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:FrequencySensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:OutputVoltageSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:VoltageSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Outside;1",
+      "OutputDtmi": "dtmi:com:willowinc:Space;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:OutsideAirCO2Sensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:AirCO2Sensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:OutsideAirCOSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:AirCOSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:OutsideAirDewpointSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:DewPointTemperatureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:OutsideAirGrainsSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:Sensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:OutsideAirLockoutTemperatureDifferentialParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:OutsideAirLockoutTemperatureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:OutsideAirTemperatureLockoutSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:OutsideAirTemperatureEnableDifferentialSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:OutsideAirTemperatureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:OutsideAirTemperatureHighResetSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:ResetSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:OutsideAirTemperatureLowResetSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:ResetSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:OutsideAirTemperatureResetSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:ResetSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:OutsideAirWetBulbTemperatureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:WetBulbTemperatureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:OutsideDamper;1",
+      "OutputDtmi": "dtmi:com:willowinc:HVACDamper;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:OutsideFaceSurfaceTemperatureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:TemperatureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:OutsideFaceSurfaceTemperatureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:TemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:OutsideIlluminanceSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:OutsideIlluminanceSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:OverloadAlarm;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:OverriddenOffStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:OverrideState;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:OverriddenOnStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:OverrideState;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:OverriddenStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:OverrideState;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:OverrideCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:OverrideActuator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:OzoneLevelSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:O3AirQualitySensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ParkingLevel;1",
+      "OutputDtmi": "dtmi:com:willowinc:Level;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ParkingSpace;1",
+      "OutputDtmi": "dtmi:com:willowinc:ParkingSpot;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ParkingStructure;1",
+      "OutputDtmi": "dtmi:com:willowinc:StructuralBuildingComponent;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ParticulateMatterSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:Sensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:PAU;1",
+      "OutputDtmi": "dtmi:com:willowinc:PAU;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:PeakPowerDemandSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:PowerSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:PersonProfile;1",
+      "OutputDtmi": "dtmi:com:willowinc:PersonProfile;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:PhotovoltaicArray;1",
+      "OutputDtmi": "dtmi:com:willowinc:PhotovoltaicArray;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:PIDParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:PiezoelectricSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:Sensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:PIRSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:PresenceSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Place;1",
+      "OutputDtmi": "dtmi:com:willowinc:Structure;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:PlugStrip;1",
+      "OutputDtmi": "dtmi:com:willowinc:PlugStrip;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:PlumbingRoom;1",
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:PM10LevelSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:PM10AirQualitySensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:PM10Sensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:PM10AirQualitySensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:PM1LevelSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:PM010AirQualitySensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:PM1Sensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:PM010AirQualitySensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:PM25LevelSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:PM025AirQualitySensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:PM25Sensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:PM025AirQualitySensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Point;1",
+      "OutputDtmi": "dtmi:com:willowinc:Capability;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:PositionCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:PositionActuator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:PositionLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:Limit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:PostalAddressIdentity;1",
+      "OutputDtmi": "dtmi:com:willowinc:PostalAddressIdentity;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:postalCode;1",
+      "OutputDtmi": "dtmi:com:willowinc:postalCode;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:PowerAlarm;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:PowerLossAlarm;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:PrayerRoom;1",
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:PrecipitationAccumulationSinceMidnightSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:PrecipitationAccumulationSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:PrecipitationFifteenMinutesAccumulationSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:PrecipitationAccumulationSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:PrecipitationOneHourAccumulationSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:PrecipitationAccumulationSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:PrecipitationOneMinuteAccumulationSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:PrecipitationAccumulationSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:PrecipitationSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:PrecipitationAccumulationSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:PrecipitationTenMinutesAccumulationSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:PrecipitationAccumulationSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:PrecipitationThirtyMinutesAccumulationSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:PrecipitationAccumulationSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:PrecipitationThreeHoursAccumulationSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:PrecipitationAccumulationSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:PrecipitationTwentyfourHoursAccumulationSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:PrecipitationAccumulationSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:PreFilter;1",
+      "OutputDtmi": "dtmi:com:willowinc:AirFilter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:PreFilterStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:PreheatCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:Actuator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:PreheatDemandSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:Setpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:PreheatDischargeAirTemperatureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:DischargeAirTemperatureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:PreheatHotWaterSystem;1",
+      "OutputDtmi": "dtmi:com:willowinc:HVACHotWaterSystem;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:PreheatHotWaterValve;1",
+      "OutputDtmi": "dtmi:com:willowinc:Valve;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:PreheatSupplyAirTemperatureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:AirTemperatureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:PressureAlarm;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:PressureRequestCountStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:PressureStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:PrivateOffice;1",
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ProjectionScreen;1",
+      "OutputDtmi": "dtmi:com:willowinc:ProjectionScreen;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:PropertyBag;1",
+      "OutputDtmi": "dtmi:com:willowinc:PropertyBag;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ProportionalBandParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ProportionalGainParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Pump;1",
+      "OutputDtmi": "dtmi:com:willowinc:HVACPump;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:PumpCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:PumpActuator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:PumpOnOffStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:OnOffState;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:PumpRoom;1",
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:PumpStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:PumpVFD;1",
+      "OutputDtmi": "dtmi:com:willowinc:PumpVFD;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:PVArray;1",
+      "OutputDtmi": "dtmi:com:willowinc:PVArray;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:PVCurrentOutputSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:CurrentSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:PVGenerationSystem;1",
+      "OutputDtmi": "dtmi:com:willowinc:PVGenerationSystem;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:PVPanel;1",
+      "OutputDtmi": "dtmi:com:willowinc:PVPanel;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:PVTPanel;1",
+      "OutputDtmi": "dtmi:com:willowinc:PVTPanel;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:RadiantCeilingPanel;1",
+      "OutputDtmi": "dtmi:com:willowinc:RadiantCeilingPanel;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:RadiantPanel;1",
+      "OutputDtmi": "dtmi:com:willowinc:RadiantPanel;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:RadiantPanelTemperatureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:TemperatureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:RadiantPanelTemperatureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:TemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:RadiationHotWaterSystem;1",
+      "OutputDtmi": "dtmi:com:willowinc:HVACHotWaterSystem;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Radiator;1",
+      "OutputDtmi": "dtmi:com:willowinc:Radiator;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:RadioactivityConcentrationSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:Sensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:RadonConcentrationSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:Sensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:RainDurationSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:DurationSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:RainSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:PrecipitationAccumulationSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:RatedSpeedSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:SpeedSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:RCPanel;1",
+      "OutputDtmi": "dtmi:com:willowinc:RCPanel;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ReactiveEnergySensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:ReactiveElectricalEnergySensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ReactivePowerSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:ReactiveElectricalPowerSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:RealEnergySensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:EnergySensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:RealPowerSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:PowerSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Reception;1",
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:RefrigerantSaturationTemperatureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:TemperatureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:RefrigerantTemperatureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:TemperatureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ReheatHotWaterSystem;1",
+      "OutputDtmi": "dtmi:com:willowinc:HVACHotWaterSystem;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ReheatValve;1",
+      "OutputDtmi": "dtmi:com:willowinc:Valve;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Relay;1",
+      "OutputDtmi": "dtmi:com:willowinc:Relay;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:RelayCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:Actuator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ReliefDamper;1",
+      "OutputDtmi": "dtmi:com:willowinc:HVACDamper;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ReliefFan;1",
+      "OutputDtmi": "dtmi:com:willowinc:Fan;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:RemotelyOnOffStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:OnOffState;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Request;1",
+      "OutputDtmi": "dtmi:com:willowinc:Request;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ResetCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:ResetActuator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ResetStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:RestRoom;1",
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:RetailRoom;1",
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ReturnAirCO2Sensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:AirCO2Sensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ReturnAirCO2Setpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:AirCO2Setpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ReturnAirCOSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:AirCOSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ReturnAirDewpointSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:DewPointTemperatureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ReturnAirDifferentialPressureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:ReturnAirDeltaPressureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ReturnAirDifferentialPressureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:ReturnAirDeltaPressureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ReturnAirFilter;1",
+      "OutputDtmi": "dtmi:com:willowinc:AirFilter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ReturnAirGrainsSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:Sensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ReturnAirPlenum;1",
+      "OutputDtmi": "dtmi:com:willowinc:ReturnAirPlenum;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ReturnAirTemperatureAlarm;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ReturnAirTemperatureHighResetSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:ResetSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ReturnAirTemperatureLowResetSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:ResetSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ReturnAirTemperatureResetSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:ResetSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ReturnChilledWaterTemperatureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:ChilledWaterTemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ReturnCondenserWaterFlowSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:CondenserWaterFlowSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ReturnCondenserWaterTemperatureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:CondenserWaterTemperatureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ReturnCondenserWaterTemperatureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:CondenserWaterTemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ReturnDamper;1",
+      "OutputDtmi": "dtmi:com:willowinc:HVACDamper;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ReturnHeatingValve;1",
+      "OutputDtmi": "dtmi:com:willowinc:Valve;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ReturnHotWaterTemperatureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:HotWaterTemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ReturnWaterFlowSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:WaterFlowSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ReturnWaterTemperatureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:WaterTemperatureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ReturnWaterTemperatureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:WaterTemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Riser;1",
+      "OutputDtmi": "dtmi:com:willowinc:Riser;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:RoadSubsurfaceTemperatureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:TemperatureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Rooftop;1",
+      "OutputDtmi": "dtmi:com:willowinc:RoofLevel;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:RoomAirTemperatureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:AirTemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:RTU;1",
+      "OutputDtmi": "dtmi:com:willowinc:RTU;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:RunCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:RunActuator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:RunEnableCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:EnableActuator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:RunRequestStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:RunState;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:RunStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:RunState;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:RunTimeSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:Sensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SafetyShower;1",
+      "OutputDtmi": "dtmi:com:willowinc:EmergencyShower;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SafetySystem;1",
+      "OutputDtmi": "dtmi:com:willowinc:SafetyEquipment;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SashPositionSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:PositionSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ScheduleTemperatureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:TemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ScreenOrientationStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SeaLevelAirPressureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:AirPressureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SecurityServiceRoom;1",
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SensorFailureAlarm;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ServerRoom;1",
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ServiceRoom;1",
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SetpointOffset;1",
+      "OutputDtmi": "dtmi:com:willowinc:SetpointOffset;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ShadingSystem;1",
+      "OutputDtmi": "dtmi:com:willowinc:ShadingSystem;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SharedOffice;1",
+      "OutputDtmi": "dtmi:com:willowinc:Office;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ShortCycleAlarm;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Site;1",
+      "OutputDtmi": "dtmi:com:willowinc:Land;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SmokeAlarm;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SmokeDetectionAlarm;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SnowAccumulationSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:Sensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SoilTemperatureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:TemperatureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SolarRadianceSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:SolarIrradianceSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SolarThermalCollector;1",
+      "OutputDtmi": "dtmi:com:willowinc:SolarThermalCollector;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SoundPressureLevelSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:Sensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SoundVolumeLevelStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SpaceCode;1",
+      "OutputDtmi": "dtmi:com:willowinc:SpaceCode;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SpaceHeater;1",
+      "OutputDtmi": "dtmi:com:willowinc:UnitHeater;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Speaker;1",
+      "OutputDtmi": "dtmi:com:willowinc:Speaker;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SpeedCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:FanSpeedActuator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SpeedModeStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:ModeState;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SpeedResetCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:ResetActuator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SpeedSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:Limit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SpeedStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SportsServiceRoom;1",
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:StageEnableCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:EnableActuator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:StageRiser;1",
+      "OutputDtmi": "dtmi:com:willowinc:StageRiser;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:StagesStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Staircase;1",
+      "OutputDtmi": "dtmi:com:willowinc:Stairway;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:StandbyFan;1",
+      "OutputDtmi": "dtmi:com:willowinc:StandbyFan;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:StandbyGlycoolUnitOnOffStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:OnOffState;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:StandbyLoadShedCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:Actuator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:StandbyUnitOnOffStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:OnOffState;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:StartStopCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:StartStopActuator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:StartStopStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:StartStopState;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:StaticPressureDeadbandSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:AirStaticPressureDeadbandSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:StaticPressureIntegralTimeParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:StaticPressureProportionalBandParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:StaticPressureSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:Limit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:StaticPressureStepParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Status;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SteamBaseboardRadiator;1",
+      "OutputDtmi": "dtmi:com:willowinc:SteamBaseboardRadiator;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SteamDistribution;1",
+      "OutputDtmi": "dtmi:com:willowinc:SteamDistribution;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SteamOnOffCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:OnOffActuator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SteamRadiator;1",
+      "OutputDtmi": "dtmi:com:willowinc:SteamRadiator;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SteamUsageSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:Sensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SteamValve;1",
+      "OutputDtmi": "dtmi:com:willowinc:Valve;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:StepParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:StorageRoom;1",
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Studio;1",
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SupplyAirDifferentialPressureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:InletAirDeltaPressureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SupplyAirDifferentialPressureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:InletAirDeltaPressureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SupplyAirDuctPressureStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SupplyAirDuctStaticPressureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:AirStaticPressureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SupplyAirFlowDemandSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:InletAirFlowSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SupplyAirFlowSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:InletAirFlowSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SupplyAirFlowSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:SupplyAirFlowSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SupplyAirHumiditySensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:InletAirHumiditySensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SupplyAirHumiditySetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:InletAirHumiditySetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SupplyAirIntegralGainParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SupplyAirPlenum;1",
+      "OutputDtmi": "dtmi:com:willowinc:SupplyAirPlenum;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SupplyAirProportionalGainParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SupplyAirStaticPressureDeadbandSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:AirStaticPressureDeadbandSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SupplyAirStaticPressureIntegralTimeParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SupplyAirStaticPressureProportionalBandParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SupplyAirStaticPressureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:InletAirStaticPressureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SupplyAirStaticPressureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:InletAirStaticPressureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SupplyAirTemperatureAlarm;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SupplyAirTemperatureDeadbandSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:AirTemperatureDeadbandSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SupplyAirTemperatureHighResetSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:ResetSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SupplyAirTemperatureLowResetSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:ResetSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SupplyAirTemperatureProportionalBandParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SupplyAirTemperatureResetDifferentialSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:InletAirTemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SupplyAirTemperatureResetSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:InletAirTemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SupplyAirTemperatureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:InletAirTemperatureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SupplyAirTemperatureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:InletAirTemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SupplyAirTemperatureSetpointLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:Limit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SupplyAirTemperatureStepParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SupplyAirVelocityPressureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:InletAirVelocityPressureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SupplyChilledWaterTemperatureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:ChilledWaterTemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SupplyCondenserWaterFlowSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:CondenserWaterFlowSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SupplyCondenserWaterTemperatureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:CondenserWaterTemperatureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SupplyCondenserWaterTemperatureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:CondenserWaterTemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SupplyHotWaterTemperatureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:EnteringHotWaterTemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SupplyWaterDifferentialPressureDeadbandSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:DeadbandSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SupplyWaterDifferentialPressureIntegralTimeParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SupplyWaterDifferentialPressureProportionalBandParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SupplyWaterFlowSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:WaterFlowSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SupplyWaterFlowSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:WaterFlowSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SupplyWaterTemperatureAlarm;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SupplyWaterTemperatureDeadbandSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:DeadbandSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SupplyWaterTemperatureIntegralTimeParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SupplyWaterTemperatureProportionalBandParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SupplyWaterTemperatureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:WaterTemperatureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SupplyWaterTemperatureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:WaterTemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SurveillanceCamera;1",
+      "OutputDtmi": "dtmi:com:willowinc:VideoSurveillanceCamera;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Switch;1",
+      "OutputDtmi": "dtmi:com:willowinc:EthernetSwitch;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SwitchRoom;1",
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SwitchStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SymbolicLocationSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:Sensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SystemEnableCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:EnableActuator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SystemShutdownStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:SystemStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:TABSPanel;1",
+      "OutputDtmi": "dtmi:com:willowinc:TABSPanel;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:TeamRoom;1",
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:TelecomRoom;1",
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:TeleconferenceUnit;1",
+      "OutputDtmi": "dtmi:com:willowinc:TeleconferenceUnit;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:TemperatureAdjustSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:TemperatureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:TemperatureAlarm;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:TemperatureAlarmCount;1",
+      "OutputDtmi": "dtmi:com:willowinc:CountSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:TemperatureAlarmSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:TemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:TemperatureDeadbandSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:DeadbandSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:TemperatureDifferentialResetSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:ResetSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:TemperatureHighResetSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:ResetSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:TemperatureLowResetSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:ResetSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:TemperatureParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:TemperatureStepParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:TemperatureToleranceParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:TemporaryOccupancyStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:TestPoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:Capability;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:TETRARoom;1",
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ThermallyActivatedBuildingSystemPanel;1",
+      "OutputDtmi": "dtmi:com:willowinc:ThermallyActivatedBuildingSystemPanel;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ThermalPowerMeter;1",
+      "OutputDtmi": "dtmi:com:willowinc:ThermalMeter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Thermostat;1",
+      "OutputDtmi": "dtmi:com:willowinc:ThermostatEquipment;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ThermostaticMixingValve;1",
+      "OutputDtmi": "dtmi:com:willowinc:Valve;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ThermostatStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Thing;1",
+      "OutputDtmi": "dtmi:com:willowinc:Equipment;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:TicketingBooth;1",
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:TimeParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:TimeStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ToleranceParameter;1",
+      "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Touchpanel;1",
+      "OutputDtmi": "dtmi:com:willowinc:Touchpanel;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:TraceHeatSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:Sensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:TransformerRoom;1",
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Tunnel;1",
+      "OutputDtmi": "dtmi:com:willowinc:Space;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:TVOCLevelSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:TVOCSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:UnderfloorAirPlenum;1",
+      "OutputDtmi": "dtmi:com:willowinc:UnderfloorAirPlenum;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:UnderfloorAirPlenumStaticPressureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:StaticPressureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:UnderfloorAirPlenumStaticPressureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:StaticPressureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:UnderfloorAirTemperatureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:AirTemperatureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:UnitFailureAlarm;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:UnoccupiedAirTemperatureCoolingSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:UnoccupiedCoolingSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:UnoccupiedAirTemperatureHeatingSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:UnoccupiedHeatingSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:UnoccupiedAirTemperatureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:AirTemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:UnoccupiedCoolingAirTemperatureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:UnoccupiedCoolingSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:UnoccupiedCoolingDischargeAirFlowSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:CoolingDischargeAirFlowSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:UnoccupiedCoolingModeStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:UnoccupiedDischargeAirTemperatureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:DischargeAirTemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:UnoccupiedHeatingAirTemperatureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:UnoccupiedHeatingSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:UnoccupiedHumiditySetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:HumiditySetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:UnoccupiedLoadShedCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:UnoccupiedActuator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:UnoccupiedModeStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:ModeState;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:UnoccupiedReturnAirTemperatureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:InletAirTemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:UnoccupiedRoomAirTemperatureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:AirTemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:UnoccupiedSupplyAirTemperatureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:InletAirTemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:UnoccupiedZoneAirTemperatureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:ZoneAirTemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:UsageSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:Sensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ValveCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:Actuator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ValvePercentageCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:Actuator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ValvePositionAlarm;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ValveStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:VAV;1",
+      "OutputDtmi": "dtmi:com:willowinc:VAVBox;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:VentilationAirFlowRatioLimit;1",
+      "OutputDtmi": "dtmi:com:willowinc:Limit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:VentilationAirSystem;1",
+      "OutputDtmi": "dtmi:com:willowinc:VentilationAirSystem;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:VentOperatingModeStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:ModeState;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:VerticalSpace;1",
+      "OutputDtmi": "dtmi:com:willowinc:Space;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:VFD;1",
+      "OutputDtmi": "dtmi:com:willowinc:VFD;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:VFDEnableCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:EnableActuator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:VideoIntercom;1",
+      "OutputDtmi": "dtmi:com:willowinc:VideoIntercom;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:VisitorLobby;1",
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:VoltageAlarm;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:VoltageRatioSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:VoltageSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Wardrobe;1",
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:WarmCoolAdjustSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:Sensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:WarmestZoneAirTemperatureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:ZoneAirTemperatureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:WasteStorage;1",
+      "OutputDtmi": "dtmi:com:willowinc:WasteStorage;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:WaterAlarm;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:WaterDifferentialPressureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:WaterDeltaPressureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:WaterDifferentialTemperatureSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:WaterTemperatureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:WaterDifferentialTemperatureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:WaterTemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:WaterDistribution;1",
+      "OutputDtmi": "dtmi:com:willowinc:WaterDistribution;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:WaterLevelAlarm;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:WaterLevelSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:LevelSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:WaterLoop;1",
+      "OutputDtmi": "dtmi:com:willowinc:WaterLoop;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:WaterLossAlarm;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:WaterPump;1",
+      "OutputDtmi": "dtmi:com:willowinc:DomesticWaterPump;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:WaterSystem;1",
+      "OutputDtmi": "dtmi:com:willowinc:HVACWaterSystem;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:WaterTank;1",
+      "OutputDtmi": "dtmi:com:willowinc:WaterTank;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:WaterTemperatureAlarm;1",
+      "OutputDtmi": "dtmi:com:willowinc:AlarmSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:WaterUsageSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:Sensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:WaterValve;1",
+      "OutputDtmi": "dtmi:com:willowinc:Valve;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:WeatherConditionSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:Sensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:WeatherStation;1",
+      "OutputDtmi": "dtmi:com:willowinc:WeatherStationEquipment;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:WebBulbStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:WheelStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:WindGustSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:Sensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Wing;1",
+      "OutputDtmi": "dtmi:com:willowinc:BuildingElement;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Workshop;1",
+      "OutputDtmi": "dtmi:com:willowinc:Workshop;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ZoneAirCoolingTemperatureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:CoolingZoneAirTemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ZoneAirDewpointSensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:DewPointTemperatureSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ZoneAirHeatingTemperatureSetpoint;1",
+      "OutputDtmi": "dtmi:com:willowinc:HeatingZoneAirTemperatureSetpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ZoneConditioningModeStatus;1",
+      "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ZoneStandbyLoadShedCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:Actuator;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:ZoneUnoccupiedLoadShedCommand;1",
+      "OutputDtmi": "dtmi:com:willowinc:UnoccupiedActuator;1"
+    }
+  ],
+  "RelationshipRemaps": [
+    {
+      "InputRelationship": "floors",
+      "OutputRelationship": "hasPart"
+    },
+    {
+      "InputRelationship": "hasPoint",
+      "OutputRelationship": "hasCapability"
+    }
+  ],
+  "PropertyProjections": [
+    {
+      "OutputDtmiFilter": ".*",
+      "OutputPropertyName": "externalIds",
+      "InputPropertyNames": [ "mappingKey" ],
+      "IsOutputPropertyCollection": true
+    }
+  ],
+  "FillProperties": [
+    {
+      "OutputDtmiFilter": ".*",
+      "OutputPropertyName": "name",
+      "InputPropertyNames": [ "name", "description" ]
+    }
+  ]
+}

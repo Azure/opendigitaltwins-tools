@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RuleSet Name="Rules for Editor" Description="Code analysis rules for Suggestion messages." ToolsVersion="15.0">
+  <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers">
+    <!-- Rule documentation can be found here: https://docs.microsoft.com/en-us/dotnet/fundamentals/code-analysis/style-rules/ -->
+
+    <!-- Must fix -->
+
+    <!-- Should fix -->
+
+    <!-- Devs choice -->
+    <Rule Id="IDE0090" Action="None" /> <!--'new' expression can be simplified -->
+    <Rule Id="IDE0063" Action="None" /> <!--'using' statement can be simplified -->
+  </Rules>
+</RuleSet>

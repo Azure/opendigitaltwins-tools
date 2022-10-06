@@ -1,0 +1,42 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<Sdk Name="Microsoft.Build.CentralPackageVersions" />
+
+	<PropertyGroup>
+		<Description>This is the Microsoft Smart Places Facilities Ontology Mapper library for the Mapped Topology.</Description>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<Version>$(VersionPrefix)</Version>
+		<Authors>Microsoft Corporation</Authors>
+		<Description>Support for converting from one Mapped Ontology to a different DTDL Based Ontology</Description>
+		<AssemblyVersion>0.5.1</AssemblyVersion>
+		<PackageVersion>0.5.1-preview</PackageVersion>
+		<RepositoryUrl>https://github.com/Azure/opendigitaltwins-tools</RepositoryUrl>
+		<Copyright>Copyright (c) Microsoft Corporation.  All rights reserved.</Copyright>
+		<AssemblyName>Microsoft.SmartPlaces.Facilities.OntologyMapper.Mapped</AssemblyName>
+		<RootNamespace>Microsoft.SmartPlaces.Facilities.OntologyMapper.Mapped</RootNamespace>
+		<projectUrl>https://github.com/Azure/opendigitaltwins-tools/</projectUrl>
+		<License>http://www.opensource.org/licenses/MIT</License>
+		<requireLicenseAcceptance>true</requireLicenseAcceptance>
+		<copyright>© Microsoft Corporation. All rights reserved.</copyright>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<Language>en-US</Language>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Include="Mappings\**\*.json" />
+		<None Include="README.md" Pack="true" PackagePath="\"/>
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.1" />
+		<PackageReference Include="Microsoft.SmartPlaces.Facilities.OntologyMapper" Version="0.6.0-preview" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="README.md">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
+</Project>

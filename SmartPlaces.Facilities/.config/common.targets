@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Target Name="CheckAssemblyNameAndRootNamespace" BeforeTargets="Build">
+    <PropertyGroup>
+      <_RootNamespacePrefix>Microsoft.SmartPlaces.Facilities</_RootNamespacePrefix>
+      <_AssemblyNamePrefix>Microsoft.SmartPlaces.Facilities</_AssemblyNamePrefix>
+    </PropertyGroup>
+    <Warning Text="RootNamespace must start with $(_RootNamespacePrefix)" Condition="! $(RootNamespace.StartsWith('$(_RootNamespacePrefix)'))"/>
+    <Warning Text="AssemblyName must start with $(_AssemblyNamePrefix)" Condition="! $(AssemblyName.StartsWith('$(_AssemblyNamePrefix)'))"/>
+  </Target>
+</Project>
