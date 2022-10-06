@@ -7,7 +7,7 @@
 		<Nullable>enable</Nullable>
 		<AssemblyName>$(MSBuildProjectName)</AssemblyName>
 		<RootNamespace>$(MSBuildProjectName)</RootNamespace>
-		<Description>This is the Smart Facilities Ingestion Manager library.</Description>
+		<Description>This is library injects data from one DTDL based graph, then converts and inserts the data into another DTDL base graph./Description>
 	</PropertyGroup>
 
 	<ItemGroup>

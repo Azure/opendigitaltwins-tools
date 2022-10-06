@@ -66,14 +66,12 @@ namespace Topology
                     });
                     services.AddSingleton<ITwinMappingIndexer, RedisTwinMappingIndexer>();
 
-                    // From opendigitaltwins-tools
                     services.AddScoped<IOntologyMappingLoader>(sp =>
                     {
                         var logger = sp.GetRequiredService<ILogger<MappedOntologyMappingLoader>>();
                         return new MappedOntologyMappingLoader(logger, hostContext.Configuration["ontologyMappingFilename"]);
                     });
 
-                    // From opendigitaltwins-tools
                     services.AddScoped<IOntologyMappingManager, OntologyMappingManager>();
 
                     services.AddHostedService<ProcessTopology>();
