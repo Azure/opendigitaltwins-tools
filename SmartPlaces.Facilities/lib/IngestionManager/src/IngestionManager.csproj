@@ -5,12 +5,9 @@
 		<TargetFramework>net6.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
-		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<Version>$(VersionPrefix)</Version>
 		<Authors>Microsoft</Authors>
 		<Description>This is the Microsoft Smart Places Facilities Ingestion Manager library.</Description>
-		<AssemblyVersion>0.1.0</AssemblyVersion>
-		<PackageVersion>0.1.0-preview</PackageVersion>
 		<Copyright>© Microsoft Corporation. All rights reserved.</Copyright>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 	</PropertyGroup>
