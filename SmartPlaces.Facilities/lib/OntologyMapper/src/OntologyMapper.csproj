@@ -5,9 +5,9 @@
 		<TargetFramework>net6.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
-		<Authors>Microsoft</Authors>
+		<AssemblyName>$(MSBuildProjectName)</AssemblyName>
+		<RootNamespace>$(MSBuildProjectName)</RootNamespace>
 		<Description>Support for converting from one DTDL-based Ontology to a different DTDL Based Ontology</Description>
-		<copyright>© Microsoft Corporation. All rights reserved.</copyright>
 	</PropertyGroup>
 
 	<ItemGroup>

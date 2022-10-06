@@ -4,20 +4,20 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace Microsoft.SmartPlaces.Facilities.IngestionManager.AzureDigitalTwins
+namespace IngestionManager.AzureDigitalTwins
 {
     using System;
     using System.Collections.Concurrent;
     using System.Text.Json;
-    using global::Azure;
-    using global::Azure.DigitalTwins.Core;
-    using global::Azure.Identity;
+    using Azure;
+    using Azure.DigitalTwins.Core;
+    using Azure.Identity;
     using Microsoft.ApplicationInsights;
     using Microsoft.ApplicationInsights.Metrics;
     using Microsoft.Extensions.Logging;
     using Microsoft.Extensions.Options;
-    using Microsoft.SmartPlaces.Facilities.IngestionManager.Extensions;
-    using Microsoft.SmartPlaces.Facilities.IngestionManager.Interfaces;
+    using IngestionManager.Extensions;
+    using IngestionManager.Interfaces;
 
     public class AdtGraphManager<TOptions> : IOutputGraphManager
         where TOptions : IngestionManagerOptions

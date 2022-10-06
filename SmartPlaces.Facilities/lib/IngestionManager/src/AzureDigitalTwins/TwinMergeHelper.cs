@@ -4,12 +4,12 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace Microsoft.SmartPlaces.Facilities.IngestionManager.AzureDigitalTwins
+namespace IngestionManager.AzureDigitalTwins
 {
     using System.Text.Json;
-    using global::Azure;
-    using global::Azure.DigitalTwins.Core;
-    using Microsoft.SmartPlaces.Facilities.IngestionManager.Extensions;
+    using Azure;
+    using Azure.DigitalTwins.Core;
+    using IngestionManager.Extensions;
 
     internal class TwinMergeHelper
     {

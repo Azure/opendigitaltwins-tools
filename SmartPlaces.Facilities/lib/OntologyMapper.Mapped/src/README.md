@@ -1,4 +1,4 @@
-# Microsoft.SmartPlaces.Facilities.OntologyMapper.Mapped
+# OntologyMapper.Mapped
 
 This library provides helpers useful for mapping the Mapped implementation Digital Twins Definition Language (DTDL) model to various other DTDL topologies. The Mapped mappings are embedded resources within this assembly, making it easy to use these transforms without recreating them from scratch.
 
@@ -14,7 +14,7 @@ The following mappings have been created and are being maintained:
 
 **Implements**
 
-Microsoft.SmartPlaces.Facilities.OntologyMapper.IOntologyMappingLoader
+OntologyMapper.IOntologyMappingLoader
 
 **Method: LoadOntologyMapping**
 

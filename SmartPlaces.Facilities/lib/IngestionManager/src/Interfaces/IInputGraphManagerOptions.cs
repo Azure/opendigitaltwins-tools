@@ -4,7 +4,7 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Interfaces
+namespace IngestionManager.Interfaces
 {
     public interface IInputGraphManagerOptions
     {

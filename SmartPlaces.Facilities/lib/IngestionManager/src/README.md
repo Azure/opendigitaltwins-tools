@@ -1,4 +1,4 @@
-# Microsoft.SmartPlaces.Facilities.IngestionManager
+# IngestionManager
 
 This library provides a way to load an Azure Digital Twins instances with twins and relationships from another DTDL-based graph of twins.
 

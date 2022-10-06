@@ -1,11 +1,11 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-namespace Microsoft.SmartPlaces.Facilities.OntologyMapper.Mapped.Test
+namespace OntologyMapper.Mapped.Test
 {
     using Microsoft.Azure.DigitalTwins.Parser;
     using Microsoft.Extensions.Logging;
-    using Microsoft.SmartPlaces.Facilities.OntologyMapper;
+    using OntologyMapper;
     using Moq;
     using Xunit;
     using Xunit.Abstractions;

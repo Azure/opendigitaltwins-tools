@@ -4,7 +4,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace Microsoft.SmartPlaces.Facilities.IngestionManagerManager.Mapped.Test
+namespace IngestionManagerManager.Mapped.Test
 {
     using System.Threading;
     using System.Threading.Tasks;
@@ -12,10 +12,10 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManagerManager.Mapped.Test
     using Microsoft.ApplicationInsights.Channel;
     using Microsoft.ApplicationInsights.Extensibility;
     using Microsoft.Extensions.Logging;
-    using Microsoft.SmartPlaces.Facilities.IngestionManager;
-    using Microsoft.SmartPlaces.Facilities.IngestionManager.Interfaces;
-    using Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped;
-    using Microsoft.SmartPlaces.Facilities.OntologyMapper;
+    using IngestionManager;
+    using IngestionManager.Interfaces;
+    using IngestionManager.Mapped;
+    using OntologyMapper;
     using Moq;
     using Xunit;
     using Xunit.Abstractions;

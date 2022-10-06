@@ -4,7 +4,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace Microsoft.SmartPlaces.Facilities.OntologyMapper.Mapped
+namespace OntologyMapper.Mapped
 {
     using Microsoft.Extensions.Logging;
     using System.Reflection;

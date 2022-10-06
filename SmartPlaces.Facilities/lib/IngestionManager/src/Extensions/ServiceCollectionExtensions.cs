@@ -4,13 +4,13 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Extensions
+namespace IngestionManager.Extensions
 {
     using System.Reflection;
     using Microsoft.Extensions.DependencyInjection;
-    using Microsoft.SmartPlaces.Facilities.IngestionManager;
-    using Microsoft.SmartPlaces.Facilities.IngestionManager.AzureDigitalTwins;
-    using Microsoft.SmartPlaces.Facilities.IngestionManager.Interfaces;
+    using IngestionManager;
+    using IngestionManager.AzureDigitalTwins;
+    using IngestionManager.Interfaces;
 
     public static class ServiceCollectionExtensions
     {
@@ -23,12 +23,6 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Extensions
                     .ValidateOnStart();
 
             services.AddSingleton<IOutputGraphManager, AdtGraphManager<TOptions>>();
-
-            services.AddHttpClient("Microsoft.SmartPlaces.Facilities", options =>
-            {
-                options.DefaultRequestHeaders.Add("ms-smartfacilities-version", Assembly.GetExecutingAssembly().GetName().Version?.ToString() ?? "0.0.0");
-            });
-
             return services;
         }
     }

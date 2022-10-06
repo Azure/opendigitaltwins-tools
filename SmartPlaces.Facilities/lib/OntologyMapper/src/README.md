@@ -1,4 +1,4 @@
-# Microsoft.SmartPlaces.Facilities.OntologyMapper
+# OntologyMapper
 
 This library provides helpers useful for mapping one Digital Twins Definition Language (DTDL) model to a different DTDL model. It defines a set of classes which allow the following types to be mapped:
 
@@ -267,7 +267,7 @@ An ontology mapping
 
 **Implements**
 
-Microsoft.SmartPlaces.Facilities.OntologyMapper.IOntologyMappingLoader
+OntologyMapper.IOntologyMappingLoader
 
 **Method: LoadOntologyMapping**
 

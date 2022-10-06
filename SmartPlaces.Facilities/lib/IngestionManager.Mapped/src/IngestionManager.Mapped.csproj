@@ -5,6 +5,8 @@
 		<TargetFramework>net6.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
+		<AssemblyName>$(MSBuildProjectName)</AssemblyName>
+		<RootNamespace>$(MSBuildProjectName)</RootNamespace>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -26,14 +28,14 @@
 		<PackageReference Include="StackExchange.Redis" Version="2.6.66" />
 	</ItemGroup>
 
-	<ItemGroup>
-		<ProjectReference Include="..\..\IngestionManager\src\IngestionManager.csproj" />
-	</ItemGroup>
-
   <ItemGroup>
     <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
       <_Parameter1>$(AssemblyName).Test</_Parameter1>
     </AssemblyAttribute>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\IngestionManager\src\IngestionManager.csproj" />
   </ItemGroup>
 
 </Project>

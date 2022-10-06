@@ -1,11 +1,11 @@
 <Project>
   <PropertyGroup>
-    <AssemblyName>Microsoft.SmartPlaces.Facilities.$(MSBuildProjectName)</AssemblyName>
+    <AssemblyName>$(MSBuildProjectName)</AssemblyName>
     <CodeAnalysisRuleSet>$(MSBuildThisFileDirectory)\CodeAnalysis.ruleset</CodeAnalysisRuleSet>
     <Deterministic>true</Deterministic>
     <LangVersion>10</LangVersion>
     <RepositoryRootPath>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)\..'))</RepositoryRootPath>
-    <RootNamespace>Microsoft.SmartPlaces.Facilities.$(MSBuildProjectName)</RootNamespace>
+    <RootNamespace>$(MSBuildProjectName)</RootNamespace>
     <DebugType>Full</DebugType>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
     <AnalysisLevel>latest</AnalysisLevel>

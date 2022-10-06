@@ -4,18 +4,18 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace Microsoft.SmartPlaces.Facilities.IngestionManager
+namespace IngestionManager
 {
     using System.Text.Json;
     using System.Threading.Tasks;
-    using global::Azure.DigitalTwins.Core;
-    using global::Microsoft.ApplicationInsights;
-    using global::Microsoft.ApplicationInsights.Metrics;
-    using global::Microsoft.Azure.DigitalTwins.Parser;
-    using global::Microsoft.Azure.DigitalTwins.Parser.Models;
-    using global::Microsoft.Extensions.Logging;
-    using global::Microsoft.SmartPlaces.Facilities.OntologyMapper;
-    using Microsoft.SmartPlaces.Facilities.IngestionManager.Interfaces;
+    using Azure.DigitalTwins.Core;
+    using Microsoft.ApplicationInsights;
+    using Microsoft.ApplicationInsights.Metrics;
+    using Microsoft.Azure.DigitalTwins.Parser;
+    using Microsoft.Azure.DigitalTwins.Parser.Models;
+    using Microsoft.Extensions.Logging;
+    using OntologyMapper;
+    using IngestionManager.Interfaces;
 
     /// <summary>
     /// Base class for loading a site graph from input source to output target.

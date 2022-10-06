@@ -4,10 +4,10 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
+namespace IngestionManager.Mapped
 {
     using System.ComponentModel.DataAnnotations;
-    using Microsoft.SmartPlaces.Facilities.IngestionManager.Interfaces;
+    using IngestionManager.Interfaces;
 
     public class MappedIngestionManagerOptions : IngestionManagerOptions, IInputGraphManagerOptions
     {

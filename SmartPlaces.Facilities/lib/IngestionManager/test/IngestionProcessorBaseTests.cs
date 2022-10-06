@@ -4,7 +4,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace Microsoft.SmartPlaces.Facilities.IngestionManagerManagerTest
+namespace IngestionManagerManagerTest
 {
     using System.Collections.Generic;
     using System.IO;
@@ -13,15 +13,15 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManagerManagerTest
     using System.Text.Json;
     using System.Threading;
     using System.Threading.Tasks;
-    using global::Azure.DigitalTwins.Core;
+    using Azure.DigitalTwins.Core;
     using Microsoft.ApplicationInsights;
     using Microsoft.ApplicationInsights.Channel;
     using Microsoft.ApplicationInsights.Extensibility;
     using Microsoft.Azure.DigitalTwins.Parser;
     using Microsoft.Extensions.Logging;
-    using Microsoft.SmartPlaces.Facilities.IngestionManager;
-    using Microsoft.SmartPlaces.Facilities.IngestionManager.Interfaces;
-    using Microsoft.SmartPlaces.Facilities.OntologyMapper;
+    using IngestionManager;
+    using IngestionManager.Interfaces;
+    using OntologyMapper;
     using Moq;
     using Xunit;
     using Xunit.Abstractions;
@@ -54,9 +54,9 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManagerManagerTest
 
             var listOfDtdlFiles = new List<string>
                 {
-                    "Microsoft.SmartPlaces.Facilities.IngestionManager.Test.TestData.Box.json",
-                    "Microsoft.SmartPlaces.Facilities.IngestionManager.Test.TestData.Space.json",
-                    "Microsoft.SmartPlaces.Facilities.IngestionManager.Test.TestData.SpaceWithBox.json",
+                    "IngestionManager.Test.TestData.Box.json",
+                    "IngestionManager.Test.TestData.Space.json",
+                    "IngestionManager.Test.TestData.SpaceWithBox.json",
                 };
 
             mockOutputGraphManager.Setup(m => m.GetModelAsync(CancellationToken.None)).ReturnsAsync(LoadDtdl(listOfDtdlFiles));

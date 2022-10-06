@@ -1,7 +1,7 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-namespace Microsoft.SmartPlaces.Facilities.OntologyMapper
+namespace OntologyMapper
 {
     using Microsoft.Extensions.Logging;
     using System.Text.Json;

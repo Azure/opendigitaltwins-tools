@@ -4,11 +4,11 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace Microsoft.SmartPlaces.Facilities.IngestionManagerManagerTest
+namespace IngestionManagerManagerTest
 {
     using System.Text.Json;
-    using global::Azure.DigitalTwins.Core;
-    using Microsoft.SmartPlaces.Facilities.IngestionManager.AzureDigitalTwins;
+    using Azure.DigitalTwins.Core;
+    using IngestionManager.AzureDigitalTwins;
     using Xunit;
     using Xunit.Abstractions;
 

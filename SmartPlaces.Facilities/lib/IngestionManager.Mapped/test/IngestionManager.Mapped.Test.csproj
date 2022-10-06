@@ -5,6 +5,8 @@
 		<TargetFramework>net6.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<IsPackable>false</IsPackable>
+		<AssemblyName>$(MSBuildProjectName)</AssemblyName>
+		<RootNamespace>$(MSBuildProjectName)</RootNamespace>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -33,8 +35,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\IngestionManager\src\IngestionManager.csproj" />
-		<ProjectReference Include="..\src\IngestionManager.Mapped.csproj" />
+	  <ProjectReference Include="..\..\IngestionManager\src\IngestionManager.csproj" />
+	  <ProjectReference Include="..\src\IngestionManager.Mapped.csproj" />
 	</ItemGroup>
 
 </Project>

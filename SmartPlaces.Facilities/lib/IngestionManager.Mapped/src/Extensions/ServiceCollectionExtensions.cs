@@ -4,12 +4,12 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped.Extensions
+namespace IngestionManager.Mapped.Extensions
 {
     using Microsoft.Extensions.DependencyInjection;
-    using Microsoft.SmartPlaces.Facilities.IngestionManager.Extensions;
-    using Microsoft.SmartPlaces.Facilities.IngestionManager.Interfaces;
-    using Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped;
+    using IngestionManager.Extensions;
+    using IngestionManager.Interfaces;
+    using IngestionManager.Mapped;
 
     public static class ServiceCollectionExtensions
     {

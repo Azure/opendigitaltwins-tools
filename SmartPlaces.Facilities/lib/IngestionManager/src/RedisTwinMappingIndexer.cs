@@ -4,12 +4,12 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace Microsoft.SmartPlaces.Facilities.IngestionManager
+namespace IngestionManager
 {
     using System.Net.Sockets;
     using System.Threading.Tasks;
-    using global::Microsoft.Extensions.Caching.Distributed;
-    using Microsoft.SmartPlaces.Facilities.IngestionManager.Interfaces;
+    using Microsoft.Extensions.Caching.Distributed;
+    using IngestionManager.Interfaces;
     using Polly;
     using Polly.Retry;
 

@@ -1,16 +1,16 @@
 ﻿// -----------------------------------------------------------------------
-// <copyright file="SmartFacilitiesException.cs" company="Microsoft">
+// <copyright file="FacilitiesException.cs" company="Microsoft">
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Exceptions
+namespace IngestionManager.Exceptions
 {
     using System;
 
-    public class SmartFacilitiesException : Exception
+    public class FacilitiesException : Exception
     {
-        public SmartFacilitiesException(string message)
+        public FacilitiesException(string message)
             : base(message)
         {
         }

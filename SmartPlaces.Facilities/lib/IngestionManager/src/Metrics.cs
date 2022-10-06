@@ -4,11 +4,11 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace Microsoft.SmartPlaces.Facilities.IngestionManager
+namespace IngestionManager
 {
     internal static class Metrics
     {
-        internal const string DefaultNamespace = "Microsoft.SmartPlaces.Facilities";
+        internal const string DefaultNamespace = "Facilities";
         internal const string ModelIdDimensionName = "ModelId";
         internal const string TwinDimensionName = "Twin";
         internal const string RelationshipTypeDimensionName = "RelationshipType";

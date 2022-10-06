@@ -4,17 +4,17 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
+namespace IngestionManager.Mapped
 {
     using System.Text.Json;
     using System.Threading.Tasks;
-    using global::Azure.DigitalTwins.Core;
+    using Azure.DigitalTwins.Core;
     using Microsoft.ApplicationInsights;
     using Microsoft.ApplicationInsights.Metrics;
     using Microsoft.Azure.DigitalTwins.Parser;
     using Microsoft.Extensions.Logging;
-    using Microsoft.SmartPlaces.Facilities.IngestionManager.Interfaces;
-    using Microsoft.SmartPlaces.Facilities.OntologyMapper;
+    using IngestionManager.Interfaces;
+    using OntologyMapper;
 
     /// <summary>
     /// Loads a building graph from a Mapped input source to the target.
