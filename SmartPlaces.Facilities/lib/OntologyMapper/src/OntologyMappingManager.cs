@@ -1,20 +1,23 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
+﻿// -----------------------------------------------------------------------
+// <copyright file="OntologyMappingManager.cs" company="Microsoft">
+// Copyright (c) Microsoft Corporation.  All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 namespace OntologyMapper
 {
+    using System.Text.RegularExpressions;
     using Microsoft.Azure.DigitalTwins.Parser;
     using Microsoft.Azure.DigitalTwins.Parser.Models;
-    using System.Text.RegularExpressions;
 
     public class OntologyMappingManager : IOntologyMappingManager
     {
-        public OntologyMapping OntologyMapping { get; }
-
         public OntologyMappingManager(IOntologyMappingLoader mappingLoader)
         {
             OntologyMapping = mappingLoader.LoadOntologyMapping();
         }
+
+        public OntologyMapping OntologyMapping { get; }
 
         public bool TryGetInterfaceRemapDtmi(Dtmi inputDtmi, out DtmiRemap? dtmiRemap)
         {
@@ -32,7 +35,7 @@ namespace OntologyMapper
                 dtmiRemap = new DtmiRemap()
                 {
                     InputDtmi = inputDtmi.ToString(),
-                    OutputDtmi = inputDtmi.ToString().Replace(namespaceRemap.InputNamespace, namespaceRemap.OutputNamespace)
+                    OutputDtmi = inputDtmi.ToString().Replace(namespaceRemap.InputNamespace, namespaceRemap.OutputNamespace),
                 };
 
                 return true;

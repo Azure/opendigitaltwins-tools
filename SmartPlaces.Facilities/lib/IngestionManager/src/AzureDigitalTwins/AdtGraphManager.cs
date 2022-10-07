@@ -12,12 +12,12 @@ namespace IngestionManager.AzureDigitalTwins
     using Azure;
     using Azure.DigitalTwins.Core;
     using Azure.Identity;
+    using IngestionManager.Extensions;
+    using IngestionManager.Interfaces;
     using Microsoft.ApplicationInsights;
     using Microsoft.ApplicationInsights.Metrics;
     using Microsoft.Extensions.Logging;
     using Microsoft.Extensions.Options;
-    using IngestionManager.Extensions;
-    using IngestionManager.Interfaces;
 
     public class AdtGraphManager<TOptions> : IOutputGraphManager
         where TOptions : IngestionManagerOptions

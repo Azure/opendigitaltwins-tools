@@ -105,40 +105,40 @@ namespace OntologyMapper
         public string OutputDtmiFilter { get; set; } = string.Empty;
 
         /// <summary>
-        /// The name of the output property in the target ontology
+        /// Gets or sets the name of the output property in the target ontology.
         /// </summary>
         public string OutputPropertyName { get; set; } = string.Empty;
 
         /// <summary>
-        /// A space delimited, ordered, list of input properties to be assigned to the output property (loop until one is not empty)
+        /// Gets or sets a space delimited, ordered, list of input properties to be assigned to the output property (loop until one is not empty).
         /// </summary>
         public IEnumerable<string> InputPropertyNames { get; set; } = new List<string>();
 
         /// <summary>
-        /// If there are multiple projections for a single output property based on different DtmiFilters, priority is taken into account in ascending order
+        /// Gets or sets a value indicating for priority. If there are multiple projections for a single output property based on different DtmiFilters, priority is taken into account in ascending order
         /// </summary>
         public int Priority { get; set; } = 0;
     }
 
     /// <summary>
-    /// Maps an input interface from the source ontology to an output interface in the target ontology
+    /// Maps an input interface from the source ontology to an output interface in the target ontology.
     /// </summary>
     public class DtmiRemap
     {
         /// <summary>
-        /// The input DTMI as a string
+        /// Gets or sets the input DTMI as a string.
         /// </summary>
         public string InputDtmi { get; set; } = string.Empty;
 
         /// <summary>
-        /// The output DTMI as a string
+        /// Gets or sets the output DTMI as a string.
         /// </summary>
         public string OutputDtmi { get; set; } = string.Empty;
 
         /// <summary>
-        /// If this mapping is currently not ready for use (i.e. invalid), set this so that 
+        /// Gets or sets a value indicating whether or not this mapping is currently not ready for use (i.e. invalid), set this so that 
         /// the mapping is declared in the file, but won't be used by the mapper
-        /// This allows reviewers to verify broken mappings in the future
+        /// This allows reviewers to verify broken mappings in the future.
         /// </summary>
         public bool IsIgnored { get; set; } = false;
     }
@@ -149,12 +149,12 @@ namespace OntologyMapper
     public class RelationshipRemap
     {
         /// <summary>
-        /// The input relationship type as a string
+        /// Gets or sets the input relationship type as a string.
         /// </summary>
         public string InputRelationship { get; set; } = string.Empty;
 
         /// <summary>
-        /// The output relationship type as a string
+        /// Gets or sets the output relationship type as a string.
         /// </summary>
         public string OutputRelationship { get; set; } = string.Empty;
     }

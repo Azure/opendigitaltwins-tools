@@ -3,12 +3,11 @@
 
 namespace OntologyMapper.Test
 {
+    using System.Reflection;
     using Microsoft.Azure.DigitalTwins.Parser;
     using Microsoft.Azure.DigitalTwins.Parser.Models;
-    using Microsoft.Extensions.Logging;
-    using OntologyMapper;
     using Moq;
-    using System.Reflection;
+    using OntologyMapper;
     using Xunit;
     using Xunit.Abstractions;
 
@@ -36,9 +35,9 @@ namespace OntologyMapper.Test
 
             Assert.True(result);
             Assert.NotNull(dtmiRemap);
-            Assert.Equal(inputDtmi.ToString(), dtmiRemap.InputDtmi);
-            Assert.Equal(outputDtmi.ToString(), dtmiRemap.OutputDtmi);
-            Assert.False(dtmiRemap.IsIgnored);
+            Assert.Equal(inputDtmi.ToString(), dtmiRemap?.InputDtmi);
+            Assert.Equal(outputDtmi.ToString(), dtmiRemap?.OutputDtmi);
+            Assert.False(dtmiRemap?.IsIgnored);
         }
 
         [Fact]
@@ -71,7 +70,7 @@ namespace OntologyMapper.Test
 
             Assert.True(result);
             Assert.NotNull(dtmiRemap);
-            Assert.Equal("dtmi:com:y:Sparkle;1", dtmiRemap.OutputDtmi);
+            Assert.Equal("dtmi:com:y:Sparkle;1", dtmiRemap?.OutputDtmi);
         }
 
         [Fact]
@@ -105,7 +104,7 @@ namespace OntologyMapper.Test
 
             Assert.True(result);
             Assert.NotNull(outputRelationship);
-            Assert.Equal(expectedOutputRelationship, outputRelationship.OutputRelationship);
+            Assert.Equal(expectedOutputRelationship, outputRelationship?.OutputRelationship);
         }
 
         [Fact]
@@ -140,8 +139,8 @@ namespace OntologyMapper.Test
 
             Assert.True(result);
             Assert.NotNull(propertyProjection);
-            Assert.Equal(outputPropertyName, propertyProjection.OutputPropertyName);
-            Assert.Equal(inputPropertyName, propertyProjection.InputPropertyNames[0]);
+            Assert.Equal(outputPropertyName, propertyProjection?.OutputPropertyName);
+            Assert.Equal(inputPropertyName, propertyProjection?.InputPropertyNames[0]);
         }
 
         [Fact]
@@ -160,8 +159,8 @@ namespace OntologyMapper.Test
 
             Assert.True(result);
             Assert.NotNull(propertyProjection);
-            Assert.Equal(outputPropertyName, propertyProjection.OutputPropertyName);
-            Assert.Equal(inputPropertyName, propertyProjection.InputPropertyNames[0]);
+            Assert.Equal(outputPropertyName, propertyProjection?.OutputPropertyName);
+            Assert.Equal(inputPropertyName, propertyProjection?.InputPropertyNames[0]);
         }
 
         [Fact]
@@ -180,8 +179,8 @@ namespace OntologyMapper.Test
 
             Assert.True(result);
             Assert.NotNull(propertyProjection);
-            Assert.Equal(outputPropertyName, propertyProjection.OutputPropertyName);
-            Assert.Equal(inputPropertyName, propertyProjection.InputPropertyNames[0]);
+            Assert.Equal(outputPropertyName, propertyProjection?.OutputPropertyName);
+            Assert.Equal(inputPropertyName, propertyProjection?.InputPropertyNames[0]);
         }
 
         [Fact]
@@ -218,9 +217,9 @@ namespace OntologyMapper.Test
 
             Assert.True(result);
             Assert.NotNull(propertyProjections);
-            Assert.Equal(outputPropertyName, propertyProjections.OutputPropertyName);
-            Assert.Equal(inputPropertyName1, propertyProjections.InputPropertyNames[0]);
-            Assert.Equal(inputPropertyName2, propertyProjections.InputPropertyNames[1]);
+            Assert.Equal(outputPropertyName, propertyProjections?.OutputPropertyName);
+            Assert.Equal(inputPropertyName1, propertyProjections?.InputPropertyNames[0]);
+            Assert.Equal(inputPropertyName2, propertyProjections?.InputPropertyNames[1]);
         }
 
         [Fact]
@@ -255,9 +254,9 @@ namespace OntologyMapper.Test
 
             Assert.True(result);
             Assert.NotNull(propertyFill);
-            Assert.Equal(2, propertyFill.InputPropertyNames.Count());
-            Assert.Equal("name", propertyFill.InputPropertyNames.ToList()[0]);
-            Assert.Equal("description", propertyFill.InputPropertyNames.ToList()[1]);
+            Assert.Equal(2, propertyFill?.InputPropertyNames.Count());
+            Assert.Equal("name", propertyFill?.InputPropertyNames.ToList()[0]);
+            Assert.Equal("description", propertyFill?.InputPropertyNames.ToList()[1]);
         }
 
         [Fact]
@@ -275,9 +274,9 @@ namespace OntologyMapper.Test
 
             Assert.True(result);
             Assert.NotNull(propertyFill);
-            Assert.Equal(2, propertyFill.InputPropertyNames.Count());
-            Assert.Equal("name", propertyFill.InputPropertyNames.ToList()[0]);
-            Assert.Equal("description", propertyFill.InputPropertyNames.ToList()[1]);
+            Assert.Equal(2, propertyFill?.InputPropertyNames.Count());
+            Assert.Equal("name", propertyFill?.InputPropertyNames.ToList()[0]);
+            Assert.Equal("description", propertyFill?.InputPropertyNames.ToList()[1]);
         }
 
         [Fact]
@@ -295,9 +294,9 @@ namespace OntologyMapper.Test
 
             Assert.True(result);
             Assert.NotNull(propertyFill);
-            Assert.Equal(2, propertyFill.InputPropertyNames.Count());
-            Assert.Equal("name", propertyFill.InputPropertyNames.ToList()[0]);
-            Assert.Equal("size", propertyFill.InputPropertyNames.ToList()[1]);
+            Assert.Equal(2, propertyFill?.InputPropertyNames.Count());
+            Assert.Equal("name", propertyFill?.InputPropertyNames.ToList()[0]);
+            Assert.Equal("size", propertyFill?.InputPropertyNames.ToList()[1]);
         }
 
         [Fact]

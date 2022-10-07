@@ -8,8 +8,8 @@ namespace IngestionManager
 {
     using System.Net.Sockets;
     using System.Threading.Tasks;
-    using Microsoft.Extensions.Caching.Distributed;
     using IngestionManager.Interfaces;
+    using Microsoft.Extensions.Caching.Distributed;
     using Polly;
     using Polly.Retry;
 

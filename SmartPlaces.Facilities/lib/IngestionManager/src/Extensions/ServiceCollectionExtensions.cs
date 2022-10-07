@@ -6,11 +6,10 @@
 
 namespace IngestionManager.Extensions
 {
-    using System.Reflection;
-    using Microsoft.Extensions.DependencyInjection;
     using IngestionManager;
     using IngestionManager.AzureDigitalTwins;
     using IngestionManager.Interfaces;
+    using Microsoft.Extensions.DependencyInjection;
 
     public static class ServiceCollectionExtensions
     {

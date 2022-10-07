@@ -1,5 +1,8 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
+﻿// -----------------------------------------------------------------------
+// <copyright file="MappingFileException.cs" company="Microsoft">
+// Copyright (c) Microsoft Corporation.  All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 namespace OntologyMapper
 {

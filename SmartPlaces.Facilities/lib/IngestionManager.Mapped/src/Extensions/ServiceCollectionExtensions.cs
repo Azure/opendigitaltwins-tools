@@ -6,10 +6,10 @@
 
 namespace IngestionManager.Mapped.Extensions
 {
-    using Microsoft.Extensions.DependencyInjection;
     using IngestionManager.Extensions;
     using IngestionManager.Interfaces;
     using IngestionManager.Mapped;
+    using Microsoft.Extensions.DependencyInjection;
 
     public static class ServiceCollectionExtensions
     {

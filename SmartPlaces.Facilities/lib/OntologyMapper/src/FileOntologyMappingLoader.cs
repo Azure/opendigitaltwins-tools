@@ -1,10 +1,13 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
+﻿// -----------------------------------------------------------------------
+// <copyright file="FileOntologyMappingLoader.cs" company="Microsoft">
+// Copyright (c) Microsoft Corporation.  All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 namespace OntologyMapper
 {
-    using Microsoft.Extensions.Logging;
     using System.Text.Json;
+    using Microsoft.Extensions.Logging;
 
     public class FileOntologyMappingLoader : IOntologyMappingLoader
     {
@@ -30,7 +33,7 @@ namespace OntologyMapper
 
             var options = new JsonSerializerOptions
             {
-                ReadCommentHandling = JsonCommentHandling.Skip
+                ReadCommentHandling = JsonCommentHandling.Skip,
             };
 
             var mappings = JsonSerializer.Deserialize<OntologyMapping>(file, options);

@@ -1,12 +1,15 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
+// -----------------------------------------------------------------------
+// <copyright file="BrickRecMappingValidationTests.cs" company="Microsoft">
+// Copyright (c) Microsoft Corporation.  All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 namespace OntologyMapper.Mapped.Test
 {
     using Microsoft.Azure.DigitalTwins.Parser;
     using Microsoft.Extensions.Logging;
-    using OntologyMapper;
     using Moq;
+    using OntologyMapper;
     using Xunit;
     using Xunit.Abstractions;
 

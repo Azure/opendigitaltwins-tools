@@ -8,15 +8,15 @@ namespace IngestionManagerManager.Mapped.Test
 {
     using System.Threading;
     using System.Threading.Tasks;
+    using IngestionManager;
+    using IngestionManager.Interfaces;
+    using IngestionManager.Mapped;
     using Microsoft.ApplicationInsights;
     using Microsoft.ApplicationInsights.Channel;
     using Microsoft.ApplicationInsights.Extensibility;
     using Microsoft.Extensions.Logging;
-    using IngestionManager;
-    using IngestionManager.Interfaces;
-    using IngestionManager.Mapped;
-    using OntologyMapper;
     using Moq;
+    using OntologyMapper;
     using Xunit;
     using Xunit.Abstractions;
 

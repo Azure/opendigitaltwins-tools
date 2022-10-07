@@ -6,9 +6,9 @@
 
 namespace OntologyMapper.Mapped
 {
-    using Microsoft.Extensions.Logging;
     using System.Reflection;
     using System.Text.Json;
+    using Microsoft.Extensions.Logging;
 
     public class MappedOntologyMappingLoader : IOntologyMappingLoader
     {
@@ -36,7 +36,7 @@ namespace OntologyMapper.Mapped
 
             var options = new JsonSerializerOptions
             {
-                ReadCommentHandling = JsonCommentHandling.Skip
+                ReadCommentHandling = JsonCommentHandling.Skip,
             };
 
             using (Stream? stream = assembly.GetManifestResourceStream(resourceName))

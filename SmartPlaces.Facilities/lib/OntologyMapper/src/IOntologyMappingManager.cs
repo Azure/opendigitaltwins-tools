@@ -1,5 +1,8 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
+﻿// -----------------------------------------------------------------------
+// <copyright file="IOntologyMappingManager.cs" company="Microsoft">
+// Copyright (c) Microsoft Corporation.  All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 namespace OntologyMapper
 {
@@ -36,7 +39,7 @@ namespace OntologyMapper
         public bool TryGetRelationshipRemap(string inputRelationship, out RelationshipRemap? relationshipRemap);
 
         /// <summary>
-        /// In some cases, the contents of one input property may need to be copied to multiple other fields in the target ontology. For instance, if 
+        /// In some cases, the contents of one input property may need to be copied to multiple other fields in the target ontology. For instance, if
         /// the target ontology requires that the name field always be populated, but the source name field may be null and the description field be more reliable,
         /// a chain of fields can be set here so that there is a priority list of fields that will backfill the name field if the input name field is null.
         /// </summary>
