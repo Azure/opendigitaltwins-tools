@@ -15,23 +15,30 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    
     - name: Setup .NET
       uses: actions/setup-dotnet@v2
       with:
         dotnet-version: 6.0.x
 
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v2
-      with:
-        dotnet-version: ${{ env.DOTNET_VERSION }}
-        source-url: ${{ env.AZURE_ARTIFACTS_FEED_URL }}
-
     - name: Restore dependencies
       run: |
-           dotnet restore SmartPlaces.Facilities
+           dotnet restore SmartPlaces.Facilities\lib\OntologyMapper
+           dotnet restore SmartPlaces.Facilities\lib\OntologyMapper.Mapped
+           dotnet restore SmartPlaces.Facilities\lib\IngestionManager
+           dotnet restore SmartPlaces.Facilities\lib\IngestionManager.Mapped
+           dotnet restore SmartPlaces.Facilities\products\Topology
     - name: Build
       run: |
-           dotnet build SmartPlaces.Facilities --no-restore
+           dotnet build SmartPlaces.Facilities\lib\OntologyMapper --no-restore
+           dotnet build SmartPlaces.Facilities\lib\OntologyMapper.Mapped --no-restore
+           dotnet build SmartPlaces.Facilities\lib\IngestionManager --no-restore
+           dotnet build SmartPlaces.Facilities\lib\IngestionManager.Mapped --no-restore
+           dotnet build SmartPlaces.Facilities\products\Topology --no-restore
     - name: Test
       run: |
-           dotnet test SmartPlaces.Facilities --no-build --verbosity normal
+           dotnet test SmartPlaces.Facilities\lib\OntologyMapper --no-build --verbosity normal
+           dotnet test SmartPlaces.Facilities\lib\OntologyMapper.Mapped --no-build --verbosity normal
+           dotnet test SmartPlaces.Facilities\lib\IngestionManager --no-build --verbosity normal
+           dotnet test SmartPlaces.Facilities\lib\IngestionManager.Mapped --no-build --verbosity normal
+           
