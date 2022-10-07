@@ -117,7 +117,7 @@ namespace IngestionManager.AzureDigitalTwins
             else
             {
                 // The kind has changed. Do a replace
-                jsonPatchDocument.AppendReplace(propertyName + "/" + propertyName, newPropertyJson);
+                jsonPatchDocument.AppendReplace(propertyName, newPropertyJson);
             }
         }
     }
