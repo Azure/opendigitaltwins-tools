@@ -19,6 +19,13 @@ jobs:
       uses: actions/setup-dotnet@v2
       with:
         dotnet-version: 6.0.x
+
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: ${{ env.DOTNET_VERSION }}
+        source-url: ${{ env.AZURE_ARTIFACTS_FEED_URL }}
+
     - name: Restore dependencies
       run: |
            dotnet restore SmartPlaces.Facilities
