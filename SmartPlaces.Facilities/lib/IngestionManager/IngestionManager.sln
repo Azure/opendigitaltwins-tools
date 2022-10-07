@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32901.215
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IngestionManager", "src\IngestionManager.csproj", "{66A7D2D2-210F-4F3B-9916-1C8BDD6314D4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IngestionManager.Test", "test\IngestionManager.Test.csproj", "{5E69FE46-0B29-4B9A-94E3-CC1229F885B8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{66A7D2D2-210F-4F3B-9916-1C8BDD6314D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66A7D2D2-210F-4F3B-9916-1C8BDD6314D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66A7D2D2-210F-4F3B-9916-1C8BDD6314D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66A7D2D2-210F-4F3B-9916-1C8BDD6314D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E69FE46-0B29-4B9A-94E3-CC1229F885B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E69FE46-0B29-4B9A-94E3-CC1229F885B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E69FE46-0B29-4B9A-94E3-CC1229F885B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E69FE46-0B29-4B9A-94E3-CC1229F885B8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0C2B2CF6-84B9-4413-B7AA-87440E6EAD78}
+	EndGlobalSection
+EndGlobal
