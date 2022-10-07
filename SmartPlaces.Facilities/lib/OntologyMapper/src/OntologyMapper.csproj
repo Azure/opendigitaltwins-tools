@@ -1,12 +1,22 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
+	<Sdk Name="Microsoft.Build.CentralPackageVersions" />
+	
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
-		<AssemblyName>$(MSBuildProjectName)</AssemblyName>
-		<RootNamespace>$(MSBuildProjectName)</RootNamespace>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<Version>$(VersionPrefix)</Version>
+		<Authors>Microsoft</Authors>
 		<Description>Support for converting from one DTDL-based Ontology to a different DTDL Based Ontology</Description>
+		<AssemblyVersion>0.6.0</AssemblyVersion>
+		<PackageVersion>0.6.0-preview</PackageVersion>
+		<RepositoryUrl>https://github.com/Azure/opendigitaltwins-tools</RepositoryUrl>
+		<projectUrl>https://github.com/Azure/opendigitaltwins-tools/</projectUrl>
+		<licenseUrl>http://www.opensource.org/licenses/MIT</licenseUrl>
+		<requireLicenseAcceptance>true</requireLicenseAcceptance>
+		<copyright>© Microsoft Corporation. All rights reserved.</copyright>
+		<PackageReadmeFile>README.md</PackageReadmeFile>	
 	</PropertyGroup>
 
 	<ItemGroup>

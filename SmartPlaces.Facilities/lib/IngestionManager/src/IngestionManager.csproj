@@ -1,12 +1,22 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
+	<Sdk Name="Microsoft.Build.CentralPackageVersions" />
+	
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
-		<AssemblyName>$(MSBuildProjectName)</AssemblyName>
-		<RootNamespace>$(MSBuildProjectName)</RootNamespace>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<Version>$(VersionPrefix)</Version>
+		<Authors>Microsoft</Authors>
 		<Description>This is library injects data from one DTDL based graph, then converts and inserts the data into another DTDL base graph.</Description>
+		<AssemblyVersion>0.1.0</AssemblyVersion>
+		<PackageVersion>0.1.0-preview</PackageVersion>
+		<RepositoryUrl>https://github.com/Azure/opendigitaltwins-tools</RepositoryUrl>
+		<projectUrl>https://github.com/Azure/opendigitaltwins-tools/</projectUrl>
+		<licenseUrl>http://www.opensource.org/licenses/MIT</licenseUrl>
+		<requireLicenseAcceptance>true</requireLicenseAcceptance>
+		<copyright>© Microsoft Corporation. All rights reserved.</copyright>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
 	</PropertyGroup>
 
 	<ItemGroup>

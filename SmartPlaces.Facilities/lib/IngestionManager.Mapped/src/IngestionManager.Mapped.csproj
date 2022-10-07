@@ -1,11 +1,21 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
+	<Sdk Name="Microsoft.Build.CentralPackageVersions" />
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
-		<AssemblyName>$(MSBuildProjectName)</AssemblyName>
-		<RootNamespace>$(MSBuildProjectName)</RootNamespace>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<Version>$(VersionPrefix)</Version>
+		<Authors>Microsoft</Authors>
+		<Description>Support for converting from a Mapped DTDL-based Ontology to a different DTDL Based Ontology</Description>
+		<AssemblyVersion>0.1.0</AssemblyVersion>
+		<PackageVersion>0.1.0-preview</PackageVersion>
+		<RepositoryUrl>https://github.com/Azure/opendigitaltwins-tools</RepositoryUrl>
+		<projectUrl>https://github.com/Azure/opendigitaltwins-tools/</projectUrl>
+		<licenseUrl>http://www.opensource.org/licenses/MIT</licenseUrl>
+		<requireLicenseAcceptance>true</requireLicenseAcceptance>
+		<copyright>© Microsoft Corporation. All rights reserved.</copyright>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -27,14 +37,17 @@
 		<PackageReference Include="StackExchange.Redis" Version="2.6.66" />
 	</ItemGroup>
 
-  <ItemGroup>
-    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
-      <_Parameter1>$(AssemblyName).Test</_Parameter1>
-    </AssemblyAttribute>
-  </ItemGroup>
+	<ItemGroup>
+		<AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
+			<_Parameter1>$(AssemblyName).Test</_Parameter1>
+		</AssemblyAttribute>
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\IngestionManager\src\IngestionManager.csproj" />
-  </ItemGroup>
-
+	<ItemGroup>
+		<ProjectReference Include="..\..\IngestionManager\src\IngestionManager.csproj" />
+	</ItemGroup>
+	
+	<ItemGroup>
+		<None Include="README.md" Pack="true" PackagePath="\"/>
+	</ItemGroup>
 </Project>
