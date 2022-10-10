@@ -4,7 +4,7 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace IngestionManager.Interfaces
+namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Interfaces
 {
     using System.Text.Json;
     using System.Threading.Tasks;

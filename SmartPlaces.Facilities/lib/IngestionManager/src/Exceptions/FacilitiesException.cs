@@ -4,7 +4,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace IngestionManager.Exceptions
+namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Exceptions
 {
     using System;
 

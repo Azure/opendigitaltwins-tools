@@ -1,7 +1,7 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-namespace OntologyMapper
+namespace Microsoft.SmartPlaces.Facilities.OntologyMapper
 {
     using System.Collections.Generic;
 

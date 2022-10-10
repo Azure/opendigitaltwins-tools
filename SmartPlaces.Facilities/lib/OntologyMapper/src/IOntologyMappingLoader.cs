@@ -4,7 +4,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace OntologyMapper
+namespace Microsoft.SmartPlaces.Facilities.OntologyMapper
 {
     public interface IOntologyMappingLoader
     {

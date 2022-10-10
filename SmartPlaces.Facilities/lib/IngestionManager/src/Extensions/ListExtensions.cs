@@ -4,7 +4,7 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace IngestionManager.Extensions
+namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Extensions
 {
     using System;
     using System.Collections.Generic;

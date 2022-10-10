@@ -4,11 +4,11 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace IngestionManager
+namespace Microsoft.SmartPlaces.Facilities.IngestionManager
 {
     using System.Text.Json;
     using System.Threading.Tasks;
-    using Azure.DigitalTwins.Core;
+    using global::Azure.DigitalTwins.Core;
     using Microsoft.ApplicationInsights;
     using Microsoft.ApplicationInsights.Metrics;
     using Microsoft.Azure.DigitalTwins.Parser;

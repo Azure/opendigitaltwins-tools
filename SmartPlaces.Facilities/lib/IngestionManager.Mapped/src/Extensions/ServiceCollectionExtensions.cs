@@ -4,7 +4,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace IngestionManager.Mapped.Extensions
+namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped.Extensions
 {
     using IngestionManager.Extensions;
     using IngestionManager.Interfaces;

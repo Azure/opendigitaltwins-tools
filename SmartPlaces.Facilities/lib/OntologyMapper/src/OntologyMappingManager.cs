@@ -4,7 +4,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace OntologyMapper
+namespace Microsoft.SmartPlaces.Facilities.OntologyMapper
 {
     using System.Text.RegularExpressions;
     using Microsoft.Azure.DigitalTwins.Parser;

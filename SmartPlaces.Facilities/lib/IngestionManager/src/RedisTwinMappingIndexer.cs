@@ -4,12 +4,12 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace IngestionManager
+namespace Microsoft.SmartPlaces.Facilities.IngestionManager
 {
     using System.Net.Sockets;
     using System.Threading.Tasks;
-    using IngestionManager.Interfaces;
     using Microsoft.Extensions.Caching.Distributed;
+    using Microsoft.SmartPlaces.Facilities.IngestionManager.Interfaces;
     using Polly;
     using Polly.Retry;
 
@@ -39,7 +39,7 @@ namespace IngestionManager
 
         public async Task UpsertTwinIndexAsync(string sourceId, string twinId)
         {
-           await redisRetryPolicy.ExecuteAsync(async () => await cache.SetStringAsync(sourceId, twinId));
+            await redisRetryPolicy.ExecuteAsync(async () => await cache.SetStringAsync(sourceId, twinId));
         }
     }
 }

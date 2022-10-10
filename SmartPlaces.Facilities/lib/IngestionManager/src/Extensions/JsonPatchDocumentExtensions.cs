@@ -4,9 +4,9 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace IngestionManager.Extensions
+namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Extensions
 {
-    using Azure;
+    using global::Azure;
 
     internal static class JsonPatchDocumentExtensions
     {

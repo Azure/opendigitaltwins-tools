@@ -4,12 +4,12 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace IngestionManager.Extensions
+namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Extensions
 {
-    using IngestionManager;
     using IngestionManager.AzureDigitalTwins;
     using IngestionManager.Interfaces;
     using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.SmartPlaces.Facilities.IngestionManager;
 
     public static class ServiceCollectionExtensions
     {
@@ -21,7 +21,7 @@ namespace IngestionManager.Extensions
                     .ValidateDataAnnotations()
                     .ValidateOnStart();
 
-            services.AddSingleton<IOutputGraphManager, AdtGraphManager<TOptions>>();
+            services.AddSingleton<IOutputGraphManager, AzureDigitalTwinsGraphManager<TOptions>>();
             return services;
         }
     }

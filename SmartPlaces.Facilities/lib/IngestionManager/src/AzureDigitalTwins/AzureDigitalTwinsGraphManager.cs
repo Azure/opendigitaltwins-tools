@@ -4,14 +4,15 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace IngestionManager.AzureDigitalTwins
+namespace Microsoft.SmartPlaces.Facilities.IngestionManager.AzureDigitalTwins
 {
     using System;
     using System.Collections.Concurrent;
     using System.Text.Json;
-    using Azure;
-    using Azure.DigitalTwins.Core;
-    using Azure.Identity;
+    using global::Azure;
+    using global::Azure.DigitalTwins.Core;
+    using global::Azure.Identity;
+    using IngestionManager;
     using IngestionManager.Extensions;
     using IngestionManager.Interfaces;
     using Microsoft.ApplicationInsights;
@@ -19,14 +20,14 @@ namespace IngestionManager.AzureDigitalTwins
     using Microsoft.Extensions.Logging;
     using Microsoft.Extensions.Options;
 
-    public class AdtGraphManager<TOptions> : IOutputGraphManager
+    public class AzureDigitalTwinsGraphManager<TOptions> : IOutputGraphManager
         where TOptions : IngestionManagerOptions
     {
         private readonly ConcurrentQueue<DigitalTwinsClient> queue = new ConcurrentQueue<DigitalTwinsClient>();
         private readonly ParallelOptions parallelOptions;
         private IngestionManagerOptions options;
 
-        public AdtGraphManager(ILogger<AdtGraphManager<TOptions>> logger,
+        public AzureDigitalTwinsGraphManager(ILogger<AzureDigitalTwinsGraphManager<TOptions>> logger,
                                IOptions<TOptions> options,
                                ITwinMappingIndexer twinMappingIndexer,
                                TelemetryClient telemetryClient,
@@ -43,7 +44,7 @@ namespace IngestionManager.AzureDigitalTwins
                 queue.Enqueue(new DigitalTwinsClient(new Uri(options.Value.AzureDigitalTwinsEndpoint), new DefaultAzureCredential()));
             }
 
-            parallelOptions = new ()
+            parallelOptions = new()
             {
                 MaxDegreeOfParallelism = options.Value.MaxDegreeOfParallelism,
             };

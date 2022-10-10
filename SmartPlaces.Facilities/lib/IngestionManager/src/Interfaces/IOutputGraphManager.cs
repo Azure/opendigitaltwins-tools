@@ -4,10 +4,10 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace IngestionManager.Interfaces
+namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Interfaces
 {
     using System.Threading.Tasks;
-    using Azure.DigitalTwins.Core;
+    using global::Azure.DigitalTwins.Core;
 
     public interface IOutputGraphManager
     {

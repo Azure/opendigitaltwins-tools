@@ -4,7 +4,7 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace IngestionManager.Mapped
+namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
 {
     using System.ComponentModel.DataAnnotations;
     using IngestionManager.Interfaces;

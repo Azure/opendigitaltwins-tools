@@ -4,7 +4,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace IngestionManager.Mapped.Test
+namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped.Test
 {
     using System.Collections.Generic;
     using System.IO;
