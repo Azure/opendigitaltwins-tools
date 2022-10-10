@@ -9,12 +9,11 @@ namespace Topology
     using System;
     using System.Threading.Tasks;
     using Azure.Identity;
-    using Microsoft.Extensions.Options;
-    using IngestionManager;
-    using IngestionManager.Interfaces;
-    using IngestionManager.Mapped.Extensions;
-    using OntologyMapper;
-    using OntologyMapper.Mapped;
+    using Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped.Extensions;
+    using Microsoft.SmartPlaces.Facilities.IngestionManager.Interfaces;
+    using Microsoft.SmartPlaces.Facilities.IngestionManager;
+    using Microsoft.SmartPlaces.Facilities.OntologyMapper;
+    using Microsoft.SmartPlaces.Facilities.OntologyMapper.Mapped;
 
     public class Program
     {

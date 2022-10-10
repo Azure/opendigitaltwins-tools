@@ -10,7 +10,7 @@ namespace Topology
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Hosting;
     using Microsoft.Extensions.Logging;
-    using IngestionManager.Interfaces;
+    using Microsoft.SmartPlaces.Facilities.IngestionManager.Interfaces;
 
     public class ProcessTopology : BackgroundService
     {
