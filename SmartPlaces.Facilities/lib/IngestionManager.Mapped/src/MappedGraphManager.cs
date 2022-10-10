@@ -14,7 +14,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
     using Microsoft.Extensions.Logging;
     using Microsoft.Extensions.Options;
     using Microsoft.Net.Http.Headers;
-    using IngestionManager.Interfaces;
+    using Microsoft.SmartPlaces.Facilities.IngestionManager.Interfaces;
 
     public class MappedGraphManager : IInputGraphManager
     {
@@ -30,7 +30,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
 
             model = LoadObjectModelJson();
 
-            httpClient = httpClientFactory.CreateClient("Facilities");
+            httpClient = httpClientFactory.CreateClient("Microsoft.SmartPlaces.Facilities");
         }
 
         public async Task<JsonDocument?> GetTwinGraphAsync(string query)

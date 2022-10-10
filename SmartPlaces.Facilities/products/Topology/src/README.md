@@ -27,7 +27,6 @@ The following environment variables need to be defined in order to run this code
 | --- | --- | --- |
 | KeyVaultEndpoint | The Uri to the KeyVault instance where needed secrets are stored | https://<yourkeyvaultname>.vault.azure.net/ |
 | AzureDigitalTwinsEndpoint | The Uri of the ADT Instance to update | https://<youradtname>.api.<yourregion>.digitaltwins.azure.net |
-| RedisCacheConnectionString | The endpoint location of the local Redis cluster in the cloud that store the mapping from the MappingKey to the ADT Twin ID | <yourcachename>.redis.cache.windows.net,abortConnect=false,ssl=true,allowAdmin=true,password=<yourpassword> |
 | AppInsightsConnectionString | The connection string needed to locate the Application Insights instance for logs and metrics | InstrumentationKey/=<yourinstrumentationkey>;IngestionEndpoint/=https://<checkregion>.in.applicationinsights.azure.com/;LiveEndpoint/=https://<checkregion>.livediagnostics.monitor.azure.com/ |
 | MappedRootUrl | The root Url of the Mapped Instance | https://api.mapped.com/graphql |
 
@@ -38,6 +37,7 @@ The following secrets must be defined in the KeyVault in order to run this code:
 | Secret Name | Value Source | Example |
 | --- | --- | --- |
 | MappedToken | The Personal Access Token for the Mapped instance | <yourkey> |
+| RedisCacheConnectionString | The endpoint location of the local Redis cluster in the cloud that store the mapping from the MappingKey to the ADT Twin ID | <yourcachename>.redis.cache.windows.net,abortConnect=false,ssl=true,allowAdmin=true,password=<yourpassword> |
 
 ## Security
 
