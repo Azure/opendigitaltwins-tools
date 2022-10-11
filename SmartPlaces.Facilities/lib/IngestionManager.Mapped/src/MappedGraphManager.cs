@@ -10,7 +10,6 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
     using System.Reflection;
     using System.Text.Json;
     using System.Threading.Tasks;
-    using mapped;
     using Microsoft.Extensions.Logging;
     using Microsoft.Extensions.Options;
     using Microsoft.Net.Http.Headers;
@@ -67,68 +66,27 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
 
         public string GetOrganizationQuery()
         {
-            var builder = new OrgQueryBuilder()
-                    .WithSites(new SiteQueryBuilder()
-                        .WithAllScalarFields());
-
-            return builder.Build(Formatting.None);
+            return "{sites{description,exactType,id,name}}";
         }
 
         public string GetBuildingsForSiteQuery(string siteId)
         {
-            // Get the buildings for the site
-            var builder = new SiteQueryBuilder()
-                .WithAllScalarFields()
-                .WithBuildings(new BuildingQueryBuilder()
-                                    .WithAllScalarFields()
-                                    .WithFloors(new FloorQueryBuilder()
-                                        .WithAllScalarFields()));
-
-            var query = builder.Build(Formatting.None);
-            var filteredQuery = "{sites(filter: {id: {eq: \"" + siteId + "\"}}) " + query + "}";
-
-            return filteredQuery;
+            return "{ sites(filter: { id: { eq: \"" + siteId + "\"} }) { description,exactType,id,name,buildings{ description,exactType,id,name,floors{ description,exactType,id,level,name} } } }";
         }
 
         public string GetBuildingThingsQuery(string buildingDtId)
         {
-            var builder = new BuildingQueryBuilder()
-                .WithThings(new ThingQueryBuilder()
-                    .WithAllScalarFields()
-                    .WithHasLocation(new PlaceQueryBuilder()
-                                       .WithAllScalarFields()));
-
-            var query = builder.Build(Formatting.None);
-            var filteredQuery = "{buildings(filter: {id: {eq: \"" + buildingDtId + "\"}}) " + query + "}";
-
-            return filteredQuery;
+            return "{ buildings(filter: { id: { eq: \"" + buildingDtId + "\"} }) { things{ description,exactType,firmwareVersion,id,mappingKey,name,hasLocation{ exactType,id,name} } } }";
         }
 
         public string GetPointsForThingQuery(string thingDtId)
         {
-            var builder = new ThingQueryBuilder()
-                .WithPoints(new PointQueryBuilder()
-                    .WithAllScalarFields());
-
-            var query = builder.Build(Formatting.None);
-            var filteredQuery = "{things(filter: {id: {eq: \"" + thingDtId + "\"}}) " + query + "}";
-
-            return filteredQuery;
+            return "{things(filter: {id: {eq: \"" + thingDtId + "\"}}) {points{description,exactType,id,mappingKey,name}}}";
         }
 
         public string GetFloorQuery(string basicDtId)
         {
-            var builder = new FloorQueryBuilder()
-                .WithAllScalarFields()
-                .WithHasPart(new PlaceQueryBuilder()
-                   .WithAllScalarFields())
-                .WithZones(new ZoneQueryBuilder()
-                    .WithAllScalarFields());
-
-            var query = builder.Build();
-            var filteredQuery = "{floors(filter: {id: {eq: \"" + basicDtId + "\"}}) " + query + "}";
-
-            return filteredQuery;
+            return "{ floors(filter: { id: { eq: \"" + basicDtId + "\"} }) { description,exactType,id,level,name,hasPart{ exactType,id,name},zones{ description,exactType,id,name} } }";
         }
 
         public bool TryGetDtmi(string exactType, out string dtmi)
