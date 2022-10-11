@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RuleSet Name="Microsoft.Analyzers.ManagedCodeAnalysis" ToolsVersion="15.0">
+  <Rules AnalyzerId="Microsoft.Analyzers.ManagedCodeAnalysis" RuleNamespace="Microsoft.Rules.Managed">
+    <!-- Rule documentation can be found here: https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/compiler-messages/ -->
+
+    <!-- Must fix -->
+
+    <!-- Should fix -->
+
+    <!-- Devs choice -->
+    <Rule Id="CS1591" Action="None" />  <!-- Missing XML comment for publicly visible type or member -->
+
+  </Rules>
+</RuleSet>
