@@ -8,15 +8,15 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped.Test
 {
     using System.Threading;
     using System.Threading.Tasks;
-    using IngestionManager;
-    using IngestionManager.Interfaces;
     using Microsoft.ApplicationInsights;
     using Microsoft.ApplicationInsights.Channel;
     using Microsoft.ApplicationInsights.Extensibility;
     using Microsoft.Extensions.Logging;
+    using Microsoft.SmartPlaces.Facilities.IngestionManager;
+    using Microsoft.SmartPlaces.Facilities.IngestionManager.Interfaces;
     using Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped;
+    using Microsoft.SmartPlaces.Facilities.OntologyMapper;
     using Moq;
-    using OntologyMapper;
     using Xunit;
     using Xunit.Abstractions;
 

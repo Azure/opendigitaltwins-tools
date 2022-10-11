@@ -6,10 +6,10 @@
 
 namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Extensions
 {
-    using IngestionManager.AzureDigitalTwins;
-    using IngestionManager.Interfaces;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.SmartPlaces.Facilities.IngestionManager;
+    using Microsoft.SmartPlaces.Facilities.IngestionManager.AzureDigitalTwins;
+    using Microsoft.SmartPlaces.Facilities.IngestionManager.Interfaces;
     using System.Reflection;
 
     public static class ServiceCollectionExtensions

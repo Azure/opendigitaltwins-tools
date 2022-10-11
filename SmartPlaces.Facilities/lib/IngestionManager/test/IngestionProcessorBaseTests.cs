@@ -19,12 +19,12 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Test
     using Microsoft.ApplicationInsights.Extensibility;
     using Microsoft.Azure.DigitalTwins.Parser;
     using Microsoft.Extensions.Logging;
-    using OntologyMapper;
+    using Microsoft.SmartPlaces.Facilities.IngestionManager;
+    using Microsoft.SmartPlaces.Facilities.IngestionManager.Interfaces;
+    using Microsoft.SmartPlaces.Facilities.OntologyMapper;
     using Moq;
     using Xunit;
     using Xunit.Abstractions;
-    using Microsoft.SmartPlaces.Facilities.IngestionManager;
-    using Microsoft.SmartPlaces.Facilities.IngestionManager.Interfaces;
 
     public class IngestionProcessorBaseTests
     {

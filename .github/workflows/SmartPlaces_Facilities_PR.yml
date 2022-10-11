@@ -3,6 +3,9 @@ name: Pull Request Build
 on:
   pull_request:
     branches: [ "main" ]
+    paths: 
+      - '.github/**'
+      - 'SmartPlaces.Facilities/**'
 
 env: 
   BUILD_CONFIGURATION: 'Release'    # set this to the appropriate build configuration

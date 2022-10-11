@@ -14,8 +14,8 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
     using Microsoft.Azure.DigitalTwins.Parser;
     using Microsoft.Azure.DigitalTwins.Parser.Models;
     using Microsoft.Extensions.Logging;
-    using OntologyMapper;
-    using IngestionManager.Interfaces;
+    using Microsoft.SmartPlaces.Facilities.IngestionManager.Interfaces;
+    using Microsoft.SmartPlaces.Facilities.OntologyMapper;
 
     /// <summary>
     /// Base class for loading a site graph from input source to output target.

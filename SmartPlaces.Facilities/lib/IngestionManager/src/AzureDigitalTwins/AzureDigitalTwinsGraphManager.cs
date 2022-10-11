@@ -12,13 +12,13 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.AzureDigitalTwins
     using global::Azure;
     using global::Azure.DigitalTwins.Core;
     using global::Azure.Identity;
-    using IngestionManager;
-    using IngestionManager.Extensions;
-    using IngestionManager.Interfaces;
     using Microsoft.ApplicationInsights;
     using Microsoft.ApplicationInsights.Metrics;
     using Microsoft.Extensions.Logging;
     using Microsoft.Extensions.Options;
+    using Microsoft.SmartPlaces.Facilities.IngestionManager;
+    using Microsoft.SmartPlaces.Facilities.IngestionManager.Extensions;
+    using Microsoft.SmartPlaces.Facilities.IngestionManager.Interfaces;
 
     public class AzureDigitalTwinsGraphManager<TOptions> : IOutputGraphManager
         where TOptions : IngestionManagerOptions

@@ -13,8 +13,8 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
     using Microsoft.ApplicationInsights.Metrics;
     using Microsoft.Azure.DigitalTwins.Parser;
     using Microsoft.Extensions.Logging;
-    using IngestionManager.Interfaces;
-    using OntologyMapper;
+    using Microsoft.SmartPlaces.Facilities.IngestionManager.Interfaces;
+    using Microsoft.SmartPlaces.Facilities.OntologyMapper;
 
     /// <summary>
     /// Loads a building graph from a Mapped input source to the target.
