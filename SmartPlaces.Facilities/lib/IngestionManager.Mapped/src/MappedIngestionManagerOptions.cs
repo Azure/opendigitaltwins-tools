@@ -7,7 +7,7 @@
 namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
 {
     using System.ComponentModel.DataAnnotations;
-    using IngestionManager.Interfaces;
+    using Microsoft.SmartPlaces.Facilities.IngestionManager.Interfaces;
 
     public class MappedIngestionManagerOptions : IngestionManagerOptions, IInputGraphManagerOptions
     {
