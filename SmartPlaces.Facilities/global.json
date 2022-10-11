@@ -2,8 +2,5 @@
   "sdk": {
     "version": "6.0.202",
     "rollForward": "feature"
-  },
-   "msbuild-sdks": {
-     "Microsoft.Build.CentralPackageVersions": "2.1.3"
-   }
+  }
 }
