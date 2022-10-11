@@ -10,6 +10,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Extensions
     using IngestionManager.Interfaces;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.SmartPlaces.Facilities.IngestionManager;
+    using System.Reflection;
 
     public static class ServiceCollectionExtensions
     {
@@ -20,6 +21,11 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Extensions
                     .Configure(options)
                     .ValidateDataAnnotations()
                     .ValidateOnStart();
+
+            services.AddHttpClient("Microsoft.SmartPlaces.Facilities", options =>
+            {
+                options.DefaultRequestHeaders.Add("ms-smartfacilities-version", Assembly.GetExecutingAssembly().GetName().Version?.ToString() ?? "0.0.0");
+            });
 
             services.AddSingleton<IOutputGraphManager, AzureDigitalTwinsGraphManager<TOptions>>();
             return services;
