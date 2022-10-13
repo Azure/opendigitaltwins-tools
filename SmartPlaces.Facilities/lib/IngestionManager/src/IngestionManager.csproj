@@ -8,13 +8,13 @@
 		<Version>$(VersionPrefix)</Version>
 		<Authors>Microsoft</Authors>
 		<Description>This is library injects data from one DTDL based graph, then converts and inserts the data into another DTDL base graph.</Description>
-		<AssemblyVersion>0.1.0</AssemblyVersion>
-		<PackageVersion>0.1.0-preview</PackageVersion>
+		<AssemblyVersion>0.1.1</AssemblyVersion>
+		<PackageVersion>0.1.1-preview</PackageVersion>
 		<RepositoryUrl>https://github.com/Azure/opendigitaltwins-tools</RepositoryUrl>
-		<projectUrl>https://github.com/Azure/opendigitaltwins-tools/</projectUrl>
-		<licenseUrl>http://www.opensource.org/licenses/MIT</licenseUrl>
-		<requireLicenseAcceptance>true</requireLicenseAcceptance>
-		<copyright>© Microsoft Corporation. All rights reserved.</copyright>
+		<PackageProjectUrl>https://github.com/Azure/opendigitaltwins-tools/</PackageProjectUrl>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<RequireLicenseAcceptance>true</RequireLicenseAcceptance>
+		<Copyright>© Microsoft Corporation. All rights reserved.</Copyright>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 	</PropertyGroup>
 
@@ -29,6 +29,7 @@
 		<PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Options.DataAnnotations" Version="6.0.0" />
+		<PackageReference Include="Microsoft.SmartPlaces.Facilities.OntologyMapper" Version="0.6.0-preview" />
 		<PackageReference Include="Microsoft.Net.Http.Headers" Version="2.2.8" />
 		<PackageReference Include="Polly" Version="7.2.3" />
 		<PackageReference Include="StackExchange.Redis" Version="2.6.66" />
@@ -42,9 +43,5 @@
 		<AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
 			<_Parameter1>$(AssemblyName).Test</_Parameter1>
 		</AssemblyAttribute>
-	</ItemGroup>
-	
-	<ItemGroup>
-	  <ProjectReference Include="..\..\OntologyMapper\src\OntologyMapper.csproj" />
 	</ItemGroup>
 </Project>
