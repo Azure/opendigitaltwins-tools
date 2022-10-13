@@ -8,8 +8,8 @@
 		<Version>$(VersionPrefix)</Version>
 		<Authors>Microsoft</Authors>
 		<Description>Support for converting from a Mapped DTDL-based Ontology to a different DTDL Based Ontology</Description>
-		<AssemblyVersion>0.1.0</AssemblyVersion>
-		<PackageVersion>0.1.0-preview</PackageVersion>
+		<AssemblyVersion>0.1.1</AssemblyVersion>
+		<PackageVersion>0.1.1-preview</PackageVersion>
 		<RepositoryUrl>https://github.com/Azure/opendigitaltwins-tools</RepositoryUrl>
 		<PackageProjectUrl>https://github.com/Azure/opendigitaltwins-tools/</PackageProjectUrl>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -33,7 +33,7 @@
 		<PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
 		<PackageReference Include="Microsoft.Net.Http.Headers" Version="2.2.8" />
-		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+		<PackageReference Include="Microsoft.SmartPlaces.Facilities.IngestionManager" Version="0.1.0-preview" />
 		<PackageReference Include="StackExchange.Redis" Version="2.6.66" />
 	</ItemGroup>
 
@@ -42,12 +42,8 @@
 			<_Parameter1>$(AssemblyName).Test</_Parameter1>
 		</AssemblyAttribute>
 	</ItemGroup>
-
-	<ItemGroup>
-		<ProjectReference Include="..\..\IngestionManager\src\IngestionManager.csproj" />
-	</ItemGroup>
 	
 	<ItemGroup>
-		<None Include="README.md" Pack="true" PackagePath="\"/>
+		<None Include="README.md" Pack="true" PackagePath="\" />
 	</ItemGroup>
 </Project>

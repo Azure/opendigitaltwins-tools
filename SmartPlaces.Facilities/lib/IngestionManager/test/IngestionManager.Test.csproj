@@ -29,14 +29,20 @@
 		<PackageReference Include="MSTest.TestAdapter" Version="2.2.7" />
 		<PackageReference Include="MSTest.TestFramework" Version="2.2.7" />
 		<PackageReference Include="xunit" Version="2.4.1" />
-		<PackageReference Include="xunit.runner.visualstudio" Version="2.4.4" >
+		<PackageReference Include="xunit.runner.visualstudio" Version="2.4.4">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\IngestionManager.Mapped\src\IngestionManager.Mapped.csproj" />
+	  <ProjectReference Include="..\src\IngestionManager.csproj" />
+	</ItemGroup>
+
+    <!-- Added Explicitly for GHSA-5crp-9r3c-p9vr -->
+	<!-- Can be removed once Microsoft.AspNet.WebApi.Client fixes the vulnerability -->
+	<ItemGroup>
+		<PackageReference Update="Newtonsoft.Json" Version="13.0.1" />
 	</ItemGroup>
 
 </Project>

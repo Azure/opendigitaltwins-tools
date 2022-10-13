@@ -30,14 +30,11 @@
 		<PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
 		<PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.1" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Console" Version="6.0.0" />	
-	</ItemGroup>
-
-	<ItemGroup>
-		<ProjectReference Include="..\..\..\lib\IngestionManager.Mapped\src\IngestionManager.Mapped.csproj" />
-		<ProjectReference Include="..\..\..\lib\IngestionManager\src\IngestionManager.csproj" />
-		<ProjectReference Include="..\..\..\lib\OntologyMapper.Mapped\src\OntologyMapper.Mapped.csproj" />
-		<ProjectReference Include="..\..\..\lib\OntologyMapper\src\OntologyMapper.csproj" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Console" Version="6.0.0" />
+		<PackageReference Include="Microsoft.SmartPlaces.Facilities.IngestionManager" Version="0.1.0-preview" />
+		<PackageReference Include="Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped" Version="0.1.0-preview" />
+		<PackageReference Include="Microsoft.SmartPlaces.Facilities.OntologyMapper" Version="0.6.0-preview" />
+		<PackageReference Include="Microsoft.SmartPlaces.Facilities.OntologyMapper.Mapped" Version="0.5.0-preview" />
 	</ItemGroup>
 
 	<PropertyGroup Condition="'$(BuildingInsideVisualStudio)' != 'true'">
@@ -51,4 +48,9 @@
 		</AdditionalFiles>
 	</ItemGroup>
 
+    <!-- Added Explicitly for GHSA-5crp-9r3c-p9vr -->
+	<!-- Can be removed once Microsoft.AspNet.WebApi.Client fixes the vulnerability -->
+	<ItemGroup>
+		<PackageReference Update="Newtonsoft.Json" Version="13.0.1" />
+	</ItemGroup>
 </Project>

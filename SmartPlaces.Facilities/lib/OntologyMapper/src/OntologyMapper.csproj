@@ -8,8 +8,8 @@
 		<Version>$(VersionPrefix)</Version>
 		<Authors>Microsoft</Authors>
 		<Description>Support for converting from one DTDL-based Ontology to a different DTDL Based Ontology</Description>
-		<AssemblyVersion>0.6.0</AssemblyVersion>
-		<PackageVersion>0.6.0-preview</PackageVersion>
+		<AssemblyVersion>0.6.1</AssemblyVersion>
+		<PackageVersion>0.6.1-preview</PackageVersion>
 		<RepositoryUrl>https://github.com/Azure/opendigitaltwins-tools</RepositoryUrl>
 		<PackageProjectUrl>https://github.com/Azure/opendigitaltwins-tools/</PackageProjectUrl>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>

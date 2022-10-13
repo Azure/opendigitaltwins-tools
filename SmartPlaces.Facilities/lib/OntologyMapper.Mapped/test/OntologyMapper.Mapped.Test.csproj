@@ -36,4 +36,10 @@
 	  <ProjectReference Include="..\src\OntologyMapper.Mapped.csproj" />
 	</ItemGroup>
 
+    <!-- Added Explicitly for GHSA-5crp-9r3c-p9vr -->
+	<!-- Can be removed once Microsoft.AspNet.WebApi.Client fixes the vulnerability -->
+	<ItemGroup>
+		<PackageReference Update="Newtonsoft.Json" Version="13.0.1" />
+	</ItemGroup>
+
 </Project>
