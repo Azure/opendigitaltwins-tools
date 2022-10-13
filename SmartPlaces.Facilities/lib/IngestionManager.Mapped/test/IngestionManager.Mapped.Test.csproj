@@ -35,7 +35,7 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\src\IngestionManager.Mapped.csproj" />
 	</ItemGroup>
-	
+
     <!-- Added Explicitly for GHSA-5crp-9r3c-p9vr -->
 	<!-- Can be removed once Microsoft.AspNet.WebApi.Client fixes the vulnerability -->
 	<ItemGroup>
