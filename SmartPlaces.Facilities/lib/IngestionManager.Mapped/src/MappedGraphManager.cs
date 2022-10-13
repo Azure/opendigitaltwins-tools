@@ -81,7 +81,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
 
         public string GetPointsForThingQuery(string thingDtId)
         {
-            return "{things(filter: {id: {eq: \"" + thingDtId + "\"}}) {points{description,exactType,id,mappingKey,name}}}";
+            return "{ things(filter: { id: { eq: \"" + thingDtId + "\" } }) { points(filter: { not: { exactType: { eq: \"Point\"} } }) { description,exactType,id,mappingKey,name} } }";
         }
 
         public string GetFloorQuery(string basicDtId)
