@@ -12,7 +12,7 @@
 		<PackageVersion>0.6.0-preview</PackageVersion>
 		<RepositoryUrl>https://github.com/Azure/opendigitaltwins-tools</RepositoryUrl>
 		<PackageProjectUrl>https://github.com/Azure/opendigitaltwins-tools/</PackageProjectUrl>
-		<PackageLicenseUrl>http://www.opensource.org/licenses/MIT</PackageLicenseUrl>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<RequireLicenseAcceptance>true</RequireLicenseAcceptance>
 		<Copyright>© Microsoft Corporation. All rights reserved.</Copyright>
 		<PackageReadmeFile>README.md</PackageReadmeFile>	
