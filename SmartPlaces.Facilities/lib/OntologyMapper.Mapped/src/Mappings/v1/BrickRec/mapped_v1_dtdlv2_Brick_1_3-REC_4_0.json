@@ -1,0 +1,420 @@
+{
+  "Header": {
+    "InputOntologies": [
+      {
+        "Name": "mapped",
+        "Version": "1.0",
+        "DtdlVersion": "v2"
+      }
+    ],
+    "OutputOntologies": [
+      {
+        "Name": "brick",
+        "Version": "1.3",
+        "DtdlVersion": "v2"
+      },
+      {
+        "Name": "rec",
+        "Version": "4.0",
+        "DtdlVersion": "v2"
+      }
+    ]
+  },
+  "NamespaceRemaps": [
+    {
+      "InputNamespace": "dtmi:mapped:core:",
+      "OutputNamespace": "dtmi:org:brickschema:schema:Brick:"
+    }
+  ],
+  "InterfaceRemaps": [
+    {
+      "InputDtmi": "dtmi:mapped:core:Ablutions_Room;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:ShowerRoom;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Access_Control_Zone;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:AccessControlZone;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Address;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:PostalAddress;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Atrium;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:Atrium;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Auditorium;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:Auditorium;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Basement;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:BasementLevel;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Battery_Room;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Bench_Space;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:Space;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Break_Room;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:RestingRoom;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Broadcast_Room;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Building;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:Building;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Cafeteria;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:CafeteriaRoom;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Collection;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:Collection;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Common_Space;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Concession;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Conference_Room;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:ConferenceRoom;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Control_Room;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:UtilitiesRoom;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Copy_Room;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:CopyingRoom;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Cubicle;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:Office;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Detention_Room;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:EducationalRoom;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Door;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:BuildingElement;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Electrical_Room;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:ElectricityRoom;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Elevator_Shaft;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:ElevatorShaft;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Elevator_Space;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:ElevatorRoom;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Employee_Entrance_Lobby;1",
+      // Manual Remap - Not Verified
+      "OutputDtmi": "dtmi:org:w3id:rec:Entrance;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Enclosed_Office;1",
+      // Manual Remap - Not Verified
+      "OutputDtmi": "dtmi:org:w3id:rec:Office;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Entrance;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:Entrance;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Entry;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:Entrance;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Equipment_Room;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:UtilitiesRoom;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Exercise_Room;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:ExerciseRoom;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Floor;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:Level;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Floor_Level;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:Level;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Food_Service_Room;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:FoodHandlingRoom;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Furniture;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:Furniture;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Generator_Room;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:UtilitiesRoom;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Hallway;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:Hallway;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Hazardous_Materials_Storage;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:Storage;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Information_Area;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Janitor_Room;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:CleaningRoom;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Laboratory;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:Laboratory;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Library;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:Library;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Loading_Dock;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:LoadingReceivingRoom;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Lobby;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:Entrance;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Lounge;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:RecreationalRoom;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Mail_Room;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:MailRoom;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Massage_Room;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:RecreationalRoom;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Mechanical_Room;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:UtilitiesRoom;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Media_Hot_Desk;1",
+      // Invalid Output DTMI - Review Needed
+      "OutputDtmi": "dtmi:org:w3id:rec:Media_Hot_Desk;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Media_Production_Room;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Media_Room;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Medical_Room;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:HealthcareRoom;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Office;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:Office;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Office_Kitchen;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:Kitchenette;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Open_Office;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:OfficeRoom;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Operating_Mode_Status;1",
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Operating_Mode_Status;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Outdoor_Area;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:Space;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Outside;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:Space;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Parking_Space;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:ParkingSlotCold;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Parking_Structure;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:Garage;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Place;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:Site;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Plumbing_Room;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:UtilitiesRoom;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Prayer_Room;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:MeditationRoom;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Private_Office;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:OfficeRoom;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Pump_Room;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:UtilitiesRoom;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Reception;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:Reception;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Rest_Room;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:Bathroom;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Retail_Room;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:RetailRoom;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Rooftop;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:RoofLevel;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Room;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Server_Room;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:DataServerRoom;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Service_Room;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:UtilitiesRoom;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Shared_Office;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:Office;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Shower;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:ShowerRoom;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Site;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:Site;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Space;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:Space;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Sports_Service_Room;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Staircase;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:BuildingElement;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Storage_Room;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:Storage;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Studio;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Switch_Room;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:UtilitiesRoom;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Team_Room;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Telecom_Room;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:UtilitiesRoom;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:TETRA_Room;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Ticketing_Booth;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:Room;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Tunnel;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:Space;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Vertical_Space;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:Space;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Visitor_Lobby;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:Entrance;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Wing;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:BuildingElement;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Workshop;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:Workshop;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Zone;1",
+      "OutputDtmi": "dtmi:org:w3id:rec:Zone;1"
+    }
+  ],
+  "RelationshipRemaps": [
+    {
+      "InputRelationship": "floors",
+      "OutputRelationship": "hasPart"
+    },
+    {
+      "InputRelationship": "hasPart",
+      "OutputRelationship": "isLocationOf"
+    }
+  ],
+  "PropertyProjections": [
+    {
+      "OutputDtmiFilter": ".*",
+      "OutputPropertyName": "externalIds",
+      "InputPropertyNames": [ "mappingKey" ],
+      "IsOutputPropertyCollection": true
+    }
+  ],
+  "FillProperties": [
+    {
+      "OutputDtmiFilter": ".*",
+      "OutputPropertyName": "name",
+      "InputPropertyNames": [ "name", "description" ]
+    }
+  ]
+}
