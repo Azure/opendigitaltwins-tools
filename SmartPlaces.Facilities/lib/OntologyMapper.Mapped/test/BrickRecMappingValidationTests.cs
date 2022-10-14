@@ -24,6 +24,7 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper.Mapped.Test
         [Theory]
         [InlineData("Mappings.v0.BrickRec.mapped_json_v0_dtdlv2_Brick_1_3-REC_4_0.json")]
         [InlineData("Mappings.v0.BrickRec.mapped_json_v0_dtdlv3_Brick_1_3-REC_4_0.json")]
+        [InlineData("Mappings.v1.BrickRec.mapped_v1_dtdlv2_Brick_1_3-REC_4_0.json")]
         public void ValidateEmbeddedResourceDtmisAreValidFormat(string resourcePath)
         {
             var mockLogger = new Mock<ILogger>();
