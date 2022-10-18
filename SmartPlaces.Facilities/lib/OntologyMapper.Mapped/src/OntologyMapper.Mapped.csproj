@@ -8,8 +8,8 @@
 		<Version>$(VersionPrefix)</Version>
 		<Authors>Microsoft</Authors>
 		<Description>Support for converting from one Mapped Ontology to a different DTDL Based Ontology</Description>
-		<AssemblyVersion>0.7.0</AssemblyVersion>
-		<PackageVersion>0.7.0-preview</PackageVersion>
+		<AssemblyVersion>0.8.0</AssemblyVersion>
+		<PackageVersion>0.8.0-preview</PackageVersion>
 		<RepositoryUrl>https://github.com/Azure/opendigitaltwins-tools</RepositoryUrl>
 		<PackageProjectUrl>https://github.com/Azure/opendigitaltwins-tools/</PackageProjectUrl>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -20,6 +20,7 @@
 
 	<ItemGroup>
 		<EmbeddedResource Include="Mappings\**\*.json" />
+		<None Remove="Mappings\v1\Willow\mapped_v1_dtdlv2_Willow.json" />
 		<None Include="README.md" Pack="true" PackagePath="\" />
 	</ItemGroup>
 

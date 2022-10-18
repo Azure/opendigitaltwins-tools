@@ -8,7 +8,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
 {
     internal static class Metrics
     {
-        internal const string DefaultNamespace = "Microsoft.SmartPlaces.Facilities";
+        internal const string DefaultNamespace = "microsoft.smartplaces.facilities";
         internal const string ModelIdDimensionName = "ModelId";
         internal const string TwinDimensionName = "Twin";
         internal const string RelationshipTypeDimensionName = "RelationshipType";

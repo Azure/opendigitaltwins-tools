@@ -28,6 +28,188 @@
   ],
   "InterfaceRemaps": [
     {
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Air_Flow_Alarm_Setpoint;1",
+      // Temporary until further decision with Brick
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Setpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Air_Flow_Direction_Status;1",
+      // Mapped to Base - Review needed
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Status;1"
+    },
+    {
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Air_Flow_Status;1",
+      // Mapped to Base - Review needed
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Status;1"
+    },
+    {
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Apparent_Energy_Sensor;1",
+      // Mapped to Base - Review needed
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Energy_Sensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Apparent_Power_Sensor;1",
+      // Mapped to Base - Review needed
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Power_Sensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:BACnet_Device;1",
+      // Mapped to Base - Review needed
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Equipment;1"
+    },
+    {
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Battery_Status;1",
+      // Mapped to Base - Review needed
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Status;1"
+    },
+    {
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:CO2_Alarm_Setpoint;1",
+      // Mapped to Base - Review needed
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:CO2_Setpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Compressor_Status;1",
+      // Mapped to Base - Review needed
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Status;1"
+    },
+    {
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Cooling_Air_Temperature_Setpoint_Offset;1",
+      // Temporary until further decision with Brick
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Count;1",
+      // Temporary until further decision with Brick
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Status;1"
+    },
+    {
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Direct_Expansion_Unit;1",
+      // Invalid Output DTMI - Review Needed
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Direct_Expansion_Unit;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Discharge_Air_Temperature_Reset_Setpoint;1",
+      // Temporary until further decision with Brick
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Reset_Setpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Display_Status;1",
+      // Mapped to Base - Review needed
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Status;1"
+    },
+    {
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Effective_Cooling_Air_Temperature_Setpoint;1",
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Effective_Air_Temperature_Cooling_Setpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Effective_Heating_Air_Temperature_Setpoint;1",
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Effective_Air_Temperature_Heating_Setpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Fan_Request;1",
+      // Temporary until further decision with Brick
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Status;1"
+    },
+    {
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Max_Air_Temperature_Setpoint_Limit;1",
+      // Temporary until further decision with Brick
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Max_Limit;1"
+    },
+    {
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Max_Cooling_Air_Temperature_Setpoint_Limit;1",
+      // Temporary until further decision with Brick
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Max_Limit;1"
+    },
+    {
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Max_Heating_Air_Temperature_Setpoint_Limit;1",
+      // Temporary until further decision with Brick
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Max_Limit;1"
+    },
+    {
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Min_Air_Temperature_Setpoint_Limit;1",
+      // Temporary until further decision with Brick
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Min_Limit;1"
+    },
+    {
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Min_Cooling_Air_Temperature_Setpoint_Limit;1",
+      // Temporary until further decision with Brick
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Min_Limit;1"
+    },
+    {
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Min_Heating_Air_Temperature_Setpoint_Limit;1",
+      // Temporary until further decision with Brick
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Min_Limit;1"
+    },
+    {
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Occupied_Cooling_Air_Temperature_Setpoint;1",
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Occupied_Air_Temperature_Cooling_Setpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Offset;1",
+      // Temporary until further decision with Brick
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Reset_Status;1",
+      // Mapped to Base - Review needed
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Status;1"
+    },
+    {
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Return_Condenser_Water_Temperature_Sensor;1",
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Return_Condenser_Water_Temperature_Sensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Setpoint_Offset;1",
+      // Temporary until further decision with Brick
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Supply_Condenser_Water_Temperature_Sensor;1",
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Supply_Condenser_Water_Temperature_Sensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Temperature_Alarm_Count;1",
+      // Temporary until further decision with Brick
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Status;1"
+    },
+    {
+      "InputDtmi": "dtmi:org:brickschema:schema:Temperature_Alarm_Setpoint;1",
+      // Mapped to Base - Review needed
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Temperature_Setpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Test_Point;1",
+      // Mapped to Base - Review needed
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Point;1"
+    },
+    {
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Thing;1",
+      // Mapped to Base - Review needed
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Equipment;1"
+    },
+    {
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Time_Status;1",
+      // Mapped to Base - Review needed
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Status;1"
+    },
+    {
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Unoccupied_Cooling_Air_Temperature_Setpoint;1",
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Unoccupied_Air_Temperature_Cooling_Setpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Unoccupied_Heating_Air_Temperature_Setpoint;1",
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Unoccupied_Air_Temperature_Heating_Setpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Valve_Position_Setpoint;1",
+      // Mapped to Base - Review needed
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Setpoint;1"
+    },
+
+
+
+    {
       "InputDtmi": "dtmi:mapped:core:Ablutions_Room;1",
       "OutputDtmi": "dtmi:org:w3id:rec:ShowerRoom;1"
     },
