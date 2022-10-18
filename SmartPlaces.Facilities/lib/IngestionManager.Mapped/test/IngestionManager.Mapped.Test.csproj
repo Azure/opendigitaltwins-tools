@@ -7,16 +7,9 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<None Remove="dtdl\mapped_dtdl.json" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<EmbeddedResource Include="dtdl\mapped_dtdl.json" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<PackageReference Include="coverlet.collector" Version="3.1.0" />
 		<PackageReference Include="Divergic.Logging.Xunit" Version="4.0.0" />
+		<PackageReference Include="Mapped.Ontologies.Core.Dtdl" Version="1.2.486" />
 		<PackageReference Include="Microsoft.ApplicationInsights" Version="2.21.0" />
 		<PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.8" />
 		<PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.1" />
