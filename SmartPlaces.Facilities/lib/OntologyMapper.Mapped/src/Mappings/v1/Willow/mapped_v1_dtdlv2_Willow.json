@@ -1,0 +1,51 @@
+{
+  "Header": {
+    "InputOntologies": [
+      {
+        "Name": "mapped",
+        "Version": "1.0",
+        "DtdlVersion": "v2"
+      }
+    ],
+    "OutputOntologies": [
+      {
+        "Name": "willow",
+        "Version": "1.0",
+        "DtdlVersion": "v2"
+      }
+    ]
+  },
+  "NamespaceRemaps": [
+    {
+      "InputNamespace": "dtmi:org:brickschema:schema:Brick:",
+      "OutputNamespace": "dtmi:com:willowinc:"
+    }
+  ],
+  "InterfaceRemaps": [
+  ],
+  "RelationshipRemaps": [
+    {
+      "InputRelationship": "floors",
+      "OutputRelationship": "hasPart"
+    },
+    {
+      "InputRelationship": "hasPoint",
+      "OutputRelationship": "hasCapability"
+    }
+  ],
+  "PropertyProjections": [
+    {
+      "OutputDtmiFilter": ".*",
+      "OutputPropertyName": "externalIds",
+      "InputPropertyNames": [ "mappingKey" ],
+      "IsOutputPropertyCollection": true
+    }
+  ],
+  "FillProperties": [
+    {
+      "OutputDtmiFilter": ".*",
+      "OutputPropertyName": "name",
+      "InputPropertyNames": [ "name", "description" ]
+    }
+  ]
+}
