@@ -23,7 +23,7 @@
 		<PackageReference Include="Divergic.Logging.Xunit" Version="4.2.0" />
 		<PackageReference Include="Mapped.Ontologies.Core.Dtdl" Version="1.2.490" />
 		<PackageReference Include="Microsoft.ApplicationInsights" Version="2.21.0" />
-		<PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.9" />
+		<PackageReference Update="Microsoft.AspNet.WebApi.Client" Version="5.2.9" />
 		<PackageReference Include="Microsoft.Azure.DigitalTwins.Parser" Version="6.4.0-preview" />
 		<PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.1" />
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.3.2" />
