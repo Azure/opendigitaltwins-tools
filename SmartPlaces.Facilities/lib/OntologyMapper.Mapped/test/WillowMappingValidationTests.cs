@@ -9,6 +9,7 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper.Mapped.Test
     using Microsoft.Azure.DigitalTwins.Parser;
     using Microsoft.Extensions.Logging;
     using Moq;
+    using System.Reflection;
     using Xunit;
     using Xunit.Abstractions;
 
@@ -93,6 +94,50 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper.Mapped.Test
             }
 
             Assert.Empty(exceptions);
+        }
+        
+        // TODO: This test needs a new version of the Mapped DTDL to get it to work.
+        // [Theory]
+        // [InlineData("Mappings.v1.Willow.mapped_v1_dtdlv2_Willow.json")]
+        private void ValidateMappedDtmisAreValid(string resourcePath)
+        {
+            var mockLogger = new Mock<ILogger>();
+            var resourceLoader = new MappedOntologyMappingLoader(mockLogger.Object, resourcePath);
+            var ontologyMappingManager = new OntologyMappingManager(resourceLoader);
+            var parser = new ModelParser();
+            var dtdls = LoadMappedDtdl();
+            var dtmis = parser.Parse(dtdls);
+
+            Assert.NotNull(dtmis);
+
+            ontologyMappingManager.ValidateTargetOntologyMapping(dtmis, out var invalidTargets);
+
+            Assert.Empty(invalidTargets);
+        }
+
+        private IEnumerable<string> LoadMappedDtdl()
+        {
+            var assembly = Assembly.GetExecutingAssembly();
+            var resourceName = assembly.GetManifestResourceNames().Single(str => str.EndsWith("mapped_dtdl.json"));
+            List<string> dtdls = new List<string>();
+
+            using (Stream? stream = assembly.GetManifestResourceStream(resourceName))
+            {
+                if (stream != null)
+                {
+                    using (StreamReader reader = new StreamReader(stream))
+                    {
+                        string result = reader.ReadToEnd();
+                        dtdls.Add(result);
+                    }
+                }
+                else
+                {
+                    throw new FileNotFoundException(resourceName);
+                }
+            }
+
+            return dtdls;
         }
     }
 }
