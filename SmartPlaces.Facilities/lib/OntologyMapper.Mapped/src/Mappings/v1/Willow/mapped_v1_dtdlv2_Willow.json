@@ -166,7 +166,7 @@
     },
     {
       "InputDtmi": "dtmi:org:brickschema:schema:Brick:Air_Wet_Bulb_Temperature_Sensor;1",
-      "OutputDtmi": "dtmi:com:willowinc:Wet_Bulb_Temperature_Sensor;1"
+      "OutputDtmi": "dtmi:com:willowinc:WetBulbTemperatureSensor;1"
     },
     {
       "InputDtmi": "dtmi:org:brickschema:schema:Brick:Alarm;1",
@@ -377,7 +377,7 @@
     },
     {
       "InputDtmi": "dtmi:org:brickschema:schema:Brick:Bypass_Water_Flow_Sensor;1",
-      "OutputDtmi": "dtmi:com:willowinc:Bypass_Hot_WaterFlowSensor;1"
+      "OutputDtmi": "dtmi:com:willowinc:BypassHotWaterFlowSensor;1"
     },
     {
       "InputDtmi": "dtmi:org:brickschema:schema:Brick:Bypass_Water_Flow_Setpoint;1",
@@ -2306,7 +2306,7 @@
     },
     {
       "InputDtmi": "dtmi:org:brickschema:schema:Brick:Lowest_Exhaust_Air_Static_Pressure_Sensor;1",
-      "OutputDtmi": "dtmi:com:willowinc:Exhaust_Air_Static_Pressure_Sensor;1"
+      "OutputDtmi": "dtmi:com:willowinc:ExhaustAirStaticPressureSensor;1"
     },
     {
       "InputDtmi": "dtmi:org:brickschema:schema:Brick:Low_Freeze_Protect_Temperature_Parameter;1",
@@ -3409,8 +3409,8 @@
       "OutputDtmi": "dtmi:com:willowinc:DurationSensor;1"
     },
     {
-      "InputDtmi": "dtmi:org:brickschema:schema:Brick:RainSensor;1",
-      "OutputDtmi": "dtmi:com:willowinc:Precipitation_Accumulation_Sensor;1"
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Rain_Sensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:PrecipitationAccumulationSensor;1"
     },
     {
       "InputDtmi": "dtmi:org:brickschema:schema:Brick:Rated_Speed_Setpoint;1",
