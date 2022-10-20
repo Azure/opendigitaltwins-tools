@@ -95,24 +95,31 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper.Mapped.Test
 
             Assert.Empty(exceptions);
         }
-        
-        // TODO: This test needs a new version of the Mapped DTDL to get it to work.
-        // [Theory]
-        // [InlineData("Mappings.v1.Willow.mapped_v1_dtdlv2_Willow.json")]
-        private void ValidateMappedDtmisAreValid(string resourcePath)
+
+        [Theory]
+        [InlineData("Mappings.v1.Willow.mapped_v1_dtdlv2_Willow.json", true, "dtmi:org:brickschema:schema:Brick:Ablutions_Room;1", "dtmi:com:willowinc:Room;1")]
+        [InlineData("Mappings.v1.Willow.mapped_v1_dtdlv2_Willow.json", true, "dtmi:org:brickschema:schema:Brick:Ablutions;1", "dtmi:com:willowinc:Ablutions;1")]
+        [InlineData("Mappings.v1.Willow.mapped_v1_dtdlv2_Willow.json", false, "dtmi:org:fakeschema:schema:Brick:Ablutions;1", null)]
+        public void ValidateInterfaceMappings(string resourcePath, bool isFound, string input, string? expected)
         {
             var mockLogger = new Mock<ILogger>();
             var resourceLoader = new MappedOntologyMappingLoader(mockLogger.Object, resourcePath);
             var ontologyMappingManager = new OntologyMappingManager(resourceLoader);
-            var parser = new ModelParser();
-            var dtdls = LoadMappedDtdl();
-            var dtmis = parser.Parse(dtdls);
 
-            Assert.NotNull(dtmis);
+            var inputDtmi = new Dtmi(input);
+            var result = ontologyMappingManager.TryGetInterfaceRemapDtmi(inputDtmi, out var dtmiRemap);
 
-            ontologyMappingManager.ValidateTargetOntologyMapping(dtmis, out var invalidTargets);
+            Assert.Equal(isFound, result);
 
-            Assert.Empty(invalidTargets);
+            if (isFound)
+            {
+                Assert.NotNull(dtmiRemap);
+                Assert.Equal(expected, dtmiRemap.OutputDtmi);
+            }
+            else
+            {
+                Assert.Null(dtmiRemap);
+            }
         }
 
         private IEnumerable<string> LoadMappedDtdl()
