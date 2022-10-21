@@ -23,6 +23,14 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper
         public bool ValidateTargetOntologyMapping(IReadOnlyDictionary<Dtmi, DTEntityInfo> targetObjectModel, out List<string> invalidTargets);
 
         /// <summary>
+        /// Validates that all Inputput DTMIs listed in the Interface Remaps exist in the source object model
+        /// </summary>
+        /// <param name="sourceObjectModel">A dictionary of DTMI to DTEntityInfo mappings which are valid in the source ontology</param>
+        /// <param name="invalidSources">A list of invalid input mappings in the InterfaceRemaps</param>
+        /// <returns>true if all sources are valid, false otherwise</returns>
+        public bool ValidateSourceOntologyMapping(IReadOnlyDictionary<Dtmi, DTEntityInfo> sourceObjectModel, out List<string> invalidSources);
+
+        /// <summary>
         /// For a given DTMI from the source ontology, get the DTMI for the target ontology
         /// </summary>
         /// <param name="inputDtmi">The DTMI from the source ontology</param>
