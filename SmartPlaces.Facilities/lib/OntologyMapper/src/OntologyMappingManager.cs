@@ -102,5 +102,28 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper
 
             return !invalidTargets.Any();
         }
+
+        public bool ValidateSourceOntologyMapping(IReadOnlyDictionary<Dtmi, DTEntityInfo> sourceObjectModel, out List<string> invalidSources)
+        {
+            invalidSources = new List<string>();
+
+            foreach (var interfaceRemap in OntologyMapping.InterfaceRemaps.Where(ir => !ir.IsIgnored))
+            {
+                try
+                {
+                    var inputDtmi = new Dtmi(interfaceRemap.InputDtmi);
+                    if (!sourceObjectModel.TryGetValue(inputDtmi, out var dTEntityInfo))
+                    {
+                        invalidSources.Add(interfaceRemap.InputDtmi);
+                    }
+                }
+                catch
+                {
+                    invalidSources.Add(interfaceRemap.InputDtmi);
+                }
+            }
+
+            return !invalidSources.Any();
+        }
     }
 }

@@ -157,6 +157,12 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper
         /// Gets or sets the output relationship type as a string.
         /// </summary>
         public string OutputRelationship { get; set; } = string.Empty;
+
+        /// <summary>
+        /// Gets or sets a value indicating whether or not the output mapping is intended to be a reverse mapping of the input. 
+        /// i.e. If in the source topology the mapping is fgrom A to B, in the target topology, the mapping will be B to A
+        /// </summary>
+        public bool ReverseRelationshipDirection { get; set; } = false;
     }
 
     /// <summary>
