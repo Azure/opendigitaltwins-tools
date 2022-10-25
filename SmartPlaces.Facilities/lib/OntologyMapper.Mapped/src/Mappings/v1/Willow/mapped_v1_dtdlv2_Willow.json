@@ -1546,8 +1546,7 @@
     },
     {
       "InputDtmi": "dtmi:org:brickschema:schema:Brick:Fan_Request;1",
-      "OutputDtmi": "dtmi:com:willowinc:FanRequest;1",
-      "IsIgnored": true
+      "OutputDtmi": "dtmi:com:willowinc:FanRunActuator;1",
     },
     {
       "InputDtmi": "dtmi:org:brickschema:schema:Brick:Fan_Speed_Command;1",
@@ -4683,8 +4682,7 @@
     },
     {
       "InputDtmi": "dtmi:mapped:core:FanRequest;1",
-      "OutputDtmi": "dtmi:com:willowinc:FanRequest;1",
-      "IsIgnored": true
+      "OutputDtmi": "dtmi:com:willowinc:FanRunActuator;1",
     },
     {
       "InputDtmi": "dtmi:mapped:core:Library;1",
