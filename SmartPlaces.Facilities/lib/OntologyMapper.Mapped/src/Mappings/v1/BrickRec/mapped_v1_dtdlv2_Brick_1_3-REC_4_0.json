@@ -22,13 +22,192 @@
   },
   "NamespaceRemaps": [
     {
-      "InputNamespace": "dtmi:mapped:core:",
+      "InputNamespace": "dtmi:org:brickschema:schema:Brick:",
       "OutputNamespace": "dtmi:org:brickschema:schema:Brick:"
     }
   ],
   "InterfaceRemaps": [
     {
-      "InputDtmi": "dtmi:mapped:core:Ablutions_Room;1",
+      "InputDtmi": "dtmi:mapped:core:Air_Flow_Alarm_Setpoint;1",
+      // Temporary until further decision with Brick
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Setpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Air_Flow_Direction_Status;1",
+      // Mapped to Base - Review needed
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Status;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Air_Flow_Status;1",
+      // Mapped to Base - Review needed
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Status;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Apparent_Energy_Sensor;1",
+      // Mapped to Base - Review needed
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Energy_Sensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Apparent_Power_Sensor;1",
+      // Mapped to Base - Review needed
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Power_Sensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:BACnet_Device;1",
+      // Mapped to Base - Review needed
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Equipment;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Battery_Status;1",
+      // Mapped to Base - Review needed
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Status;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:CO2_Alarm_Setpoint;1",
+      // Mapped to Base - Review needed
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:CO2_Setpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Compressor_Status;1",
+      // Mapped to Base - Review needed
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Status;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Cooling_Air_Temperature_Setpoint_Offset;1",
+      // Temporary until further decision with Brick
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Count;1",
+      // Temporary until further decision with Brick
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Status;1"
+    },
+    {
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Direct_Expansion_Unit;1",
+      // Invalid Output DTMI - Review Needed
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Direct_Expansion_Unit;1",
+      "IsIgnored": true
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Discharge_Air_Temperature_Reset_Setpoint;1",
+      // Temporary until further decision with Brick
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Reset_Setpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Display_Status;1",
+      // Mapped to Base - Review needed
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Status;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Effective_Cooling_Air_Temperature_Setpoint;1",
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Effective_Air_Temperature_Cooling_Setpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Effective_Heating_Air_Temperature_Setpoint;1",
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Effective_Air_Temperature_Heating_Setpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Fan_Request;1",
+      // Temporary until further decision with Brick
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Status;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Max_Air_Temperature_Setpoint_Limit;1",
+      // Temporary until further decision with Brick
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Max_Limit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Max_Cooling_Air_Temperature_Setpoint_Limit;1",
+      // Temporary until further decision with Brick
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Max_Limit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Max_Heating_Air_Temperature_Setpoint_Limit;1",
+      // Temporary until further decision with Brick
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Max_Limit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Min_Air_Temperature_Setpoint_Limit;1",
+      // Temporary until further decision with Brick
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Min_Limit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Min_Cooling_Air_Temperature_Setpoint_Limit;1",
+      // Temporary until further decision with Brick
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Min_Limit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Min_Heating_Air_Temperature_Setpoint_Limit;1",
+      // Temporary until further decision with Brick
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Min_Limit;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Occupied_Cooling_Air_Temperature_Setpoint;1",
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Occupied_Air_Temperature_Cooling_Setpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Offset;1",
+      // Temporary until further decision with Brick
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Reset_Status;1",
+      // Mapped to Base - Review needed
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Status;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Return_Condenser_Water_Temperature_Sensor;1",
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Return_Condenser_Water_Temperature_Sensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Setpoint_Offset;1",
+      // Temporary until further decision with Brick
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Parameter;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Supply_Condenser_Water_Temperature_Sensor;1",
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Supply_Condenser_Water_Temperature_Sensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Temperature_Alarm_Count;1",
+      // Temporary until further decision with Brick
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Status;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Temperature_Alarm_Setpoint;1",
+      // Mapped to Base - Review needed
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Temperature_Setpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Test_Point;1",
+      // Mapped to Base - Review needed
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Point;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Thing;1",
+      // Mapped to Base - Review needed
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Equipment;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Time_Status;1",
+      // Mapped to Base - Review needed
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Status;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Unoccupied_Cooling_Air_Temperature_Setpoint;1",
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Unoccupied_Air_Temperature_Cooling_Setpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Unoccupied_Heating_Air_Temperature_Setpoint;1",
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Unoccupied_Air_Temperature_Heating_Setpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Valve_Position_Setpoint;1",
+      // Mapped to Base - Review needed
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Setpoint;1"
+    },
+    {
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Ablutions_Room;1",
       "OutputDtmi": "dtmi:org:w3id:rec:ShowerRoom;1"
     },
     {
@@ -40,71 +219,71 @@
       "OutputDtmi": "dtmi:org:w3id:rec:PostalAddress;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Atrium;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Atrium;1",
       "OutputDtmi": "dtmi:org:w3id:rec:Atrium;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Auditorium;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Auditorium;1",
       "OutputDtmi": "dtmi:org:w3id:rec:Auditorium;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Basement;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Basement;1",
       "OutputDtmi": "dtmi:org:w3id:rec:BasementLevel;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Battery_Room;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Battery_Room;1",
       "OutputDtmi": "dtmi:org:w3id:rec:Room;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Bench_Space;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Bench_Space;1",
       "OutputDtmi": "dtmi:org:w3id:rec:Space;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Break_Room;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Break_Room;1",
       "OutputDtmi": "dtmi:org:w3id:rec:RestingRoom;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Broadcast_Room;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Broadcast_Room;1",
       "OutputDtmi": "dtmi:org:w3id:rec:Room;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Building;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Building;1",
       "OutputDtmi": "dtmi:org:w3id:rec:Building;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Cafeteria;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Cafeteria;1",
       "OutputDtmi": "dtmi:org:w3id:rec:CafeteriaRoom;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Collection;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Collection;1",
       "OutputDtmi": "dtmi:org:w3id:rec:Collection;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Common_Space;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Common_Space;1",
       "OutputDtmi": "dtmi:org:w3id:rec:Room;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Concession;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Concession;1",
       "OutputDtmi": "dtmi:org:w3id:rec:Room;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Conference_Room;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Conference_Room;1",
       "OutputDtmi": "dtmi:org:w3id:rec:ConferenceRoom;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Control_Room;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Control_Room;1",
       "OutputDtmi": "dtmi:org:w3id:rec:UtilitiesRoom;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Copy_Room;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Copy_Room;1",
       "OutputDtmi": "dtmi:org:w3id:rec:CopyingRoom;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Cubicle;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Cubicle;1",
       "OutputDtmi": "dtmi:org:w3id:rec:Office;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Detention_Room;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Detention_Room;1",
       "OutputDtmi": "dtmi:org:w3id:rec:EducationalRoom;1"
     },
     {
@@ -112,29 +291,29 @@
       "OutputDtmi": "dtmi:org:w3id:rec:BuildingElement;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Electrical_Room;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Electrical_Room;1",
       "OutputDtmi": "dtmi:org:w3id:rec:ElectricityRoom;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Elevator_Shaft;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Elevator_Shaft;1",
       "OutputDtmi": "dtmi:org:w3id:rec:ElevatorShaft;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Elevator_Space;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Elevator_Space;1",
       "OutputDtmi": "dtmi:org:w3id:rec:ElevatorRoom;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Employee_Entrance_Lobby;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Employee_Entrance_Lobby;1",
       // Manual Remap - Not Verified
       "OutputDtmi": "dtmi:org:w3id:rec:Entrance;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Enclosed_Office;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Enclosed_Office;1",
       // Manual Remap - Not Verified
       "OutputDtmi": "dtmi:org:w3id:rec:Office;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Entrance;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Entrance;1",
       "OutputDtmi": "dtmi:org:w3id:rec:Entrance;1"
     },
     {
@@ -142,15 +321,15 @@
       "OutputDtmi": "dtmi:org:w3id:rec:Entrance;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Equipment_Room;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Equipment_Room;1",
       "OutputDtmi": "dtmi:org:w3id:rec:UtilitiesRoom;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Exercise_Room;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Exercise_Room;1",
       "OutputDtmi": "dtmi:org:w3id:rec:ExerciseRoom;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Floor;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Floor;1",
       "OutputDtmi": "dtmi:org:w3id:rec:Level;1"
     },
     {
@@ -158,7 +337,7 @@
       "OutputDtmi": "dtmi:org:w3id:rec:Level;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Food_Service_Room;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Food_Service_Room;1",
       "OutputDtmi": "dtmi:org:w3id:rec:FoodHandlingRoom;1"
     },
     {
@@ -166,105 +345,105 @@
       "OutputDtmi": "dtmi:org:w3id:rec:Furniture;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Generator_Room;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Generator_Room;1",
       "OutputDtmi": "dtmi:org:w3id:rec:UtilitiesRoom;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Hallway;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Hallway;1",
       "OutputDtmi": "dtmi:org:w3id:rec:Hallway;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Hazardous_Materials_Storage;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Hazardous_Materials_Storage;1",
       "OutputDtmi": "dtmi:org:w3id:rec:Storage;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Information_Area;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Information_Area;1",
       "OutputDtmi": "dtmi:org:w3id:rec:Room;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Janitor_Room;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Janitor_Room;1",
       "OutputDtmi": "dtmi:org:w3id:rec:CleaningRoom;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Laboratory;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Laboratory;1",
       "OutputDtmi": "dtmi:org:w3id:rec:Laboratory;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Library;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Library;1",
       "OutputDtmi": "dtmi:org:w3id:rec:Library;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Loading_Dock;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Loading_Dock;1",
       "OutputDtmi": "dtmi:org:w3id:rec:LoadingReceivingRoom;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Lobby;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Lobby;1",
       "OutputDtmi": "dtmi:org:w3id:rec:Entrance;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Lounge;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Lounge;1",
       "OutputDtmi": "dtmi:org:w3id:rec:RecreationalRoom;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Mail_Room;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Mail_Room;1",
       "OutputDtmi": "dtmi:org:w3id:rec:MailRoom;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Massage_Room;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Massage_Room;1",
       "OutputDtmi": "dtmi:org:w3id:rec:RecreationalRoom;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Mechanical_Room;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Mechanical_Room;1",
       "OutputDtmi": "dtmi:org:w3id:rec:UtilitiesRoom;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Media_Hot_Desk;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Media_Hot_Desk;1",
       // Invalid Output DTMI - Review Needed
       "OutputDtmi": "dtmi:org:w3id:rec:Media_Hot_Desk;1",
       "IsIgnored": true
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Media_Production_Room;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Media_Production_Room;1",
       "OutputDtmi": "dtmi:org:w3id:rec:Room;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Media_Room;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Media_Room;1",
       "OutputDtmi": "dtmi:org:w3id:rec:Room;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Medical_Room;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Medical_Room;1",
       "OutputDtmi": "dtmi:org:w3id:rec:HealthcareRoom;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Office;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Office;1",
       "OutputDtmi": "dtmi:org:w3id:rec:Office;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Office_Kitchen;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Office_Kitchen;1",
       "OutputDtmi": "dtmi:org:w3id:rec:Kitchenette;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Open_Office;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Open_Office;1",
       "OutputDtmi": "dtmi:org:w3id:rec:OfficeRoom;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Operating_Mode_Status;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Operating_Mode_Status;1",
       "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Operating_Mode_Status;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Outdoor_Area;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Outdoor_Area;1",
       "OutputDtmi": "dtmi:org:w3id:rec:Space;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Outside;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Outside;1",
       "OutputDtmi": "dtmi:org:w3id:rec:Space;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Parking_Space;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Parking_Space;1",
       "OutputDtmi": "dtmi:org:w3id:rec:ParkingSlotCold;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Parking_Structure;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Parking_Structure;1",
       "OutputDtmi": "dtmi:org:w3id:rec:Garage;1"
     },
     {
@@ -272,123 +451,123 @@
       "OutputDtmi": "dtmi:org:w3id:rec:Site;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Plumbing_Room;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Plumbing_Room;1",
       "OutputDtmi": "dtmi:org:w3id:rec:UtilitiesRoom;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Prayer_Room;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Prayer_Room;1",
       "OutputDtmi": "dtmi:org:w3id:rec:MeditationRoom;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Private_Office;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Private_Office;1",
       "OutputDtmi": "dtmi:org:w3id:rec:OfficeRoom;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Pump_Room;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Pump_Room;1",
       "OutputDtmi": "dtmi:org:w3id:rec:UtilitiesRoom;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Reception;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Reception;1",
       "OutputDtmi": "dtmi:org:w3id:rec:Reception;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Rest_Room;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Rest_Room;1",
       "OutputDtmi": "dtmi:org:w3id:rec:Bathroom;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Retail_Room;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Retail_Room;1",
       "OutputDtmi": "dtmi:org:w3id:rec:RetailRoom;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Rooftop;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Rooftop;1",
       "OutputDtmi": "dtmi:org:w3id:rec:RoofLevel;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Room;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Room;1",
       "OutputDtmi": "dtmi:org:w3id:rec:Room;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Server_Room;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Server_Room;1",
       "OutputDtmi": "dtmi:org:w3id:rec:DataServerRoom;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Service_Room;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Service_Room;1",
       "OutputDtmi": "dtmi:org:w3id:rec:UtilitiesRoom;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Shared_Office;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Shared_Office;1",
       "OutputDtmi": "dtmi:org:w3id:rec:Office;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Shower;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Shower;1",
       "OutputDtmi": "dtmi:org:w3id:rec:ShowerRoom;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Site;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Site;1",
       "OutputDtmi": "dtmi:org:w3id:rec:Site;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Space;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Space;1",
       "OutputDtmi": "dtmi:org:w3id:rec:Space;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Sports_Service_Room;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Sports_Service_Room;1",
       "OutputDtmi": "dtmi:org:w3id:rec:Room;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Staircase;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Staircase;1",
       "OutputDtmi": "dtmi:org:w3id:rec:BuildingElement;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Storage_Room;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Storage_Room;1",
       "OutputDtmi": "dtmi:org:w3id:rec:Storage;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Studio;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Studio;1",
       "OutputDtmi": "dtmi:org:w3id:rec:Room;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Switch_Room;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Switch_Room;1",
       "OutputDtmi": "dtmi:org:w3id:rec:UtilitiesRoom;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Team_Room;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Team_Room;1",
       "OutputDtmi": "dtmi:org:w3id:rec:Room;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Telecom_Room;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Telecom_Room;1",
       "OutputDtmi": "dtmi:org:w3id:rec:UtilitiesRoom;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:TETRA_Room;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:TETRA_Room;1",
       "OutputDtmi": "dtmi:org:w3id:rec:Room;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Ticketing_Booth;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Ticketing_Booth;1",
       "OutputDtmi": "dtmi:org:w3id:rec:Room;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Tunnel;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Tunnel;1",
       "OutputDtmi": "dtmi:org:w3id:rec:Space;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Vertical_Space;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Vertical_Space;1",
       "OutputDtmi": "dtmi:org:w3id:rec:Space;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Visitor_Lobby;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Visitor_Lobby;1",
       "OutputDtmi": "dtmi:org:w3id:rec:Entrance;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Wing;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Wing;1",
       "OutputDtmi": "dtmi:org:w3id:rec:BuildingElement;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Workshop;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Workshop;1",
       "OutputDtmi": "dtmi:org:w3id:rec:Workshop;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Zone;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Zone;1",
       "OutputDtmi": "dtmi:org:w3id:rec:Zone;1"
     }
   ],
