@@ -121,15 +121,15 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
             return dtmi;
         }
 
-        protected string GetOutputRelationshipType(string inputRelationshipType)
+        protected Tuple<string, bool> GetOutputRelationshipType(string inputRelationshipType)
         {
             // If there is a remapping, use that. If not, assume the input and output mapping are the same
             if (OntologyMappingManager.TryGetRelationshipRemap(inputRelationshipType, out var outputRelationship) && outputRelationship != null)
             {
-                return outputRelationship.OutputRelationship;
+                return new Tuple<string, bool>(outputRelationship.OutputRelationship, outputRelationship.ReverseRelationshipDirection);
             }
 
-            return inputRelationshipType;
+            return new Tuple<string, bool>(inputRelationshipType, false);
         }
 
         protected bool TryGetOutputInterfaceDtmi(Dtmi inputDtmi, out Dtmi? outputDtmi)
@@ -364,21 +364,21 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
                 {
                     if (!string.IsNullOrEmpty(inputRelationshipType))
                     {
-                        // Get Output relationship name
-                        var outputRelationshipType = GetOutputRelationshipType(inputRelationshipType);
+                        // Get Output relationship
+                        var outputRelationship = GetOutputRelationshipType(inputRelationshipType);
 
                         if (outputSourceDtmi != null && TargetObjectModel.TryGetValue(outputSourceDtmi, out var model))
                         {
-                            var relationship = ((DTInterfaceInfo)model).Contents.FirstOrDefault(p => p.Value.EntityKind == DTEntityKind.Relationship && p.Value.Name == outputRelationshipType);
-                            var relationshipId = $"{outputSourceDtmi}-{targetDtId}-{outputRelationshipType}";
+                            var relationship = ((DTInterfaceInfo)model).Contents.FirstOrDefault(p => p.Value.EntityKind == DTEntityKind.Relationship && p.Value.Name == outputRelationship.Item1);
+                            var relationshipId = $"{outputSourceDtmi}-{targetDtId}-{outputRelationship.Item1}";
 
                             // Create a basic relationship
                             var basicRelationship = new BasicRelationship
                             {
-                                SourceId = sourceElementId,
-                                TargetId = targetDtId,
+                                SourceId = outputRelationship.Item2 ? targetDtId : sourceElementId,
+                                TargetId = outputRelationship.Item2 ? sourceElementId : targetDtId,
                                 Id = relationshipId,
-                                Name = outputRelationshipType.ToString(),
+                                Name = outputRelationship.Item1.ToString(),
                             };
 
                             relationships.TryAdd(basicRelationship.Id, basicRelationship);
@@ -386,12 +386,12 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
                         else
                         {
                             Logger.LogWarning("Output relationship '{relationshipType}' not found in Target Model. Source Element Id: '{sourceElementId}', TargetInterfaceType: '{interfaceType}', TargetId: '{targetId}",
-                                outputRelationshipType ?? string.Empty,
+                                outputRelationship.Item1 ?? string.Empty,
                                 sourceElementId ?? string.Empty,
                                 targetInterfaceType,
                                 targetDtId);
 
-                            TelemetryClient.GetMetric(relationshipNotFoundInModelmetricIdentifier).TrackValue(1, outputRelationshipType ?? "NotFound");
+                            TelemetryClient.GetMetric(relationshipNotFoundInModelmetricIdentifier).TrackValue(1, outputRelationship.Item1 ?? "NotFound");
                         }
                     }
                     else
