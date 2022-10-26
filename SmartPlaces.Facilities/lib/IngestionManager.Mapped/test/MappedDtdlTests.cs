@@ -13,6 +13,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped.Test
     using System.Threading.Tasks;
     using Microsoft.Azure.DigitalTwins.Parser;
     using Microsoft.Azure.DigitalTwins.Parser.Models;
+    using Xunit;
     using Xunit.Abstractions;
 
     public class MappedDtdlTests
@@ -24,8 +25,6 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped.Test
             this.output = output;
         }
 
-        // Note that currently the Mapped DTDL file is not strict DTDL. It will fail to parse with errors
-        // Hope to have Mapped fix this someday
         // [Fact]
         public async Task LoadDtdlMapped()
         {

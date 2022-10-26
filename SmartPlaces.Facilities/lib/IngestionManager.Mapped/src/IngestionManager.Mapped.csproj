@@ -8,8 +8,8 @@
 		<Version>$(VersionPrefix)</Version>
 		<Authors>Microsoft</Authors>
 		<Description>Support for converting from a Mapped DTDL-based Ontology to a different DTDL Based Ontology</Description>
-		<AssemblyVersion>0.3.1</AssemblyVersion>
-		<PackageVersion>0.3.1-preview</PackageVersion>
+		<AssemblyVersion>0.3.5</AssemblyVersion>
+		<PackageVersion>0.3.5-preview</PackageVersion>
 		<RepositoryUrl>https://github.com/Azure/opendigitaltwins-tools</RepositoryUrl>
 		<PackageProjectUrl>https://github.com/Azure/opendigitaltwins-tools/</PackageProjectUrl>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -23,14 +23,14 @@
 		<PackageReference Include="Azure.Identity" Version="1.7.0" />
 		<PackageReference Include="Azure.Messaging.EventHubs" Version="5.7.3" />
 		<PackageReference Include="Azure.Storage.Blobs" Version="12.14.0" />
-		<PackageReference Include="Mapped.Ontologies.Core.Dtdl" Version="1.2.490" />
+		<PackageReference Include="Mapped.Ontologies.Core.Dtdl" Version="1.2.499" />
 		<PackageReference Include="Microsoft.ApplicationInsights" Version="2.21.0" />
 		<PackageReference Include="Microsoft.Azure.DigitalTwins.Parser" Version="6.4.0-preview" />
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.1" />
 		<PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
 		<PackageReference Include="Microsoft.Net.Http.Headers" Version="2.2.8" />
-		<PackageReference Include="Microsoft.SmartPlaces.Facilities.IngestionManager" Version="0.1.2-preview" />
+		<PackageReference Include="Microsoft.SmartPlaces.Facilities.IngestionManager" Version="0.1.6-preview" />
 		<PackageReference Include="StackExchange.Redis" Version="2.6.70" />
 	</ItemGroup>
 
