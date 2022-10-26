@@ -100,6 +100,7 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper.Mapped.Test
         [InlineData("Mappings.v1.Willow.mapped_v1_dtdlv2_Willow.json", true, "dtmi:org:brickschema:schema:Brick:Ablutions_Room;1", "dtmi:com:willowinc:Room;1")]
         [InlineData("Mappings.v1.Willow.mapped_v1_dtdlv2_Willow.json", true, "dtmi:org:brickschema:schema:Brick:Ablutions;1", "dtmi:com:willowinc:Ablutions;1")]
         [InlineData("Mappings.v1.Willow.mapped_v1_dtdlv2_Willow.json", false, "dtmi:org:fakeschema:schema:Brick:Ablutions;1", null)]
+        [InlineData("Mappings.v1.Willow.mapped_v1_dtdlv2_Willow.json", true, "dtmi:org:brickschema:schema:Brick:CO2_Alarm_Setpoint;1", "dtmi:com:willowinc:CO2_Alarm_Setpoint;1")]
         public void ValidateInterfaceMappings(string resourcePath, bool isFound, string input, string? expected)
         {
             var mockLogger = new Mock<ILogger>();
@@ -120,6 +121,21 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper.Mapped.Test
             {
                 Assert.Null(dtmiRemap);
             }
+        }
+
+        [Theory]
+        [InlineData("Mappings.v1.Willow.mapped_v1_dtdlv2_Willow.json")]
+        public void ValidateSourceDtmisAreValid(string resourcePath)
+        {
+            var mockLogger = new Mock<ILogger>();
+            var resourceLoader = new MappedOntologyMappingLoader(mockLogger.Object, resourcePath);
+            var ontologyMappingManager = new OntologyMappingManager(resourceLoader);
+            var modelParser = new ModelParser();
+            var inputDtmi = LoadMappedDtdl();
+            var inputModels = modelParser.Parse(inputDtmi);
+            ontologyMappingManager.ValidateSourceOntologyMapping(inputModels, out var invalidSources);
+
+            Assert.Empty(invalidSources);
         }
 
         private IEnumerable<string> LoadMappedDtdl()

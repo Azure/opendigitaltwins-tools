@@ -8,7 +8,9 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper.Mapped.Test
 {
     using Microsoft.Azure.DigitalTwins.Parser;
     using Microsoft.Extensions.Logging;
+    using Microsoft.SmartPlaces.Facilities.OntologyMapper;
     using Moq;
+    using System.Reflection;
     using Xunit;
     using Xunit.Abstractions;
 
@@ -94,6 +96,46 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper.Mapped.Test
             }
 
             Assert.Empty(exceptions);
+        }
+
+        [Theory]
+        [InlineData("Mappings.v1.BrickRec.mapped_v1_dtdlv2_Brick_1_3-REC_4_0.json")]
+        public void ValidateSourceDtmisAreValid(string resourcePath)
+        {
+            var mockLogger = new Mock<ILogger>();
+            var resourceLoader = new MappedOntologyMappingLoader(mockLogger.Object, resourcePath);
+            var ontologyMappingManager = new OntologyMappingManager(resourceLoader);
+            var modelParser = new ModelParser();
+            var inputDtmi = LoadMappedDtdl();
+            var inputModels = modelParser.Parse(inputDtmi);
+            ontologyMappingManager.ValidateSourceOntologyMapping(inputModels, out var invalidSources);
+
+            Assert.Empty(invalidSources);
+        }
+
+        private IEnumerable<string> LoadMappedDtdl()
+        {
+            var assembly = Assembly.GetExecutingAssembly();
+            var resourceName = assembly.GetManifestResourceNames().Single(str => str.EndsWith("mapped_dtdl.json"));
+            List<string> dtdls = new List<string>();
+
+            using (Stream? stream = assembly.GetManifestResourceStream(resourceName))
+            {
+                if (stream != null)
+                {
+                    using (StreamReader reader = new StreamReader(stream))
+                    {
+                        string result = reader.ReadToEnd();
+                        dtdls.Add(result);
+                    }
+                }
+                else
+                {
+                    throw new FileNotFoundException(resourceName);
+                }
+            }
+
+            return dtdls;
         }
     }
 }
