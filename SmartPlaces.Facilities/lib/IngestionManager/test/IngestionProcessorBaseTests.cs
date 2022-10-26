@@ -523,7 +523,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Test
 
         public string TestGetOutputRelationshipType(string inputRelationshipType)
         {
-            return GetOutputRelationshipType(inputRelationshipType);
+            return GetOutputRelationshipType(inputRelationshipType).Item1;
         }
 
         public bool TestTryGetOutputInterfaceDtmi(Dtmi inputDtmi, out Dtmi? outputDtmi)
