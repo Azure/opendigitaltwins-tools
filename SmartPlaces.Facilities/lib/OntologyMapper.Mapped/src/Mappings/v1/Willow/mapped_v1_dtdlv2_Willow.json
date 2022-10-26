@@ -1545,10 +1545,6 @@
       "OutputDtmi": "dtmi:com:willowinc:OnOffState;1"
     },
     {
-      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Fan_Request;1",
-      "OutputDtmi": "dtmi:com:willowinc:FanRunActuator;1"
-    },
-    {
       "InputDtmi": "dtmi:org:brickschema:schema:Brick:Fan_Speed_Command;1",
       "OutputDtmi": "dtmi:com:willowinc:FanSpeedActuator;1"
     },
@@ -4681,7 +4677,7 @@
       "OutputDtmi": "dtmi:com:willowinc:ElectricalMeter;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:FanRequest;1",
+      "InputDtmi": "dtmi:mapped:core:Fan_Request;1",
       "OutputDtmi": "dtmi:com:willowinc:FanRunActuator;1"
     },
     {
