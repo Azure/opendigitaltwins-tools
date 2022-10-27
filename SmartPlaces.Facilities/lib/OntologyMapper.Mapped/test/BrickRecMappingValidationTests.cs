@@ -98,25 +98,40 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper.Mapped.Test
             Assert.Empty(exceptions);
         }
 
-        [Theory]
-        [InlineData("Mappings.v1.BrickRec.mapped_v1_dtdlv2_Brick_1_3-REC_4_0.json")]
-        public void ValidateSourceDtmisAreValid(string resourcePath)
-        {
-            var mockLogger = new Mock<ILogger>();
-            var resourceLoader = new MappedOntologyMappingLoader(mockLogger.Object, resourcePath);
-            var ontologyMappingManager = new OntologyMappingManager(resourceLoader);
-            var modelParser = new ModelParser();
-            var inputDtmi = LoadMappedDtdl();
-            var inputModels = modelParser.Parse(inputDtmi);
-            ontologyMappingManager.ValidateSourceOntologyMapping(inputModels, out var invalidSources);
+        //[Theory]
+        //[InlineData("Mappings.v1.BrickRec.mapped_v1_dtdlv2_Brick_1_3-REC_4_0.json")]
+        //public void ValidateSourceDtmisAreValid(string resourcePath)
+        //{
+        //    var mockLogger = new Mock<ILogger>();
+        //    var resourceLoader = new MappedOntologyMappingLoader(mockLogger.Object, resourcePath);
+        //    var ontologyMappingManager = new OntologyMappingManager(resourceLoader);
+        //    var modelParser = new ModelParser();
+        //    var inputDtmi = LoadDtdl("mapped_dtdl.json");
+        //    var inputModels = modelParser.Parse(inputDtmi);
+        //    ontologyMappingManager.ValidateSourceOntologyMapping(inputModels, out var invalidSources);
 
-            Assert.Empty(invalidSources);
-        }
+        //    Assert.Empty(invalidSources);
+        //}
 
-        private IEnumerable<string> LoadMappedDtdl()
+        //[Theory]
+        //[InlineData("Mappings.v1.BrickRec.mapped_v1_dtdlv2_Brick_1_3-REC_4_0.json")]
+        //public void ValidateTargetDtmisAreValid(string resourcePath)
+        //{
+        //    var mockLogger = new Mock<ILogger>();
+        //    var resourceLoader = new MappedOntologyMappingLoader(mockLogger.Object, resourcePath);
+        //    var ontologyMappingManager = new OntologyMappingManager(resourceLoader);
+        //    var modelParser = new ModelParser();
+        //    var inputDtmi = LoadDtdl("RealEstateCore_DTDLv2.json");
+        //    var inputModels = modelParser.Parse(inputDtmi);
+        //    ontologyMappingManager.ValidateTargetOntologyMapping(inputModels, out var invalidSources);
+
+        //    Assert.Empty(invalidSources);
+        //}
+
+        private IEnumerable<string> LoadDtdl(string dtdlFile)
         {
             var assembly = Assembly.GetExecutingAssembly();
-            var resourceName = assembly.GetManifestResourceNames().Single(str => str.EndsWith("mapped_dtdl.json"));
+            var resourceName = assembly.GetManifestResourceNames().Single(str => str.EndsWith(dtdlFile));
             List<string> dtdls = new List<string>();
 
             using (Stream? stream = assembly.GetManifestResourceStream(resourceName))

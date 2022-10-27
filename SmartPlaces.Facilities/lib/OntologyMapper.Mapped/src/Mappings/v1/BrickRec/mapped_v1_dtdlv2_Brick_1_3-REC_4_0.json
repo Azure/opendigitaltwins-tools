@@ -157,7 +157,7 @@
     },
     {
       "InputDtmi": "dtmi:mapped:core:Return_Condenser_Water_Temperature_Sensor;1",
-      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Return_Condenser_Water_Temperature_Sensor;1"
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Leaving_Condenser_Water_Temperature_Sensor;1"
     },
     {
       "InputDtmi": "dtmi:mapped:core:Setpoint_Offset;1",
@@ -166,7 +166,7 @@
     },
     {
       "InputDtmi": "dtmi:mapped:core:Supply_Condenser_Water_Temperature_Sensor;1",
-      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Supply_Condenser_Water_Temperature_Sensor;1"
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Entering_Condenser_Water_Temperature_Sensor;1"
     },
     {
       "InputDtmi": "dtmi:mapped:core:Temperature_Alarm_Count;1",
@@ -440,7 +440,7 @@
     },
     {
       "InputDtmi": "dtmi:org:brickschema:schema:Brick:Parking_Space;1",
-      "OutputDtmi": "dtmi:org:w3id:rec:ParkingSlotCold;1"
+      "OutputDtmi": "dtmi:org:w3id:rec:ParkingSpace;1"
     },
     {
       "InputDtmi": "dtmi:org:brickschema:schema:Brick:Parking_Structure;1",
