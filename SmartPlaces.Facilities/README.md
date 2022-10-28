@@ -24,4 +24,4 @@ The topology project is an example of a console application which reads in confi
 
 1. Load the SmartPlaces.Facilities\samples\topology\topology.sln file into Visual Studio
 2. Compile the solution
-3. In order to run it, you must set up the appropriate infrastructure and configuration. For more information about this sample project, see its [readme](.\products\topology\src\readme.md)
+3. In order to run it, you must set up the appropriate infrastructure and configuration. For more information about this sample project, see its [readme](samples/Topology/src/README.md)

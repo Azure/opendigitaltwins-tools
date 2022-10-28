@@ -21,4 +21,4 @@ Once you have uploaded these models into your Azure Digital Twins instance, you 
 The DTDL RealEstateCore models in this repo have already been validated. You don't have to validate them with the DTDL parser unless you change them. If you have extended the models or made changes, it's recommended to validate the models as described by this article: [Validate models](https://learn.microsoft.com/en-us/azure/digital-twins/concepts-models#validate-models).
 
 ## Converting from one ontology / version to another
-The OntologyMapper is an assembly that is used to support conversion from one DTDL ontology to another DTDL ontology. More details can be found [here]: (./OntologyMapper/README.md) 
+The OntologyMapper is an assembly that is used to support conversion from one DTDL ontology to another DTDL ontology. More details can be found [here](SmartPlaces.Facilities/lib/OntologyMapper/README.md)
