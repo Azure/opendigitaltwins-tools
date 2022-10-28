@@ -1,6 +1,12 @@
 # Smart Facilities
 
-This folder contains the code, configuration, and documentation for the Smart Facilities Components. This includes several libraries that are created as Nuget Packages, and some sample code.
+## Problem Statement and Solution
+Facility Digitization Accelerator is designed to unlock facility-related operational and sustainability data at scale. Facilities contain numerous disparate, unnormalized Operational Technology systems (HVAC, lighting, power, etc.) often controlled by a Building Management System (BMS). Onboarding these systems into an IoT cloud solution is an arduous, manual, serialized task taking domain experts 1-3 months to classify and normalize the data. 
+
+We are providing a provisioning tool which converts raw data from the BMS into a well-defined digital twin topology of the building using [RealEstateCore](https://github.com/RealEstateCore/REC), an open industry standard data model. By leveraging this tool, customers can now onboard their building and realize business value in 3-5 days or less. Read more details [here](docs/Facility%20Digitization%20Accelerator%20Preview.docx)
+
+## This project
+This project contains the code, configuration, and documentation for the Smart Facilities Components. This includes several libraries that are created as Nuget Packages, and some sample code.
 
 ### Required Software
 
