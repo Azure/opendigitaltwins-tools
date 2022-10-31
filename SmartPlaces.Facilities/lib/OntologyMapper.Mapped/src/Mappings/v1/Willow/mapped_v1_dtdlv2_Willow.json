@@ -466,7 +466,7 @@
     },
     {
       "InputDtmi": "dtmi:mapped:core:Occupancy_Sensing_Device;1",
-      "OutputDtmi": "dtmi:com:willowinc:OccupancySensor;1"
+      "OutputDtmi": "dtmi:com:willowinc:OccupancySensorEquipment;1"
     },
     {
       "InputDtmi": "dtmi:mapped:core:Occupied_Cooling_Air_Temperature_Setpoint;1",
@@ -3205,15 +3205,15 @@
     },
     {
       "InputDtmi": "dtmi:org:brickschema:schema:Brick:Occupied_Air_Temperature_Setpoint;1",
-      "OutputDtmi": "dtmi:com:willowinc:Setpoint;1"
+      "OutputDtmi": "dtmi:com:willowinc:AirTemperatureSetpoint;1"
     },
     {
       "InputDtmi": "dtmi:org:brickschema:schema:Brick:Occupied_Cooling_Discharge_Air_Flow_Setpoint;1",
-      "OutputDtmi": "dtmi:com:willowinc:CoolingDischargeAirFlowSetpoint;1"
+      "OutputDtmi": "dtmi:com:willowinc:DischargeAirFlowSetpoint;1"
     },
     {
       "InputDtmi": "dtmi:org:brickschema:schema:Brick:Occupied_Cooling_Supply_Air_Flow_Setpoint;1",
-      "OutputDtmi": "dtmi:com:willowinc:OccupiedCoolingSetpoint;1"
+      "OutputDtmi": "dtmi:com:willowinc:DischargeAirFlowSetpoint;1"
     },
     {
       "InputDtmi": "dtmi:org:brickschema:schema:Brick:Occupied_Cooling_Temperature_Setpoint;1",
@@ -3229,15 +3229,15 @@
     },
     {
       "InputDtmi": "dtmi:org:brickschema:schema:Brick:Occupied_Heating_Discharge_Air_Flow_Setpoint;1",
-      "OutputDtmi": "dtmi:com:willowinc:OccupiedHeatingSetpoint;1"
+      "OutputDtmi": "dtmi:com:willowinc:DischargeAirFlowSetpoint;1"
     },
     {
       "InputDtmi": "dtmi:org:brickschema:schema:Brick:Occupied_Heating_Supply_Air_Flow_Setpoint;1",
-      "OutputDtmi": "dtmi:com:willowinc:OccupiedHeatingSetpoint;1"
+      "OutputDtmi": "dtmi:com:willowinc:DischargeAirFlowSetpoint;1"
     },
     {
       "InputDtmi": "dtmi:org:brickschema:schema:Brick:Occupied_Heating_Temperature_Deadband_Setpoint;1",
-      "OutputDtmi": "dtmi:com:willowinc:OccupiedHeatingSetpoint;1"
+      "OutputDtmi": "dtmi:com:willowinc:AirTemperatureDeadbandSetpoint;1"
     },
     {
       "InputDtmi": "dtmi:org:brickschema:schema:Brick:Occupied_Heating_Temperature_Setpoint;1",
@@ -3249,7 +3249,7 @@
     },
     {
       "InputDtmi": "dtmi:org:brickschema:schema:Brick:Occupied_Mode_Status;1",
-      "OutputDtmi": "dtmi:com:willowinc:ModeState;1"
+      "OutputDtmi": "dtmi:com:willowinc:OccupiedState;1"
     },
     {
       "InputDtmi": "dtmi:org:brickschema:schema:Brick:Occupied_Return_Air_Temperature_Setpoint;1",
@@ -3261,7 +3261,7 @@
     },
     {
       "InputDtmi": "dtmi:org:brickschema:schema:Brick:Occupied_Supply_Air_Flow_Setpoint;1",
-      "OutputDtmi": "dtmi:com:willowinc:AirFlowSetpoint;1"
+      "OutputDtmi": "dtmi:com:willowinc:DischargeAirFlowSetpoint;1"
     },
     {
       "InputDtmi": "dtmi:org:brickschema:schema:Brick:Occupied_Zone_Air_Temperature_Setpoint;1",
