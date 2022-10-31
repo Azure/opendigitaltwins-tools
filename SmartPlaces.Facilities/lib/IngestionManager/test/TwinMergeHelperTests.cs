@@ -36,6 +36,21 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Test
         }
 
         [Fact]
+        public void TryCreatePatchDocument_DifferentModels_ReturnTrue()
+        {
+            var existingTwin = new BasicDigitalTwin();
+            existingTwin.Metadata.ModelId = "dtmi:example:foo;1";
+            existingTwin.Contents.Add("oldKey", "OldValue");
+            var newTwin = new BasicDigitalTwin();
+            newTwin.Metadata.ModelId = "dtmi:example:bar;1";
+
+            var result = TwinMergeHelper.TryCreatePatchDocument(existingTwin, newTwin, out var jsonPatchDocument);
+
+            Assert.True(result);
+            Assert.Equal("[{\"op\":\"replace\",\"path\":\"/$metadata/$model\",\"value\":\"dtmi:example:bar;1\"}]", jsonPatchDocument.ToString());
+        }
+
+        [Fact]
         public void TryCreatePatchDocument_ExistingStringTwinFieldMoreDataThanNew_ReturnFalse()
         {
             var existingTwin = new BasicDigitalTwin();
