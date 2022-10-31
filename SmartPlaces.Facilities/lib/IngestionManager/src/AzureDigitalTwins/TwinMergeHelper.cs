@@ -17,6 +17,12 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.AzureDigitalTwins
         {
             jsonPatchDocument = new JsonPatchDocument();
 
+            // If the models don't match, then replace the metadata for the model id
+            if (existingDigitalTwin.Metadata.ModelId != newTwin.Metadata.ModelId)
+            {
+                jsonPatchDocument.AppendReplace("/$metadata/$model", newTwin.Metadata.ModelId);
+            }
+
             foreach (var propertyName in newTwin.Contents.Keys)
             {
                 var newPropertyJson = JsonSerializer.SerializeToElement(newTwin.Contents[propertyName]);
