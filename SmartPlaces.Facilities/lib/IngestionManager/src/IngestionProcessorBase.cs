@@ -370,7 +370,8 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
                         if (outputSourceDtmi != null && TargetObjectModel.TryGetValue(outputSourceDtmi, out var model))
                         {
                             var relationship = ((DTInterfaceInfo)model).Contents.FirstOrDefault(p => p.Value.EntityKind == DTEntityKind.Relationship && p.Value.Name == outputRelationship.Item1);
-                            var relationshipId = $"{outputSourceDtmi}-{targetDtId}-{outputRelationship.Item1}";
+                            var relationshipId = outputRelationship.Item2 ? $"{targetDtId}-{sourceElementId}-{outputRelationship.Item1}" :
+                                                                            $"{sourceElementId}-{targetDtId}-{outputRelationship.Item1}";
 
                             // Create a basic relationship
                             var basicRelationship = new BasicRelationship
