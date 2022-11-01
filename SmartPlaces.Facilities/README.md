@@ -8,7 +8,7 @@ This folder contains the code, configuration, and documentation for the SmartPla
 
 ## Libraries
 
-There are currently 4 library projects:
+There are two core libraries which have been extended to work with Mapped as a source provider. Other twin source providers are also encouraged to accelerate customer scenarios by partnering through Microsoft into RealEstateCore and other output ontologies built on Azure Digital Twins.
 
 | Name | Description | Read More |
 | --- | --- | --- |
@@ -36,12 +36,12 @@ When updating the src project for any of the libs, please remember to:
 
 Because of the complexity of the process of getting the official Nuget packages updated, it is always faster to test all the components locally before starting the first pull request. Here are some steps to make testing simpler:
 
-1. Set up a local folder on your machine to put Nuget packages into (i.e. c:\nuget)
+1. Set up a local folder on your machine to put Nuget packages into (i.e. ..\LocalNugets)
 2. Update the [Nuget.config](./NuGet.config) and add the following line to it. Never check in this file. It will break the builds.
 
     ```
 
-    <add key="DELETE_ME" value="c:\nuget" />
+    <add key="DELETE_ME" value="..\LocalNugets" />
 
     ```
 
@@ -50,7 +50,7 @@ Because of the complexity of the process of getting the official Nuget packages 
 
     ```
     
-    dotnet nuget pack <project file>
+    dotnet nuget pack <path to project file> -o ..\LocalNugets
 
     ```
 
