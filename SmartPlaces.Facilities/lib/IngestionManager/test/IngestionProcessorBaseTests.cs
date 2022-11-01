@@ -403,6 +403,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Test
             Assert.Equal(inputRelationshipType, outputRelationship.Value.Name);
             Assert.Equal(sourceDtId, outputRelationship.Value.SourceId);
             Assert.Equal(targetDtId, outputRelationship.Value.TargetId);
+            Assert.Equal($"{sourceDtId}-{targetDtId}-{outputRelationship.Value.Name}", outputRelationship.Value.Id);
             Assert.NotNull(outputRelationship.Value.Id);
         }
 
@@ -435,6 +436,40 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Test
             Assert.Equal(expectedRelationshipType, outputRelationship.Value.Name);
             Assert.Equal(sourceDtId, outputRelationship.Value.SourceId);
             Assert.Equal(targetDtId, outputRelationship.Value.TargetId);
+            Assert.Equal($"{sourceDtId}-{targetDtId}-{outputRelationship.Value.Name}", outputRelationship.Value.Id);
+            Assert.NotNull(outputRelationship.Value.Id);
+        }
+
+        [Fact]
+        public async Task GetRelationship_GetsRelationship_WhenRemappedRelationshipReversed()
+        {
+            var mockedIngestionProcessor = new MockedIngestionProcessor<IngestionManagerOptions>(mockLogger.Object,
+                                                                        telemetryClient,
+                                                                        mockInputGraphManager.Object,
+                                                                        ontologyMappingManager,
+                                                                        mockOutputGraphManager.Object);
+
+            IDictionary<string, BasicRelationship> relationships = new Dictionary<string, BasicRelationship>();
+            string sourceDtId = "CLSKkDFMgbojZZ54MorD6B11P";
+            var inputSourceDtmi = new Dtmi("dtmi:org:w3id:rec:Space;1");
+            var inputRelationshipType = "hasPoint";
+            string targetDtId = "CLSKkDFMgbojZZ54MorD6B11R";
+            string targetInterfaceType = "Space";
+
+            var expectedRelationshipType = "isPointOf";
+
+            await mockedIngestionProcessor.IngestFromApiAsync(CancellationToken.None);
+
+            mockedIngestionProcessor.TestGetRelationship(relationships, sourceDtId, inputSourceDtmi, inputRelationshipType, targetDtId, targetInterfaceType);
+
+            Assert.Single(relationships);
+            var outputRelationship = relationships.First();
+
+            Assert.NotNull(outputRelationship.Value);
+            Assert.Equal(expectedRelationshipType, outputRelationship.Value.Name);
+            Assert.Equal(sourceDtId, outputRelationship.Value.TargetId);
+            Assert.Equal(targetDtId, outputRelationship.Value.SourceId);
+            Assert.Equal($"{targetDtId}-{sourceDtId}-{outputRelationship.Value.Name}", outputRelationship.Value.Id);
             Assert.NotNull(outputRelationship.Value.Id);
         }
 
@@ -471,6 +506,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Test
             ontologyMapping.Header.OutputOntologies.Add(new Ontology { DtdlVersion = "v3", Name = "org2", Version = "1.2" });
             ontologyMapping.InterfaceRemaps.Add(new DtmiRemap { InputDtmi = "dtmi:twin:main:CleaningRoom;1", OutputDtmi = "dtmi:org:w3id:rec:Space;1" });
             ontologyMapping.RelationshipRemaps.Add(new RelationshipRemap { InputRelationship = "hasA", OutputRelationship = "isA" });
+            ontologyMapping.RelationshipRemaps.Add(new RelationshipRemap { InputRelationship = "hasPoint", OutputRelationship = "isPointOf", ReverseRelationshipDirection = true });
             ontologyMapping.FillProperties.Add(new FillProperty { InputPropertyNames = new List<string>() { "name", "description" }, OutputDtmiFilter = ".*", OutputPropertyName = "name" });
             ontologyMapping.PropertyProjections.Add(new PropertyProjection { InputPropertyNames = new List<string> { "mappingKey", "deviceId" }, OutputDtmiFilter = ".*", IsOutputPropertyCollection = true, OutputPropertyName = "externalIds" });
             return ontologyMapping;
