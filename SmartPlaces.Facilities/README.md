@@ -25,6 +25,7 @@ Each library folder has a stand-alone solution which includes a src and test pro
 
 Dependencies between the projects are taken via Nugets, which can be a little bit painful at times, but we are working to improve that experience.
 
+:exclamation: <span style="color:red">**Important**<span>
 When updating the src project for any of the libs, please remember to:
 1. Update the Assembly Version and Package Version in the csproj as appropriate. The projects use [Semantic Versioning](https://semver.org/), so please follow the semantic versioning guidelines when updating.
 2. Add Unit tests for any new features you add or bugs you fix
