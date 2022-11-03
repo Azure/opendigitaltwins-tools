@@ -30,7 +30,7 @@
 		<PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
 		<PackageReference Include="Microsoft.Net.Http.Headers" Version="2.2.8" />
-		<PackageReference Include="Microsoft.SmartPlaces.Facilities.IngestionManager" Version="0.2.0-preview" />
+		<PackageReference Include="Microsoft.SmartPlaces.Facilities.IngestionManager" Version="0.1.8-preview" />
 		<PackageReference Include="StackExchange.Redis" Version="2.6.70" />
 	</ItemGroup>
 
