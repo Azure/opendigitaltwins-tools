@@ -1,6 +1,6 @@
 # IngestionManager.Mapped
 
-This library provides a way to load a DTDSL based graph from a Mapped Graph
+This library provides a way to load a DTDL based graph from a Mapped Graph
 
 
 ## Interfaces and Classes
