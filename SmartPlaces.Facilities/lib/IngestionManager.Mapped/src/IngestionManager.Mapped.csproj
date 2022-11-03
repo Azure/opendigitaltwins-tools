@@ -8,8 +8,8 @@
 		<Version>$(VersionPrefix)</Version>
 		<Authors>Microsoft</Authors>
 		<Description>Support for converting from a Mapped DTDL-based Ontology to a different DTDL Based Ontology</Description>
-		<AssemblyVersion>0.3.8</AssemblyVersion>
-		<PackageVersion>0.3.8-preview</PackageVersion>
+		<AssemblyVersion>0.4.0</AssemblyVersion>
+		<PackageVersion>0.4.0-preview</PackageVersion>
 		<RepositoryUrl>https://github.com/Azure/opendigitaltwins-tools</RepositoryUrl>
 		<PackageProjectUrl>https://github.com/Azure/opendigitaltwins-tools/</PackageProjectUrl>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -32,6 +32,10 @@
 		<PackageReference Include="Microsoft.Net.Http.Headers" Version="2.2.8" />
 		<PackageReference Include="Microsoft.SmartPlaces.Facilities.IngestionManager" Version="0.1.8-preview" />
 		<PackageReference Include="StackExchange.Redis" Version="2.6.70" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="..\README.md" Pack="true" PackagePath="\" />
 	</ItemGroup>
 
 	<ItemGroup>
