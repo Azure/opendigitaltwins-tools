@@ -172,9 +172,9 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
         }
 
         protected Dtmi? GetTwin(IDictionary<string, BasicDigitalTwin> twins,
-                              JsonElement targetElement,
-                              string basicDtId,
-                              string interfaceType)
+                                JsonElement targetElement,
+                                string basicDtId,
+                                string interfaceType)
         {
             Dtmi? inputDtmi = GetInputInterfaceDtmi(interfaceType.ToString());
 

@@ -10,8 +10,8 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Interfaces
 
     public interface ITwinMappingIndexer
     {
-        public Task UpsertTwinIndexAsync(string sourceId, string twinId);
+        public Task UpsertTwinIndexAsync(string sourceId, TwinMap twinMap);
 
-        public Task<string> GetTwinIndexAsync(string sourceId);
+        public Task<TwinMap?> GetTwinIndexAsync(string sourceId);
     }
 }

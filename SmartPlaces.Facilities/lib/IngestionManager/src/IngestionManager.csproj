@@ -8,8 +8,8 @@
 		<Version>$(VersionPrefix)</Version>
 		<Authors>Microsoft</Authors>
 		<Description>This is library injects data from one DTDL based graph, then converts and inserts the data into another DTDL base graph.</Description>
-		<AssemblyVersion>0.2.0</AssemblyVersion>
-		<PackageVersion>0.2.0-preview</PackageVersion>
+		<AssemblyVersion>0.2.1</AssemblyVersion>
+		<PackageVersion>0.2.1-preview</PackageVersion>
 		<RepositoryUrl>https://github.com/Azure/opendigitaltwins-tools</RepositoryUrl>
 		<PackageProjectUrl>https://github.com/Azure/opendigitaltwins-tools/</PackageProjectUrl>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -29,7 +29,7 @@
 		<PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Options.DataAnnotations" Version="6.0.0" />
-		<PackageReference Include="Microsoft.SmartPlaces.Facilities.OntologyMapper" Version="0.6.4-preview" />
+		<PackageReference Include="Microsoft.SmartPlaces.Facilities.OntologyMapper" Version="0.6.5-preview" />
 		<PackageReference Include="Microsoft.Net.Http.Headers" Version="2.2.8" />
 		<PackageReference Include="Polly" Version="7.2.3" />
 		<PackageReference Include="StackExchange.Redis" Version="2.6.66" />
