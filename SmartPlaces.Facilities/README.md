@@ -1,6 +1,6 @@
 # Smart Facilities
 
-This folder contains the code, configuration, and documentation for the SmartPlaces.Facilities Components. This includes several libraries that are also packaged as Nuget Packages, and some sample code.
+This folder contains the code, configuration, and documentation for the Smart Places Facilities Components. This includes several libraries that are packaged as Nuget Packages, and some sample code.
 
 ## Required Software
 
@@ -13,11 +13,11 @@ There are two core libraries which have been extended to work with Mapped as a s
 | Name | Description | Read More |
 | --- | --- | --- |
 | OntologyManager | Defines base classes and helpers which allow mapping from one ontology to another | [Read More](./lib/OntologyMapper/README.md) |
-| OntologyManager.Mapped | Defines the mappings from the Mapped ontology to Rec and Willow ontologies | [Read More](./lib/OntologyMapper.Mapped/README.md) |
+| OntologyManager.Mapped | Defines the mappings from the Mapped ontology to target ontologies like REC and Willow | [Read More](./lib/OntologyMapper.Mapped/README.md) |
 | IngestioManager | Defines the process flow for copying one topology to another topology and using the Ontology Mapper to convert the source ontology to a target ontology | [Read More](./lib/IngestionManager/README.md) |
 | IngestionManager.Mapped | Refines specific functionality needed when using Mapped as an input topology | [Read More](./lib/IngestionManager.Mapped/README.md) |
 
-The nugets can be found on [Nuget.org](https://www.nuget.org/packages?q=Microsoft.SmartPlaces).
+The Nuget packages can be found on [Nuget.org](https://www.nuget.org/packages?q=Microsoft.SmartPlaces).
 
 ### Getting Started with the Lib projects
 
@@ -30,8 +30,8 @@ When updating the src project for any of the libs, please remember to:
 1. Update the Assembly Version and Package Version in the csproj as appropriate. The projects use [Semantic Versioning](https://semver.org/), so please follow the semantic versioning guidelines when updating.
 2. Add Unit tests for any new features you add or bugs you fix
 3. Ensure the documentation for the lib is up to date
-4. Upon completion of the pull request, sent a note to [smartplaces@microsoft.com](mailto:smartplaces@microsoft.com) to request that they publish the latest version of the Nuget packages. Response times should be under 2 business days.
-5. If you are updating a low level project that one of the other projects depend upon through a nuget reference, you will need to do 2 PRs: one for the low level package, and one for the lib referencing the updated package. Note that the second pull request will not succeed until step 4 above is completed by the Smart Places team. 
+4. Upon completion of the pull request, sent a note to [smartplacesupport@microsoft.com](mailto:smartplacessupport@microsoft.com) to request that they publish the latest version of the Nuget packages. Response times should be under 2 business days.
+5. If you are updating a low level project that one of the other projects depend upon through a Nuget package reference, you will need to do 2 PRs: one for the low level package, and one for the lib referencing the updated package. Note that the second pull request will not succeed until step 4 above is completed by the Smart Places team. 
 
 ### Local Testing
 
@@ -55,8 +55,8 @@ Because of the complexity of the process of getting the official Nuget packages 
 
     ```
 
-5. Copy the nuget package from the bin\(Debug or Release)\ to your nuget folder
-6. Update the nuget version reference in your project to reference this new version
+5. Copy the Nuget package from the bin\(Debug or Release)\ to your LocalNugets folder
+6. Update the Nuget package version reference in your project to reference this new version
 7. Repeat this process for any other projects
 
 # Sample Projects
