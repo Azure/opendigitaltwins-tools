@@ -109,9 +109,15 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.AzureDigitalTwins
                 {
                     if (externalIds is IDictionary<string, string> externalIdDictionary)
                     {
-                        if (externalIdDictionary.TryGetValue("mappingKey", out var mappingKey))
+                        if (externalIdDictionary.TryGetValue("mappingKey", out var mappingKey))                            
                         {
-                            cacheTasks.Add(TwinMappingIndexer.UpsertTwinIndexAsync(mappingKey, twin.Key));
+                            var twinMap = new TwinMap
+                            {
+                                TargetTwinId = twin.Key,
+                                TargetModelId = twin.Value.Metadata.ModelId
+                            };
+
+                            cacheTasks.Add(TwinMappingIndexer.UpsertTwinIndexAsync(mappingKey, twinMap));
 
                             if (cacheTasks.Count > 100)
                             {

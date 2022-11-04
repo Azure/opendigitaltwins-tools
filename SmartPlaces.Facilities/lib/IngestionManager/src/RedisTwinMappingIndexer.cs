@@ -7,6 +7,8 @@
 namespace Microsoft.SmartPlaces.Facilities.IngestionManager
 {
     using System.Net.Sockets;
+    using System.Text.Json;
+    using System.Text.Json.Serialization;
     using System.Threading.Tasks;
     using Microsoft.Extensions.Caching.Distributed;
     using Microsoft.SmartPlaces.Facilities.IngestionManager.Interfaces;
@@ -32,14 +34,19 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
                                                         (retryAttempt) => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)) + TimeSpan.FromMilliseconds(jitter.Next(0, 100)));
         }
 
-        public async Task<string> GetTwinIndexAsync(string sourceId)
+        public async Task<TwinMap?> GetTwinIndexAsync(string sourceId)
         {
-            return await redisRetryPolicy.ExecuteAsync(async () => await cache.GetStringAsync(sourceId));
+            return await redisRetryPolicy.ExecuteAsync(async () =>
+            {
+                var cacheValue = await cache.GetStringAsync(sourceId);
+                var twinMap = JsonSerializer.Deserialize<TwinMap>(cacheValue);
+                return twinMap;
+            });
         }
 
-        public async Task UpsertTwinIndexAsync(string sourceId, string twinId)
+        public async Task UpsertTwinIndexAsync(string sourceId, TwinMap twinMap)
         {
-            await redisRetryPolicy.ExecuteAsync(async () => await cache.SetStringAsync(sourceId, twinId));
+            await redisRetryPolicy.ExecuteAsync(async () => await cache.SetStringAsync(sourceId, JsonSerializer.Serialize(twinMap)));
         }
     }
 }
