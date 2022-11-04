@@ -1,0 +1,29 @@
+This library provides helpers useful for mapping the Mapped implementation Digital Twins Definition Language (DTDL) model to various other DTDL topologies. The Mapped mappings are embedded resources within this assembly, making it easy to use these transforms without recreating them from scratch.
+
+The following mappings have been created and are being maintained\+:
+
+$\vert$ Resource Path $\vert$ Input Ontologies $\vert$ Input DTDL Version $\vert$ Output Ontologies $\vert$ Output DTDL Version $\vert$ Notes $\vert$ $\vert$ --- $\vert$ --- $\vert$ --- $\vert$ --- $\vert$ --- $\vert$ $\vert$ Mappings\textbackslash{}v0\textbackslash{}\+Brick\+Rec\textbackslash{}mapped\+\_\+json\+\_\+v0\+\_\+dtdlv2\+\_\+\+Brick\+\_\+1\+\_\+3-\/\+Rec\+\_\+4\+\_\+0.\+json $\vert$ Mapped $\vert$ V0 (not strict DTDL compliance) $\vert$ Brick 1.\+3, Rec 4.\+0 $\vert$ v2 $\vert$ Deprecated $\vert$ $\vert$ Mappings\textbackslash{}v0\textbackslash{}\+Brick\+Rec\textbackslash{}mapped\+\_\+json\+\_\+v0\+\_\+dtdlv3\+\_\+\+Brick\+\_\+1\+\_\+3-\/\+Rec\+\_\+4\+\_\+0.\+json $\vert$ Mapped $\vert$ V0 (not strict DTDL compliance) $\vert$ Brick 1.\+3, Rec 4.\+0 $\vert$ v3 $\vert$ Deprecated $\vert$ $\vert$ Mappings\textbackslash{}v0\textbackslash{}\+Willow\textbackslash{}mapped\+\_\+json\+\_\+v0\+\_\+dtdlv2\+\_\+\+Willow.\+json $\vert$ Mapped $\vert$ V0 (not strict DTDL compliance) $\vert$ Willow $\vert$ v2 $\vert$ Deprecated $\vert$ $\vert$ Mappings\textbackslash{}v1\textbackslash{}\+Brick\+Rec\textbackslash{}mapped\+\_\+v1\+\_\+dtdlv2\+\_\+\+Brick\+\_\+1\+\_\+3-\/\+Rec\+\_\+4\+\_\+0.\+json $\vert$ Mapped $\vert$ V3 $\vert$ Brick 1.\+3, Rec 4.\+0 $\vert$ v2 $\vert$ $\vert$ $\vert$ Mappings\textbackslash{}v1\textbackslash{}\+Willow\textbackslash{}mapped\+\_\+v1\+\_\+dtdlv2\+\_\+\+Willow.\+json $\vert$ Mapped $\vert$ V3 $\vert$ Willow $\vert$ v2 $\vert$ $\vert$\hypertarget{md_lib__ontology_mapper__mapped__r_e_a_d_m_e_autotoc_md14}{}\doxysubsection{Mapped\+Ontology\+Mapping\+Loader}\label{md_lib__ontology_mapper__mapped__r_e_a_d_m_e_autotoc_md14}
+This class enables selection and loading of the Ontology Mappings from the embedded Mapped resource files. When instantiating this class, specify the full path of the resource to be loaded. i.\+e.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var resourceManager = new MappedOntologyMappingLoader(logger, "{}Mappings.v0.BrickRec.mapped\_json\_v0\_dtdlv2\_Brick\_1\_3-\/REC\_4\_0.json"{});}
+
+\end{DoxyCode}
+ {\bfseries{Implements}}
+
+Ontology\+Mapper.\+IOntology\+Mapping\+Loader
+
+{\bfseries{Method\+: Load\+Ontology\+Mapping}}
+
+{\itshape Description}
+
+Loads an Ontology\+Mapping into memory from an embedded resource file (specified in the constructor)
+
+{\itshape Parameters}
+
+None
+
+{\itshape Returns}
+
+An ontology mapping 

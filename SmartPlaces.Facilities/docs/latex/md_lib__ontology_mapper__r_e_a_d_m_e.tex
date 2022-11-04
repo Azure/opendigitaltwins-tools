@@ -1,0 +1,389 @@
+\hypertarget{md_lib__ontology_mapper__r_e_a_d_m_e_autotoc_md16}{}\doxysection{Motivation and purpose}\label{md_lib__ontology_mapper__r_e_a_d_m_e_autotoc_md16}
+The Ontology\+Mapper allows developers to define conversion processes from one DTDL-\/based Ontology to a different DTDL-\/based Ontology.
+
+This may be needed in cases where cloning a topology which uses a propriety ontology, and converting to an open standard ontology such as Real\+Estate\+Core.
+
+These conversion rules are defined in a series of Mappings files here in the repo which are embedded in the assembly to make versioning easier.
+
+The key is that these files describe exceptions only. If the source DTMI and Target DTMI are identical, nothing needs to appear for the mapping between the two. Thus, if an source and target use the same ontology and version, the mapping file will have very little content.
+
+This library provides helpers useful for mapping one Digital Twins Definition Language (DTDL) model to a different DTDL model. It defines a set of classes which allow the following types to be mapped\+:
+
+
+\begin{DoxyEnumerate}
+\item Interfaces
+\end{DoxyEnumerate}
+\begin{DoxyEnumerate}
+\item Relationships
+\end{DoxyEnumerate}
+\begin{DoxyEnumerate}
+\item Property Projections
+\end{DoxyEnumerate}
+\begin{DoxyEnumerate}
+\item Backfilling of Properties
+\end{DoxyEnumerate}
+
+A json file can be created with collections of these types of mappings, and then that can be used in a process which uses one DTDL ontology as an input and outputs a different DTDL ontology.\hypertarget{md_lib__ontology_mapper__r_e_a_d_m_e_autotoc_md17}{}\doxysection{File Sections}\label{md_lib__ontology_mapper__r_e_a_d_m_e_autotoc_md17}
+\hypertarget{md_lib__ontology_mapper__r_e_a_d_m_e_autotoc_md18}{}\doxysubsection{Header}\label{md_lib__ontology_mapper__r_e_a_d_m_e_autotoc_md18}
+The header section is for informational purposes designating the source and destination DTDLs. This is to provide an at-\/a-\/glance summary of what DTDLs this file maps.
+
+{\bfseries{Input Ontologies}}
+
+A collection of what ontologies make up the input source for the conversion
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Field   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Field   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-2}
+\endhead
+Name   &The name of the ontology    \\\cline{1-2}
+Version   &The version of the ontology    \\\cline{1-2}
+Dtdl\+Version   &Which version of the DTDL language is currently in use for this provider   \\\cline{1-2}
+\end{longtabu}
+
+
+{\bfseries{Output Ontologies}}
+
+A collection of what ontologies make up the output source for the conversion
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Field   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Field   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-2}
+\endhead
+Name   &The name of the ontology    \\\cline{1-2}
+Version   &The version of the ontology    \\\cline{1-2}
+Dtdl\+Version   &Which version of the DTDL language is currently in use for this provider   \\\cline{1-2}
+\end{longtabu}
+\hypertarget{md_lib__ontology_mapper__r_e_a_d_m_e_autotoc_md19}{}\doxysubsection{Namespace\+Remaps}\label{md_lib__ontology_mapper__r_e_a_d_m_e_autotoc_md19}
+A collection of mappings from one namespace name to another namespace name. This is used after the explicit Interface\+Remaps to execute a simple search and replace of a string in an input model to convert it to an output model. That is, in those cases where the input model interface name is exactly the same as the output model interface name, but the namespace is different, then the input model\textquotesingle{}\textquotesingle{}s namespace will be replaced by the Namespace\+Remap\textquotesingle{}s output namespace.
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Field   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Field   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-2}
+\endhead
+Input\+Namespace   &The string to search for in the input dtmi    \\\cline{1-2}
+Output\+Namespace   &The replacement string   \\\cline{1-2}
+\end{longtabu}
+\hypertarget{md_lib__ontology_mapper__r_e_a_d_m_e_autotoc_md20}{}\doxysubsection{Interface\+Remaps}\label{md_lib__ontology_mapper__r_e_a_d_m_e_autotoc_md20}
+A collection of mappings from one interface name to another interface name. It is suggested that you only need to list mappings where the input DTMI is not the same as the output DTMI. Systems should assume that if a DTMI is not listed in the mappings, that the output DTMI will be the same as the input DTMI.
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Field   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Field   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-2}
+\endhead
+Input\+Dtmi   &The name of the input DTMI    \\\cline{1-2}
+Output\+Dtmi   &The name of the output DTMI   \\\cline{1-2}
+\end{longtabu}
+\hypertarget{md_lib__ontology_mapper__r_e_a_d_m_e_autotoc_md21}{}\doxysubsection{Relationship\+Remaps}\label{md_lib__ontology_mapper__r_e_a_d_m_e_autotoc_md21}
+A collection of mappings from one relationship name to another relationship name. It is suggested that you only need to list mappings where the input relationship is not the same as the output relationship. Systems should assume that if a relationship is not listed in the mappings, that the output relationship will be the same as the input relationship.
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Field   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Field   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-2}
+\endhead
+Input\+Dtmi   &The name of the input relationship    \\\cline{1-2}
+Output\+Dtmi   &The name of the output relationship    \\\cline{1-2}
+Reverse\+Relationship\+Direction   &The relationship direction can be reversed so that if the original relationship is from source to target, the new relationship will be from target to source   \\\cline{1-2}
+\end{longtabu}
+\hypertarget{md_lib__ontology_mapper__r_e_a_d_m_e_autotoc_md22}{}\doxysubsection{Property\+Projections}\label{md_lib__ontology_mapper__r_e_a_d_m_e_autotoc_md22}
+A collection of mappings from one property name to another property name. It is suggested that you only need to list mappings where the input property is not the same as the output property. Systems should assume that if a property is not listed in the mappings, that the output property will be the same as the input property.
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Field   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Field   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-2}
+\endhead
+Output\+Dtmi\+Filter   &A regex filter which allows filtering so that the mapping is only applied to output property names which match the filter. \char`\"{}.$\ast$\char`\"{} to apply to all output properties    \\\cline{1-2}
+Output\+Property\+Name   &The name of the output property to assign the input property to    \\\cline{1-2}
+Input\+Property\+Names   &A collection of names of the input property to assign to the output property. Can only specify multiple input properties if the output property is a collection    \\\cline{1-2}
+Is\+Output\+Property\+Collection   &A flag which indicates whether or not the output property is a collection or not. This allows an input property which is not a collection to be assigned as an element in the output collection.    \\\cline{1-2}
+Priority   &If there are multiple projections for a single output property based on different Dtmi\+Filters, priority is taken into account in ascending order   \\\cline{1-2}
+\end{longtabu}
+\hypertarget{md_lib__ontology_mapper__r_e_a_d_m_e_autotoc_md23}{}\doxysubsection{Fill\+Properties}\label{md_lib__ontology_mapper__r_e_a_d_m_e_autotoc_md23}
+A collection of mappings from one or more property names to another property name so that if the output property is a required value and the input fields might be empty, that alternative fields can be used to populate the output field. It is suggested that you only need to list mappings where the input property is not the same as the output property. Systems should assume that if a property is not listed in the mappings, that the output property will be the same as the input property. Implementations should respect the order in which the input properties are specified so that the first non-\/empty valued input property is assigned to the output property
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Field   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Field   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-2}
+\endhead
+Output\+Dtmi\+Filter   &A regex filter which allows filtering so that the mapping is only applied to output property names which match the filter. \char`\"{}.$\ast$\char`\"{} to apply to all output properties    \\\cline{1-2}
+Output\+Property\+Name   &The name of the output property to assign the input property to    \\\cline{1-2}
+Input\+Property\+Names   &A collection of names of the input property to assign to the output property. Can only specify multiple input properties if the output property is a collection    \\\cline{1-2}
+Priority   &If there are multiple fillproperties for a single output property based on different Dtmi\+Filters, priority is taken into account in ascending order   \\\cline{1-2}
+\end{longtabu}
+\hypertarget{md_lib__ontology_mapper__r_e_a_d_m_e_autotoc_md24}{}\doxysection{Sample File}\label{md_lib__ontology_mapper__r_e_a_d_m_e_autotoc_md24}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{  "{}Header"{}: \{}
+\DoxyCodeLine{    "{}InputOntologies"{}: [}
+\DoxyCodeLine{      \{}
+\DoxyCodeLine{        "{}Name"{}: "{}input-\/ontology-\/name"{},}
+\DoxyCodeLine{        "{}Version"{}: "{}1.0"{},}
+\DoxyCodeLine{        "{}DtdlVersion"{}: "{}v2"{}}
+\DoxyCodeLine{      \}}
+\DoxyCodeLine{    ],}
+\DoxyCodeLine{    "{}OutputOntologies"{}: [}
+\DoxyCodeLine{      \{}
+\DoxyCodeLine{        "{}Name"{}: "{}output-\/ontology-\/name"{},}
+\DoxyCodeLine{        "{}Version"{}: "{}2.0"{},}
+\DoxyCodeLine{        "{}DtdlVersion"{}: "{}v3"{}}
+\DoxyCodeLine{      \}}
+\DoxyCodeLine{    ]}
+\DoxyCodeLine{  \},}
+\DoxyCodeLine{  "{}NamespaceRemaps"{}: [}
+\DoxyCodeLine{    \{}
+\DoxyCodeLine{      "{}InputDtmi"{}: "{}dtmi:source-\/namespace:"{},}
+\DoxyCodeLine{      "{}OutputDtmi"{}: "{}dtmi:target-\/namespace:"{}}
+\DoxyCodeLine{    \},}
+\DoxyCodeLine{  ],}
+\DoxyCodeLine{  "{}InterfaceRemaps"{}: [}
+\DoxyCodeLine{    \{}
+\DoxyCodeLine{      "{}InputDtmi"{}: "{}dtmi:source-\/namespace:source-\/interface-\/name;1"{},}
+\DoxyCodeLine{      "{}OutputDtmi"{}: "{}dtmi:target-\/namespace:target-\/interface;1"{}}
+\DoxyCodeLine{    \},}
+\DoxyCodeLine{  ],}
+\DoxyCodeLine{  "{}RelationshipRemaps"{}: [}
+\DoxyCodeLine{    \{}
+\DoxyCodeLine{      "{}InputRelationship"{}: "{}source-\/relationship-\/name"{},}
+\DoxyCodeLine{      "{}OutputRelationship"{}: "{}target-\/relationship-\/name"{}}
+\DoxyCodeLine{      "{}ReverseRelationshipDirection"{}: true | false}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{  ],}
+\DoxyCodeLine{  "{}PropertyProjections"{}: [}
+\DoxyCodeLine{    \{}
+\DoxyCodeLine{      "{}OutputDtmiFilter"{}: "{}.*"{},}
+\DoxyCodeLine{      "{}OutputPropertyName"{}: "{}output-\/property-\/name"{},}
+\DoxyCodeLine{      "{}InputPropertyNames"{}: [ "{}input-\/property-\/name1"{}, "{}input-\/property-\/name2"{} ],}
+\DoxyCodeLine{      "{}IsOutputPropertyCollection"{}: true}
+\DoxyCodeLine{    \},}
+\DoxyCodeLine{    \{}
+\DoxyCodeLine{      "{}OutputDtmiFilter"{}: "{}\(\backslash\)w*Space\(\backslash\)w*"{},}
+\DoxyCodeLine{      "{}OutputPropertyName"{}: "{}output-\/property-\/name"{},}
+\DoxyCodeLine{      "{}InputPropertyNames"{}: [ "{}input-\/property-\/name2"{} ],}
+\DoxyCodeLine{      "{}IsOutputPropertyCollection"{}: true}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{  ],}
+\DoxyCodeLine{  "{}FillProperties"{}: [}
+\DoxyCodeLine{    \{}
+\DoxyCodeLine{      "{}OutputDtmiFilter"{}: "{}.*"{},}
+\DoxyCodeLine{      "{}OutputPropertyName"{}: "{}output-\/property-\/name"{},}
+\DoxyCodeLine{      "{}InputPropertyNames"{}: [ "{}input-\/property-\/name1, input-\/property-\/name2"{} ]}
+\DoxyCodeLine{    \},}
+\DoxyCodeLine{    \{}
+\DoxyCodeLine{      "{}OutputDtmiFilter"{}: "{}\(\backslash\)w*Space\(\backslash\)w*"{},}
+\DoxyCodeLine{      "{}OutputPropertyName"{}: "{}output-\/property-\/name"{},}
+\DoxyCodeLine{      "{}InputPropertyNames"{}: [ "{}input-\/property-\/name2, input-\/property-\/name1"{} ]}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{  ]}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_lib__ontology_mapper__r_e_a_d_m_e_autotoc_md25}{}\doxysection{Interfaces and Classes}\label{md_lib__ontology_mapper__r_e_a_d_m_e_autotoc_md25}
+\hypertarget{md_lib__ontology_mapper__r_e_a_d_m_e_autotoc_md26}{}\doxysubsection{Interface\+: IOntology\+Mapping\+Manager}\label{md_lib__ontology_mapper__r_e_a_d_m_e_autotoc_md26}
+{\bfseries{Method\+: Validate\+Target\+Ontology\+Mapping}}
+
+{\itshape Description}
+
+Validates that all Output DTMIs listed in the Interface Remaps exist in the target object model
+
+{\itshape Parameters}
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Name   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Name   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-2}
+\endhead
+target\+Object\+Model   &A dictionary of DTMI to DTEntity\+Info mappings which are valid in the target ontology    \\\cline{1-2}
+invalid\+Targets   &An output listing of invalid output mappings in the Interface\+Remaps   \\\cline{1-2}
+\end{longtabu}
+
+
+{\itshape Returns}
+
+{\ttfamily true} if all targets are valid, otherwise {\ttfamily false}
+
+{\bfseries{Method\+: Try\+Get\+Interface\+Remap\+Dtmi}}
+
+{\itshape Description}
+
+For a given DTMI from the source ontology, get the DTMI for the target ontology
+
+{\itshape Parameters}
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Name   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Name   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-2}
+\endhead
+input\+Dtmi   &The DTMI from the source ontology    \\\cline{1-2}
+dtmi\+Remap   &An Interface\+Remap if it exists   \\\cline{1-2}
+\end{longtabu}
+
+
+{\itshape Returns}
+
+{\ttfamily true} if a remap exists, or if a namespaceremap exists for the namespace of the input dtmi, otherwise {\ttfamily false}
+
+{\bfseries{Method\+: Try\+Get\+Relationship\+Remap}}
+
+{\itshape Description}
+
+For a given relationship from the source ontology, get the relationship for the target ontology
+
+{\itshape Parameters}
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Name   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Name   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-2}
+\endhead
+input\+Relationship   &The relationship from the source ontology    \\\cline{1-2}
+relationship\+Remap   &A relationship\+Remap if it exists   \\\cline{1-2}
+\end{longtabu}
+
+
+{\itshape Returns}
+
+{\ttfamily true} if a remap exists, otherwise {\ttfamily false}
+
+{\bfseries{Method\+: Try\+Get\+Fill\+Property}}
+
+{\itshape Description}
+
+In some cases, the contents of one input property may need to be copied to multiple other fields in the target ontology. For instance, if the target ontology requires that the name field always be populated, but the source name field may be null and the description field be more reliable, a chain of fields can be set here so that there is a priority list of fields that will backfill the name field if the input name field is null.
+
+{\itshape Parameters}
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Name   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Name   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-2}
+\endhead
+output\+Dtmi   &The output dtmi to which this search will be applied    \\\cline{1-2}
+output\+Property\+Name   &The name of the output property    \\\cline{1-2}
+fill\+Property   &A fill\+Property if it exists   \\\cline{1-2}
+\end{longtabu}
+
+
+{\itshape Returns}
+
+{\ttfamily true} if a fill\+Property exists, otherwise {\ttfamily false}
+
+{\bfseries{Method\+: Try\+Get\+Property\+Projection}}
+
+{\itshape Description}
+
+In some cases, a property of the input model needs to be put into a different field or collection in the target model. A declaration can be made to map the input field to the appropriate output field
+
+{\itshape Parameters}
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Name   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Name   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-2}
+\endhead
+output\+Dtmi   &The output dtmi to which this search will be applied    \\\cline{1-2}
+output\+Property\+Name   &The name of the output property    \\\cline{1-2}
+property\+Projection   &The property projection for the output property   \\\cline{1-2}
+\end{longtabu}
+
+
+{\itshape Returns}
+
+{\ttfamily true} if a property\+Projection exists, otherwise {\ttfamily false}\hypertarget{md_lib__ontology_mapper__r_e_a_d_m_e_autotoc_md27}{}\doxysubsection{Interface\+: IOntology\+Mapping\+Loader}\label{md_lib__ontology_mapper__r_e_a_d_m_e_autotoc_md27}
+{\bfseries{Method\+: Load\+Ontology\+Mapping}}
+
+{\itshape Description}
+
+Loads an Ontology\+Mapping into memory
+
+{\itshape Parameters}
+
+None
+
+{\itshape Returns}
+
+An ontology mapping\hypertarget{md_lib__ontology_mapper__r_e_a_d_m_e_autotoc_md28}{}\doxysubsection{Class\+: File\+Ontology\+Mapping\+Loader}\label{md_lib__ontology_mapper__r_e_a_d_m_e_autotoc_md28}
+{\bfseries{Implements}}
+
+Ontology\+Mapper.\+IOntology\+Mapping\+Loader
+
+{\bfseries{Method\+: Load\+Ontology\+Mapping}}
+
+{\itshape Description}
+
+Loads an Ontology\+Mapping into memory from an input file (specified in the constructor)
+
+{\itshape Parameters}
+
+None
+
+{\itshape Returns}
+
+An ontology mapping 

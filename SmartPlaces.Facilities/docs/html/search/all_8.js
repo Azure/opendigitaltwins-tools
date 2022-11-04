@@ -1,0 +1,15 @@
+var searchData=
+[
+  ['ontology_0',['Ontology',['../class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_ontology.html',1,'Microsoft::SmartPlaces::Facilities::OntologyMapper']]],
+  ['ontology_20mapper_1',['Ontology Mapper',['../md_lib__ontology_mapper__r_e_a_d_m_e.html',1,'']]],
+  ['ontologymapper_2emapped_2',['OntologyMapper.Mapped',['../md_lib__ontology_mapper__mapped__r_e_a_d_m_e.html',1,'']]],
+  ['ontologymapping_3',['OntologyMapping',['../class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_ontology_mapping.html',1,'Microsoft::SmartPlaces::Facilities::OntologyMapper']]],
+  ['ontologymappingmanager_4',['OntologyMappingManager',['../class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_ontology_mapping_manager.html',1,'Microsoft::SmartPlaces::Facilities::OntologyMapper']]],
+  ['ontologymappingmanagertests_5',['OntologyMappingManagerTests',['../class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_test_1_1_ontology_mapping_manager_tests.html',1,'Microsoft::SmartPlaces::Facilities::OntologyMapper::Test']]],
+  ['outputdtmi_6',['OutputDtmi',['../class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_dtmi_remap.html#a42d3a50a87cd1cd22d13b0fcb47aa071',1,'Microsoft::SmartPlaces::Facilities::OntologyMapper::DtmiRemap']]],
+  ['outputdtmifilter_7',['OutputDtmiFilter',['../class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_property_projection.html#a32bdba3318f8e2df64cfcd5860fc842c',1,'Microsoft.SmartPlaces.Facilities.OntologyMapper.PropertyProjection.OutputDtmiFilter()'],['../class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_fill_property.html#a7059fd11a3b82130df71f2403faca039',1,'Microsoft.SmartPlaces.Facilities.OntologyMapper.FillProperty.OutputDtmiFilter()']]],
+  ['outputnamespace_8',['OutputNamespace',['../class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_namespace_remap.html#a5608636b56138c7fe2cb8311793bd642',1,'Microsoft::SmartPlaces::Facilities::OntologyMapper::NamespaceRemap']]],
+  ['outputontologies_9',['OutputOntologies',['../class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_mapping_header.html#acfd51748b52602dd94c76843b0999298',1,'Microsoft::SmartPlaces::Facilities::OntologyMapper::MappingHeader']]],
+  ['outputpropertyname_10',['OutputPropertyName',['../class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_property_projection.html#ae310d82834e53f78a511dbb7116f0d1f',1,'Microsoft.SmartPlaces.Facilities.OntologyMapper.PropertyProjection.OutputPropertyName()'],['../class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_fill_property.html#a660ebc68e1a256e9cd7e62c7b41d64df',1,'Microsoft.SmartPlaces.Facilities.OntologyMapper.FillProperty.OutputPropertyName()']]],
+  ['outputrelationship_11',['OutputRelationship',['../class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_relationship_remap.html#a74c36d320e8e36dea885906c2f6a5674',1,'Microsoft::SmartPlaces::Facilities::OntologyMapper::RelationshipRemap']]]
+];

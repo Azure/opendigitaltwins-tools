@@ -1,0 +1,73 @@
+\hypertarget{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_azure_digital_twins_1_b4ba1d13c674a6b06b09a0cf7df46bde}{}\doxysection{Microsoft.\+Smart\+Places.\+Facilities.\+Ingestion\+Manager.\+Azure\+Digital\+Twins.\+Azure\+Digital\+Twins\+Graph\+Manager\texorpdfstring{$<$}{<} TOptions \texorpdfstring{$>$}{>} Class Template Reference}
+\label{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_azure_digital_twins_1_b4ba1d13c674a6b06b09a0cf7df46bde}\index{Microsoft.SmartPlaces.Facilities.IngestionManager.AzureDigitalTwins.AzureDigitalTwinsGraphManager$<$ TOptions $>$@{Microsoft.SmartPlaces.Facilities.IngestionManager.AzureDigitalTwins.AzureDigitalTwinsGraphManager$<$ TOptions $>$}}
+Inheritance diagram for Microsoft.\+Smart\+Places.\+Facilities.\+Ingestion\+Manager.\+Azure\+Digital\+Twins.\+Azure\+Digital\+Twins\+Graph\+Manager\texorpdfstring{$<$}{<} TOptions \texorpdfstring{$>$}{>}\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.656805cm]{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_azure_digital_twins_1_b4ba1d13c674a6b06b09a0cf7df46bde}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_azure_digital_twins_1_b4ba1d13c674a6b06b09a0cf7df46bde_a8326c1f1f6ea55ee7e3c8e6d47fdc322}\label{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_azure_digital_twins_1_b4ba1d13c674a6b06b09a0cf7df46bde_a8326c1f1f6ea55ee7e3c8e6d47fdc322}} 
+{\bfseries Azure\+Digital\+Twins\+Graph\+Manager} (ILogger$<$ \mbox{\hyperlink{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_azure_digital_twins_1_b4ba1d13c674a6b06b09a0cf7df46bde}{Azure\+Digital\+Twins\+Graph\+Manager}}$<$ TOptions $>$ $>$ logger, IOptions$<$ TOptions $>$ options, \mbox{\hyperlink{interface_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_interfaces_1_1_i_twin_mapping_indexer}{ITwin\+Mapping\+Indexer}} twin\+Mapping\+Indexer, Telemetry\+Client telemetry\+Client, bool skip\+Upload=false)
+\item 
+async Task$<$ IEnumerable$<$ string $>$ $>$ \mbox{\hyperlink{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_azure_digital_twins_1_b4ba1d13c674a6b06b09a0cf7df46bde_a9dd3b1a53e42ee02898d7087e5a322a7}{Get\+Model\+Async}} (Cancellation\+Token cancellation\+Token)
+\item 
+virtual async Task \mbox{\hyperlink{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_azure_digital_twins_1_b4ba1d13c674a6b06b09a0cf7df46bde_ab5f621827dc7aa714cfa18c323682043}{Upload\+Graph\+Async}} (Dictionary$<$ string, Basic\+Digital\+Twin $>$ twins, Dictionary$<$ string, Basic\+Relationship $>$ relationships, Cancellation\+Token cancellation\+Token)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_azure_digital_twins_1_b4ba1d13c674a6b06b09a0cf7df46bde_ab8c7ba3b27b5a99ee3d81a0f322e5f23}\label{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_azure_digital_twins_1_b4ba1d13c674a6b06b09a0cf7df46bde_ab8c7ba3b27b5a99ee3d81a0f322e5f23}} 
+async Task {\bfseries Update\+Cache} (Dictionary$<$ string, Basic\+Digital\+Twin $>$ twins)
+\item 
+\mbox{\Hypertarget{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_azure_digital_twins_1_b4ba1d13c674a6b06b09a0cf7df46bde_abff77be125b308e1f6a16bd1580ef9db}\label{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_azure_digital_twins_1_b4ba1d13c674a6b06b09a0cf7df46bde_abff77be125b308e1f6a16bd1580ef9db}} 
+virtual async Task {\bfseries Import\+Relationships\+Async} (IDictionary$<$ string, Basic\+Relationship $>$ relationships, int retry\+Attempt=0)
+\item 
+\mbox{\Hypertarget{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_azure_digital_twins_1_b4ba1d13c674a6b06b09a0cf7df46bde_a8e6b8e01403f1808cfc5ee287881ec22}\label{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_azure_digital_twins_1_b4ba1d13c674a6b06b09a0cf7df46bde_a8e6b8e01403f1808cfc5ee287881ec22}} 
+virtual async Task {\bfseries Import\+Twins\+Async} (IDictionary$<$ string, Basic\+Digital\+Twin $>$ twins, int retry\+Attempt=0)
+\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_azure_digital_twins_1_b4ba1d13c674a6b06b09a0cf7df46bde_ad8688beb1cdb7676537ee65a30c1b3f9}\label{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_azure_digital_twins_1_b4ba1d13c674a6b06b09a0cf7df46bde_ad8688beb1cdb7676537ee65a30c1b3f9}} 
+ILogger {\bfseries Logger}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_azure_digital_twins_1_b4ba1d13c674a6b06b09a0cf7df46bde_ad3dfbac28edf0fbed27899a60242e1c5}\label{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_azure_digital_twins_1_b4ba1d13c674a6b06b09a0cf7df46bde_ad3dfbac28edf0fbed27899a60242e1c5}} 
+Telemetry\+Client {\bfseries Telemetry\+Client}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_azure_digital_twins_1_b4ba1d13c674a6b06b09a0cf7df46bde_a117b20d00f21f2e5eb57f7c8222d7c6b}\label{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_azure_digital_twins_1_b4ba1d13c674a6b06b09a0cf7df46bde_a117b20d00f21f2e5eb57f7c8222d7c6b}} 
+\mbox{\hyperlink{interface_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_interfaces_1_1_i_twin_mapping_indexer}{ITwin\+Mapping\+Indexer}} {\bfseries Twin\+Mapping\+Indexer}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_azure_digital_twins_1_b4ba1d13c674a6b06b09a0cf7df46bde_ad05b2078a052f0fd15391c144540416f}\label{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_azure_digital_twins_1_b4ba1d13c674a6b06b09a0cf7df46bde_ad05b2078a052f0fd15391c144540416f}} 
+bool {\bfseries Skip\+Upload}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_azure_digital_twins_1_b4ba1d13c674a6b06b09a0cf7df46bde_a9dd3b1a53e42ee02898d7087e5a322a7}\label{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_azure_digital_twins_1_b4ba1d13c674a6b06b09a0cf7df46bde_a9dd3b1a53e42ee02898d7087e5a322a7}} 
+\index{Microsoft.SmartPlaces.Facilities.IngestionManager.AzureDigitalTwins.AzureDigitalTwinsGraphManager$<$ TOptions $>$@{Microsoft.SmartPlaces.Facilities.IngestionManager.AzureDigitalTwins.AzureDigitalTwinsGraphManager$<$ TOptions $>$}!GetModelAsync@{GetModelAsync}}
+\index{GetModelAsync@{GetModelAsync}!Microsoft.SmartPlaces.Facilities.IngestionManager.AzureDigitalTwins.AzureDigitalTwinsGraphManager$<$ TOptions $>$@{Microsoft.SmartPlaces.Facilities.IngestionManager.AzureDigitalTwins.AzureDigitalTwinsGraphManager$<$ TOptions $>$}}
+\doxysubsubsection{\texorpdfstring{GetModelAsync()}{GetModelAsync()}}
+{\footnotesize\ttfamily async Task$<$ IEnumerable$<$ string $>$ $>$ \mbox{\hyperlink{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_azure_digital_twins_1_b4ba1d13c674a6b06b09a0cf7df46bde}{Microsoft.\+Smart\+Places.\+Facilities.\+Ingestion\+Manager.\+Azure\+Digital\+Twins.\+Azure\+Digital\+Twins\+Graph\+Manager}}$<$ TOptions $>$.Get\+Model\+Async (\begin{DoxyParamCaption}\item[{Cancellation\+Token}]{cancellation\+Token }\end{DoxyParamCaption})}
+
+
+
+Implements \mbox{\hyperlink{interface_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_interfaces_1_1_i_output_graph_manager}{Microsoft.\+Smart\+Places.\+Facilities.\+Ingestion\+Manager.\+Interfaces.\+IOutput\+Graph\+Manager}}.
+
+\mbox{\Hypertarget{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_azure_digital_twins_1_b4ba1d13c674a6b06b09a0cf7df46bde_ab5f621827dc7aa714cfa18c323682043}\label{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_azure_digital_twins_1_b4ba1d13c674a6b06b09a0cf7df46bde_ab5f621827dc7aa714cfa18c323682043}} 
+\index{Microsoft.SmartPlaces.Facilities.IngestionManager.AzureDigitalTwins.AzureDigitalTwinsGraphManager$<$ TOptions $>$@{Microsoft.SmartPlaces.Facilities.IngestionManager.AzureDigitalTwins.AzureDigitalTwinsGraphManager$<$ TOptions $>$}!UploadGraphAsync@{UploadGraphAsync}}
+\index{UploadGraphAsync@{UploadGraphAsync}!Microsoft.SmartPlaces.Facilities.IngestionManager.AzureDigitalTwins.AzureDigitalTwinsGraphManager$<$ TOptions $>$@{Microsoft.SmartPlaces.Facilities.IngestionManager.AzureDigitalTwins.AzureDigitalTwinsGraphManager$<$ TOptions $>$}}
+\doxysubsubsection{\texorpdfstring{UploadGraphAsync()}{UploadGraphAsync()}}
+{\footnotesize\ttfamily virtual async Task \mbox{\hyperlink{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_azure_digital_twins_1_b4ba1d13c674a6b06b09a0cf7df46bde}{Microsoft.\+Smart\+Places.\+Facilities.\+Ingestion\+Manager.\+Azure\+Digital\+Twins.\+Azure\+Digital\+Twins\+Graph\+Manager}}$<$ TOptions $>$.Upload\+Graph\+Async (\begin{DoxyParamCaption}\item[{Dictionary$<$ string, Basic\+Digital\+Twin $>$}]{twins,  }\item[{Dictionary$<$ string, Basic\+Relationship $>$}]{relationships,  }\item[{Cancellation\+Token}]{cancellation\+Token }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{interface_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_interfaces_1_1_i_output_graph_manager}{Microsoft.\+Smart\+Places.\+Facilities.\+Ingestion\+Manager.\+Interfaces.\+IOutput\+Graph\+Manager}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+lib/\+Ingestion\+Manager/src/\+Azure\+Digital\+Twins/Azure\+Digital\+Twins\+Graph\+Manager.\+cs\end{DoxyCompactItemize}

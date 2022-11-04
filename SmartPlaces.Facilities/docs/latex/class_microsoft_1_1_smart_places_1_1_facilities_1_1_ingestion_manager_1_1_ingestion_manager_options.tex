@@ -1,0 +1,39 @@
+\hypertarget{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_ingestion_manager_options}{}\doxysection{Microsoft.\+Smart\+Places.\+Facilities.\+Ingestion\+Manager.\+Ingestion\+Manager\+Options Class Reference}
+\label{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_ingestion_manager_options}\index{Microsoft.SmartPlaces.Facilities.IngestionManager.IngestionManagerOptions@{Microsoft.SmartPlaces.Facilities.IngestionManager.IngestionManagerOptions}}
+
+
+Configures the connection to the Azure Digital Twins Instance for Topology Ingestion.   
+
+
+Inheritance diagram for Microsoft.\+Smart\+Places.\+Facilities.\+Ingestion\+Manager.\+Ingestion\+Manager\+Options\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_ingestion_manager_options}
+\end{center}
+\end{figure}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_ingestion_manager_options_a5e2a071041335cb169582fab0b87b192}\label{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_ingestion_manager_options_a5e2a071041335cb169582fab0b87b192}} 
+string {\bfseries Azure\+Digital\+Twins\+Endpoint} = string.\+Empty\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the Url of the Azure Digital Twins instance to connect to.  \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_ingestion_manager_options_a08e2b7552b35dbc6f147f067aaa9d940}\label{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_ingestion_manager_options_a08e2b7552b35dbc6f147f067aaa9d940}} 
+int {\bfseries Max\+Retry\+Attempts} = 3\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the number of times to retry create twin attempts per twin/relationship. Defaults to 3.  \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_ingestion_manager_options_ac6e940f09bfaf51f1db0a9fe1c8018a5}\label{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_ingestion_manager_options_ac6e940f09bfaf51f1db0a9fe1c8018a5}} 
+int {\bfseries Retry\+Delay\+In\+Ms} = 50\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the delay in milliseconds between retry create twin attempts per twin/relationship. Defaults to 50ms.  \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_ingestion_manager_options_ae28973f54b4b3da89451852571a42030}\label{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_ingestion_manager_options_ae28973f54b4b3da89451852571a42030}} 
+string {\bfseries Adt\+Resource} = \char`\"{}https\+://digitaltwins.\+azure.\+net/.default\char`\"{}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the resource to be used when generating a Token for accessing Azure Digital Twins. This needs to be changed when working with non-\/public clouds. Defaults to \href{https://digitaltwins.azure.net/.default}{\texttt{ https\+://digitaltwins.\+azure.\+net/.\+default}}.  \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_ingestion_manager_options_a8424724ed902abee542b0d7b466e1ed1}\label{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_ingestion_manager_options_a8424724ed902abee542b0d7b466e1ed1}} 
+int {\bfseries Max\+Degree\+Of\+Parallelism} = 10\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the maximum number parallel threads to use when uploading to Azure Digital Twins. Defaults to 10 threads.  \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Configures the connection to the Azure Digital Twins Instance for Topology Ingestion.  
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+lib/\+Ingestion\+Manager/src/Ingestion\+Manager\+Options.\+cs\end{DoxyCompactItemize}

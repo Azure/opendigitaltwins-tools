@@ -1,0 +1,5 @@
+var namespace_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_mapped_1_1_test =
+[
+    [ "BrickRecMappingValidationTests", "class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_mapped_1_1_test_1_1_brick_rec_mapping_validation_tests.html", null ],
+    [ "WillowMappingValidationTests", "class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_mapped_1_1_test_1_1_willow_mapping_validation_tests.html", null ]
+];

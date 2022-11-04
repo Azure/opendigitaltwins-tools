@@ -1,0 +1,33 @@
+\hypertarget{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_property_projection}{}\doxysection{Microsoft.\+Smart\+Places.\+Facilities.\+Ontology\+Mapper.\+Property\+Projection Class Reference}
+\label{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_property_projection}\index{Microsoft.SmartPlaces.Facilities.OntologyMapper.PropertyProjection@{Microsoft.SmartPlaces.Facilities.OntologyMapper.PropertyProjection}}
+
+
+Defines how to map one input property into a target property if the names don\textquotesingle{}t match   
+
+
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_property_projection_a32bdba3318f8e2df64cfcd5860fc842c}\label{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_property_projection_a32bdba3318f8e2df64cfcd5860fc842c}} 
+string {\bfseries Output\+Dtmi\+Filter} = string.\+Empty\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em A regex describing the output DTMI\textquotesingle{}s targeted by this projection. \char`\"{}.$\ast$\char`\"{} for all  \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_property_projection_ae310d82834e53f78a511dbb7116f0d1f}\label{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_property_projection_ae310d82834e53f78a511dbb7116f0d1f}} 
+string {\bfseries Output\+Property\+Name} = string.\+Empty\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The name of the output property in the target ontology  \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_property_projection_a0308c2d7352dfca60b2f568206b07ebf}\label{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_property_projection_a0308c2d7352dfca60b2f568206b07ebf}} 
+List$<$ string $>$ {\bfseries Input\+Property\+Names} = new List$<$string$>$()\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The name of the input properties in the source ontology that map to the target. If target is a collection, this can also be a collection  \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_property_projection_a27f07477fa11d22a0cbc75321e350920}\label{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_property_projection_a27f07477fa11d22a0cbc75321e350920}} 
+bool {\bfseries Is\+Output\+Property\+Collection} = false\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em If the output is a collection, and the input is a value type, set this to true to enable insert of the input value into the collection instead of straight assignment to the output property  \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_property_projection_af389c2ac635f23b7bc4e1e43d17754da}\label{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_property_projection_af389c2ac635f23b7bc4e1e43d17754da}} 
+int {\bfseries Priority} = 0\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em If there are multiple projections for a single output property based on different Dtmi\+Filters, priority is taken into account in ascending order  \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Defines how to map one input property into a target property if the names don\textquotesingle{}t match  
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+lib/\+Ontology\+Mapper/src/Ontology\+Mapping.\+cs\end{DoxyCompactItemize}

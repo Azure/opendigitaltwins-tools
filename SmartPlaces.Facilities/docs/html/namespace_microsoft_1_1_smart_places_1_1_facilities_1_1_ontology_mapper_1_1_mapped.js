@@ -1,0 +1,5 @@
+var namespace_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_mapped =
+[
+    [ "Test", "namespace_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_mapped_1_1_test.html", "namespace_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_mapped_1_1_test" ],
+    [ "MappedOntologyMappingLoader", "class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_mapped_1_1_mapped_ontology_mapping_loader.html", null ]
+];

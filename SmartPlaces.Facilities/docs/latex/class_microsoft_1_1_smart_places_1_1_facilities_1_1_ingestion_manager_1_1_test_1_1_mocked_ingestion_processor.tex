@@ -1,0 +1,53 @@
+\hypertarget{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_test_1_1_mocked_ingestion_processor}{}\doxysection{Microsoft.\+Smart\+Places.\+Facilities.\+Ingestion\+Manager.\+Test.\+Mocked\+Ingestion\+Processor\texorpdfstring{$<$}{<} TOptions \texorpdfstring{$>$}{>} Class Template Reference}
+\label{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_test_1_1_mocked_ingestion_processor}\index{Microsoft.SmartPlaces.Facilities.IngestionManager.Test.MockedIngestionProcessor$<$ TOptions $>$@{Microsoft.SmartPlaces.Facilities.IngestionManager.Test.MockedIngestionProcessor$<$ TOptions $>$}}
+Inheritance diagram for Microsoft.\+Smart\+Places.\+Facilities.\+Ingestion\+Manager.\+Test.\+Mocked\+Ingestion\+Processor\texorpdfstring{$<$}{<} TOptions \texorpdfstring{$>$}{>}\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.978723cm]{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_test_1_1_mocked_ingestion_processor}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_test_1_1_mocked_ingestion_processor_a5bdbdfd1eea81e6627856d483fb4968e}\label{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_test_1_1_mocked_ingestion_processor_a5bdbdfd1eea81e6627856d483fb4968e}} 
+{\bfseries Mocked\+Ingestion\+Processor} (ILogger$<$ \mbox{\hyperlink{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_test_1_1_mocked_ingestion_processor}{Mocked\+Ingestion\+Processor}}$<$ TOptions $>$ $>$ logger, Telemetry\+Client telemetry\+Client, \mbox{\hyperlink{interface_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_interfaces_1_1_i_input_graph_manager}{IInput\+Graph\+Manager}} input\+Graph\+Manager, \mbox{\hyperlink{interface_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_i_ontology_mapping_manager}{IOntology\+Mapping\+Manager}} ontology\+Mapping\+Manager, \mbox{\hyperlink{interface_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_interfaces_1_1_i_output_graph_manager}{IOutput\+Graph\+Manager}} output\+Graph\+Manager)
+\item 
+\mbox{\Hypertarget{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_test_1_1_mocked_ingestion_processor_a5dbd0b6f7f06d9348ddecadfa7c06195}\label{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_test_1_1_mocked_ingestion_processor_a5dbd0b6f7f06d9348ddecadfa7c06195}} 
+Dtmi? {\bfseries Test\+Input\+Interface\+Dtmi} (string interface\+Type)
+\item 
+\mbox{\Hypertarget{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_test_1_1_mocked_ingestion_processor_a3e8941629fc87fc91db76a879c6364e4}\label{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_test_1_1_mocked_ingestion_processor_a3e8941629fc87fc91db76a879c6364e4}} 
+string {\bfseries Test\+Get\+Output\+Relationship\+Type} (string input\+Relationship\+Type)
+\item 
+\mbox{\Hypertarget{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_test_1_1_mocked_ingestion_processor_a71efc63639430898112286783fa3e05b}\label{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_test_1_1_mocked_ingestion_processor_a71efc63639430898112286783fa3e05b}} 
+bool {\bfseries Test\+Try\+Get\+Output\+Interface\+Dtmi} (Dtmi input\+Dtmi, out Dtmi? output\+Dtmi)
+\item 
+\mbox{\Hypertarget{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_test_1_1_mocked_ingestion_processor_a5e2a8eaa269c94e40a099dcaf514018f}\label{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_test_1_1_mocked_ingestion_processor_a5e2a8eaa269c94e40a099dcaf514018f}} 
+Dtmi? {\bfseries Test\+Get\+Twin} (IDictionary$<$ string, Basic\+Digital\+Twin $>$ twins, Json\+Element target\+Element, string basic\+Dt\+Id, string interface\+Type)
+\item 
+\mbox{\Hypertarget{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_test_1_1_mocked_ingestion_processor_a556a4d25d9709d23e0acf74b3abd8863}\label{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_test_1_1_mocked_ingestion_processor_a556a4d25d9709d23e0acf74b3abd8863}} 
+void {\bfseries Test\+Get\+Relationship} (IDictionary$<$ string, Basic\+Relationship $>$ relationships, string? source\+Element\+Id, Dtmi? input\+Source\+Dtmi, string? input\+Relationship\+Type, string target\+Dt\+Id, string target\+Interface\+Type)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+override Task \mbox{\hyperlink{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_test_1_1_mocked_ingestion_processor_ad03683ca463bbb3a8484cf61957874d2}{Get\+Sites}} (Cancellation\+Token cancellation\+Token)
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_test_1_1_mocked_ingestion_processor_ad03683ca463bbb3a8484cf61957874d2}\label{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_test_1_1_mocked_ingestion_processor_ad03683ca463bbb3a8484cf61957874d2}} 
+\index{Microsoft.SmartPlaces.Facilities.IngestionManager.Test.MockedIngestionProcessor$<$ TOptions $>$@{Microsoft.SmartPlaces.Facilities.IngestionManager.Test.MockedIngestionProcessor$<$ TOptions $>$}!GetSites@{GetSites}}
+\index{GetSites@{GetSites}!Microsoft.SmartPlaces.Facilities.IngestionManager.Test.MockedIngestionProcessor$<$ TOptions $>$@{Microsoft.SmartPlaces.Facilities.IngestionManager.Test.MockedIngestionProcessor$<$ TOptions $>$}}
+\doxysubsubsection{\texorpdfstring{GetSites()}{GetSites()}}
+{\footnotesize\ttfamily override Task \mbox{\hyperlink{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_test_1_1_mocked_ingestion_processor}{Microsoft.\+Smart\+Places.\+Facilities.\+Ingestion\+Manager.\+Test.\+Mocked\+Ingestion\+Processor}}$<$ TOptions $>$.Get\+Sites (\begin{DoxyParamCaption}\item[{Cancellation\+Token}]{cancellation\+Token }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_ingestion_processor_base}{Microsoft.\+Smart\+Places.\+Facilities.\+Ingestion\+Manager.\+Ingestion\+Processor\+Base$<$ TOptions $>$}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+lib/\+Ingestion\+Manager/test/Ingestion\+Processor\+Base\+Tests.\+cs\end{DoxyCompactItemize}

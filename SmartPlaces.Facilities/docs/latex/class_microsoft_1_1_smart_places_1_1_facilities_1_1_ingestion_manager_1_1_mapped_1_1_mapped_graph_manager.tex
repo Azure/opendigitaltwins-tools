@@ -1,0 +1,106 @@
+\hypertarget{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_mapped_1_1_mapped_graph_manager}{}\doxysection{Microsoft.\+Smart\+Places.\+Facilities.\+Ingestion\+Manager.\+Mapped.\+Mapped\+Graph\+Manager Class Reference}
+\label{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_mapped_1_1_mapped_graph_manager}\index{Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped.MappedGraphManager@{Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped.MappedGraphManager}}
+Inheritance diagram for Microsoft.\+Smart\+Places.\+Facilities.\+Ingestion\+Manager.\+Mapped.\+Mapped\+Graph\+Manager\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_mapped_1_1_mapped_graph_manager}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_mapped_1_1_mapped_graph_manager_a60233fd83bdf235f18c505d30706c971}\label{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_mapped_1_1_mapped_graph_manager_a60233fd83bdf235f18c505d30706c971}} 
+{\bfseries Mapped\+Graph\+Manager} (ILogger$<$ \mbox{\hyperlink{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_mapped_1_1_mapped_graph_manager}{Mapped\+Graph\+Manager}} $>$ logger, IHttp\+Client\+Factory http\+Client\+Factory, IOptions$<$ \mbox{\hyperlink{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_mapped_1_1_mapped_ingestion_manager_options}{Mapped\+Ingestion\+Manager\+Options}} $>$ options)
+\item 
+async Task$<$ Json\+Document?$>$ \mbox{\hyperlink{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_mapped_1_1_mapped_graph_manager_acf3d53502592f7e187e4453ff71a68d4}{Get\+Twin\+Graph\+Async}} (string query)
+\item 
+string \mbox{\hyperlink{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_mapped_1_1_mapped_graph_manager_ad3c1b6d65eecb703902bb110d969a3a7}{Get\+Organization\+Query}} ()
+\item 
+string \mbox{\hyperlink{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_mapped_1_1_mapped_graph_manager_af2771a34cf48e96dce764bac9196bb5d}{Get\+Buildings\+For\+Site\+Query}} (string site\+Id)
+\item 
+string \mbox{\hyperlink{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_mapped_1_1_mapped_graph_manager_a2b461825e566aef2b535c7806c100159}{Get\+Building\+Things\+Query}} (string building\+Dt\+Id)
+\item 
+string \mbox{\hyperlink{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_mapped_1_1_mapped_graph_manager_a052d9a3d5b4a5a9f423805ba890a9b3c}{Get\+Points\+For\+Thing\+Query}} (string thing\+Dt\+Id)
+\item 
+string \mbox{\hyperlink{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_mapped_1_1_mapped_graph_manager_af1ff23f256e2493e045ae85fe4a76ba7}{Get\+Floor\+Query}} (string basic\+Dt\+Id)
+\item 
+bool \mbox{\hyperlink{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_mapped_1_1_mapped_graph_manager_a6ded82cd79054385ebf9c0e451d02663}{Try\+Get\+Dtmi}} (string exact\+Type, out string dtmi)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_mapped_1_1_mapped_graph_manager_af2771a34cf48e96dce764bac9196bb5d}\label{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_mapped_1_1_mapped_graph_manager_af2771a34cf48e96dce764bac9196bb5d}} 
+\index{Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped.MappedGraphManager@{Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped.MappedGraphManager}!GetBuildingsForSiteQuery@{GetBuildingsForSiteQuery}}
+\index{GetBuildingsForSiteQuery@{GetBuildingsForSiteQuery}!Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped.MappedGraphManager@{Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped.MappedGraphManager}}
+\doxysubsubsection{\texorpdfstring{GetBuildingsForSiteQuery()}{GetBuildingsForSiteQuery()}}
+{\footnotesize\ttfamily string Microsoft.\+Smart\+Places.\+Facilities.\+Ingestion\+Manager.\+Mapped.\+Mapped\+Graph\+Manager.\+Get\+Buildings\+For\+Site\+Query (\begin{DoxyParamCaption}\item[{string}]{site\+Id }\end{DoxyParamCaption})}
+
+
+
+Implements \mbox{\hyperlink{interface_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_interfaces_1_1_i_input_graph_manager}{Microsoft.\+Smart\+Places.\+Facilities.\+Ingestion\+Manager.\+Interfaces.\+IInput\+Graph\+Manager}}.
+
+\mbox{\Hypertarget{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_mapped_1_1_mapped_graph_manager_a2b461825e566aef2b535c7806c100159}\label{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_mapped_1_1_mapped_graph_manager_a2b461825e566aef2b535c7806c100159}} 
+\index{Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped.MappedGraphManager@{Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped.MappedGraphManager}!GetBuildingThingsQuery@{GetBuildingThingsQuery}}
+\index{GetBuildingThingsQuery@{GetBuildingThingsQuery}!Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped.MappedGraphManager@{Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped.MappedGraphManager}}
+\doxysubsubsection{\texorpdfstring{GetBuildingThingsQuery()}{GetBuildingThingsQuery()}}
+{\footnotesize\ttfamily string Microsoft.\+Smart\+Places.\+Facilities.\+Ingestion\+Manager.\+Mapped.\+Mapped\+Graph\+Manager.\+Get\+Building\+Things\+Query (\begin{DoxyParamCaption}\item[{string}]{building\+Dt\+Id }\end{DoxyParamCaption})}
+
+
+
+Implements \mbox{\hyperlink{interface_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_interfaces_1_1_i_input_graph_manager}{Microsoft.\+Smart\+Places.\+Facilities.\+Ingestion\+Manager.\+Interfaces.\+IInput\+Graph\+Manager}}.
+
+\mbox{\Hypertarget{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_mapped_1_1_mapped_graph_manager_af1ff23f256e2493e045ae85fe4a76ba7}\label{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_mapped_1_1_mapped_graph_manager_af1ff23f256e2493e045ae85fe4a76ba7}} 
+\index{Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped.MappedGraphManager@{Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped.MappedGraphManager}!GetFloorQuery@{GetFloorQuery}}
+\index{GetFloorQuery@{GetFloorQuery}!Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped.MappedGraphManager@{Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped.MappedGraphManager}}
+\doxysubsubsection{\texorpdfstring{GetFloorQuery()}{GetFloorQuery()}}
+{\footnotesize\ttfamily string Microsoft.\+Smart\+Places.\+Facilities.\+Ingestion\+Manager.\+Mapped.\+Mapped\+Graph\+Manager.\+Get\+Floor\+Query (\begin{DoxyParamCaption}\item[{string}]{basic\+Dt\+Id }\end{DoxyParamCaption})}
+
+
+
+Implements \mbox{\hyperlink{interface_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_interfaces_1_1_i_input_graph_manager}{Microsoft.\+Smart\+Places.\+Facilities.\+Ingestion\+Manager.\+Interfaces.\+IInput\+Graph\+Manager}}.
+
+\mbox{\Hypertarget{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_mapped_1_1_mapped_graph_manager_ad3c1b6d65eecb703902bb110d969a3a7}\label{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_mapped_1_1_mapped_graph_manager_ad3c1b6d65eecb703902bb110d969a3a7}} 
+\index{Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped.MappedGraphManager@{Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped.MappedGraphManager}!GetOrganizationQuery@{GetOrganizationQuery}}
+\index{GetOrganizationQuery@{GetOrganizationQuery}!Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped.MappedGraphManager@{Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped.MappedGraphManager}}
+\doxysubsubsection{\texorpdfstring{GetOrganizationQuery()}{GetOrganizationQuery()}}
+{\footnotesize\ttfamily string Microsoft.\+Smart\+Places.\+Facilities.\+Ingestion\+Manager.\+Mapped.\+Mapped\+Graph\+Manager.\+Get\+Organization\+Query (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Implements \mbox{\hyperlink{interface_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_interfaces_1_1_i_input_graph_manager}{Microsoft.\+Smart\+Places.\+Facilities.\+Ingestion\+Manager.\+Interfaces.\+IInput\+Graph\+Manager}}.
+
+\mbox{\Hypertarget{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_mapped_1_1_mapped_graph_manager_a052d9a3d5b4a5a9f423805ba890a9b3c}\label{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_mapped_1_1_mapped_graph_manager_a052d9a3d5b4a5a9f423805ba890a9b3c}} 
+\index{Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped.MappedGraphManager@{Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped.MappedGraphManager}!GetPointsForThingQuery@{GetPointsForThingQuery}}
+\index{GetPointsForThingQuery@{GetPointsForThingQuery}!Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped.MappedGraphManager@{Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped.MappedGraphManager}}
+\doxysubsubsection{\texorpdfstring{GetPointsForThingQuery()}{GetPointsForThingQuery()}}
+{\footnotesize\ttfamily string Microsoft.\+Smart\+Places.\+Facilities.\+Ingestion\+Manager.\+Mapped.\+Mapped\+Graph\+Manager.\+Get\+Points\+For\+Thing\+Query (\begin{DoxyParamCaption}\item[{string}]{thing\+Dt\+Id }\end{DoxyParamCaption})}
+
+
+
+Implements \mbox{\hyperlink{interface_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_interfaces_1_1_i_input_graph_manager}{Microsoft.\+Smart\+Places.\+Facilities.\+Ingestion\+Manager.\+Interfaces.\+IInput\+Graph\+Manager}}.
+
+\mbox{\Hypertarget{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_mapped_1_1_mapped_graph_manager_acf3d53502592f7e187e4453ff71a68d4}\label{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_mapped_1_1_mapped_graph_manager_acf3d53502592f7e187e4453ff71a68d4}} 
+\index{Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped.MappedGraphManager@{Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped.MappedGraphManager}!GetTwinGraphAsync@{GetTwinGraphAsync}}
+\index{GetTwinGraphAsync@{GetTwinGraphAsync}!Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped.MappedGraphManager@{Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped.MappedGraphManager}}
+\doxysubsubsection{\texorpdfstring{GetTwinGraphAsync()}{GetTwinGraphAsync()}}
+{\footnotesize\ttfamily async Task$<$ Json\+Document?$>$ Microsoft.\+Smart\+Places.\+Facilities.\+Ingestion\+Manager.\+Mapped.\+Mapped\+Graph\+Manager.\+Get\+Twin\+Graph\+Async (\begin{DoxyParamCaption}\item[{string}]{query }\end{DoxyParamCaption})}
+
+
+
+Implements \mbox{\hyperlink{interface_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_interfaces_1_1_i_input_graph_manager}{Microsoft.\+Smart\+Places.\+Facilities.\+Ingestion\+Manager.\+Interfaces.\+IInput\+Graph\+Manager}}.
+
+\mbox{\Hypertarget{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_mapped_1_1_mapped_graph_manager_a6ded82cd79054385ebf9c0e451d02663}\label{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_mapped_1_1_mapped_graph_manager_a6ded82cd79054385ebf9c0e451d02663}} 
+\index{Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped.MappedGraphManager@{Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped.MappedGraphManager}!TryGetDtmi@{TryGetDtmi}}
+\index{TryGetDtmi@{TryGetDtmi}!Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped.MappedGraphManager@{Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped.MappedGraphManager}}
+\doxysubsubsection{\texorpdfstring{TryGetDtmi()}{TryGetDtmi()}}
+{\footnotesize\ttfamily bool Microsoft.\+Smart\+Places.\+Facilities.\+Ingestion\+Manager.\+Mapped.\+Mapped\+Graph\+Manager.\+Try\+Get\+Dtmi (\begin{DoxyParamCaption}\item[{string}]{exact\+Type,  }\item[{out string}]{dtmi }\end{DoxyParamCaption})}
+
+
+
+Implements \mbox{\hyperlink{interface_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_interfaces_1_1_i_input_graph_manager}{Microsoft.\+Smart\+Places.\+Facilities.\+Ingestion\+Manager.\+Interfaces.\+IInput\+Graph\+Manager}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+lib/\+Ingestion\+Manager.\+Mapped/src/Mapped\+Graph\+Manager.\+cs\end{DoxyCompactItemize}

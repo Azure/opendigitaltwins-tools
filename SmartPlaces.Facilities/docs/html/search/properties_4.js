@@ -1,0 +1,11 @@
+var searchData=
+[
+  ['inputdtmi_0',['InputDtmi',['../class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_dtmi_remap.html#a65f34898c4fa7a3243fec556507e037e',1,'Microsoft::SmartPlaces::Facilities::OntologyMapper::DtmiRemap']]],
+  ['inputnamespace_1',['InputNamespace',['../class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_namespace_remap.html#a908278d4ebb0738d2bfe29bb273512ea',1,'Microsoft::SmartPlaces::Facilities::OntologyMapper::NamespaceRemap']]],
+  ['inputontologies_2',['InputOntologies',['../class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_mapping_header.html#a6584e4324d332bed866fbc7704392ddf',1,'Microsoft::SmartPlaces::Facilities::OntologyMapper::MappingHeader']]],
+  ['inputpropertynames_3',['InputPropertyNames',['../class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_property_projection.html#a0308c2d7352dfca60b2f568206b07ebf',1,'Microsoft.SmartPlaces.Facilities.OntologyMapper.PropertyProjection.InputPropertyNames()'],['../class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_fill_property.html#a3492b7580e293fcd909e06ce7cc4eb10',1,'Microsoft.SmartPlaces.Facilities.OntologyMapper.FillProperty.InputPropertyNames()']]],
+  ['inputrelationship_4',['InputRelationship',['../class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_relationship_remap.html#ac5d5fc4116ae6a76cc425d90c856c89e',1,'Microsoft::SmartPlaces::Facilities::OntologyMapper::RelationshipRemap']]],
+  ['interfaceremaps_5',['InterfaceRemaps',['../class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_ontology_mapping.html#a0652e60c038121d48c592557bcfb0585',1,'Microsoft::SmartPlaces::Facilities::OntologyMapper::OntologyMapping']]],
+  ['isignored_6',['IsIgnored',['../class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_dtmi_remap.html#a8779cdf0bb4e2215b5e6baabbdef8697',1,'Microsoft::SmartPlaces::Facilities::OntologyMapper::DtmiRemap']]],
+  ['isoutputpropertycollection_7',['IsOutputPropertyCollection',['../class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_property_projection.html#a27f07477fa11d22a0cbc75321e350920',1,'Microsoft::SmartPlaces::Facilities::OntologyMapper::PropertyProjection']]]
+];

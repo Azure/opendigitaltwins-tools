@@ -1,0 +1,57 @@
+\hypertarget{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_mapped_1_1_mapped_graph_ingestion_processor}{}\doxysection{Microsoft.\+Smart\+Places.\+Facilities.\+Ingestion\+Manager.\+Mapped.\+Mapped\+Graph\+Ingestion\+Processor\texorpdfstring{$<$}{<} TOptions \texorpdfstring{$>$}{>} Class Template Reference}
+\label{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_mapped_1_1_mapped_graph_ingestion_processor}\index{Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped.MappedGraphIngestionProcessor$<$ TOptions $>$@{Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped.MappedGraphIngestionProcessor$<$ TOptions $>$}}
+
+
+Loads a building graph from a \mbox{\hyperlink{namespace_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_mapped}{Mapped}} input source to the target. The logic here is specific to the way \mbox{\hyperlink{namespace_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_mapped}{Mapped}} stores its topology and if a new Input Graph Provider is added, this logic will likely have to be customized.   
+
+
+Inheritance diagram for Microsoft.\+Smart\+Places.\+Facilities.\+Ingestion\+Manager.\+Mapped.\+Mapped\+Graph\+Ingestion\+Processor\texorpdfstring{$<$}{<} TOptions \texorpdfstring{$>$}{>}\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.348315cm]{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_mapped_1_1_mapped_graph_ingestion_processor}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_mapped_1_1_mapped_graph_ingestion_processor_abfd49d581857242fd1d17ed13bc835cb}\label{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_mapped_1_1_mapped_graph_ingestion_processor_abfd49d581857242fd1d17ed13bc835cb}} 
+{\bfseries Mapped\+Graph\+Ingestion\+Processor} (ILogger$<$ \mbox{\hyperlink{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_mapped_1_1_mapped_graph_ingestion_processor}{Mapped\+Graph\+Ingestion\+Processor}}$<$ TOptions $>$ $>$ logger, \mbox{\hyperlink{interface_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_interfaces_1_1_i_input_graph_manager}{IInput\+Graph\+Manager}} input\+Graph\+Manager, \mbox{\hyperlink{interface_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_i_ontology_mapping_manager}{IOntology\+Mapping\+Manager}} ontology\+Mapping\+Manager, \mbox{\hyperlink{interface_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_interfaces_1_1_i_output_graph_manager}{IOutput\+Graph\+Manager}} output\+Graph\+Manager, Telemetry\+Client telemetry\+Client)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+override async Task \mbox{\hyperlink{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_mapped_1_1_mapped_graph_ingestion_processor_a6d1c595cf169ae81e5e42993dbe1c6c6}{Get\+Sites}} (Cancellation\+Token cancellation\+Token)
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Loads a building graph from a \mbox{\hyperlink{namespace_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_mapped}{Mapped}} input source to the target. The logic here is specific to the way \mbox{\hyperlink{namespace_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_mapped}{Mapped}} stores its topology and if a new Input Graph Provider is added, this logic will likely have to be customized.  
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em TOptions} & Anything that inherits from the base class of \mbox{\hyperlink{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_ingestion_manager_options}{Ingestion\+Manager\+Options}}.\\
+\hline
+\end{DoxyTemplParams}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em TOptions} : {\em \mbox{\hyperlink{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_ingestion_manager_options}{Ingestion\+Manager\+Options}}}]\end{description}
+\end{Desc}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_mapped_1_1_mapped_graph_ingestion_processor_a6d1c595cf169ae81e5e42993dbe1c6c6}\label{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_mapped_1_1_mapped_graph_ingestion_processor_a6d1c595cf169ae81e5e42993dbe1c6c6}} 
+\index{Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped.MappedGraphIngestionProcessor$<$ TOptions $>$@{Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped.MappedGraphIngestionProcessor$<$ TOptions $>$}!GetSites@{GetSites}}
+\index{GetSites@{GetSites}!Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped.MappedGraphIngestionProcessor$<$ TOptions $>$@{Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped.MappedGraphIngestionProcessor$<$ TOptions $>$}}
+\doxysubsubsection{\texorpdfstring{GetSites()}{GetSites()}}
+{\footnotesize\ttfamily override async Task \mbox{\hyperlink{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_mapped_1_1_mapped_graph_ingestion_processor}{Microsoft.\+Smart\+Places.\+Facilities.\+Ingestion\+Manager.\+Mapped.\+Mapped\+Graph\+Ingestion\+Processor}}$<$ TOptions $>$.Get\+Sites (\begin{DoxyParamCaption}\item[{Cancellation\+Token}]{cancellation\+Token }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ingestion_manager_1_1_ingestion_processor_base}{Microsoft.\+Smart\+Places.\+Facilities.\+Ingestion\+Manager.\+Ingestion\+Processor\+Base$<$ TOptions $>$}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+lib/\+Ingestion\+Manager.\+Mapped/src/Mapped\+Graph\+Ingestion\+Processor.\+cs\end{DoxyCompactItemize}

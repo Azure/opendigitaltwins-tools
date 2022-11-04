@@ -1,0 +1,188 @@
+\hypertarget{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_ontology_mapping_manager}{}\doxysection{Microsoft.\+Smart\+Places.\+Facilities.\+Ontology\+Mapper.\+Ontology\+Mapping\+Manager Class Reference}
+\label{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_ontology_mapping_manager}\index{Microsoft.SmartPlaces.Facilities.OntologyMapper.OntologyMappingManager@{Microsoft.SmartPlaces.Facilities.OntologyMapper.OntologyMappingManager}}
+Inheritance diagram for Microsoft.\+Smart\+Places.\+Facilities.\+Ontology\+Mapper.\+Ontology\+Mapping\+Manager\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_ontology_mapping_manager}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_ontology_mapping_manager_a2b2bf252d6f861a8337f7e875b5795cc}\label{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_ontology_mapping_manager_a2b2bf252d6f861a8337f7e875b5795cc}} 
+{\bfseries Ontology\+Mapping\+Manager} (\mbox{\hyperlink{interface_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_i_ontology_mapping_loader}{IOntology\+Mapping\+Loader}} mapping\+Loader)
+\item 
+bool \mbox{\hyperlink{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_ontology_mapping_manager_a8dccb316c87557926064339909e60bfa}{Try\+Get\+Interface\+Remap\+Dtmi}} (Dtmi input\+Dtmi, out \mbox{\hyperlink{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_dtmi_remap}{Dtmi\+Remap}}? dtmi\+Remap)
+\begin{DoxyCompactList}\small\item\em For a given DTMI from the source ontology, get the DTMI for the target ontology  \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_ontology_mapping_manager_aa2a0b71e5611f111de35aa394ec79409}{Try\+Get\+Relationship\+Remap}} (string input\+Relationship, out \mbox{\hyperlink{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_relationship_remap}{Relationship\+Remap}}? relationship\+Remap)
+\begin{DoxyCompactList}\small\item\em For a given relationship name in the input ontology, get the name of the relationship in the target ontology  \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_ontology_mapping_manager_a48bc6d49e22b2eab9dd09d0298156724}{Try\+Get\+Property\+Projection}} (string output\+Dtmi, string output\+Property\+Name, out \mbox{\hyperlink{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_property_projection}{Property\+Projection}}? property\+Projection)
+\begin{DoxyCompactList}\small\item\em In some cases, a property of the input model needs to be put into a different field or collection in the target model. A declaration can be made to map the input field to the appropriate output field  \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_ontology_mapping_manager_a6bdfa30db0249d8c2d2faac4edb28b98}{Try\+Get\+Fill\+Property}} (string output\+Dtmi, string output\+Property\+Name, out \mbox{\hyperlink{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_fill_property}{Fill\+Property}}? fill\+Property)
+\begin{DoxyCompactList}\small\item\em In some cases, the contents of one input property may need to be copied to multiple other fields in the target ontology. For instance, if the target ontology requires that the name field always be populated, but the source name field may be null and the description field be more reliable, a chain of fields can be set here so that there is a priority list of fields that will backfill the name field if the input name field is null.  \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_ontology_mapping_manager_a5dd99e29129ef1e1b5e4fcdacd1610cd}{Validate\+Target\+Ontology\+Mapping}} (IRead\+Only\+Dictionary$<$ Dtmi, DTEntity\+Info $>$ target\+Object\+Model, out List$<$ string $>$ invalid\+Targets)
+\begin{DoxyCompactList}\small\item\em Validates that all Output DTMIs listed in the Interface Remaps exist in the target object model  \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_ontology_mapping_manager_a275abcba8595e808dfcbfa50eb322976}{Validate\+Source\+Ontology\+Mapping}} (IRead\+Only\+Dictionary$<$ Dtmi, DTEntity\+Info $>$ source\+Object\+Model, out List$<$ string $>$ invalid\+Sources)
+\begin{DoxyCompactList}\small\item\em Validates that all Inputput DTMIs listed in the Interface Remaps exist in the source object model  \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_ontology_mapping_manager_a9e5476ee3200f15e7109ad0dcc74e71a}\label{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_ontology_mapping_manager_a9e5476ee3200f15e7109ad0dcc74e71a}} 
+\mbox{\hyperlink{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_ontology_mapping}{Ontology\+Mapping}} {\bfseries Ontology\+Mapping}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_ontology_mapping_manager_a6bdfa30db0249d8c2d2faac4edb28b98}\label{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_ontology_mapping_manager_a6bdfa30db0249d8c2d2faac4edb28b98}} 
+\index{Microsoft.SmartPlaces.Facilities.OntologyMapper.OntologyMappingManager@{Microsoft.SmartPlaces.Facilities.OntologyMapper.OntologyMappingManager}!TryGetFillProperty@{TryGetFillProperty}}
+\index{TryGetFillProperty@{TryGetFillProperty}!Microsoft.SmartPlaces.Facilities.OntologyMapper.OntologyMappingManager@{Microsoft.SmartPlaces.Facilities.OntologyMapper.OntologyMappingManager}}
+\doxysubsubsection{\texorpdfstring{TryGetFillProperty()}{TryGetFillProperty()}}
+{\footnotesize\ttfamily bool Microsoft.\+Smart\+Places.\+Facilities.\+Ontology\+Mapper.\+Ontology\+Mapping\+Manager.\+Try\+Get\+Fill\+Property (\begin{DoxyParamCaption}\item[{string}]{output\+Dtmi\+Filter,  }\item[{string}]{output\+Property\+Name,  }\item[{out \mbox{\hyperlink{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_fill_property}{Fill\+Property}}?}]{fill\+Property }\end{DoxyParamCaption})}
+
+
+
+In some cases, the contents of one input property may need to be copied to multiple other fields in the target ontology. For instance, if the target ontology requires that the name field always be populated, but the source name field may be null and the description field be more reliable, a chain of fields can be set here so that there is a priority list of fields that will backfill the name field if the input name field is null.  
+
+
+\begin{DoxyParams}{Parameters}
+{\em output\+Dtmi\+Filter} & A regex which describes which output dtmi\textquotesingle{}s this rule applies to\\
+\hline
+{\em output\+Property\+Name} & The target property name\\
+\hline
+{\em fill\+Property} & The fill property entity for the output property if there is one\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if a mapping exists, false otherwise
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interface_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_i_ontology_mapping_manager_ac98926fdea3ee746e7af56b2703a574e}{Microsoft.\+Smart\+Places.\+Facilities.\+Ontology\+Mapper.\+IOntology\+Mapping\+Manager}}.
+
+\mbox{\Hypertarget{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_ontology_mapping_manager_a8dccb316c87557926064339909e60bfa}\label{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_ontology_mapping_manager_a8dccb316c87557926064339909e60bfa}} 
+\index{Microsoft.SmartPlaces.Facilities.OntologyMapper.OntologyMappingManager@{Microsoft.SmartPlaces.Facilities.OntologyMapper.OntologyMappingManager}!TryGetInterfaceRemapDtmi@{TryGetInterfaceRemapDtmi}}
+\index{TryGetInterfaceRemapDtmi@{TryGetInterfaceRemapDtmi}!Microsoft.SmartPlaces.Facilities.OntologyMapper.OntologyMappingManager@{Microsoft.SmartPlaces.Facilities.OntologyMapper.OntologyMappingManager}}
+\doxysubsubsection{\texorpdfstring{TryGetInterfaceRemapDtmi()}{TryGetInterfaceRemapDtmi()}}
+{\footnotesize\ttfamily bool Microsoft.\+Smart\+Places.\+Facilities.\+Ontology\+Mapper.\+Ontology\+Mapping\+Manager.\+Try\+Get\+Interface\+Remap\+Dtmi (\begin{DoxyParamCaption}\item[{Dtmi}]{input\+Dtmi,  }\item[{out \mbox{\hyperlink{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_dtmi_remap}{Dtmi\+Remap}}?}]{dtmi\+Remap }\end{DoxyParamCaption})}
+
+
+
+For a given DTMI from the source ontology, get the DTMI for the target ontology  
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+Dtmi} & The DTMI from the source ontology\\
+\hline
+{\em dtmi\+Remap} & The remap entity for the input DTMI if there is one\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if a remap exists, false otherwise
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interface_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_i_ontology_mapping_manager_ab62f8543ad425720fa7755b87d38272e}{Microsoft.\+Smart\+Places.\+Facilities.\+Ontology\+Mapper.\+IOntology\+Mapping\+Manager}}.
+
+\mbox{\Hypertarget{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_ontology_mapping_manager_a48bc6d49e22b2eab9dd09d0298156724}\label{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_ontology_mapping_manager_a48bc6d49e22b2eab9dd09d0298156724}} 
+\index{Microsoft.SmartPlaces.Facilities.OntologyMapper.OntologyMappingManager@{Microsoft.SmartPlaces.Facilities.OntologyMapper.OntologyMappingManager}!TryGetPropertyProjection@{TryGetPropertyProjection}}
+\index{TryGetPropertyProjection@{TryGetPropertyProjection}!Microsoft.SmartPlaces.Facilities.OntologyMapper.OntologyMappingManager@{Microsoft.SmartPlaces.Facilities.OntologyMapper.OntologyMappingManager}}
+\doxysubsubsection{\texorpdfstring{TryGetPropertyProjection()}{TryGetPropertyProjection()}}
+{\footnotesize\ttfamily bool Microsoft.\+Smart\+Places.\+Facilities.\+Ontology\+Mapper.\+Ontology\+Mapping\+Manager.\+Try\+Get\+Property\+Projection (\begin{DoxyParamCaption}\item[{string}]{output\+Dtmi\+Filter,  }\item[{string}]{output\+Property\+Name,  }\item[{out \mbox{\hyperlink{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_property_projection}{Property\+Projection}}?}]{property\+Projection }\end{DoxyParamCaption})}
+
+
+
+In some cases, a property of the input model needs to be put into a different field or collection in the target model. A declaration can be made to map the input field to the appropriate output field  
+
+
+\begin{DoxyParams}{Parameters}
+{\em output\+Dtmi\+Filter} & A regex which describes which output dtmi\textquotesingle{}s this rule applies to\\
+\hline
+{\em output\+Property\+Name} & The name of the output property\\
+\hline
+{\em property\+Projection} & The property projection for the output property if there is one\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if a mapping exists, false otherwise
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interface_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_i_ontology_mapping_manager_a84f0776729ba87d173a89bb5020a1ad7}{Microsoft.\+Smart\+Places.\+Facilities.\+Ontology\+Mapper.\+IOntology\+Mapping\+Manager}}.
+
+\mbox{\Hypertarget{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_ontology_mapping_manager_aa2a0b71e5611f111de35aa394ec79409}\label{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_ontology_mapping_manager_aa2a0b71e5611f111de35aa394ec79409}} 
+\index{Microsoft.SmartPlaces.Facilities.OntologyMapper.OntologyMappingManager@{Microsoft.SmartPlaces.Facilities.OntologyMapper.OntologyMappingManager}!TryGetRelationshipRemap@{TryGetRelationshipRemap}}
+\index{TryGetRelationshipRemap@{TryGetRelationshipRemap}!Microsoft.SmartPlaces.Facilities.OntologyMapper.OntologyMappingManager@{Microsoft.SmartPlaces.Facilities.OntologyMapper.OntologyMappingManager}}
+\doxysubsubsection{\texorpdfstring{TryGetRelationshipRemap()}{TryGetRelationshipRemap()}}
+{\footnotesize\ttfamily bool Microsoft.\+Smart\+Places.\+Facilities.\+Ontology\+Mapper.\+Ontology\+Mapping\+Manager.\+Try\+Get\+Relationship\+Remap (\begin{DoxyParamCaption}\item[{string}]{input\+Relationship,  }\item[{out \mbox{\hyperlink{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_relationship_remap}{Relationship\+Remap}}?}]{relationship\+Remap }\end{DoxyParamCaption})}
+
+
+
+For a given relationship name in the input ontology, get the name of the relationship in the target ontology  
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+Relationship} & The name of the relationship in the input ontology. i.\+e. \char`\"{}has\+Part\char`\"{}\\
+\hline
+{\em relationship\+Remap} & The remap entity for the input relationship if there is one\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interface_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_i_ontology_mapping_manager_ab95814ddd56b0b9afcdacc64cecbb094}{Microsoft.\+Smart\+Places.\+Facilities.\+Ontology\+Mapper.\+IOntology\+Mapping\+Manager}}.
+
+\mbox{\Hypertarget{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_ontology_mapping_manager_a275abcba8595e808dfcbfa50eb322976}\label{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_ontology_mapping_manager_a275abcba8595e808dfcbfa50eb322976}} 
+\index{Microsoft.SmartPlaces.Facilities.OntologyMapper.OntologyMappingManager@{Microsoft.SmartPlaces.Facilities.OntologyMapper.OntologyMappingManager}!ValidateSourceOntologyMapping@{ValidateSourceOntologyMapping}}
+\index{ValidateSourceOntologyMapping@{ValidateSourceOntologyMapping}!Microsoft.SmartPlaces.Facilities.OntologyMapper.OntologyMappingManager@{Microsoft.SmartPlaces.Facilities.OntologyMapper.OntologyMappingManager}}
+\doxysubsubsection{\texorpdfstring{ValidateSourceOntologyMapping()}{ValidateSourceOntologyMapping()}}
+{\footnotesize\ttfamily bool Microsoft.\+Smart\+Places.\+Facilities.\+Ontology\+Mapper.\+Ontology\+Mapping\+Manager.\+Validate\+Source\+Ontology\+Mapping (\begin{DoxyParamCaption}\item[{IRead\+Only\+Dictionary$<$ Dtmi, DTEntity\+Info $>$}]{source\+Object\+Model,  }\item[{out List$<$ string $>$}]{invalid\+Sources }\end{DoxyParamCaption})}
+
+
+
+Validates that all Inputput DTMIs listed in the Interface Remaps exist in the source object model  
+
+
+\begin{DoxyParams}{Parameters}
+{\em source\+Object\+Model} & A dictionary of DTMI to DTEntity\+Info mappings which are valid in the source ontology\\
+\hline
+{\em invalid\+Sources} & A list of invalid input mappings in the Interface\+Remaps\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if all sources are valid, false otherwise
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interface_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_i_ontology_mapping_manager_a97bf6fe73cdc6088b3446fe5840ef9b5}{Microsoft.\+Smart\+Places.\+Facilities.\+Ontology\+Mapper.\+IOntology\+Mapping\+Manager}}.
+
+\mbox{\Hypertarget{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_ontology_mapping_manager_a5dd99e29129ef1e1b5e4fcdacd1610cd}\label{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_ontology_mapping_manager_a5dd99e29129ef1e1b5e4fcdacd1610cd}} 
+\index{Microsoft.SmartPlaces.Facilities.OntologyMapper.OntologyMappingManager@{Microsoft.SmartPlaces.Facilities.OntologyMapper.OntologyMappingManager}!ValidateTargetOntologyMapping@{ValidateTargetOntologyMapping}}
+\index{ValidateTargetOntologyMapping@{ValidateTargetOntologyMapping}!Microsoft.SmartPlaces.Facilities.OntologyMapper.OntologyMappingManager@{Microsoft.SmartPlaces.Facilities.OntologyMapper.OntologyMappingManager}}
+\doxysubsubsection{\texorpdfstring{ValidateTargetOntologyMapping()}{ValidateTargetOntologyMapping()}}
+{\footnotesize\ttfamily bool Microsoft.\+Smart\+Places.\+Facilities.\+Ontology\+Mapper.\+Ontology\+Mapping\+Manager.\+Validate\+Target\+Ontology\+Mapping (\begin{DoxyParamCaption}\item[{IRead\+Only\+Dictionary$<$ Dtmi, DTEntity\+Info $>$}]{target\+Object\+Model,  }\item[{out List$<$ string $>$}]{invalid\+Targets }\end{DoxyParamCaption})}
+
+
+
+Validates that all Output DTMIs listed in the Interface Remaps exist in the target object model  
+
+
+\begin{DoxyParams}{Parameters}
+{\em target\+Object\+Model} & A dictionary of DTMI to DTEntity\+Info mappings which are valid in the target ontology\\
+\hline
+{\em invalid\+Targets} & A list of invalid output mappings in the Interface\+Remaps\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if all targets are valid, false otherwise
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interface_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_i_ontology_mapping_manager_a839f6a116115bc89482ad35d1b27c6d2}{Microsoft.\+Smart\+Places.\+Facilities.\+Ontology\+Mapper.\+IOntology\+Mapping\+Manager}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+lib/\+Ontology\+Mapper/src/Ontology\+Mapping\+Manager.\+cs\end{DoxyCompactItemize}

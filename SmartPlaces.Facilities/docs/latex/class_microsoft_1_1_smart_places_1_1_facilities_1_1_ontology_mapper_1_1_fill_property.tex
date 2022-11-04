@@ -1,0 +1,30 @@
+\hypertarget{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_fill_property}{}\doxysection{Microsoft.\+Smart\+Places.\+Facilities.\+Ontology\+Mapper.\+Fill\+Property Class Reference}
+\label{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_fill_property}\index{Microsoft.SmartPlaces.Facilities.OntologyMapper.FillProperty@{Microsoft.SmartPlaces.Facilities.OntologyMapper.FillProperty}}
+
+
+Maps a priority list of properties on the input twin to a property on the output twin to ensure required properties have values   
+
+
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_fill_property_a7059fd11a3b82130df71f2403faca039}\label{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_fill_property_a7059fd11a3b82130df71f2403faca039}} 
+string {\bfseries Output\+Dtmi\+Filter} = string.\+Empty\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em A regex describing the output DTMI\textquotesingle{}s targeted by this fill. \char`\"{}.$\ast$\char`\"{} for all  \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_fill_property_a660ebc68e1a256e9cd7e62c7b41d64df}\label{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_fill_property_a660ebc68e1a256e9cd7e62c7b41d64df}} 
+string {\bfseries Output\+Property\+Name} = string.\+Empty\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the name of the output property in the target ontology.  \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_fill_property_a3492b7580e293fcd909e06ce7cc4eb10}\label{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_fill_property_a3492b7580e293fcd909e06ce7cc4eb10}} 
+IEnumerable$<$ string $>$ {\bfseries Input\+Property\+Names} = new List$<$string$>$()\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets a space delimited, ordered, list of input properties to be assigned to the output property (loop until one is not empty).  \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_fill_property_a43e799add2a9c080f5bc3cb2cfefd7b9}\label{class_microsoft_1_1_smart_places_1_1_facilities_1_1_ontology_mapper_1_1_fill_property_a43e799add2a9c080f5bc3cb2cfefd7b9}} 
+int {\bfseries Priority} = 0\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets a value indicating for priority. If there are multiple projections for a single output property based on different Dtmi\+Filters, priority is taken into account in ascending order  \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Maps a priority list of properties on the input twin to a property on the output twin to ensure required properties have values  
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+lib/\+Ontology\+Mapper/src/Ontology\+Mapping.\+cs\end{DoxyCompactItemize}

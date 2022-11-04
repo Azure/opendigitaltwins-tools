@@ -1,0 +1,282 @@
+This library provides a way to load an Azure Digital Twins instances with twins and relationships from another DTDL-\/based graph of twins.\hypertarget{md_lib__ingestion_manager__r_e_a_d_m_e_autotoc_md4}{}\doxysection{Interfaces and Classes}\label{md_lib__ingestion_manager__r_e_a_d_m_e_autotoc_md4}
+\hypertarget{md_lib__ingestion_manager__r_e_a_d_m_e_autotoc_md5}{}\doxysubsection{Interface\+: IGraph\+Ingestion\+Processor}\label{md_lib__ingestion_manager__r_e_a_d_m_e_autotoc_md5}
+{\itshape Description} Methods for ingesting a graph from a source graph and inserting into a target graph
+
+{\bfseries{Method\+: Ingestion\+From\+Api\+Async}}
+
+{\itshape Description}
+
+Starts the Ingestion Process from a source to a target graph. The implementation of the derived class is responsible for exposing its configuration through its constructor.
+
+{\itshape Parameters}
+
+None
+
+{\itshape Returns}
+
+An awaitable task.\hypertarget{md_lib__ingestion_manager__r_e_a_d_m_e_autotoc_md6}{}\doxysubsection{Interface\+: IInput\+Graph\+Manager}\label{md_lib__ingestion_manager__r_e_a_d_m_e_autotoc_md6}
+{\itshape Description} Methods for accessing an input graph source
+
+{\bfseries{Method\+: Try\+Get\+Dtmi}}
+
+{\itshape Description}
+
+Get a DTMI for an interface\+Type
+
+{\itshape Parameters}
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Name   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Name   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-2}
+\endhead
+interface\+Type   &The name of the interface    \\\cline{1-2}
+dtmi   &The found dtmi   \\\cline{1-2}
+\end{longtabu}
+
+
+{\itshape Returns}
+
+{\ttfamily true} if the DTMi is found, otherwise {\ttfamily false}
+
+{\bfseries{Method\+: Get\+Twin\+Graph\+Async}}
+
+{\itshape Description}
+
+Loads a twin graph from a source based on a passed in graph query
+
+{\itshape Parameters}
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Name   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Name   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-2}
+\endhead
+query   &A well-\/formed graph query   \\\cline{1-2}
+\end{longtabu}
+
+
+{\itshape Returns}
+
+A Json\+Document containing the results of the query
+
+{\bfseries{Method\+: Get\+Organization\+Query}}
+
+{\itshape Description}
+
+Gets a graph query to return an organization
+
+{\itshape Parameters}
+
+None
+
+{\itshape Returns}
+
+A graph query string which can be passed to Get\+Twins\+Graph\+Async
+
+{\bfseries{Method\+: Get\+Buildings\+For\+Site\+Query}}
+
+{\itshape Description}
+
+Gets a graph query to return all the buildings on a site
+
+{\itshape Parameters}
+
+None
+
+{\itshape Returns}
+
+A graph query string which can be passed to Get\+Twins\+Graph\+Async
+
+{\bfseries{Method\+: Get\+Floor\+Query}}
+
+{\itshape Description}
+
+Gets a graph query to return all the floors for a building
+
+{\itshape Parameters}
+
+None
+
+{\itshape Returns}
+
+A graph query string which can be passed to Get\+Twins\+Graph\+Async
+
+{\bfseries{Method\+: Get\+Buildings\+Things\+Query}}
+
+{\itshape Description}
+
+Gets a graph query to return all the things in a building
+
+{\itshape Parameters}
+
+None
+
+{\itshape Returns}
+
+A graph query string which can be passed to Get\+Twins\+Graph\+Async
+
+{\bfseries{Method\+: Get\+Points\+For\+Thing\+Query}}
+
+{\itshape Description}
+
+Gets a graph query to return all the points for a thing
+
+{\itshape Parameters}
+
+None
+
+{\itshape Returns}
+
+A graph query string which can be passed to Get\+Twins\+Graph\+Async\hypertarget{md_lib__ingestion_manager__r_e_a_d_m_e_autotoc_md7}{}\doxysubsection{Interface\+: IInput\+Graph\+Manager\+Options}\label{md_lib__ingestion_manager__r_e_a_d_m_e_autotoc_md7}
+{\itshape Description} Configuration interface for the Input\+Graph\+Manager\hypertarget{md_lib__ingestion_manager__r_e_a_d_m_e_autotoc_md8}{}\doxysubsection{Interface\+: IOutput\+Graph\+Manager}\label{md_lib__ingestion_manager__r_e_a_d_m_e_autotoc_md8}
+{\itshape Description}
+
+Methods for working with an output graph
+
+{\bfseries{Method\+: Get\+Model\+Async}}
+
+{\itshape Description}
+
+Loads the model for a graph
+
+{\itshape Parameters}
+
+None
+
+{\itshape Returns}
+
+A collection of strings which describe the model used by the output graph
+
+{\bfseries{Method\+: Upload\+Graph\+Async}}
+
+{\itshape Description}
+
+Loads the twins and relationships into an output graph
+
+{\itshape Parameters}
+
+None
+
+{\itshape Returns}
+
+None\hypertarget{md_lib__ingestion_manager__r_e_a_d_m_e_autotoc_md9}{}\doxysubsection{Interface\+: ITelemetry\+Ingestion\+Processor}\label{md_lib__ingestion_manager__r_e_a_d_m_e_autotoc_md9}
+{\itshape Description}
+
+Methods for ingesting event data telemetry to a target
+
+{\bfseries{Method\+: Ingest\+From\+Event\+Hub\+Async}}
+
+{\itshape Description}
+
+Ingests the passed in data from Event Hub into a target
+
+{\itshape Parameters}
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Name   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Name   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-2}
+\endhead
+telemetry\+Data   &An instance of event hub event data   \\\cline{1-2}
+\end{longtabu}
+
+
+{\itshape Returns}
+
+None\hypertarget{md_lib__ingestion_manager__r_e_a_d_m_e_autotoc_md10}{}\doxysubsection{Interface\+: ITwin\+Mapping\+Indexer}\label{md_lib__ingestion_manager__r_e_a_d_m_e_autotoc_md10}
+{\itshape Description}
+
+Methods for working with a cache store of source\+IDs to Digital Twin Ids
+
+{\bfseries{Method\+: Upsert\+Twin\+Index\+Async}}
+
+{\itshape Description}
+
+Add or update a mapping to the cache
+
+{\itshape Parameters}
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Name   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Name   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-2}
+\endhead
+source\+Id   &The source device key from the source graph    \\\cline{1-2}
+twin\+Id   &The target twin id for the target graph   \\\cline{1-2}
+\end{longtabu}
+
+
+{\itshape Returns}
+
+None
+
+{\bfseries{Method\+: Get\+Twin\+Index\+Async}}
+
+{\itshape Description}
+
+Get a mapping from the cache for a passed in source\+Id
+
+{\itshape Parameters}
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Name   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Name   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-2}
+\endhead
+source\+Id   &The source device key from the source graph   \\\cline{1-2}
+\end{longtabu}
+
+
+{\itshape Returns}
+
+The twin\+Id for the target graph\hypertarget{md_lib__ingestion_manager__r_e_a_d_m_e_autotoc_md11}{}\doxysubsection{Class\+: Ingestion\+Manager\+Options}\label{md_lib__ingestion_manager__r_e_a_d_m_e_autotoc_md11}
+{\itshape Description}
+
+An implementation of IIngestion\+Manager\+Options which allows the consumer to specify the connection and configuration information needed to connect to the target Azure Digital Twins instance
+
+{\itshape Properties} \tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Name   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Name   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-2}
+\endhead
+Azure\+Digital\+Twins\+Endpoint   &The Url for the Azure Digital Twins instance to target.    \\\cline{1-2}
+Max\+Retry\+Attempts   &The number of times to retry create twin attempts per twin/relationship.    \\\cline{1-2}
+Retry\+Delay\+In\+Ms   &The delay in milliseconds between retry create twin attempts per twin/relationship. Defaults to 50ms.    \\\cline{1-2}
+Adt\+Resource   &Gets or sets the resource to be used when generating a Token for accessing Azure Digital Twins. This needs to be changed when working with non-\/public clouds. Defaults to \href{https://digitaltwins.azure.net/.default}{\texttt{ https\+://digitaltwins.\+azure.\+net/.\+default}}.    \\\cline{1-2}
+Max\+Degree\+Of\+Parallelism   &Gets or sets the maximum number parallel threads to use when uploading to Azure Digital Twins. Defaults to 10 threads.   \\\cline{1-2}
+\end{longtabu}
+\hypertarget{md_lib__ingestion_manager__r_e_a_d_m_e_autotoc_md12}{}\doxysubsection{Class\+: Ingestion\+Processor\+Base}\label{md_lib__ingestion_manager__r_e_a_d_m_e_autotoc_md12}
+{\itshape Description}
+
+Abstract Base class for loading a site graph from input source to output target. Implements IGraph\+Ingestion\+Processor 
