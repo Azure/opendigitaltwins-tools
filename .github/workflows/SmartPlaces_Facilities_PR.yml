@@ -26,24 +26,9 @@ jobs:
     - name: Generate documentation
       uses: FuLagann/csharp-docs-generator@v1.0
       with:
-        build-tasks: 
-        - dotnet build ./SmartPlaces.Facilities/lib/OntologyMapper/
-        - dotnet build ./SmartPlaces.Facilities/lib/OntologyMapper.Mapped/
-        - dotnet build ./SmartPlaces.Facilities/lib/IngestionManager/
-        - dotnet build ./SmartPlaces.Facilities/lib/IngestionManager.Mapped/
-        - dotnet build ./SmartPlaces.Facilities/samples/Topology/
-        cleanup-tasks: 
-        - dotnet clean ./SmartPlaces.Facilities/lib/OntologyMapper/
-        - dotnet clean ./SmartPlaces.Facilities/lib/OntologyMapper.Mapped/
-        - dotnet clean ./SmartPlaces.Facilities/lib/IngestionManager/
-        - dotnet clean ./SmartPlaces.Facilities/lib/IngestionManager.Mapped/
-        - dotnet clean ./SmartPlaces.Facilities/samples/Topology/
-        binaries: 
-        - SmartPlaces.Facilities/lib/IngestionManager/src/bin/Debug/net6.0/Microsoft.SmartPlaces.Facilities.IngestionManager.dll
-        - SmartPlaces.Facilities/lib/IngestionManager.Mapped/src/bin/Debug/net6.0/Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped.dll
-        - SmartPlaces.Facilities/lib/OntologyMapper/src/bin/Debug/net6.0/Microsoft.SmartPlaces.Facilities.OntologyMapper.dll
-        - SmartPlaces.Facilities/lib/OntologyMapper.Mapped/src/bin/Debug/net6.0/Microsoft.SmartPlaces.Facilities.OntologyMapper.Mapped.dll
-        - SmartPlaces.Facilities/samples/Topology/src/bin/Debug/net6.0/Topology.dll
+        build-tasks: dotnet build ./SmartPlaces.Facilities/lib/OntologyMapper/,dotnet build ./SmartPlaces.Facilities/lib/OntologyMapper.Mapped/,dotnet build ./SmartPlaces.Facilities/lib/IngestionManager/,dotnet build ./SmartPlaces.Facilities/lib/IngestionManager.Mapped/,dotnet build ./SmartPlaces.Facilities/samples/Topology/
+        cleanup-tasks: dotnet clean ./SmartPlaces.Facilities/lib/OntologyMapper/,dotnet clean ./SmartPlaces.Facilities/lib/OntologyMapper.Mapped/,dotnet clean ./SmartPlaces.Facilities/lib/IngestionManager/,dotnet clean ./SmartPlaces.Facilities/lib/IngestionManager.Mapped/,dotnet clean ./SmartPlaces.Facilities/samples/Topology/
+        binaries: SmartPlaces.Facilities/lib/IngestionManager/src/bin/Debug/net6.0/Microsoft.SmartPlaces.Facilities.IngestionManager.dll,SmartPlaces.Facilities/lib/IngestionManager.Mapped/src/bin/Debug/net6.0/Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped.dll,SmartPlaces.Facilities/lib/OntologyMapper/src/bin/Debug/net6.0/Microsoft.SmartPlaces.Facilities.OntologyMapper.dll,SmartPlaces.Facilities/lib/OntologyMapper.Mapped/src/bin/Debug/net6.0/Microsoft.SmartPlaces.Facilities.OntologyMapper.Mapped.dll,SmartPlaces.Facilities/samples/Topology/src/bin/Debug/net6.0/Topology.dll
         output-path: SmartPlaces.Facilities/docs
         skip-git: true
     - name: Commit and push documentation
