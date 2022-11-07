@@ -151,6 +151,10 @@
       "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Parameter;1"
     },
     {
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Peak_Power_Demand_Sensor;1",
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Peak_Demand_Sensor;1"
+    },
+    {
       "InputDtmi": "dtmi:mapped:core:Reset_Status;1",
       // Mapped to Base - Review needed
       "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Status;1"
