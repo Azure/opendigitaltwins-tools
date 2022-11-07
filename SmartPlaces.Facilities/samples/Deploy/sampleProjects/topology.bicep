@@ -68,7 +68,7 @@ resource dashboard 'Microsoft.Portal/dashboards@2020-09-01-preview' = {
                           }
                           name: 'SiteProcessed'
                           aggregationType: 1
-                          namespace: 'azure.applicationinsights'
+                          namespace: 'mapped'
                           metricVisualization: {
                             displayName: 'SiteProcessed'
                             resourceDisplayName: appInsightsName
@@ -138,7 +138,7 @@ resource dashboard 'Microsoft.Portal/dashboards@2020-09-01-preview' = {
                           }
                           name: 'Buildings'
                           aggregationType: 1
-                          namespace: 'azure.applicationinsights'
+                          namespace: 'mapped'
                           metricVisualization: {
                             displayName: 'Buildings'
                             resourceDisplayName: appInsightsName
@@ -203,7 +203,7 @@ resource dashboard 'Microsoft.Portal/dashboards@2020-09-01-preview' = {
                           }
                           name: 'Twins'
                           aggregationType: 1
-                          namespace: 'azure.applicationinsights'
+                          namespace: 'mapped'
                           metricVisualization: {
                             displayName: 'Twins'
                             resourceDisplayName: appInsightsName
@@ -273,7 +273,7 @@ resource dashboard 'Microsoft.Portal/dashboards@2020-09-01-preview' = {
                           }
                           name: 'Relationships'
                           aggregationType: 1
-                          namespace: 'azure.applicationinsights'
+                          namespace: 'mapped'
                           metricVisualization: {
                             displayName: 'Relationships'
                             resourceDisplayName: appInsightsName
