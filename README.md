@@ -47,6 +47,6 @@ dotnet publish
 dotnet tool install --global --add-source ./DTDLValidator/nupkg DTDLValidator
 ```
 
-This will adds created executible to the **PATH** variable to the system.
+This appends the path of the generated executible to your system's **PATH** variable.
 Now, run `dtdl-validator <ARGS>` to use the tool.
 
