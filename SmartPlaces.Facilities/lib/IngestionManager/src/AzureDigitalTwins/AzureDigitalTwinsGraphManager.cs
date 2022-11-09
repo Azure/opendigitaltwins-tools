@@ -175,13 +175,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.AzureDigitalTwins
             // We need to shuffle this list to try to reduce the chances of going over the limit for the number of updates per twin per second
             var relationshipList = new List<BasicRelationship>(relationships.Values).Shuffle();
 
-            var createRelationshipSucceededMetricIdentifier = new MetricIdentifier(Metrics.DefaultNamespace, "CreateOrReplaceRelationshipAsync", Metrics.RelationshipTypeDimensionName);
-            var createRelationshipThrottledMetricIdentifier = new MetricIdentifier(Metrics.DefaultNamespace, "CreateOrReplaceRelationshipAsyncThrottled");
-            var createRelationshipFailedMetricIdentifier = new MetricIdentifier(Metrics.DefaultNamespace, "CreateOrReplaceRelationshipAsyncFailed", Metrics.RelationshipTypeDimensionName);
-            var updateRelationshipSucceededMetricIdentifier = new MetricIdentifier(Metrics.DefaultNamespace, "UpdateRelationshipAsync", Metrics.RelationshipTypeDimensionName);
-            var updateRelationshipThrottledMetricIdentifier = new MetricIdentifier(Metrics.DefaultNamespace, "UpdateRelationshipAsyncThrottled");
-            var updateRelationshipFailedMetricIdentifier = new MetricIdentifier(Metrics.DefaultNamespace, "UpdateRelationshipAsyncFailed", Metrics.RelationshipTypeDimensionName);
-            var updateRelationshipSkippedMetricIdentifier = new MetricIdentifier(Metrics.DefaultNamespace, "UpdateRelationshipAsyncSkipped", Metrics.RelationshipTypeDimensionName);
+            var relationshipMetricIdentifier = new MetricIdentifier(Metrics.DefaultNamespace, "Relationships", Metrics.ActionDimensionName, Metrics.RelationshipTypeDimensionName, Metrics.StatusDimensionName);
 
             await Parallel.ForEachAsync(relationshipList, parallelOptions, async (relationship, cancellationToken) =>
             {
@@ -204,26 +198,25 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.AzureDigitalTwins
                             try
                             {
                                 await digitalTwinsClient.CreateOrReplaceRelationshipAsync(relationship.SourceId, relationship.Id, relationship, cancellationToken: cancellationToken);
-                                TelemetryClient.GetMetric(createRelationshipSucceededMetricIdentifier).TrackValue(1, relationship.Name);
+                                TelemetryClient.GetMetric(relationshipMetricIdentifier).TrackValue(1, Metrics.CreateActionDimension, relationship.Name, Metrics.SucceededStatusDimension);
                                 relationshipCreateSuccesses++;
                             }
                             catch (RequestFailedException ex)
                             {
-                                relationshipCreateFailures++;
-
                                 // If we are over the limit, sleep for a bit then add the relationship to the retry list
-                                // Todo: jobee - are there any other cases that need to be retried?
-                                if (ex.Status == 429)
+                                if (ex.Status == 429 || ex.Status == 503 )
                                 {
-                                    TelemetryClient.GetMetric(createRelationshipThrottledMetricIdentifier).TrackValue(1);
+                                    TelemetryClient.GetMetric(relationshipMetricIdentifier).TrackValue(1, Metrics.CreateActionDimension, relationship.Name, Metrics.ThrottledStatusDimension);
                                     Logger.LogError("Connection to ADT Throttled while adding relationship. Sleeping.");
                                     await Task.Delay(options.RetryDelayInMs, cancellationToken);
                                     failedRelationships.TryAdd(relationship.Id, relationship);
                                 }
                                 else
                                 {
+                                    relationshipCreateFailures++;
+
                                     Logger.LogError(ex, "Failed to add relationship: {relationship}", JsonSerializer.Serialize(relationship));
-                                    TelemetryClient.GetMetric(createRelationshipFailedMetricIdentifier).TrackValue(1, relationship.Name);
+                                    TelemetryClient.GetMetric(relationshipMetricIdentifier).TrackValue(1, Metrics.CreateActionDimension, relationship.Name, Metrics.FailedStatusDimension);
                                 }
                             }
                         }
@@ -236,32 +229,31 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.AzureDigitalTwins
                                 if (jsonPatchDocumentHasUpdates)
                                 {
                                     await digitalTwinsClient.UpdateRelationshipAsync(relationship.SourceId, relationship.Id, jsonPatchDocument, cancellationToken: cancellationToken);
-                                    TelemetryClient.GetMetric(updateRelationshipSucceededMetricIdentifier).TrackValue(1, relationship.Name);
+                                    TelemetryClient.GetMetric(relationshipMetricIdentifier).TrackValue(1, Metrics.UpdateActionDimension, relationship.Name, Metrics.SucceededStatusDimension);
                                     relationshipUpdateSuccesses++;
                                 }
                                 else
                                 {
                                     relationshipUpdateSkips++;
-                                    TelemetryClient.GetMetric(updateRelationshipSkippedMetricIdentifier).TrackValue(1, relationship.Name);
+                                    TelemetryClient.GetMetric(relationshipMetricIdentifier).TrackValue(1, Metrics.UpdateActionDimension, relationship.Name, Metrics.SkippedStatusDimension);
                                 }
                             }
                             catch (RequestFailedException ex)
                             {
-                                relationshipUpdateFailures++;
-
                                 // If we are over the limit, sleep for a bit then add the relationship to the retry list
-                                // Todo: jobee - are there any other cases that need to be retried?
-                                if (ex.Status == 429)
+                                if (ex.Status == 429 || ex.Status == 503 )
                                 {
-                                    TelemetryClient.GetMetric(updateRelationshipThrottledMetricIdentifier).TrackValue(1);
+                                    TelemetryClient.GetMetric(relationshipMetricIdentifier).TrackValue(1, Metrics.UpdateActionDimension, relationship.Name, Metrics.ThrottledStatusDimension);
                                     Logger.LogError("Connection to ADT Throttled while updating relationship. Sleeping.");
                                     await Task.Delay(options.RetryDelayInMs, cancellationToken);
                                     failedRelationships.TryAdd(relationship.Id, relationship);
                                 }
                                 else
                                 {
+                                    relationshipUpdateFailures++;
+
                                     Logger.LogError(ex, "Failed to update relationship: {relationship}", JsonSerializer.Serialize(relationship));
-                                    TelemetryClient.GetMetric(updateRelationshipFailedMetricIdentifier).TrackValue(1, relationship.Name);
+                                    TelemetryClient.GetMetric(relationshipMetricIdentifier).TrackValue(1, Metrics.UpdateActionDimension, relationship.Name, Metrics.FailedStatusDimension);
                                 }
                             }
                         }
@@ -330,13 +322,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.AzureDigitalTwins
             var twinUpdateSkips = 0;
 
             var failedTwins = new ConcurrentDictionary<string, BasicDigitalTwin>();
-            var createTwinSucceededMetricIdentifier = new MetricIdentifier(Metrics.DefaultNamespace, "CreateOrReplaceDigitalTwinAsync", Metrics.ModelIdDimensionName);
-            var createTwinThrottledMetricIdentifier = new MetricIdentifier(Metrics.DefaultNamespace, "CreateOrReplaceDigitalTwinAsyncThrottled");
-            var createTwinFailedMetricIdentifier = new MetricIdentifier(Metrics.DefaultNamespace, "CreateOrReplaceDigitalTwinAsyncFailed", Metrics.TwinDimensionName);
-            var updateTwinSucceededMetricIdentifier = new MetricIdentifier(Metrics.DefaultNamespace, "UpdateDigitalTwinAsync", Metrics.ModelIdDimensionName);
-            var updateTwinThrottledMetricIdentifier = new MetricIdentifier(Metrics.DefaultNamespace, "UpdateDigitalTwinAsyncThrottled");
-            var updateTwinFailedMetricIdentifier = new MetricIdentifier(Metrics.DefaultNamespace, "UpdateDigitalTwinAsyncFailed", Metrics.TwinDimensionName);
-            var updateTwinSkippedMetricIdentifier = new MetricIdentifier(Metrics.DefaultNamespace, "UpdateDigitalTwinAsyncSkipped", Metrics.TwinDimensionName);
+            var twinMetricIdentifier = new MetricIdentifier(Metrics.DefaultNamespace, "Twins", Metrics.ActionDimensionName, Metrics.ModelIdDimensionName, Metrics.StatusDimensionName);
 
             await Parallel.ForEachAsync(twins, parallelOptions, async (twin, cancellationtoken) =>
             {
@@ -360,24 +346,24 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.AzureDigitalTwins
                             try
                             {
                                 await digitalTwinsClient.CreateOrReplaceDigitalTwinAsync(twin.Value.Id, twin.Value, cancellationToken: cancellationtoken);
-                                TelemetryClient.GetMetric(createTwinSucceededMetricIdentifier).TrackValue(1, twin.Value.Metadata.ModelId);
+                                TelemetryClient.GetMetric(twinMetricIdentifier).TrackValue(1, Metrics.CreateActionDimension, twin.Value.Metadata.ModelId, Metrics.SucceededStatusDimension);
                                 twinCreateSuccesses++;
                             }
                             catch (RequestFailedException ex)
                             {
-                                twinCreateFailures++;
-
                                 // If we are over the limit, sleep for a bit then add the twin to the retry list
-                                if (ex.Status == 429)
+                                if (ex.Status == 429 || ex.Status == 503)
                                 {
-                                    TelemetryClient.GetMetric(createTwinThrottledMetricIdentifier).TrackValue(1);
+                                    TelemetryClient.GetMetric(twinMetricIdentifier).TrackValue(1, Metrics.CreateActionDimension, twin.Value.Metadata.ModelId, Metrics.ThrottledStatusDimension);
                                     Logger.LogError("Connection to ADT Throttled while adding twin. Sleeping.");
                                     await Task.Delay(options.RetryDelayInMs, cancellationtoken);
                                     failedTwins.TryAdd(twin.Key, twin.Value);
                                 }
                                 else
                                 {
-                                    TelemetryClient.GetMetric(createTwinFailedMetricIdentifier).TrackValue(1, twin.Value.Metadata.ModelId);
+                                    twinCreateFailures++;
+
+                                    TelemetryClient.GetMetric(twinMetricIdentifier).TrackValue(1, Metrics.CreateActionDimension, twin.Value.Metadata.ModelId, Metrics.FailedStatusDimension);
                                     Logger.LogError(ex, "Failed to add twin: {twin}", JsonSerializer.Serialize(twin));
                                 }
                             }
@@ -391,30 +377,30 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.AzureDigitalTwins
                                 if (jsonPatchDocumentHasUpdates)
                                 {
                                     await digitalTwinsClient.UpdateDigitalTwinAsync(twin.Value.Id, jsonPatchDocument, cancellationToken: cancellationtoken);
-                                    TelemetryClient.GetMetric(updateTwinSucceededMetricIdentifier).TrackValue(1, twin.Value.Metadata.ModelId);
+                                    TelemetryClient.GetMetric(twinMetricIdentifier).TrackValue(1, Metrics.UpdateActionDimension, twin.Value.Metadata.ModelId, Metrics.SucceededStatusDimension);
                                     twinUpdateSuccesses++;
                                 }
                                 else
                                 {
                                     twinUpdateSkips++;
-                                    TelemetryClient.GetMetric(updateTwinSkippedMetricIdentifier).TrackValue(1, twin.Value.Metadata.ModelId);
+                                    TelemetryClient.GetMetric(twinMetricIdentifier).TrackValue(1, Metrics.UpdateActionDimension, twin.Value.Metadata.ModelId, Metrics.SkippedStatusDimension);
                                 }
                             }
                             catch (RequestFailedException ex)
                             {
-                                twinUpdateFailures++;
-
-                                // If we are over the limit, sleep for a bit then add the twin to the retry list
-                                if (ex.Status == 429)
+                                // If we are over the limit or service is unavailable, sleep for a bit then add the twin to the retry list
+                                if (ex.Status == 429 || ex.Status == 503)
                                 {
-                                    TelemetryClient.GetMetric(updateTwinThrottledMetricIdentifier).TrackValue(1);
+                                    TelemetryClient.GetMetric(twinMetricIdentifier).TrackValue(1, Metrics.UpdateActionDimension, twin.Value.Metadata.ModelId, Metrics.ThrottledStatusDimension);
                                     Logger.LogError("Connection to ADT Throttled while update twin. Sleeping.");
                                     await Task.Delay(options.RetryDelayInMs, cancellationtoken);
                                     failedTwins.TryAdd(twin.Key, twin.Value);
                                 }
                                 else
                                 {
-                                    TelemetryClient.GetMetric(updateTwinFailedMetricIdentifier).TrackValue(1, twin.Value.Metadata.ModelId);
+                                    twinUpdateFailures++;
+
+                                    TelemetryClient.GetMetric(twinMetricIdentifier).TrackValue(1, Metrics.UpdateActionDimension, twin.Value.Metadata.ModelId, Metrics.FailedStatusDimension);
                                     Logger.LogError(ex, "Failed to update twin: {twin}", JsonSerializer.Serialize(twin));
                                 }
                             }
