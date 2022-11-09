@@ -29,6 +29,6 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.2" />
-		<PackageReference Include="Microsoft.SmartPlaces.Facilities.OntologyMapper" Version="0.6.5-preview" />
+		<PackageReference Include="Microsoft.SmartPlaces.Facilities.OntologyMapper" Version="0.6.6-preview" />
 	</ItemGroup>
 </Project>
