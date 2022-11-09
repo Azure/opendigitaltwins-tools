@@ -36,6 +36,18 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Test
         }
 
         [Fact]
+        public void TryCreatePatchDocument_EmptyRelationships_ReturnFalse()
+        {
+            var existingRelationship = new BasicRelationship();
+            var newRelationship = new BasicRelationship();
+
+            var result = TwinMergeHelper.TryCreatePatchDocument(existingRelationship, newRelationship, out var jsonPatchDocument);
+
+            Assert.False(result);
+            Assert.Equal("[]", jsonPatchDocument.ToString());
+        }
+
+        [Fact]
         public void TryCreatePatchDocument_DifferentModels_ReturnTrue()
         {
             var existingTwin = new BasicDigitalTwin();
@@ -48,6 +60,36 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Test
 
             Assert.True(result);
             Assert.Equal("[{\"op\":\"replace\",\"path\":\"/$metadata/$model\",\"value\":\"dtmi:example:bar;1\"}]", jsonPatchDocument.ToString());
+        }
+
+        [Fact]
+        public void TryCreatePatchDocument_DifferentRelationshipsProperties_ReturnTrue()
+        {
+            var existingRelationship = new BasicRelationship();
+            existingRelationship.Properties.Add("TestProperty", "This is the original value");
+
+            var newRelationship = new BasicRelationship();
+            newRelationship.Properties.Add("TestProperty", "This is the new value");
+
+            var result = TwinMergeHelper.TryCreatePatchDocument(existingRelationship, newRelationship, out var jsonPatchDocument);
+
+            Assert.True(result);
+            Assert.Equal("[{\"op\":\"replace\",\"path\":\"/TestProperty\",\"value\":\"This is the new value\"}]", jsonPatchDocument.ToString());
+        }
+
+        [Fact]
+        public void TryCreatePatchDocument_DifferentRelationshipsDifferentProperties_ReturnTrue()
+        {
+            var existingRelationship = new BasicRelationship();
+            existingRelationship.Properties.Add("TestProperty1", "This is the original value");
+
+            var newRelationship = new BasicRelationship();
+            newRelationship.Properties.Add("TestProperty2", "This is the new value");
+
+            var result = TwinMergeHelper.TryCreatePatchDocument(existingRelationship, newRelationship, out var jsonPatchDocument);
+
+            Assert.True(result);
+            Assert.Equal("[{\"op\":\"add\",\"path\":\"/TestProperty2\",\"value\":\"This is the new value\"}]", jsonPatchDocument.ToString());
         }
 
         [Fact]

@@ -744,6 +744,71 @@ resource dashboard 'Microsoft.Portal/dashboards@2020-09-01-preview' = {
           }
           {
             position: {
+              x: 18
+              y: 10
+              rowSpan: 4
+              colSpan: 6
+            }
+            metadata: {
+              inputs: [
+                {
+                  name: 'options'
+                  isOptional: true
+                }
+                {
+                  name: 'sharedTimeRange'
+                  isOptional: true
+                }
+              ]
+              #disable-next-line BCP036
+              type: 'Extension/HubsExtension/PartType/MonitorChartPart'
+              settings: {
+                content: {
+                  options: {
+                    chart: {
+                      metrics: [
+                        {
+                          resourceMetadata: {
+                            id: appInsights.id
+                          }
+                          name: 'UpdateDigitalTwinAsyncSkipped'
+                          aggregationType: 1
+                          namespace: 'azure.applicationinsights'
+                          metricVisualization: {
+                            displayName: 'UpdateDigitalTwinAsyncSkipped'
+                            resourceDisplayName: appInsightsName
+                          }
+                        }
+                      ]
+                      title: 'Update Twin Skipped'
+                      titleKind: 2
+                      visualization: {
+                        chartType: 1
+                        legendVisualization: {
+                          isVisible: true
+                          position: 2
+                          hideSubtitle: false
+                        }
+                        axisVisualization: {
+                          x: {
+                            isVisible: true
+                            axisType: 2
+                          }
+                          y: {
+                            isVisible: true
+                            axisType: 1
+                          }
+                        }
+                        disablePinning: true
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          {
+            position: {
               x: 0
               y: 14
               rowSpan: 1
@@ -971,6 +1036,276 @@ resource dashboard 'Microsoft.Portal/dashboards@2020-09-01-preview' = {
             position: {
               x: 0
               y: 19
+              rowSpan: 4
+              colSpan: 6
+            }
+            metadata: {
+              inputs: [
+                {
+                  name: 'options'
+                  isOptional: true
+                }
+                {
+                  name: 'sharedTimeRange'
+                  isOptional: true
+                }
+              ]
+              #disable-next-line BCP036
+              type: 'Extension/HubsExtension/PartType/MonitorChartPart'
+              settings: {
+                content: {
+                  options: {
+                    chart: {
+                      metrics: [
+                        {
+                          resourceMetadata: {
+                            id: appInsights.id
+                          }
+                          name: 'UpdateRelationshipAsync'
+                          aggregationType: 1
+                          namespace: 'azure.applicationinsights'
+                          metricVisualization: {
+                            displayName: 'UpdateRelationshipAsync'
+                            resourceDisplayName: appInsightsName
+                          }
+                        }
+                      ]
+                      title: 'Updated Relationships'
+                      titleKind: 2
+                      visualization: {
+                        chartType: 5
+                        legendVisualization: {
+                          isVisible: true
+                          position: 2
+                          hideSubtitle: false
+                        }
+                        axisVisualization: {
+                          x: {
+                            isVisible: true
+                            axisType: 2
+                          }
+                          y: {
+                            isVisible: true
+                            axisType: 1
+                          }
+                        }
+                        disablePinning: true
+                      }
+                      grouping: {
+                        dimension: 'RelationshipType'
+                        sort: 2
+                        top: 10
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          {
+            position: {
+              x: 6
+              y: 19
+              rowSpan: 4
+              colSpan: 6
+            }
+            metadata: {
+              inputs: [
+                {
+                  name: 'options'
+                  isOptional: true
+                }
+                {
+                  name: 'sharedTimeRange'
+                  isOptional: true
+                }
+              ]
+              #disable-next-line BCP036
+              type: 'Extension/HubsExtension/PartType/MonitorChartPart'
+              settings: {
+                content: {
+                  options: {
+                    chart: {
+                      metrics: [
+                        {
+                          resourceMetadata: {
+                            id: appInsights.id
+                          }
+                          name: 'UpdateRelationshipAsyncFailed'
+                          aggregationType: 1
+                          namespace: 'azure.applicationinsights'
+                          metricVisualization: {
+                            displayName: 'UpdateRelationshipAsyncFailed'
+                            resourceDisplayName: appInsightsName
+                          }
+                        }
+                      ]
+                      title: 'Update Relationship Failed'
+                      titleKind: 2
+                      visualization: {
+                        chartType: 5
+                        legendVisualization: {
+                          isVisible: true
+                          position: 2
+                          hideSubtitle: false
+                        }
+                        axisVisualization: {
+                          x: {
+                            isVisible: true
+                            axisType: 2
+                          }
+                          y: {
+                            isVisible: true
+                            axisType: 1
+                          }
+                        }
+                        disablePinning: true
+                      }
+                      grouping: {
+                        dimension: 'RelationshipType'
+                        sort: 2
+                        top: 10
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          {
+            position: {
+              x: 12
+              y: 19
+              rowSpan: 4
+              colSpan: 6
+            }
+            metadata: {
+              inputs: [
+                {
+                  name: 'options'
+                  isOptional: true
+                }
+                {
+                  name: 'sharedTimeRange'
+                  isOptional: true
+                }
+              ]
+              #disable-next-line BCP036
+              type: 'Extension/HubsExtension/PartType/MonitorChartPart'
+              settings: {
+                content: {
+                  options: {
+                    chart: {
+                      metrics: [
+                        {
+                          resourceMetadata: {
+                            id: appInsights.id
+                          }
+                          name: 'UpdateRelationshipAsyncThrottled'
+                          aggregationType: 1
+                          namespace: 'azure.applicationinsights'
+                          metricVisualization: {
+                            displayName: 'UpdateRelationshipAsyncThrottled'
+                            resourceDisplayName: appInsightsName
+                          }
+                        }
+                      ]
+                      title: 'Update Relationship Throttled'
+                      titleKind: 2
+                      visualization: {
+                        chartType: 1
+                        legendVisualization: {
+                          isVisible: true
+                          position: 2
+                          hideSubtitle: false
+                        }
+                        axisVisualization: {
+                          x: {
+                            isVisible: true
+                            axisType: 2
+                          }
+                          y: {
+                            isVisible: true
+                            axisType: 1
+                          }
+                        }
+                        disablePinning: true
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          {
+            position: {
+              x: 18
+              y: 19
+              rowSpan: 4
+              colSpan: 6
+            }
+            metadata: {
+              inputs: [
+                {
+                  name: 'options'
+                  isOptional: true
+                }
+                {
+                  name: 'sharedTimeRange'
+                  isOptional: true
+                }
+              ]
+              #disable-next-line BCP036
+              type: 'Extension/HubsExtension/PartType/MonitorChartPart'
+              settings: {
+                content: {
+                  options: {
+                    chart: {
+                      metrics: [
+                        {
+                          resourceMetadata: {
+                            id: appInsights.id
+                          }
+                          name: 'UpdateRelationshipAsyncSkipped'
+                          aggregationType: 1
+                          namespace: 'azure.applicationinsights'
+                          metricVisualization: {
+                            displayName: 'UpdateRelationshipAsyncSkipped'
+                            resourceDisplayName: appInsightsName
+                          }
+                        }
+                      ]
+                      title: 'Update Relationships Skipped'
+                      titleKind: 2
+                      visualization: {
+                        chartType: 1
+                        legendVisualization: {
+                          isVisible: true
+                          position: 2
+                          hideSubtitle: false
+                        }
+                        axisVisualization: {
+                          x: {
+                            isVisible: true
+                            axisType: 2
+                          }
+                          y: {
+                            isVisible: true
+                            axisType: 1
+                          }
+                        }
+                        disablePinning: true
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          {
+            position: {
+              x: 0
+              y: 23
               rowSpan: 1
               colSpan: 24
             }
@@ -990,7 +1325,7 @@ resource dashboard 'Microsoft.Portal/dashboards@2020-09-01-preview' = {
           {
             position: {
               x: 0
-              y: 20
+              y: 24
               rowSpan: 4
               colSpan: 6
             }
@@ -1060,7 +1395,7 @@ resource dashboard 'Microsoft.Portal/dashboards@2020-09-01-preview' = {
           {
             position: {
               x: 6
-              y: 20
+              y: 24
               rowSpan: 4
               colSpan: 6
             }
@@ -1130,7 +1465,7 @@ resource dashboard 'Microsoft.Portal/dashboards@2020-09-01-preview' = {
           {
             position: {
               x: 12
-              y: 20
+              y: 24
               rowSpan: 4
               colSpan: 6
             }
@@ -1200,7 +1535,7 @@ resource dashboard 'Microsoft.Portal/dashboards@2020-09-01-preview' = {
           {
             position: {
               x: 0
-              y: 24
+              y: 28
               rowSpan: 4
               colSpan: 6
             }
@@ -1270,7 +1605,7 @@ resource dashboard 'Microsoft.Portal/dashboards@2020-09-01-preview' = {
           {
             position: {
               x: 6
-              y: 24
+              y: 28
               rowSpan: 4
               colSpan: 6
             }
@@ -1340,7 +1675,7 @@ resource dashboard 'Microsoft.Portal/dashboards@2020-09-01-preview' = {
           {
             position: {
               x: 12
-              y: 24
+              y: 28
               rowSpan: 4
               colSpan: 6
             }
@@ -1410,7 +1745,7 @@ resource dashboard 'Microsoft.Portal/dashboards@2020-09-01-preview' = {
           {
             position: {
               x: 0
-              y: 28
+              y: 32
               rowSpan: 4
               colSpan: 6
             }
@@ -1475,7 +1810,7 @@ resource dashboard 'Microsoft.Portal/dashboards@2020-09-01-preview' = {
           {
             position: {
               x: 6
-              y: 28
+              y: 32
               rowSpan: 4
               colSpan: 6
             }
