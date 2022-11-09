@@ -815,7 +815,7 @@
     },
     {
       "InputDtmi": "dtmi:org:brickschema:schema:Brick:Air_Quality_Sensing_Device;1",
-      "OutputDtmi": "dtmi:com:willowinc:AirQualitySensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:Device;1",
       "IsIgnored": true
     },
     {
