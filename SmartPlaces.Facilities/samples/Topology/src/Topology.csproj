@@ -31,8 +31,8 @@
 		<PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.2" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Console" Version="6.0.0" />
-		<PackageReference Include="Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped" Version="0.3.6-preview" />
-		<PackageReference Include="Microsoft.SmartPlaces.Facilities.OntologyMapper.Mapped" Version="0.9.20-preview" />
+		<PackageReference Include="Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped" Version="0.4.1-preview" />
+		<PackageReference Include="Microsoft.SmartPlaces.Facilities.OntologyMapper.Mapped" Version="0.9.24-preview" />
 	</ItemGroup>
 
 	<PropertyGroup Condition="'$(BuildingInsideVisualStudio)' != 'true'">
@@ -49,6 +49,6 @@
     <!-- Added Explicitly for GHSA-5crp-9r3c-p9vr -->
 	<!-- Can be removed once Microsoft.AspNet.WebApi.Client fixes the vulnerability -->
 	<ItemGroup>
-		<PackageReference Update="Newtonsoft.Json" Version="13.0.1" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
 	</ItemGroup>
 </Project>
