@@ -12,4 +12,4 @@ Open powershell and run the following command
 
 ## Topology
 
-Appending `-deployTopology -appInsightsName <name> [-dashboardName <name>]` will add a dashboard which displays metrics emitted by the Topology sample to a connected ApplicationInsights instance. Related infrastructure will be coming soon.
+Appending `-deployTopology -appInsightsName <name> [-dashboardName <name>]` will add a dashboard which displays metrics emitted by the Topology sample to a connected ApplicationInsights instance.
