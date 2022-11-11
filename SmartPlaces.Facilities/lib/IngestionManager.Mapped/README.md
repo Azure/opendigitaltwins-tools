@@ -10,7 +10,3 @@ This library provides a way to load a DTDL based graph from a Mapped Graph
 *Description*
 
 Implementation of IGraphIngestionProcessor class for loading a site graph from Mapped API. Implements IGraphIngestionProcessor
-
-test
-
-eed
