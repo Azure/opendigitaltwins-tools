@@ -361,16 +361,16 @@ resource dashboard 'Microsoft.Portal/dashboards@2020-09-01-preview' = {
                           resourceMetadata: {
                             id: appInsights.id
                           }
-                          name: 'CreateOrReplaceDigitalTwinAsync'
+                          name: 'Twins'
                           aggregationType: 1
                           namespace: 'azure.applicationinsights'
                           metricVisualization: {
-                            displayName: 'CreateOrReplaceDigitalTwinAsync'
+                            displayName: 'Twins'
                             resourceDisplayName: appInsightsName
                           }
                         }
                       ]
-                      title: 'Created/Reset Twins by Model Id'
+                      title: 'Twin Creates Succeeded'
                       titleKind: 2
                       visualization: {
                         chartType: 5
@@ -390,6 +390,24 @@ resource dashboard 'Microsoft.Portal/dashboards@2020-09-01-preview' = {
                           }
                         }
                         disablePinning: true
+                      }
+                      filterCollection: {
+                        filters: [
+                          {
+                            key: 'Action'
+                            operator: 0
+                            values: [
+                              'create'
+                            ]
+                          }
+                          {
+                            key: 'status'
+                            operator: 0
+                            values: [
+                              'Succeeded'
+                            ]
+                          }
+                        ]
                       }
                       grouping: {
                         dimension: 'ModelId'
@@ -431,16 +449,16 @@ resource dashboard 'Microsoft.Portal/dashboards@2020-09-01-preview' = {
                           resourceMetadata: {
                             id: appInsights.id
                           }
-                          name: 'CreateOrReplaceDigitalTwinAsyncFailed'
+                          name: 'Twins'
                           aggregationType: 1
                           namespace: 'azure.applicationinsights'
                           metricVisualization: {
-                            displayName: 'CreateOrReplaceDigitalTwinAsyncFailed'
+                            displayName: 'Twins'
                             resourceDisplayName: appInsightsName
                           }
                         }
                       ]
-                      title: 'Create/Reset Twin Failed By ModelId'
+                      title: 'Twin Create/Reset Failed'
                       titleKind: 2
                       visualization: {
                         chartType: 5
@@ -461,8 +479,26 @@ resource dashboard 'Microsoft.Portal/dashboards@2020-09-01-preview' = {
                         }
                         disablePinning: true
                       }
+                      filterCollection: {
+                        filters: [
+                          {
+                            key: 'Action'
+                            operator: 0
+                            values: [
+                              'create'
+                            ]
+                          }
+                          {
+                            key: 'status'
+                            operator: 0
+                            values: [
+                              'Failed'
+                            ]
+                          }
+                        ]
+                      }
                       grouping: {
-                        dimension: 'Twin'
+                        dimension: 'ModelId'
                         sort: 2
                         top: 10
                       }
@@ -501,19 +537,19 @@ resource dashboard 'Microsoft.Portal/dashboards@2020-09-01-preview' = {
                           resourceMetadata: {
                             id: appInsights.id
                           }
-                          name: 'CreateOrReplaceDigitalTwinAsyncThrottled'
+                          name: 'Twins'
                           aggregationType: 1
                           namespace: 'azure.applicationinsights'
                           metricVisualization: {
-                            displayName: 'CreateOrReplaceDigitalTwinAsyncThrottled'
+                            displayName: 'Twins'
                             resourceDisplayName: appInsightsName
                           }
                         }
                       ]
-                      title: 'Create/Reset Twin Throttled'
+                      title: 'Create/Reset Twin - Throttled'
                       titleKind: 2
                       visualization: {
-                        chartType: 1
+                        chartType: 5
                         legendVisualization: {
                           isVisible: true
                           position: 2
@@ -530,6 +566,29 @@ resource dashboard 'Microsoft.Portal/dashboards@2020-09-01-preview' = {
                           }
                         }
                         disablePinning: true
+                      }
+                      filterCollection: {
+                        filters: [
+                          {
+                            key: 'Action'
+                            operator: 0
+                            values: [
+                              'create'
+                            ]
+                          }
+                          {
+                            key: 'status'
+                            operator: 0
+                            values: [
+                              'Throttled'
+                            ]
+                          }
+                        ]
+                      }
+                      grouping: {
+                        dimension: 'ModelId'
+                        sort: 2
+                        top: 10
                       }
                     }
                   }
@@ -566,16 +625,16 @@ resource dashboard 'Microsoft.Portal/dashboards@2020-09-01-preview' = {
                           resourceMetadata: {
                             id: appInsights.id
                           }
-                          name: 'UpdateDigitalTwinAsync'
+                          name: 'Twins'
                           aggregationType: 1
                           namespace: 'azure.applicationinsights'
                           metricVisualization: {
-                            displayName: 'UpdateDigitalTwinAsync'
+                            displayName: 'Twins'
                             resourceDisplayName: appInsightsName
                           }
                         }
                       ]
-                      title: 'Updated Twins by modelId'
+                      title: 'Updated Twins Succeeded'
                       titleKind: 2
                       visualization: {
                         chartType: 5
@@ -595,6 +654,24 @@ resource dashboard 'Microsoft.Portal/dashboards@2020-09-01-preview' = {
                           }
                         }
                         disablePinning: true
+                      }
+                      filterCollection: {
+                        filters: [
+                          {
+                            key: 'Action'
+                            operator: 0
+                            values: [
+                              'Update'
+                            ]
+                          }
+                          {
+                            key: 'status'
+                            operator: 0
+                            values: [
+                              'Succeeded'
+                            ]
+                          }
+                        ]
                       }
                       grouping: {
                         dimension: 'ModelId'
@@ -636,16 +713,16 @@ resource dashboard 'Microsoft.Portal/dashboards@2020-09-01-preview' = {
                           resourceMetadata: {
                             id: appInsights.id
                           }
-                          name: 'UpdateDigitalTwinAsyncFailed'
+                          name: 'Twins'
                           aggregationType: 1
                           namespace: 'azure.applicationinsights'
                           metricVisualization: {
-                            displayName: 'UpdateDigitalTwinAsyncFailed'
+                            displayName: 'Twins'
                             resourceDisplayName: appInsightsName
                           }
                         }
                       ]
-                      title: 'Update Twin Failed by ModelId'
+                      title: 'Update Twins Failed'
                       titleKind: 2
                       visualization: {
                         chartType: 5
@@ -666,8 +743,26 @@ resource dashboard 'Microsoft.Portal/dashboards@2020-09-01-preview' = {
                         }
                         disablePinning: true
                       }
+                      filterCollection: {
+                        filters: [
+                          {
+                            key: 'Action'
+                            operator: 0
+                            values: [
+                              'Update'
+                            ]
+                          }
+                          {
+                            key: 'status'
+                            operator: 0
+                            values: [
+                              'Failed'
+                            ]
+                          }
+                        ]
+                      }
                       grouping: {
-                        dimension: 'Twin'
+                        dimension: 'ModelId'
                         sort: 2
                         top: 10
                       }
@@ -706,19 +801,19 @@ resource dashboard 'Microsoft.Portal/dashboards@2020-09-01-preview' = {
                           resourceMetadata: {
                             id: appInsights.id
                           }
-                          name: 'UpdateDigitalTwinAsyncThrottled'
+                          name: 'Twins'
                           aggregationType: 1
                           namespace: 'azure.applicationinsights'
                           metricVisualization: {
-                            displayName: 'UpdateDigitalTwinAsyncThrottled'
+                            displayName: 'Twins'
                             resourceDisplayName: appInsightsName
                           }
                         }
                       ]
-                      title: 'Update Twin Throttled'
+                      title: 'Update Twin - Throttled'
                       titleKind: 2
                       visualization: {
-                        chartType: 1
+                        chartType: 5
                         legendVisualization: {
                           isVisible: true
                           position: 2
@@ -736,6 +831,118 @@ resource dashboard 'Microsoft.Portal/dashboards@2020-09-01-preview' = {
                         }
                         disablePinning: true
                       }
+                      filterCollection: {
+                        filters: [
+                          {
+                            key: 'Action'
+                            operator: 0
+                            values: [
+                              'Update'
+                            ]
+                          }
+                          {
+                            key: 'status'
+                            operator: 0
+                            values: [
+                              'Throttled'
+                            ]
+                          }
+                        ]
+                      }
+                      grouping: {
+                        dimension: 'ModelId'
+                        sort: 2
+                        top: 10
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          {
+            position: {
+              x: 18
+              y: 10
+              rowSpan: 4
+              colSpan: 6
+            }
+            metadata: {
+              inputs: [
+                {
+                  name: 'options'
+                  isOptional: true
+                }
+                {
+                  name: 'sharedTimeRange'
+                  isOptional: true
+                }
+              ]
+              #disable-next-line BCP036
+              type: 'Extension/HubsExtension/PartType/MonitorChartPart'
+              settings: {
+                content: {
+                  options: {
+                    chart: {
+                      metrics: [
+                        {
+                          resourceMetadata: {
+                            id: appInsights.id
+                          }
+                          name: 'Twins'
+                          aggregationType: 1
+                          namespace: 'azure.applicationinsights'
+                          metricVisualization: {
+                            displayName: 'Twins'
+                            resourceDisplayName: appInsightsName
+                          }
+                        }
+                      ]
+                      title: 'Update Twin - Unchanged'
+                      titleKind: 2
+                      visualization: {
+                        chartType: 5
+                        legendVisualization: {
+                          isVisible: true
+                          position: 2
+                          hideSubtitle: false
+                        }
+                        axisVisualization: {
+                          x: {
+                            isVisible: true
+                            axisType: 2
+                          }
+                          y: {
+                            isVisible: true
+                            axisType: 1
+                          }
+                        }
+                        disablePinning: true
+                      }
+                      filterCollection: {
+                        filters: [
+                          {
+                            key: 'Action'
+                            operator: 0
+                            values: [
+                              'Update'
+                            ]
+                          }
+                          {
+                            key: 'status'
+                            operator: 0
+                            values: [
+                              'Skipped'
+                            ]
+                          }
+                        ]
+                      }
+                      grouping: {
+                        dimension: 'ModelId'
+                        sort: 2
+                        top: 10
+                      }
+
                     }
                   }
                 }
@@ -791,16 +998,16 @@ resource dashboard 'Microsoft.Portal/dashboards@2020-09-01-preview' = {
                           resourceMetadata: {
                             id: appInsights.id
                           }
-                          name: 'CreateOrReplaceRelationshipAsync'
+                          name: 'Relationships'
                           aggregationType: 1
                           namespace: 'azure.applicationinsights'
                           metricVisualization: {
-                            displayName: 'CreateOrReplaceRelationshipAsync'
+                            displayName: 'Relationships'
                             resourceDisplayName: appInsightsName
                           }
                         }
                       ]
-                      title: 'Created/Reset Relationships by RelationshipType'
+                      title: 'Created/Reset Relationships Succeeded'
                       titleKind: 2
                       visualization: {
                         chartType: 5
@@ -820,6 +1027,24 @@ resource dashboard 'Microsoft.Portal/dashboards@2020-09-01-preview' = {
                           }
                         }
                         disablePinning: true
+                      }
+                      filterCollection: {
+                        filters: [
+                          {
+                            key: 'Action'
+                            operator: 0
+                            values: [
+                              'create'
+                            ]
+                          }
+                          {
+                            key: 'status'
+                            operator: 0
+                            values: [
+                              'Succeeded'
+                            ]
+                          }
+                        ]
                       }
                       grouping: {
                         dimension: 'RelationshipType'
@@ -861,11 +1086,11 @@ resource dashboard 'Microsoft.Portal/dashboards@2020-09-01-preview' = {
                           resourceMetadata: {
                             id: appInsights.id
                           }
-                          name: 'CreateOrReplaceRelationshipAsyncFailed'
+                          name: 'Relationships'
                           aggregationType: 1
                           namespace: 'azure.applicationinsights'
                           metricVisualization: {
-                            displayName: 'CreateOrReplaceRelationshipAsyncFailed'
+                            displayName: 'Relationships'
                             resourceDisplayName: appInsightsName
                           }
                         }
@@ -890,6 +1115,24 @@ resource dashboard 'Microsoft.Portal/dashboards@2020-09-01-preview' = {
                           }
                         }
                         disablePinning: true
+                      }
+                      filterCollection: {
+                        filters: [
+                          {
+                            key: 'Action'
+                            operator: 0
+                            values: [
+                              'create'
+                            ]
+                          }
+                          {
+                            key: 'status'
+                            operator: 0
+                            values: [
+                              'Failed'
+                            ]
+                          }
+                        ]
                       }
                       grouping: {
                         dimension: 'RelationshipType'
@@ -931,11 +1174,11 @@ resource dashboard 'Microsoft.Portal/dashboards@2020-09-01-preview' = {
                           resourceMetadata: {
                             id: appInsights.id
                           }
-                          name: 'CreateOrReplaceRelationshipAsyncThrottle'
+                          name: 'Relationships'
                           aggregationType: 1
                           namespace: 'azure.applicationinsights'
                           metricVisualization: {
-                            displayName: 'CreateOrReplaceRelationshipAsyncThrottle'
+                            displayName: 'Relationships'
                             resourceDisplayName: appInsightsName
                           }
                         }
@@ -943,7 +1186,7 @@ resource dashboard 'Microsoft.Portal/dashboards@2020-09-01-preview' = {
                       title: 'Create/Reset Relationship Throttled'
                       titleKind: 2
                       visualization: {
-                        chartType: 1
+                        chartType: 5
                         legendVisualization: {
                           isVisible: true
                           position: 2
@@ -961,6 +1204,29 @@ resource dashboard 'Microsoft.Portal/dashboards@2020-09-01-preview' = {
                         }
                         disablePinning: true
                       }
+                      filterCollection: {
+                        filters: [
+                          {
+                            key: 'Action'
+                            operator: 0
+                            values: [
+                              'create'
+                            ]
+                          }
+                          {
+                            key: 'status'
+                            operator: 0
+                            values: [
+                              'Throttled'
+                            ]
+                          }
+                        ]
+                      }
+                      grouping: {
+                        dimension: 'RelationshipType'
+                        sort: 2
+                        top: 10
+                      }
                     }
                   }
                 }
@@ -971,6 +1237,358 @@ resource dashboard 'Microsoft.Portal/dashboards@2020-09-01-preview' = {
             position: {
               x: 0
               y: 19
+              rowSpan: 4
+              colSpan: 6
+            }
+            metadata: {
+              inputs: [
+                {
+                  name: 'options'
+                  isOptional: true
+                }
+                {
+                  name: 'sharedTimeRange'
+                  isOptional: true
+                }
+              ]
+              #disable-next-line BCP036
+              type: 'Extension/HubsExtension/PartType/MonitorChartPart'
+              settings: {
+                content: {
+                  options: {
+                    chart: {
+                      metrics: [
+                        {
+                          resourceMetadata: {
+                            id: appInsights.id
+                          }
+                          name: 'Relationships'
+                          aggregationType: 1
+                          namespace: 'azure.applicationinsights'
+                          metricVisualization: {
+                            displayName: 'Relationships'
+                            resourceDisplayName: appInsightsName
+                          }
+                        }
+                      ]
+                      title: 'Updated Relationships Succeeded'
+                      titleKind: 2
+                      visualization: {
+                        chartType: 5
+                        legendVisualization: {
+                          isVisible: true
+                          position: 2
+                          hideSubtitle: false
+                        }
+                        axisVisualization: {
+                          x: {
+                            isVisible: true
+                            axisType: 2
+                          }
+                          y: {
+                            isVisible: true
+                            axisType: 1
+                          }
+                        }
+                        disablePinning: true
+                      }
+                      filterCollection: {
+                        filters: [
+                          {
+                            key: 'Action'
+                            operator: 0
+                            values: [
+                              'update'
+                            ]
+                          }
+                          {
+                            key: 'status'
+                            operator: 0
+                            values: [
+                              'Succeeded'
+                            ]
+                          }
+                        ]
+                      }
+                      grouping: {
+                        dimension: 'RelationshipType'
+                        sort: 2
+                        top: 10
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          {
+            position: {
+              x: 6
+              y: 19
+              rowSpan: 4
+              colSpan: 6
+            }
+            metadata: {
+              inputs: [
+                {
+                  name: 'options'
+                  isOptional: true
+                }
+                {
+                  name: 'sharedTimeRange'
+                  isOptional: true
+                }
+              ]
+              #disable-next-line BCP036
+              type: 'Extension/HubsExtension/PartType/MonitorChartPart'
+              settings: {
+                content: {
+                  options: {
+                    chart: {
+                      metrics: [
+                        {
+                          resourceMetadata: {
+                            id: appInsights.id
+                          }
+                          name: 'Relationships'
+                          aggregationType: 1
+                          namespace: 'azure.applicationinsights'
+                          metricVisualization: {
+                            displayName: 'Relationships'
+                            resourceDisplayName: appInsightsName
+                          }
+                        }
+                      ]
+                      title: 'Update Relationships Failed'
+                      titleKind: 2
+                      visualization: {
+                        chartType: 5
+                        legendVisualization: {
+                          isVisible: true
+                          position: 2
+                          hideSubtitle: false
+                        }
+                        axisVisualization: {
+                          x: {
+                            isVisible: true
+                            axisType: 2
+                          }
+                          y: {
+                            isVisible: true
+                            axisType: 1
+                          }
+                        }
+                        disablePinning: true
+                      }
+                      filterCollection: {
+                        filters: [
+                          {
+                            key: 'Action'
+                            operator: 0
+                            values: [
+                              'update'
+                            ]
+                          }
+                          {
+                            key: 'status'
+                            operator: 0
+                            values: [
+                              'Failed'
+                            ]
+                          }
+                        ]
+                      }
+                      grouping: {
+                        dimension: 'RelationshipType'
+                        sort: 2
+                        top: 10
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          {
+            position: {
+              x: 12
+              y: 19
+              rowSpan: 4
+              colSpan: 6
+            }
+            metadata: {
+              inputs: [
+                {
+                  name: 'options'
+                  isOptional: true
+                }
+                {
+                  name: 'sharedTimeRange'
+                  isOptional: true
+                }
+              ]
+              #disable-next-line BCP036
+              type: 'Extension/HubsExtension/PartType/MonitorChartPart'
+              settings: {
+                content: {
+                  options: {
+                    chart: {
+                      metrics: [
+                        {
+                          resourceMetadata: {
+                            id: appInsights.id
+                          }
+                          name: 'Relationships'
+                          aggregationType: 1
+                          namespace: 'azure.applicationinsights'
+                          metricVisualization: {
+                            displayName: 'Relationships'
+                            resourceDisplayName: appInsightsName
+                          }
+                        }
+                      ]
+                      title: 'Update Relationships Throttled'
+                      titleKind: 2
+                      visualization: {
+                        chartType: 5
+                        legendVisualization: {
+                          isVisible: true
+                          position: 2
+                          hideSubtitle: false
+                        }
+                        axisVisualization: {
+                          x: {
+                            isVisible: true
+                            axisType: 2
+                          }
+                          y: {
+                            isVisible: true
+                            axisType: 1
+                          }
+                        }
+                        disablePinning: true
+                      }
+                      filterCollection: {
+                        filters: [
+                          {
+                            key: 'Action'
+                            operator: 0
+                            values: [
+                              'Update'
+                            ]
+                          }
+                          {
+                            key: 'status'
+                            operator: 0
+                            values: [
+                              'Throttled'
+                            ]
+                          }
+                        ]
+                      }
+                      grouping: {
+                        dimension: 'RelationshipType'
+                        sort: 2
+                        top: 10
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          {
+            position: {
+              x: 18
+              y: 19
+              rowSpan: 4
+              colSpan: 6
+            }
+            metadata: {
+              inputs: [
+                {
+                  name: 'options'
+                  isOptional: true
+                }
+                {
+                  name: 'sharedTimeRange'
+                  isOptional: true
+                }
+              ]
+              #disable-next-line BCP036
+              type: 'Extension/HubsExtension/PartType/MonitorChartPart'
+              settings: {
+                content: {
+                  options: {
+                    chart: {
+                      metrics: [
+                        {
+                          resourceMetadata: {
+                            id: appInsights.id
+                          }
+                          name: 'Relationships'
+                          aggregationType: 1
+                          namespace: 'azure.applicationinsights'
+                          metricVisualization: {
+                            displayName: 'Relationships'
+                            resourceDisplayName: appInsightsName
+                          }
+                        }
+                      ]
+                      title: 'Update Relationships - Unchanged'
+                      titleKind: 2
+                      visualization: {
+                        chartType: 5
+                        legendVisualization: {
+                          isVisible: true
+                          position: 2
+                          hideSubtitle: false
+                        }
+                        axisVisualization: {
+                          x: {
+                            isVisible: true
+                            axisType: 2
+                          }
+                          y: {
+                            isVisible: true
+                            axisType: 1
+                          }
+                        }
+                        disablePinning: true
+                      }
+                      filterCollection: {
+                        filters: [
+                          {
+                            key: 'Action'
+                            operator: 0
+                            values: [
+                              'update'
+                            ]
+                          }
+                          {
+                            key: 'status'
+                            operator: 0
+                            values: [
+                              'Skipped'
+                            ]
+                          }
+                        ]
+                      }
+                      grouping: {
+                        dimension: 'RelationshipType'
+                        sort: 2
+                        top: 10
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          {
+            position: {
+              x: 0
+              y: 23
               rowSpan: 1
               colSpan: 24
             }
@@ -990,7 +1608,7 @@ resource dashboard 'Microsoft.Portal/dashboards@2020-09-01-preview' = {
           {
             position: {
               x: 0
-              y: 20
+              y: 24
               rowSpan: 4
               colSpan: 6
             }
@@ -1060,7 +1678,7 @@ resource dashboard 'Microsoft.Portal/dashboards@2020-09-01-preview' = {
           {
             position: {
               x: 6
-              y: 20
+              y: 24
               rowSpan: 4
               colSpan: 6
             }
@@ -1130,7 +1748,7 @@ resource dashboard 'Microsoft.Portal/dashboards@2020-09-01-preview' = {
           {
             position: {
               x: 12
-              y: 20
+              y: 24
               rowSpan: 4
               colSpan: 6
             }
@@ -1200,7 +1818,7 @@ resource dashboard 'Microsoft.Portal/dashboards@2020-09-01-preview' = {
           {
             position: {
               x: 0
-              y: 24
+              y: 28
               rowSpan: 4
               colSpan: 6
             }
@@ -1270,7 +1888,7 @@ resource dashboard 'Microsoft.Portal/dashboards@2020-09-01-preview' = {
           {
             position: {
               x: 6
-              y: 24
+              y: 28
               rowSpan: 4
               colSpan: 6
             }
@@ -1340,7 +1958,7 @@ resource dashboard 'Microsoft.Portal/dashboards@2020-09-01-preview' = {
           {
             position: {
               x: 12
-              y: 24
+              y: 28
               rowSpan: 4
               colSpan: 6
             }
@@ -1410,7 +2028,7 @@ resource dashboard 'Microsoft.Portal/dashboards@2020-09-01-preview' = {
           {
             position: {
               x: 0
-              y: 28
+              y: 32
               rowSpan: 4
               colSpan: 6
             }
@@ -1475,7 +2093,7 @@ resource dashboard 'Microsoft.Portal/dashboards@2020-09-01-preview' = {
           {
             position: {
               x: 6
-              y: 28
+              y: 32
               rowSpan: 4
               colSpan: 6
             }

@@ -126,19 +126,20 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Test
             Assert.Equal(expectedRelationshipType, outputRelationshipType);
         }
 
-        //[Fact]
-        //public void GetOutputRelationshipType_ReturnsInputValue_WhenNotFound()
-        //{
-        //    var mockedIngestionProcessor = new MockedIngestionProcessor<IngestionManagerOptions>(mockLogger.Object,
-        //                                                                telemetryClient,
-        //                                                                mockInputGraphManager.Object,
-        //                                                                ontologyMappingManager,
-        //                                                                mockOutputGraphManager.Object);
+        [Fact]
+        public void GetOutputRelationshipType_ReturnsInputValue_WhenNotFound()
+        {
+            var mockedIngestionProcessor = new MockedIngestionProcessor<IngestionManagerOptions>(mockLogger.Object,
+                                                                        telemetryClient,
+                                                                        mockInputGraphManager.Object,
+                                                                        ontologyMappingManager,
+                                                                        mockOutputGraphManager.Object);
 
-        //    var inputRelationshipType = "wasA";
-        //    var outputRelationshipType = mockedIngestionProcessor.TestGetOutputRelationshipType(inputRelationshipType);
-        //    Assert.Equal(inputRelationshipType, outputRelationshipType);
-        //}
+            var inputRelationshipType = "wasA";
+            var outputRelationshipType = mockedIngestionProcessor.TestGetOutputRelationshipType(inputRelationshipType);
+            Assert.Equal(inputRelationshipType, outputRelationshipType);
+        }
+
         [Fact]
         public async Task TryGetOutputInterfaceDtmi_ReturnsValue_WhenFoundInTargetOntology()
         {

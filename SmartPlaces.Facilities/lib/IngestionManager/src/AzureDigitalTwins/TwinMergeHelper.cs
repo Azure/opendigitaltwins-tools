@@ -44,6 +44,32 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.AzureDigitalTwins
             return !jsonPatchDocument.IsEmpty();
         }
 
+        internal static bool TryCreatePatchDocument(BasicRelationship existingRelationship, BasicRelationship newRelationship, out JsonPatchDocument jsonPatchDocument)
+        {
+            jsonPatchDocument = new JsonPatchDocument();
+
+            foreach (var newProperty in newRelationship.Properties)
+            {
+                var newPropertyName = newProperty.Key;
+                var newPropertyValue = newProperty.Value;
+
+                // See if the existing relationship has the property
+                if (existingRelationship.Properties.TryGetValue(newPropertyName, out var existingPropertyValue))
+                {
+                    if (existingPropertyValue != null && existingPropertyValue != newPropertyValue)
+                    {
+                        jsonPatchDocument.AppendReplace("/" + newPropertyName, newPropertyValue);
+                    }
+                }
+                else
+                {
+                    jsonPatchDocument.AppendAdd("/" + newPropertyName, newPropertyValue);
+                }
+            }
+
+            return !jsonPatchDocument.IsEmpty();
+        }
+
         private static void GetUpdates(JsonPatchDocument jsonPatchDocument, string propertyName, JsonElement newPropertyJson, JsonElement existingPropertyJson)
         {
             // If the kinds are the same, keep checking to see if there are other equalities

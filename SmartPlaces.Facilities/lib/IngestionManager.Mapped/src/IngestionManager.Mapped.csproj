@@ -34,6 +34,12 @@
 		<PackageReference Include="StackExchange.Redis" Version="2.6.70" />
 	</ItemGroup>
 
+	<!-- Added Explicitly for CVE-2021-24112 -->
+	<!-- Can be removed once StackExchange.Redis fixes the vulnerability -->
+	<ItemGroup>
+		<PackageReference Include="System.Drawing.Common" Version="5.0.3" />
+	</ItemGroup>
+
 	<ItemGroup>
 		<None Include="..\README.md" Pack="true" PackagePath="\" />
 	</ItemGroup>
