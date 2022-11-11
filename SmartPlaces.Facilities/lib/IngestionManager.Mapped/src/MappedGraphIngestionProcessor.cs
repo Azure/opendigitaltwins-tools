@@ -30,11 +30,11 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
         /// <summary>
         /// Constructor
         /// </summary>
-        /// <param name="logger">An instance of an ILogger used to log status as needed</param>
-        /// <param name="inputGraphManager">An instance of an IInputGraphManager used to load a graph from the input source</param>
-        /// <param name="ontologyMappingManager">An instance of an IOntologyMappingManager used to map the input ontology to the output ontology</param>
-        /// <param name="outputGraphManager">An instance of an IOutputGraphManager used to save a graph to the output target</param>
-        /// <param name="telemetryClient">An instance of a telemetry client used to record metrics to a metrics store</param>
+        /// <param name="logger">An instance of an <see cref="ILogger">ILogger</see> used to log status as needed</param>
+        /// <param name="inputGraphManager">An instance of an <see cref="IInputGraphManager">IInputGraphManager</see> used to load a graph from the input source</param>
+        /// <param name="ontologyMappingManager">An instance of an <see cref="IOntologyMappingManager">IOntologyMappingManager</see> used to map the input ontology to the output ontology</param>
+        /// <param name="outputGraphManager">An instance of an <see cref="IOutputGraphManager">IOutputGraphManager</see> used to save a graph to the output target</param>
+        /// <param name="telemetryClient">An instance of a <see cref="TelemetryClient">telemetry client</see> used to record metrics to a metrics store</param>
         public MappedGraphIngestionProcessor(ILogger<MappedGraphIngestionProcessor<TOptions>> logger,
                                              IInputGraphManager inputGraphManager,
                                              IOntologyMappingManager ontologyMappingManager,

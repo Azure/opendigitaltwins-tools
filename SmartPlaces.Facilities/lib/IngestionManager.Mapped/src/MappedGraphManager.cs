@@ -28,9 +28,9 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
         /// <summary>
         /// Constructor
         /// </summary>
-        /// <param name="logger">An instance of an ILogger used to log status as needed</param>
-        /// <param name="httpClientFactory">An instance of IHttpClientFactory used to create an HttpClient</param>
-        /// <param name="options">An instance of IOptions used to pass paramters to the Graph Manager</param>
+        /// <param name="logger">An instance of an <see cref="ILogger">ILogger</see> used to log status as needed</param>
+        /// <param name="httpClientFactory">An instance of <see cref="IHttpClientFactory">IHttpClientFactory</see> used to create an HttpClient</param>
+        /// <param name="options">An instance of IOptions of <see cref="MappedIngestionManagerOptions">MappedIngestionManagerOptions</see> used to pass paramters to the Graph Manager</param>
         public MappedGraphManager(ILogger<MappedGraphManager> logger, IHttpClientFactory httpClientFactory, IOptions<MappedIngestionManagerOptions> options)
         {
             this.logger = logger;
