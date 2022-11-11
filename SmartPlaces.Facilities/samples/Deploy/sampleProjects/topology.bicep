@@ -2066,7 +2066,7 @@ resource dashboard 'Microsoft.Portal/dashboards@2020-09-01-preview' = {
                       title: 'Invalid Target DTMI Mappings in MappingFile'
                       titleKind: 2
                       visualization: {
-                        chartType: 5
+                        chartType: 1
                         legendVisualization: {
                           isVisible: true
                           position: 2
