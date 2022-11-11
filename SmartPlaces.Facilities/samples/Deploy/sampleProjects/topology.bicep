@@ -546,10 +546,10 @@ resource dashboard 'Microsoft.Portal/dashboards@2020-09-01-preview' = {
                           }
                         }
                       ]
-                      title: 'Create/Reset Twin Throttled'
+                      title: 'Create/Reset Twin - Throttled'
                       titleKind: 2
                       visualization: {
-                        chartType: 1
+                        chartType: 5
                         legendVisualization: {
                           isVisible: true
                           position: 2
@@ -810,10 +810,10 @@ resource dashboard 'Microsoft.Portal/dashboards@2020-09-01-preview' = {
                           }
                         }
                       ]
-                      title: 'Update Twin Throttled'
+                      title: 'Update Twin - Throttled'
                       titleKind: 2
                       visualization: {
-                        chartType: 1
+                        chartType: 5
                         legendVisualization: {
                           isVisible: true
                           position: 2
@@ -898,10 +898,10 @@ resource dashboard 'Microsoft.Portal/dashboards@2020-09-01-preview' = {
                           }
                         }
                       ]
-                      title: 'Update Twin Skipped'
+                      title: 'Update Twin - Unchanged'
                       titleKind: 2
                       visualization: {
-                        chartType: 1
+                        chartType: 5
                         legendVisualization: {
                           isVisible: true
                           position: 2
@@ -1186,7 +1186,7 @@ resource dashboard 'Microsoft.Portal/dashboards@2020-09-01-preview' = {
                       title: 'Create/Reset Relationship Throttled'
                       titleKind: 2
                       visualization: {
-                        chartType: 1
+                        chartType: 5
                         legendVisualization: {
                           isVisible: true
                           position: 2
@@ -1450,7 +1450,7 @@ resource dashboard 'Microsoft.Portal/dashboards@2020-09-01-preview' = {
                       title: 'Update Relationships Throttled'
                       titleKind: 2
                       visualization: {
-                        chartType: 1
+                        chartType: 5
                         legendVisualization: {
                           isVisible: true
                           position: 2
@@ -1535,10 +1535,10 @@ resource dashboard 'Microsoft.Portal/dashboards@2020-09-01-preview' = {
                           }
                         }
                       ]
-                      title: 'Update Relationships Skipped'
+                      title: 'Update Relationships - Unchanged'
                       titleKind: 2
                       visualization: {
-                        chartType: 1
+                        chartType: 5
                         legendVisualization: {
                           isVisible: true
                           position: 2
@@ -2066,7 +2066,7 @@ resource dashboard 'Microsoft.Portal/dashboards@2020-09-01-preview' = {
                       title: 'Invalid Target DTMI Mappings in MappingFile'
                       titleKind: 2
                       visualization: {
-                        chartType: 1
+                        chartType: 5
                         legendVisualization: {
                           isVisible: true
                           position: 2
