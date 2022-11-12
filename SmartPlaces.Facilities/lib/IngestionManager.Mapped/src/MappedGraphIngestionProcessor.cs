@@ -27,6 +27,14 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
     {
         private readonly MetricIdentifier exactTypeNotFoundMetricIdentifier = new MetricIdentifier(Metrics.DefaultNamespace, "ExactTypeNotFound", Metrics.IdDimensionName);
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="logger">An instance of an <see cref="ILogger">ILogger</see> used to log status as needed</param>
+        /// <param name="inputGraphManager">An instance of an <see cref="IInputGraphManager">IInputGraphManager</see> used to load a graph from the input source</param>
+        /// <param name="ontologyMappingManager">An instance of an <see cref="IOntologyMappingManager">IOntologyMappingManager</see> used to map the input ontology to the output ontology</param>
+        /// <param name="outputGraphManager">An instance of an <see cref="IOutputGraphManager">IOutputGraphManager</see> used to save a graph to the output target</param>
+        /// <param name="telemetryClient">An instance of a <see cref="TelemetryClient">telemetry client</see> used to record metrics to a metrics store</param>
         public MappedGraphIngestionProcessor(ILogger<MappedGraphIngestionProcessor<TOptions>> logger,
                                              IInputGraphManager inputGraphManager,
                                              IOntologyMappingManager ontologyMappingManager,
@@ -40,6 +48,11 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
         {
         }
 
+        /// <summary>
+        /// Start the ingestion process for a collection of buildings 
+        /// </summary>
+        /// <param name="cancellationToken">CancellationToken</param>
+        /// <returns>An awaitable task</returns>
         protected override async Task GetSites(CancellationToken cancellationToken)
         {
             // Generate the outermost query to run against the input graph. Starts by getting the list of sites
@@ -53,7 +66,6 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
             // Loop through all of the sites and process
             if (inputSites != null)
             {
-                // TODO: Jobee - is there a better way to navigate the graph than all of these for each loops?
                 foreach (var topElement in inputSites.RootElement.EnumerateObject())
                 {
                     foreach (var dataElement in topElement.Value.EnumerateObject())

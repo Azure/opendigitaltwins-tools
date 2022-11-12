@@ -15,6 +15,9 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
     using Microsoft.Net.Http.Headers;
     using Microsoft.SmartPlaces.Facilities.IngestionManager.Interfaces;
 
+    /// <summary>
+    /// Load a topology graph from a Mapped instance via the Mapped API
+    /// </summary>
     public class MappedGraphManager : IInputGraphManager
     {
         private readonly ILogger logger;
@@ -22,6 +25,12 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
         private readonly HttpClient httpClient;
         private readonly JsonDocument model;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="logger">An instance of an <see cref="ILogger">ILogger</see> used to log status as needed</param>
+        /// <param name="httpClientFactory">An instance of <see cref="IHttpClientFactory">IHttpClientFactory</see> used to create an HttpClient</param>
+        /// <param name="options">An instance of IOptions of <see cref="MappedIngestionManagerOptions">MappedIngestionManagerOptions</see> used to pass paramters to the Graph Manager</param>
         public MappedGraphManager(ILogger<MappedGraphManager> logger, IHttpClientFactory httpClientFactory, IOptions<MappedIngestionManagerOptions> options)
         {
             this.logger = logger;
@@ -32,6 +41,11 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
             httpClient = httpClientFactory.CreateClient("Microsoft.SmartPlaces.Facilities");
         }
 
+        /// <summary>
+        /// Generic method for getting a JsonDocument from Mapped Graph API for a passed in Graph Query
+        /// </summary>
+        /// <param name="query">A formatted graph query</param>
+        /// <returns>A JSON Document containing the results of the query against the Mapped API</returns>
         public async Task<JsonDocument?> GetTwinGraphAsync(string query)
         {
             logger.LogInformation("Getting topology from mapped. {query}", query);
@@ -54,7 +68,6 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
 
             var httpResponseMessage = await httpClient.SendAsync(httpRequestMessage).ConfigureAwait(false);
 
-            // TODO: jobee - Improve error handling here
             if (httpResponseMessage.IsSuccessStatusCode)
             {
                 var response = await httpResponseMessage.Content.ReadAsStringAsync().ConfigureAwait(false);
@@ -64,36 +77,63 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
             return null;
         }
 
+        /// <summary>
+        /// Creates a query that returns all the sites associated to an organization
+        /// </summary>
+        /// <returns>A formatted graph query</returns>
         public string GetOrganizationQuery()
         {
             return "{sites{description,exactType,id,name}}";
         }
 
+        /// <summary>
+        /// Creates a query that returns all the buildings associated to a site
+        /// </summary>
+        /// <returns>A formatted graph query</returns>
         public string GetBuildingsForSiteQuery(string siteId)
         {
             return "{ sites(filter: { id: { eq: \"" + siteId + "\"} }) { description,exactType,id,name,buildings{ description,exactType,id,name,floors{ description,exactType,id,level,name} } } }";
         }
 
+        /// <summary>
+        /// Creates a query that returns all the things associated to a building
+        /// </summary>
+        /// <returns>A formatted graph query</returns>
         public string GetBuildingThingsQuery(string buildingDtId)
         {
             return "{ buildings(filter: { id: { eq: \"" + buildingDtId + "\"} }) { things{ description,exactType,firmwareVersion,id,mappingKey,name,hasLocation{ exactType,id,name} } } }";
         }
 
+        /// <summary>
+        /// Creates a query that returns all the points associated to a thing
+        /// </summary>
+        /// <returns>A formatted graph query</returns>
         public string GetPointsForThingQuery(string thingDtId)
         {
             return "{ things(filter: { id: { eq: \"" + thingDtId + "\" } }) { points(filter: { exactType: { ne: \"Point\"} }) { description,exactType,id,mappingKey,name} } }";
         }
 
-        public string GetFloorQuery(string basicDtId)
+        /// <summary>
+        /// Creates a query that returns all the floors associated to a building
+        /// </summary>
+        /// <returns>A formatted graph query</returns>
+        public string GetFloorQuery(string buildingDtId)
         {
-            return "{ floors(filter: { id: { eq: \"" + basicDtId + "\"} }) { description,exactType,id,level,name,hasPart{ exactType,id,name},zones{ description,exactType,id,name} } }";
+            return "{ floors(filter: { id: { eq: \"" + buildingDtId + "\"} }) { description,exactType,id,level,name,hasPart{ exactType,id,name},zones{ description,exactType,id,name} } }";
         }
 
+        /// <summary>
+        /// Try to get a Digital Twins Model Interface for a Mapped Exact type
+        /// </summary>
+        /// <param name="exactType">The exact type of the twin from Mapped</param>
+        /// <param name="dtmi">The output DTMI if found, otherwise string.Empty</param>
+        /// <returns>true if found, otherwise false</returns>
+        /// <exception cref="ArgumentNullException">Thrown if the exact type passed in is Null, String.Empty, or Whitespace</exception>
         public bool TryGetDtmi(string exactType, out string dtmi)
         {
             dtmi = string.Empty;
 
-            if (string.IsNullOrEmpty(exactType))
+            if (string.IsNullOrWhiteSpace(exactType))
             {
                 throw new ArgumentNullException(nameof(exactType));
             }
