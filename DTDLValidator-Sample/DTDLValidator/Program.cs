@@ -62,8 +62,8 @@
                 if(opts.Directory != null && opts.Directory != string.Empty)
                 {
                     dinfo = new DirectoryInfo(opts.Directory);
-
                     Log.Alert($"Validating *.{opts.Extension} files in folder '{dinfo.FullName}'.\nRecursive is set to {opts.Recursive}\n");
+
                     if (dinfo.Exists == false)
                     {
                         Log.Error($"Specified directory '{opts.Directory}' does not exist: Exiting...");
