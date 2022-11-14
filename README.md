@@ -20,8 +20,8 @@ The program is a command line application that can be used in normal or interact
 
 In normal mode, specify:
 * a file extension (-e, default json)
-* a directory to search (-d, default '.')
-* a recursive option that determines if the file search descends into subdirectories (-r, default true)
+* a directory to search (-d, no default value)
+* a recursive option that determines if the file search descends into subdirectories (-r, default false)
 
 Interactive mode is entered with the -i option. Type help for information on interactive commands
 
@@ -39,3 +39,14 @@ Run
 dotnet publish -r win-x64 -c Release /p:PublishSingleFile=true
 ```
 in the root folder of the repo.
+
+# Package as Global Tool
+Run
+``` bash
+dotnet publish
+dotnet tool install --global --add-source ./DTDLValidator/nupkg DTDLValidator
+```
+
+This appends the path of the generated executible to your system's **PATH** variable.
+Now, run `dtdl-validator <ARGS>` to use the tool.
+
