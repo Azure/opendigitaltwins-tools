@@ -6,8 +6,12 @@
 
 namespace Microsoft.SmartPlaces.Facilities.IngestionManager
 {
+    /// <summary>
+    /// Metrics metadata for Application Insights.
+    /// </summary>
     internal static class Metrics
     {
+#pragma warning disable SA1600 // Elements should be documented
         internal const string DefaultNamespace = "microsoft.smartplaces.facilities";
         internal const string ActionDimensionName = "Action";
         internal const string ModelIdDimensionName = "ModelId";
@@ -25,5 +29,6 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
 
         internal const string CreateActionDimension = "Create";
         internal const string UpdateActionDimension = "Update";
+#pragma warning restore SA1600 // Elements should be documented
     }
 }

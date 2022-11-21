@@ -8,13 +8,15 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
 {
     using System.Net.Sockets;
     using System.Text.Json;
-    using System.Text.Json.Serialization;
     using System.Threading.Tasks;
     using Microsoft.Extensions.Caching.Distributed;
     using Microsoft.SmartPlaces.Facilities.IngestionManager.Interfaces;
     using Polly;
     using Polly.Retry;
 
+    /// <summary>
+    /// Twin mapping index based on a Redis distributed cache.
+    /// </summary>
     public class RedisTwinMappingIndexer : ITwinMappingIndexer
     {
         private readonly AsyncRetryPolicy redisRetryPolicy;
@@ -22,6 +24,10 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
 
         private readonly IDistributedCache cache;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RedisTwinMappingIndexer"/> class.
+        /// </summary>
+        /// <param name="cache">Cache that this index operates over.</param>
         public RedisTwinMappingIndexer(IDistributedCache cache)
         {
             this.cache = cache;
@@ -34,6 +40,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
                                                         (retryAttempt) => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)) + TimeSpan.FromMilliseconds(jitter.Next(0, 100)));
         }
 
+        /// <inheritdoc/>
         public async Task<TwinMap?> GetTwinIndexAsync(string sourceId)
         {
             return await redisRetryPolicy.ExecuteAsync(async () =>
@@ -44,6 +51,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
             });
         }
 
+        /// <inheritdoc/>
         public async Task UpsertTwinIndexAsync(string sourceId, TwinMap twinMap)
         {
             await redisRetryPolicy.ExecuteAsync(async () => await cache.SetStringAsync(sourceId, JsonSerializer.Serialize(twinMap)));

@@ -18,7 +18,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
     using Microsoft.SmartPlaces.Facilities.OntologyMapper;
 
     /// <summary>
-    /// Base class for loading a site graph from input source to output target.
+    /// Abstract base class for loading a site graph from input source to output target.
     /// </summary>
     /// <typeparam name="TOptions">Anything that inherits from the base class of IngestionManagerOptions.</typeparam>
     public abstract class IngestionProcessorBase<TOptions> : IGraphIngestionProcessor
@@ -33,6 +33,14 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
         private readonly MetricIdentifier outputMappingForInputDtmiNotFoundMetricIdentifier = new MetricIdentifier(Metrics.DefaultNamespace, "OutputMappingForInputDtmiNotFound", Metrics.OutputDtmiTypeDimensionName);
         private readonly MetricIdentifier mappingForInputDtmiNotFoundMetricIdentifier = new MetricIdentifier(Metrics.DefaultNamespace, "MappingForInputDtmiNotFound", Metrics.InterfaceTypeDimensionName);
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="IngestionProcessorBase{TOptions}"/> class.
+        /// </summary>
+        /// <param name="logger">Ingestion processor logger, for local logging.</param>
+        /// <param name="inputGraphManager">Manager for the input data graph that this ingestion processor parses.</param>
+        /// <param name="ontologyMappingManager">Manager mapping between ontologies used by the input and output graphs.</param>
+        /// <param name="outputGraphManager">Manager for the output data graph that this ingestion processor writes to.</param>
+        /// <param name="telemetryClient">Application Insights telemetry client for remote metrics tracking.</param>
         protected IngestionProcessorBase(ILogger<IngestionProcessorBase<TOptions>> logger,
                                         IInputGraphManager inputGraphManager,
                                         IOntologyMappingManager ontologyMappingManager,
@@ -49,30 +57,60 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
             OutputGraphManager = outputGraphManager;
         }
 
+        /// <summary>
+        /// Gets ingestion processor local logger.
+        /// </summary>
         protected ILogger Logger { get; }
 
+        /// <summary>
+        /// Gets Application Insights telemetry client.
+        /// </summary>
         protected TelemetryClient TelemetryClient { get; }
 
+        /// <summary>
+        /// Gets ontology mapping manager.
+        /// </summary>
         protected IOntologyMappingManager OntologyMappingManager { get; }
 
+        /// <summary>
+        /// Gets input graph manager.
+        /// </summary>
         protected IInputGraphManager InputGraphManager { get; }
 
+        /// <summary>
+        /// Gets a JSON object with only an empty <c>$metadata</c> field, used to scaffold an empty DTDL Component in target twins.
+        /// </summary>
         protected JsonElement EmptyComponentElement { get; }
 
+        /// <summary>
+        ///  Gets target model parser, used to read target ontology into memory.
+        /// </summary>
         protected ModelParser TargetModelParser { get; }
 
+        /// <summary>
+        /// Gets output graph manager.
+        /// </summary>
         protected IOutputGraphManager OutputGraphManager { get; }
 
-        // Because this value is determined in an async call, we can't call it in the constructor,
-        // so we use the null-forgiving operator (null!) to tell the compiler that this is set later
-        // We set this in the Init method
+        /// <summary>
+        /// Gets in-memory representation of target ontology model (such that it can be
+        /// queried for mapping validations).
+        /// <br /><br />
+        /// Because this value is determined in an async call, it cannot be called in the constructor,
+        /// so we use the null-forgiving operator (null!) to tell the compiler that this is set later
+        /// (in the Init method).
+        /// </summary>
         protected IReadOnlyDictionary<Dtmi, DTEntityInfo> TargetObjectModel { get; private set; } = null!;
 
+        /// <summary>
+        /// This method initiates ingestion of all sites in the input graph.
+        /// To be implemented by solutions utilizing this library.
+        /// </summary>
+        /// <param name="cancellationToken">Cancellation propagation token for interrupting the ingestion process.</param>
+        /// <returns>An awaitable task.</returns>
         protected abstract Task GetSites(CancellationToken cancellationToken);
 
-        /// <summary>
-        /// Driver for the Ingestion Process.
-        /// </summary>
+        /// <inheritdoc/>
         public async Task IngestFromApiAsync(CancellationToken cancellationToken)
         {
             Logger.LogInformation("Starting ingestion process");
