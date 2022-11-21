@@ -33,6 +33,10 @@
 		<PackageReference Include="Microsoft.Net.Http.Headers" Version="2.2.8" />
 		<PackageReference Include="Polly" Version="7.2.3" />
 		<PackageReference Include="StackExchange.Redis" Version="2.6.70" />
+		<PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
 	</ItemGroup>
 
 	<!-- Added Explicitly for CVE-2021-24112 -->
