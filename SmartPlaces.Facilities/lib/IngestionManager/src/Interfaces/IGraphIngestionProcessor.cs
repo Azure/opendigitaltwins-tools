@@ -12,7 +12,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Interfaces
     public interface IGraphIngestionProcessor
     {
         /// <summary>
-        /// Starts the asynchronous ingestion process from a source to a target graph. The implementation of the derived class is responsible for exposing its configuration through its constructor.
+        /// Starts the asynchronous ingestion process from a source to a target graph.
         /// </summary>
         /// <param name="cancellationToken">Cancellation propagation token for interrupting the ingestion process.</param>
         /// <returns>An awaitable task.</returns>
