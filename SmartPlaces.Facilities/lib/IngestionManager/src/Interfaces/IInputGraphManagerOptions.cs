@@ -6,6 +6,9 @@
 
 namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Interfaces
 {
+    /// <summary>
+    /// Configuration interface for the <see cref="IInputGraphManager"/>.
+    /// </summary>
     public interface IInputGraphManagerOptions
     {
     }
