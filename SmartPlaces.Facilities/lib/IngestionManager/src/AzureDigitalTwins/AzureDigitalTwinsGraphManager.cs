@@ -1,8 +1,8 @@
-﻿//-----------------------------------------------------------------------
-// <copyright file="AdtGraphManager.cs" company="Microsoft">
-//   Copyright (c) Microsoft Corporation.  All rights reserved.
+﻿// -----------------------------------------------------------------------
+// <copyright file="AzureDigitalTwinsGraphManager.cs" company="Microsoft">
+// Copyright (c) Microsoft Corporation.  All rights reserved.
 // </copyright>
-//-----------------------------------------------------------------------
+// -----------------------------------------------------------------------
 
 namespace Microsoft.SmartPlaces.Facilities.IngestionManager.AzureDigitalTwins
 {
@@ -21,6 +21,10 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.AzureDigitalTwins
     using Microsoft.SmartPlaces.Facilities.IngestionManager.Extensions;
     using Microsoft.SmartPlaces.Facilities.IngestionManager.Interfaces;
 
+    /// <summary>
+    /// Output graph manager supporting writing to Azure Digital Twins.
+    /// </summary>
+    /// <typeparam name="TOptions">Ingestion manager options type.</typeparam>
     public class AzureDigitalTwinsGraphManager<TOptions> : IOutputGraphManager
         where TOptions : IngestionManagerOptions
     {
@@ -28,6 +32,15 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.AzureDigitalTwins
         private readonly ParallelOptions parallelOptions;
         private IngestionManagerOptions options;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AzureDigitalTwinsGraphManager{TOptions}"/> class.
+        /// </summary>
+        /// <param name="logger">Local logger.</param>
+        /// <param name="options">Ingestion manager options.</param>
+        /// <param name="twinMappingIndexer">Twin mapping index cache.</param>
+        /// <param name="telemetryClient">Application Insights telemetry client for remote metrics tracking.</param>
+        /// <param name="skipUpload">Option denoting whether the manager will upload twins to target
+        /// ADT environment (if skipupload is <c>true</c>, only the cache will be updated).</param>
         public AzureDigitalTwinsGraphManager(ILogger<AzureDigitalTwinsGraphManager<TOptions>> logger,
                                IOptions<TOptions> options,
                                ITwinMappingIndexer twinMappingIndexer,
@@ -45,20 +58,33 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.AzureDigitalTwins
                 queue.Enqueue(new DigitalTwinsClient(new Uri(options.Value.AzureDigitalTwinsEndpoint), new DefaultAzureCredential()));
             }
 
-            parallelOptions = new()
+            parallelOptions = new ()
             {
                 MaxDegreeOfParallelism = options.Value.MaxDegreeOfParallelism,
             };
         }
 
+        /// <summary>
+        /// Gets local logger.
+        /// </summary>
         protected ILogger Logger { get; }
 
+        /// <summary>
+        /// Gets App Insights telemetry client.
+        /// </summary>
         protected TelemetryClient TelemetryClient { get; }
 
+        /// <summary>
+        /// Gets twin mapping index cache.
+        /// </summary>
         protected ITwinMappingIndexer TwinMappingIndexer { get; }
 
+        /// <summary>
+        /// Gets a value indicating whether to upload graph to ADT (else, only cache will be updated).
+        /// </summary>
         protected bool SkipUpload { get; }
 
+        /// <inheritdoc/>
         public async Task<IEnumerable<string>> GetModelAsync(CancellationToken cancellationToken)
         {
             // Get all of the Models to be used for creating instances of twins
@@ -85,6 +111,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.AzureDigitalTwins
             }
         }
 
+        /// <inheritdoc/>
         public virtual async Task UploadGraphAsync(Dictionary<string, BasicDigitalTwin> twins, Dictionary<string, BasicRelationship> relationships, CancellationToken cancellationToken)
         {
             if (!SkipUpload)
@@ -100,6 +127,11 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.AzureDigitalTwins
             await UpdateCache(twins);
         }
 
+        /// <summary>
+        /// Add a set of twins to the mapping index cache.
+        /// </summary>
+        /// <param name="twins">The twins that will be cache (map key is dtId).</param>
+        /// <returns>An awaitable task.</returns>
         protected async Task UpdateCache(Dictionary<string, BasicDigitalTwin> twins)
         {
             Logger.LogInformation("Upserting mapping of {count} twins to Cache", twins.Count);
@@ -115,7 +147,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.AzureDigitalTwins
                             var twinMap = new TwinMap
                             {
                                 TargetTwinId = twin.Key,
-                                TargetModelId = twin.Value.Metadata.ModelId
+                                TargetModelId = twin.Value.Metadata.ModelId,
                             };
 
                             cacheTasks.Add(TwinMappingIndexer.UpsertTwinIndexAsync(mappingKey, twinMap));
@@ -133,6 +165,11 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.AzureDigitalTwins
             await CommitCache(cacheTasks);
         }
 
+        /// <summary>
+        /// Await a set of caching tasks; effectively, ensure all those batched cache writes have been completed.
+        /// </summary>
+        /// <param name="cacheTasks">Caching tasks to commit.</param>
+        /// <returns>An awaitable task.</returns>
         private async Task CommitCache(List<Task> cacheTasks)
         {
             Logger.LogInformation("Starting cache commit.");
@@ -155,6 +192,12 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.AzureDigitalTwins
             Logger.LogInformation("Completing cache commit.");
         }
 
+        /// <summary>
+        /// Asynchronously import a set of relationships into the target ADT graph.
+        /// </summary>
+        /// <param name="relationships">Relationships to upload (map key is relationship ID).</param>
+        /// <param name="retryAttempt">Retry counter.</param>
+        /// <returns>An awaitable task.</returns>
         protected virtual async Task ImportRelationshipsAsync(IDictionary<string, BasicRelationship> relationships, int retryAttempt = 0)
         {
             // Make sure we don't get caught in an infinite retry loop
@@ -204,7 +247,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.AzureDigitalTwins
                             catch (RequestFailedException ex)
                             {
                                 // If we are over the limit, sleep for a bit then add the relationship to the retry list
-                                if (ex.Status == 429 || ex.Status == 503 )
+                                if (ex.Status == 429 || ex.Status == 503)
                                 {
                                     TelemetryClient.GetMetric(relationshipMetricIdentifier).TrackValue(1, Metrics.CreateActionDimension, relationship.Name, Metrics.ThrottledStatusDimension);
                                     Logger.LogError("Connection to ADT Throttled while adding relationship. Sleeping.");
@@ -241,7 +284,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.AzureDigitalTwins
                             catch (RequestFailedException ex)
                             {
                                 // If we are over the limit, sleep for a bit then add the relationship to the retry list
-                                if (ex.Status == 429 || ex.Status == 503 )
+                                if (ex.Status == 429 || ex.Status == 503)
                                 {
                                     TelemetryClient.GetMetric(relationshipMetricIdentifier).TrackValue(1, Metrics.UpdateActionDimension, relationship.Name, Metrics.ThrottledStatusDimension);
                                     Logger.LogError("Connection to ADT Throttled while updating relationship. Sleeping.");
@@ -305,6 +348,12 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.AzureDigitalTwins
             }
         }
 
+        /// <summary>
+        /// Asynchronously import a set of digital twins into the target ADT graph.
+        /// </summary>
+        /// <param name="twins">Twins to upload (map key is dtId).</param>
+        /// <param name="retryAttempt">Retry counter.</param>
+        /// <returns>An awaitable task.</returns>
         protected virtual async Task ImportTwinsAsync(IDictionary<string, BasicDigitalTwin> twins, int retryAttempt = 0)
         {
             // Make sure we don't get caught in an infinite retry loop

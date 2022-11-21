@@ -11,8 +11,18 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.AzureDigitalTwins
     using global::Azure.DigitalTwins.Core;
     using Microsoft.SmartPlaces.Facilities.IngestionManager.Extensions;
 
+    /// <summary>
+    /// Helper class doing twin merging/manipulation for <see cref="AzureDigitalTwinsGraphManager{TOptions}"/>.
+    /// </summary>
     internal class TwinMergeHelper
     {
+        /// <summary>
+        /// Tries to generate a JSON Patch document translating an existing digital twin object to a target representation.
+        /// </summary>
+        /// <param name="existingDigitalTwin">The source twin.</param>
+        /// <param name="newTwin">The target twin.</param>
+        /// <param name="jsonPatchDocument">Generated JSON Patch document.</param>
+        /// <returns><c>true</c> if a JSON Patch could be created, else <c>false</c>.</returns>
         internal static bool TryCreatePatchDocument(BasicDigitalTwin existingDigitalTwin, BasicDigitalTwin newTwin, out JsonPatchDocument jsonPatchDocument)
         {
             jsonPatchDocument = new JsonPatchDocument();
@@ -44,6 +54,13 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.AzureDigitalTwins
             return !jsonPatchDocument.IsEmpty();
         }
 
+        /// <summary>
+        /// Tries to generate a JSON Patch document translating an existing relationship object to a target representation.
+        /// </summary>
+        /// <param name="existingRelationship">The source relationship.</param>
+        /// <param name="newRelationship">The target relationship.</param>
+        /// <param name="jsonPatchDocument">Generated JSON Patch document.</param>
+        /// <returns><c>true</c> if a JSON Patch could be created, else <c>false</c>.</returns>
         internal static bool TryCreatePatchDocument(BasicRelationship existingRelationship, BasicRelationship newRelationship, out JsonPatchDocument jsonPatchDocument)
         {
             jsonPatchDocument = new JsonPatchDocument();
