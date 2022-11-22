@@ -131,8 +131,8 @@ namespace EdgeGateway
                 catch (InvalidProtocolBufferException ex)
                 {
                     /*
-                    This occurs when the values received from the edge redis are not parsable
-                    by Mapped's Protobuf encoding.
+                        This occurs when the values received from the edge redis are not parsable
+                        by Mapped's Protobuf encoding.
                     */
                     logger.LogError(ex, "InvalidProtocolBufferException: {message}", ex.Message);
                     reason = "DecodingProtobuf";
@@ -140,8 +140,8 @@ namespace EdgeGateway
                 catch (IotHubException ex)
                 {
                     /*
-                    This occurs when either a network issue between the EdgeGateway and the 
-                    outside world, or when IotHub or its dependencies are having an issue.
+                        This occurs when either a network issue between the EdgeGateway and the
+                        outside world, or when IotHub or its dependencies are having an issue.
                     */
                     logger.LogError(ex, "Error sending message to IotHub.");
                     reason = "IotHub";

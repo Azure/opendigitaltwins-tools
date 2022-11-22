@@ -145,8 +145,9 @@ namespace Telemetry.Processors
                 {
                     if (ownership.Version == null)
                     {
-                        // In this case, we are trying to claim ownership of a partition which was previously unowned, and hence did not have an ownership file. To ensure only a single host grabs the partition,
-                        // we use a conditional request so that we only create our blob in the case where it does not yet exist.
+                        // In this case, we are trying to claim ownership of a partition which was previously unowned, and hence
+                        // did not have an ownership file. To ensure only a single host grabs the partition, we use a conditional 
+                        // request so that we only create our blob in the case where it does not yet exist.
                         BlobRequestConditions requestConditions = new BlobRequestConditions() { IfNoneMatch = ETag.All };
 
                         using MemoryStream emptyStream = new MemoryStream(Array.Empty<byte>());

@@ -40,7 +40,7 @@ namespace Telemetry.Processors
 
             var parseResult = await modelParser.ParseAsync(models);
 
-            //The Value needs cast to get to its Schema EntityKind
+            // The Value needs cast to get to its Schema EntityKind
             var dtEntityInfo = (DTFieldInfo)parseResult.Where(x => x.Key.AbsoluteUri.Contains(property)).FirstOrDefault().Value;
 
             if(dtEntityInfo?.Schema?.EntityKind is null)
