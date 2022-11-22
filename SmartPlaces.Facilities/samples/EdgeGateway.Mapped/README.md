@@ -26,11 +26,11 @@ The following environment variables need to be defined in order to run this code
 
 ### Environment Variables
 
-| Environment Variable Name | Required | Value Source | Example | 
+| Environment Variable Name | Required | Value Source | Example |
 | --- | --- | --- | --- |
-| KeyVaultEndpoint | True | The Uri to the KeyVault instance where needed secrets are stored | https://<yourkeyvaultname>.vault.azure.net/ |
-| RedisEndpoint | True | The endpoint location of the local Redis cluster on the Edge device that receives the telemetry from the Mapped Gateway | cache:6379 |
-| AppInsightsConnectionString |  | The connection string needed to locate the Application Insights instance for logs and metrics | InstrumentationKey/=<yourinstrumentationkey>;IngestionEndpoint/=https://<checkregion>.in.applicationinsights.azure.com/;LiveEndpoint/=https://<checkregion>.livediagnostics.monitor.azure.com/ |
+| KeyVaultEndpoint | ✔ | The Uri to the KeyVault instance where needed secrets are stored | https://&lt;yourkeyvaultname&gt;.vault.azure.net/ |
+| RedisEndpoint | ✔ | The endpoint location of the local Redis cluster on the Edge device that receives the telemetry from the Mapped Gateway | cache:6379 |
+| AppInsightsConnectionString |  | The connection string needed to locate the Application Insights instance for logs and metrics | InstrumentationKey=&lt;yourinstrumentationkey&gt;;IngestionEndpoint=https://&lt;checkregion&gt;.in.applicationinsights.azure.com/;LiveEndpoint=https://&lt;checkregion&gt;.livediagnostics.monitor.azure.com/ |
 
 ### KeyVault Secrets
 
@@ -38,7 +38,7 @@ The following secrets must be defined in the KeyVault in order to run this code:
 
 | Secret Name | Value Source | Example |
 | --- | --- | --- |
-| DeviceConnectionString | The connection string for the device set up in the IotHub | HostName=<youriothubname>.azure-devices.net;DeviceId=<yourdevicename>;SharedAccessKey=<yoursharedaccesskey> |
+| DeviceConnectionString | The connection string for the device set up in the IotHub | HostName=&lt;youriothubname&gt;.azure-devices.net;DeviceId=&lt;yourdevicename&gt;;SharedAccessKey=&lt;yoursharedaccesskey&gt; |
 
 ## Logging and Metrics
 
