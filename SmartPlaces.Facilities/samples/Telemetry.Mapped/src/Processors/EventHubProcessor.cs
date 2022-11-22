@@ -42,7 +42,7 @@ namespace Telemetry.Processors
         private const string CheckpointBlobNameFormat = "{0}/{1}/{2}/checkpoint/{3}";
 
         /// <summary>
-        /// 
+        /// A generic handler for processing events from an eventHub in batches.
         /// </summary>
         /// <param name="logger">How to comminicate what is happening</param>
         /// <param name="processEventData">What to do with each event</param>
@@ -66,7 +66,7 @@ namespace Telemetry.Processors
         }
 
         /// <summary>
-        /// 
+        /// A generic handler for processing events from an eventHub in batches.
         /// </summary>
         /// <param name="logger">How to comminicate what is happening</param>
         /// <param name="processEventData">What to do with each event</param>

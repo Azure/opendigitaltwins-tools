@@ -146,7 +146,7 @@ namespace Telemetry.Processors
                         catch (RequestFailedException ex) when (ex.Status == (int)HttpStatusCode.BadRequest && ex.ErrorCode == "JsonPatchInvalid" && ex.Message.StartsWith("Could not resolve path"))
                         {
                             /*
-                                Our sample is saving telemetry to a complex object. To avoid deleting data the update path does not
+                                This sample is saving telemetry to a complex object. To avoid deleting data the update path does not
                                 include the root of the complex object. AzureDigitalTwins uses a JsonPatchDocument which cannot find the path to fields
                                 within the object if the root has not been initialized. This retry initializes the root level objects.
                             */

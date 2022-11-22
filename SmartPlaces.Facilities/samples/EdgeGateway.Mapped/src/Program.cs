@@ -18,7 +18,6 @@ namespace EdgeGateway
         /// Entry point into EdgeGateway
         /// </summary>
         /// <param name="args">An option for passing in configuration values, though not required</param>
-        /// <returns></returns>
         /// <exception cref="ArgumentNullException">Thrown when required configuration values are not present</exception>
         public static async Task Main(string[] args)
         {
