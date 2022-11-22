@@ -54,25 +54,25 @@ namespace EdgeGateway
                                       .Or<InvalidOperationException>(ex => ex.Message == "Invalid transport state: Closed")
                                       .WaitAndRetryAsync(iotHubMaxRetryAttempts,
                                                         (retryAttempt) => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)) + TimeSpan.FromMilliseconds(jitter.Next(0, 100)),
-                                                        (ex, waitTime, retryAttepmt, context) =>
+                                                        (ex, waitTime, retryAttempt, context) =>
                                                         {
-                                                            logger.LogWarning("Failed attempt {retryAttempt} of {maxRetryAttempts} to send message to IotHub. Trying again in {waitTime} seconds.", retryAttepmt, iotHubMaxRetryAttempts, waitTime.TotalSeconds);
+                                                            logger.LogWarning("Failed attempt {retryAttempt} of {maxRetryAttempts} to send message to IotHub. Trying again in {waitTime} seconds.", retryAttempt, iotHubMaxRetryAttempts, waitTime.TotalSeconds);
                                                         });
 
             var redisMaxRetryAttempts = 3;
             redisRetryPolicy = Policy.Handle<RedisTimeoutException>()
                                      .WaitAndRetryAsync(redisMaxRetryAttempts,
                                                         (retryAttempt) => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)) + TimeSpan.FromMilliseconds(jitter.Next(0, 100)),
-                                                        (ex, waitTime, retryAttepmt, context) =>
+                                                        (ex, waitTime, retryAttempt, context) =>
                                                         {
-                                                            logger.LogWarning("Failed attempt {retryAttempt} of {maxRetryAttempts} to communicate with Redis. Trying again in {waitTime} seconds.", retryAttepmt, redisMaxRetryAttempts, waitTime.TotalSeconds);
+                                                            logger.LogWarning("Failed attempt {retryAttempt} of {maxRetryAttempts} to communicate with Redis. Trying again in {waitTime} seconds.", retryAttempt, redisMaxRetryAttempts, waitTime.TotalSeconds);
                                                         });
         }
 
         /// <summary>
         /// Main worker body of the EdgeGateway process. Handles talking to the edge redis cache
         /// and forwarding events onto IotHub if there is a new value and intentionally drops
-        /// events which are Mapped communicating network issues they experienced when comminicating
+        /// events which are Mapped communicating network issues they experienced when communicating
         /// with devices.
         /// </summary>
         /// <param name="cancellationToken">A way to stop things</param>
@@ -130,19 +130,19 @@ namespace EdgeGateway
                 }
                 catch (InvalidProtocolBufferException ex)
                 {
-                    /////
-                    // This occurs when the values recieved from the edge redis are not parsabe
-                    // by Mapped's Protobuf encoding.
-                    /////
+                    /*
+                    This occurs when the values received from the edge redis are not parsable
+                    by Mapped's Protobuf encoding.
+                    */
                     logger.LogError(ex, "InvalidProtocolBufferException: {message}", ex.Message);
-                    reason = "DecodingProtobof";
+                    reason = "DecodingProtobuf";
                 }
                 catch (IotHubException ex)
                 {
-                    /////
-                    // This occus when either a network issue between the EdgeGateway and the 
-                    // outside world, or when IotHub or its dependencies are having an issue.
-                    /////
+                    /*
+                    This occurs when either a network issue between the EdgeGateway and the 
+                    outside world, or when IotHub or its dependencies are having an issue.
+                    */
                     logger.LogError(ex, "Error sending message to IotHub.");
                     reason = "IotHub";
                 }

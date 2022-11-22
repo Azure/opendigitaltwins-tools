@@ -37,9 +37,9 @@ namespace Telemetry
         /// <summary>
         /// Setup for what to do when the process is running
         /// </summary>
-        /// <param name="logger">A way to comminicate</param>
-        /// <param name="configuration">Any settings, environmen variables, command arguments that have been passed to the process</param>
-        /// <param name="telemetryIngestionProcessor">An instansiation of what to do with the telemetry</param>
+        /// <param name="logger">A way to communicate</param>
+        /// <param name="configuration">Any settings, environment variables, command arguments, etc. that have been passed to the process</param>
+        /// <param name="telemetryIngestionProcessor">An instantiation of what to do with the telemetry</param>
         /// <param name="telemetryClient">A way to log metrics</param>
         public ProcessTelemetry(ILogger<ProcessTelemetry> logger, IConfiguration configuration, ITelemetryIngestionProcessor telemetryIngestionProcessor, TelemetryClient telemetryClient)
         {

@@ -23,7 +23,7 @@ namespace Telemetry.Processors
     /// <summary>
     /// A generic handler for processing eventHub messages in a batch to enable
     /// higher throughput reducing the overhead of checkpointing each message while
-    /// also enabling higher resource untilization of the available compute.
+    /// also enabling higher resource utilization of the available compute.
     /// </summary>
     /// <typeparam name="TPartition">A custom Partition</typeparam>
     public class EventHubProcessor<TPartition> : EventProcessor<TPartition>
@@ -44,7 +44,7 @@ namespace Telemetry.Processors
         /// <summary>
         /// A generic handler for processing events from an eventHub in batches.
         /// </summary>
-        /// <param name="logger">How to comminicate what is happening</param>
+        /// <param name="logger">How to communicate what is happening</param>
         /// <param name="processEventData">What to do with each event</param>
         /// <param name="eventBatchMaximumCount">How many events to process in a batch</param>
         /// <param name="consumerGroup">Name of the consumerGroup which is an view of the events flowing through the eventHub</param>
@@ -68,7 +68,7 @@ namespace Telemetry.Processors
         /// <summary>
         /// A generic handler for processing events from an eventHub in batches.
         /// </summary>
-        /// <param name="logger">How to comminicate what is happening</param>
+        /// <param name="logger">How to communicate what is happening</param>
         /// <param name="processEventData">What to do with each event</param>
         /// <param name="eventBatchMaximumCount">How many events to process in a batch</param>
         /// <param name="consumerGroup">Name of the consumerGroup which is an view of the events flowing through the eventHub</param>
@@ -94,7 +94,7 @@ namespace Telemetry.Processors
         /// <summary>
         /// A generic handler for processing events from an eventHub in batches.
         /// </summary>
-        /// <param name="logger">How to comminicate what is happening</param>
+        /// <param name="logger">How to communicate what is happening</param>
         /// <param name="processEventData">What to do with each event</param>
         /// <param name="eventBatchMaximumCount">How many events to process in a batch</param>
         /// <param name="consumerGroup">Name of the consumerGroup which is an view of the events flowing through the eventHub</param>
@@ -221,7 +221,7 @@ namespace Telemetry.Processors
 
         /// <summary>
         /// Defines how the base EventProcessor should check its progress and how to resume
-        /// progress. In this case that is comminicating with a blob storage.
+        /// progress. In this case that is communicating with a blob storage.
         /// This defines 
         /// </summary>
         /// <param name="partitionId">What eventHub partition this process is processing</param>

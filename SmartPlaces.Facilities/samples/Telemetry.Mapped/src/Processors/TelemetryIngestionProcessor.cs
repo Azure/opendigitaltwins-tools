@@ -80,7 +80,7 @@ namespace Telemetry.Processors
         /// This method defines what actions should be taken to translate from source telemetry data and ingest
         /// into Azure Digital Twins.
         /// </summary>
-        /// <param name="telemetryEvent">Contains the values passed through the IotHub into the EventHub to be procedded by Telemetry</param>
+        /// <param name="telemetryEvent">Contains the values passed through the IotHub into the EventHub to be processed by Telemetry</param>
         /// <param name="cancellationToken">A way to stop things</param>
         public async Task IngestFromEventHubAsync(EventData telemetryEvent, CancellationToken cancellationToken)
         {
@@ -172,7 +172,7 @@ namespace Telemetry.Processors
             }
             catch (Exception e)
             {
-                logger.LogError(e, "Failed to ingest telemetry into AzureDigitialTwins");
+                logger.LogError(e, "Failed to ingest telemetry into AzureDigitalTwins");
                 reason = $"{e.GetType()}";
             }
             finally
@@ -213,7 +213,7 @@ namespace Telemetry.Processors
         }
 
         /// <summary>
-        /// Generates a JsonPatchDocument conforming to the desired datamodel.
+        /// Generates a JsonPatchDocument conforming to the desired data model.
         /// </summary>
         /// <param name="point">Incoming raw telemetry data</param>
         /// <param name="targetType">What the DTDL Model says the datatype should be</param>
@@ -247,7 +247,7 @@ namespace Telemetry.Processors
         /// <param name="sourceData">Incoming telemetry data</param>
         /// <param name="targetType">Desired outgoing data</param>
         /// <returns></returns>
-        /// <exception cref="InvalidCastException">When a conversion has been attempted in code, but the data is not parseable to the desired datatype.</exception>
+        /// <exception cref="InvalidCastException">When a conversion has been attempted in code, but the data is not parsable to the desired datatype.</exception>
         /// <exception cref="NotImplementedException">When a conversion has not been determined in code.</exception>
         private dynamic TranslateType(TypedValue sourceData, DTEntityKind targetType)
         {
@@ -435,9 +435,9 @@ namespace Telemetry.Processors
                                 throw new InvalidCastException($"Failed to cast '{sourceData.StringValue}' to {targetType}");
                             }
                         case DTEntityKind.Duration:
-                            if (TimeSpan.TryParse(sourceData.StringValue, out var outputTimespan))
+                            if (TimeSpan.TryParse(sourceData.StringValue, out var outputTimeSpan))
                             {
-                                return outputTimespan;
+                                return outputTimeSpan;
                             }
                             else
                             {

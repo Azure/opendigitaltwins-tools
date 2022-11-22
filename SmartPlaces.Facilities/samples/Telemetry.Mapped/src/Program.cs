@@ -59,7 +59,7 @@ namespace Telemetry
 
                     // This is for getting the TwinId and TwinModelId 
                     // based on the MappingKey which is provided by Mapped.
-                    // Implements ITwinMappingIndexer, IOutputGraphManager
+                    // Implements IOutputGraphManager
                     services.AddIngestionManager<IngestionManagerOptions>(options =>
                     {
                         options.AzureDigitalTwinsEndpoint = hostContext.Configuration["AzureDigitalTwinsEndpoint"];

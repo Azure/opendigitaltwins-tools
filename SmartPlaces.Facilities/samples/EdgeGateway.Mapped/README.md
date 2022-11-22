@@ -1,6 +1,7 @@
 ﻿# Smart Facilities Gateway
 
 ## Overview
+
 The Edge Gateway sample project is a demonstration of how to consume telemetry on an edge device from a Redis cache based feed from Mapped and pass it to an IoTHub for 
 forwarding into Azure Digital Twins.
 
@@ -38,7 +39,7 @@ The following secrets must be defined in the KeyVault in order to run this code:
 
 | Secret Name | Value Source | Example |
 | --- | --- | --- |
-| DeviceConnectionString | The connection string for the device set up in the IotHub | HostName=&lt;youriothubname&gt;.azure-devices.net;DeviceId=&lt;yourdevicename&gt;;SharedAccessKey=&lt;yoursharedaccesskey&gt; |
+| DeviceConnectionString | The connection string for the device set up in the IotHub | HostName=&lt;yourIotHubName&gt;.azure-devices.net;DeviceId=&lt;yourDeviceName&gt;;SharedAccessKey=&lt;yourSharedAccessKey&gt; |
 
 ## Logging and Metrics
 
