@@ -7,7 +7,6 @@
 namespace Telemetry
 {
     using System;
-    using System.Net.Http.Headers;
     using System.Threading.Tasks;
     using Azure.Identity;
     using Microsoft.Extensions.Configuration;
@@ -43,29 +42,37 @@ namespace Telemetry
                 })
                 .ConfigureServices((hostContext, services) =>
                 {
+                    // Configure ILogger
                     services.AddLogging();
 
+                    // Configure options for ApplicationInsights
                     services.AddApplicationInsightsTelemetryWorkerService(options =>
                     {
                         options.ConnectionString = hostContext.Configuration["AppInsightsConnectionString"];
                         options.EnableAdaptiveSampling = false;
                     });
 
+                    // This is for getting the TwinId and TwinModelId 
+                    // based on the MappingKey which is provided by Mapped.
                     // Implements ITwinMappingIndexer, IOutputGraphManager
                     services.AddIngestionManager<IngestionManagerOptions>(options =>
                     {
                         options.AzureDigitalTwinsEndpoint = hostContext.Configuration["AzureDigitalTwinsEndpoint"];
                     });
 
-                    // Ties Topology and Telemetry together
+                    // Ties Topology and Telemetry together setting up 
+                    // Communication with the Cloud Redis
                     // Implements IDistributedCache
                     services.AddStackExchangeRedisCache(options =>
                     {
                         options.Configuration = hostContext.Configuration["RedisCacheConnectionString"];
                     });
                     services.AddSingleton<ITwinMappingIndexer, RedisTwinMappingIndexer>();
+
+                    // Add the processor for the main worker body
                     services.AddSingleton<ITelemetryIngestionProcessor, TelemetryIngestionProcessor<IngestionManagerOptions>>();
 
+                    // Add the main worker body
                     services.AddHostedService<ProcessTelemetry>();
 
                     if (hostContext.HostingEnvironment.IsDevelopment())

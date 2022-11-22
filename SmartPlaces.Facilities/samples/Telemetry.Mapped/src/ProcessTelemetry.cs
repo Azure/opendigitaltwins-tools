@@ -34,6 +34,13 @@ namespace Telemetry
 
         private EventHubProcessor<EventProcessorPartition>? processor;
 
+        /// <summary>
+        /// Setup for what to do when the process is running
+        /// </summary>
+        /// <param name="logger">A way to comminicate</param>
+        /// <param name="configuration">Any settings, environmen variables, command arguments that have been passed to the process</param>
+        /// <param name="telemetryIngestionProcessor">An instansiation of what to do with the telemetry</param>
+        /// <param name="telemetryClient">A way to log metrics</param>
         public ProcessTelemetry(ILogger<ProcessTelemetry> logger, IConfiguration configuration, ITelemetryIngestionProcessor telemetryIngestionProcessor, TelemetryClient telemetryClient)
         {
             this.logger = logger;
@@ -51,6 +58,10 @@ namespace Telemetry
             logger.LogInformation("KeyVaultEndpoint: {KeyVaultEndpoint}", configuration["KeyVaultEndpoint"]);
         }
 
+        /// <summary>
+        /// Defines what to to during the life of the process
+        /// </summary>
+        /// <param name="cancellationToken">A way to stop things</param>
         protected override async Task ExecuteAsync(CancellationToken cancellationToken)
         {
             // Create a blob container client that the event processor will use
@@ -60,6 +71,8 @@ namespace Telemetry
             BlobContainerClient containerClient = new BlobContainerClient(containerUri, new DefaultAzureCredential());
             containerClient.CreateIfNotExists(cancellationToken: cancellationToken);
 
+            // Setup listener to EventHub and define what to do with each message
+            // in the batch
             processor = new EventHubProcessor<EventProcessorPartition>( logger,
                                                                         async (eventData, cancellationToken) => await telemetryIngestionProcessor.IngestFromEventHubAsync(eventData, cancellationToken),
                                                                         configuration.GetValue<int>("EventHubBatchMaximumCount"),
@@ -82,16 +95,23 @@ namespace Telemetry
             await processor.StartProcessingAsync(cancellationToken: cancellationToken);
         }
 
+        /// <summary>
+        /// Defines what actions need to be taken when the process is
+        /// asked to stop.
+        /// </summary>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         public override async Task StopAsync(CancellationToken cancellationToken)
         {
-            await telemetryClient.FlushAsync(CancellationToken.None);
-
             // Stop the processing
             logger.LogInformation("Shutting down Telemetry Service", nameof(ITelemetryIngestionProcessor));
             if (processor != null)
             {
                 await processor.StopProcessingAsync(cancellationToken);
             }
+
+            // Make sure all logs and metrics have been sent
+            await telemetryClient.FlushAsync(CancellationToken.None);
 
             await base.StopAsync(cancellationToken);
         }

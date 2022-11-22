@@ -14,6 +14,12 @@ namespace EdgeGateway
 
     public class Program
     {
+        /// <summary>
+        /// Entry point into EdgeGateway
+        /// </summary>
+        /// <param name="args">An option for passing in configuration values, though not required</param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException">Thrown when required configuration values are not present</exception>
         public static async Task Main(string[] args)
         {
             Console.WriteLine("Starting Edge Gateway");
@@ -36,13 +42,17 @@ namespace EdgeGateway
                 })
                 .ConfigureServices((hostContext, services) =>
                 {
+                    // Configure ILogger
                     services.AddLogging();
 
+                    // Configure options for ApplicationInsights
                     services.AddApplicationInsightsTelemetryWorkerService(options =>
                     {
                         options.ConnectionString = hostContext.Configuration["AppInsightsConnectionString"];
+                        options.EnableAdaptiveSampling = false;
                     });
 
+                    // Configure option for EdgeRedis Cache
                     services.AddSingleton<IConnectionMultiplexer>(sp =>
                     {
                         return ConnectionMultiplexer.Connect(
@@ -56,6 +66,7 @@ namespace EdgeGateway
                             });
                     });
 
+                    // Configure options for communication with IotHub
                     services.AddSingleton<DeviceClient>(sp =>
                     {
                         var transportSettings = new[]
@@ -85,6 +96,7 @@ namespace EdgeGateway
                             });
                     });
 
+                    // Add the main worker body
                     services.AddHostedService<TelemetryProcessor>();
 
                     if (hostContext.HostingEnvironment.IsDevelopment())

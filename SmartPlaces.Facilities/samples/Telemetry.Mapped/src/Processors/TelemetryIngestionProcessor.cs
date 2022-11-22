@@ -48,6 +48,14 @@ namespace Telemetry.Processors
         private readonly MetricIdentifier twinUpdateMetric = new MetricIdentifier(metricsNamespace, "TwinUpdate","Status","Reason");
         private readonly MetricIdentifier telemetryTypeMetric = new MetricIdentifier(metricsNamespace, "TelemetryType", "SourceType", "TargetType");
 
+        /// <summary>
+        /// Setup for how to process an event flowing across an EventHub
+        /// </summary>
+        /// <param name="logger"></param>
+        /// <param name="options"></param>
+        /// <param name="twinMappingIndexer"></param>
+        /// <param name="httpClientFactory"></param>
+        /// <param name="telemetryClient"></param>
         public TelemetryIngestionProcessor(ILogger<TelemetryIngestionProcessor<TOptions>> logger,
                                            IOptions<TOptions> options,
                                            ITwinMappingIndexer twinMappingIndexer,
@@ -72,6 +80,8 @@ namespace Telemetry.Processors
         /// This method defines what actions should be taken to translate from source telemetry data and ingest
         /// into Azure Digital Twins.
         /// </summary>
+        /// <param name="telemetryEvent">Contains the values passed through the IotHub into the EventHub to be procedded by Telemetry</param>
+        /// <param name="cancellationToken">A way to stop things</param>
         public async Task IngestFromEventHubAsync(EventData telemetryEvent, CancellationToken cancellationToken)
         {
             string status = "Failed";
@@ -232,7 +242,7 @@ namespace Telemetry.Processors
         }
 
         /// <summary>
-        /// Transforms and formatts data between Mapped TypeValues and DTDL DTEntityKind
+        /// Transforms and formats data between Mapped TypeValues and DTDL DTEntityKind
         /// </summary>
         /// <param name="sourceData">Incoming telemetry data</param>
         /// <param name="targetType">Desired outgoing data</param>
@@ -257,13 +267,6 @@ namespace Telemetry.Processors
                             return sourceData.BoolValue;
                         case DTEntityKind.String:
                             return sourceData.BoolValue.ToString();
-                    }
-                    break;
-                case TypedValue.ValueOneofCase.ByteArrayValue:
-                    switch (targetType)
-                    {
-                        case DTEntityKind.String:
-                            return sourceData.ByteArrayValue.ToString();
                     }
                     break;
                 case TypedValue.ValueOneofCase.CalendarPeriodValue:
@@ -525,13 +528,6 @@ namespace Telemetry.Processors
                     {
                         case DTEntityKind.String:
                             return sourceData.Uint64Value.ToString();
-                    }
-                    break;
-                case TypedValue.ValueOneofCase.UuidValue:
-                    switch (targetType)
-                    {
-                        case DTEntityKind.String:
-                            return sourceData.UuidValue.ToString();
                     }
                     break;
                 default:

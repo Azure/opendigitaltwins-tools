@@ -69,6 +69,13 @@ namespace EdgeGateway
                                                         });
         }
 
+        /// <summary>
+        /// Main worker body of the EdgeGateway process. Handles talking to the edge redis cache
+        /// and forwarding events onto IotHub if there is a new value and intentionally drops
+        /// events which are Mapped communicating network issues they experienced when comminicating
+        /// with devices.
+        /// </summary>
+        /// <param name="cancellationToken">A way to stop things</param>
         protected override async Task ExecuteAsync(CancellationToken cancellationToken)
         {
             logger.LogInformation("Starting to process Telemetry");
@@ -123,11 +130,19 @@ namespace EdgeGateway
                 }
                 catch (InvalidProtocolBufferException ex)
                 {
+                    /////
+                    // This occurs when the values recieved from the edge redis are not parsabe
+                    // by Mapped's Protobuf encoding.
+                    /////
                     logger.LogError(ex, "InvalidProtocolBufferException: {message}", ex.Message);
                     reason = "DecodingProtobof";
                 }
                 catch (IotHubException ex)
                 {
+                    /////
+                    // This occus when either a network issue between the EdgeGateway and the 
+                    // outside world, or when IotHub or its dependencies are having an issue.
+                    /////
                     logger.LogError(ex, "Error sending message to IotHub.");
                     reason = "IotHub";
                 }
