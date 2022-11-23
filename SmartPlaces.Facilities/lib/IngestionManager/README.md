@@ -1,256 +1,69 @@
 # IngestionManager
 
-This library provides a way to load an Azure Digital Twins instances with twins and relationships from another DTDL-based graph of twins.
+This library, intended to work in conjunction with and depending on the `Microsoft.SmartPlaces.Facilities.OntologyMapper` library, provides interfaces and a partial implementation for ingesting existing building data graphs into Azure Digital Twins, populating the latter with twins and relationships sourced from the former.
 
+## How to use
 
-## Interfaces and Classes
-    
-### Interface: IGraphIngestionProcessor
+In order to use this library, you need to create at minimum two classes:
 
-*Description*
-Methods for ingesting a graph from a source graph and inserting into a target graph
+* A subclass of `IngestionProcessorBase` (implementing `IGraphIngestionProcessor`)
+* An implementation of `IInputGraphManager`
 
-**Method: IngestionFromApiAsync**
+The `IngestionProcessorBase` subclass must provide an implementation of the abstract method `GetSites()`. That method should initiate ingestion of all sites (e.g., campuses/buildings or other suitable starting nodes) from the input graph, traverse them and their child nodes (buildings, floors, rooms, etc), translating them as necessary, and storing them in the output ADT graph. 
 
-*Description*
+In order to aid in this process, the `IngestionProcessorBase` class references implementations of `IInputGraphManager` and `IOutputGraphManager` that you may use to interact with the input and output graphs, respectively. An ADT-specific implementation of the latter is provided for you in `AzureDigitalTwinsGraphManager`, but you will need to create the former, adapted to whatever data source you are ingesting from.
 
-Starts the Ingestion Process from a source to a target graph. The implementation of the derived class is responsible for exposing its configuration through its constructor.
+Additionally, in order to reconcile any ontological differences between source and target graph, the `IngestionProcessorBase` provides convenience methods for mapping terms from the input to terms in the output (e.g., DTDL Interfaces, Relationships, etc.). These methods require that an implementation of `IOntologyMappingManager` from the aforementioned `OntologyMapper` library, loaded with a set of mappings between the used ontologies, be passed into to the `IngestionProcessorBase` constructor.
 
-*Parameters*
+## Example
 
-None
+For an example of an implementation using this library, including the creation of those above-mentioned required implementations, see the `Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped` package, which is built specifically to ingest graphs from the [Mapped](https://app.mapped.com/) API. 
 
-*Returns*
+The classes provided by this library are intended to be easily wired up using .Net Dependency Injection, and a `ServiceCollection` extension method `AddIngestionManager()` is provided for that express purpose. We recommend that any implementations that you build extend upon this design pattern, and use your own `ServiceCollection` extension method, which you use to wire up your `IInputGraphManager` and `IGraphIngestionProcessor` before then calling out to our extension method that wires up the `IOutputGraphManager`. This is exactly what the Mapped library does, i.e.:
 
-An awaitable task.
+```csharp
+public static IServiceCollection AddMappedIngestionManager(this IServiceCollection services, Action<MappedIngestionManagerOptions> options)
+    {
+        services.AddOptions<MappedIngestionManagerOptions>()
+                .Configure(options)
+                .ValidateDataAnnotations()
+                .ValidateOnStart();
 
-### Interface: IInputGraphManager
+        services.AddSingleton<IInputGraphManager, MappedGraphManager>();
+        services.AddSingleton<IGraphIngestionProcessor, MappedGraphIngestionProcessor<MappedIngestionManagerOptions>>();
 
-*Description*
-Methods for accessing an input graph source
+        services.AddIngestionManager(options);
 
-**Method: TryGetDtmi**
+        return services;
+    }
+```
 
-*Description*
+## Deployment configuration
 
-Get a DTMI for an interfaceType
+Once you have implemented `IngestionProcessorBase` and `IInputGraphManager`, and a ServiceCollection extension method to wire them up as described above, you are ready to use that extension method and your graph ingestion solution in a real system. 
 
-*Parameters*
+Start by running that extension method to inject all the required interface implementations. Continuing with the Mapped library example, your configuration might look like this:
 
-| Name | Description |
-| --- | --- |
-| interfaceType | The name of the interface |
-| dtmi | The found dtmi |
+```csharp
+services.AddLogging();
 
-*Returns*
+services.AddSingleton<IOntologyMappingLoader>(sp =>
+{
+    var logger = sp.GetRequiredService<ILogger<MappedOntologyMappingLoader>>();
+    return new MappedOntologyMappingLoader(logger, hostContext.Configuration["ontologyMappingFilename"]);
+});
 
-`true` if the DTMi is found, otherwise `false`
+services.AddSingleton<IOntologyMappingManager, OntologyMappingManager>();
 
-**Method: GetTwinGraphAsync**
+services.AddMappedIngestionManager(options =>
+{
+    // Mapped Specific
+    options.MappedToken = hostContext.Configuration["MappedToken"];
+    options.MappedRootUrl = hostContext.Configuration["MappedRootUrl"];
 
-*Description*
+    // Ingestion Manager
+    options.AzureDigitalTwinsEndpoint = hostContext.Configuration["AzureDigitalTwinsEndpoint"];
+});
+```
 
-Loads a twin graph from a source based on a passed in graph query
-
-*Parameters*
-
-| Name | Description |
-| --- | --- |
-| query | A well-formed graph query |
-
-*Returns*
-
-A JsonDocument containing the results of the query
-
-**Method: GetOrganizationQuery**
-
-*Description*
-
-Gets a graph query to return an organization
-
-*Parameters*
-
-None
-
-*Returns*
-
-A graph query string which can be passed to GetTwinsGraphAsync
-
-**Method: GetBuildingsForSiteQuery**
-
-*Description*
-
-Gets a graph query to return all the buildings on a site
-
-*Parameters*
-
-None
-
-*Returns*
-
-A graph query string which can be passed to GetTwinsGraphAsync
-
-**Method: GetFloorQuery**
-
-*Description*
-
-Gets a graph query to return all the floors for a building
-
-*Parameters*
-
-None
-
-*Returns*
-
-A graph query string which can be passed to GetTwinsGraphAsync
-
-**Method: GetBuildingsThingsQuery**
-
-*Description*
-
-Gets a graph query to return all the things in a building
-
-*Parameters*
-
-None
-
-*Returns*
-
-A graph query string which can be passed to GetTwinsGraphAsync
-
-**Method: GetPointsForThingQuery**
-
-*Description*
-
-Gets a graph query to return all the points for a thing
-
-*Parameters*
-
-None
-
-*Returns*
-
-A graph query string which can be passed to GetTwinsGraphAsync
-
-### Interface: IInputGraphManagerOptions
-
-*Description*
-Configuration interface for the InputGraphManager
-
-### Interface: IOutputGraphManager
-
-*Description*
-
-Methods for working with an output graph
-
-**Method: GetModelAsync**
-
-*Description*
-
-Loads the model for a graph
-
-*Parameters*
-
-None
-
-*Returns*
-
-A collection of strings which describe the model used by the output graph
-
-**Method: UploadGraphAsync**
-
-*Description*
-
-Loads the twins and relationships into an output graph
-
-*Parameters*
-
-None
-
-*Returns*
-
-None
-
-### Interface: ITelemetryIngestionProcessor
-
-*Description*
-
-Methods for ingesting event data telemetry to a target
-
-**Method: IngestFromEventHubAsync**
-
-*Description*
-
-Ingests the passed in data from Event Hub into a target
-
-*Parameters*
-
-| Name | Description |
-| --- | --- |
-| telemetryData | An instance of event hub event data |
-
-*Returns*
-
-None
-
-### Interface: ITwinMappingIndexer
-
-*Description*
-
-Methods for working with a cache store of sourceIDs to Digital Twin Ids
-
-**Method: UpsertTwinIndexAsync**
-
-*Description*
-
-Add or update a mapping to the cache
-
-*Parameters*
-
-| Name | Description |
-| --- | --- |
-| sourceId | The source device key from the source graph |
-| twinId | The target twin id for the target graph |
-
-*Returns*
-
-None
-
-**Method: GetTwinIndexAsync**
-
-*Description*
-
-Get a mapping from the cache for a passed in sourceId
-
-*Parameters*
-
-| Name | Description |
-| --- | --- |
-| sourceId | The source device key from the source graph |
-
-*Returns*
-
-The twinId for the target graph
-
-### Class: IngestionManagerOptions
-
-*Description*
-
-An implementation of IIngestionManagerOptions which allows the consumer to specify the connection and configuration information needed to connect to the target Azure Digital Twins instance
-
-*Properties*
-| Name | Description |
-| --- | --- |
-| AzureDigitalTwinsEndpoint | The Url for the Azure Digital Twins instance to target. |
-| MaxRetryAttempts | The number of times to retry create twin attempts per twin/relationship. |
-| RetryDelayInMs | The delay in milliseconds between retry create twin attempts per twin/relationship. Defaults to 50ms. |
-| AdtResource | Gets or sets the resource to be used when generating a Token for accessing Azure Digital Twins. This needs to be changed when working with non-public clouds. Defaults to https://digitaltwins.azure.net/.default. |
-| MaxDegreeOfParallelism | Gets or sets the maximum number parallel threads to use when uploading to Azure Digital Twins. Defaults to 10 threads. |
-
-
-### Class: IngestionProcessorBase
-
-*Description*
-
-Abstract Base class for loading a site graph from input source to output target. Implements IGraphIngestionProcessor
-
+If all is configured correctly, your code referring to `IGraphIngestionProcessor` should inject your custom `IngestionProcessorBase` subclass, on which you can call the inherited method `IngestFromApiAsync()`. That method will initialise the base processor, and then immediately call your customized `GetSites()` method, kicking off the rest of the ingestion process.
