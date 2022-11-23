@@ -10,15 +10,27 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper
     using Microsoft.Azure.DigitalTwins.Parser;
     using Microsoft.Azure.DigitalTwins.Parser.Models;
 
+    /// <summary>
+    /// Implements methods for consuming ontology mappings, i.e., to fetch ontology names (DTMIs, relationship names,
+    /// properties, etc.) in an output ontology, that correspond to some sought names in an input ontology.
+    /// </summary>
     public class OntologyMappingManager : IOntologyMappingManager
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="OntologyMappingManager"/> class.
+        /// </summary>
+        /// <param name="mappingLoader">Loader that can provide a set of ontology mappings for this manager to operate over.</param>
         public OntologyMappingManager(IOntologyMappingLoader mappingLoader)
         {
             OntologyMapping = mappingLoader.LoadOntologyMapping();
         }
 
+        /// <summary>
+        /// Gets the loaded ontology mappings.
+        /// </summary>
         public OntologyMapping OntologyMapping { get; }
 
+        /// <inheritdoc/>
         public bool TryGetInterfaceRemapDtmi(Dtmi inputDtmi, out DtmiRemap? dtmiRemap)
         {
             dtmiRemap = OntologyMapping.InterfaceRemaps.FirstOrDefault(r => r.InputDtmi == inputDtmi.ToString() && !r.IsIgnored);
@@ -44,6 +56,7 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper
             return false;
         }
 
+        /// <inheritdoc/>
         public bool TryGetRelationshipRemap(string inputRelationship, out RelationshipRemap? relationshipRemap)
         {
             relationshipRemap = OntologyMapping.RelationshipRemaps.FirstOrDefault(r => r.InputRelationship == inputRelationship);
@@ -56,6 +69,7 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper
             return false;
         }
 
+        /// <inheritdoc/>
         public bool TryGetPropertyProjection(string outputDtmi, string outputPropertyName, out PropertyProjection? propertyProjection)
         {
             propertyProjection = OntologyMapping.PropertyProjections.OrderBy(e => e.Priority).FirstOrDefault(e => e.OutputPropertyName == outputPropertyName && Regex.Match(outputDtmi, e.OutputDtmiFilter, RegexOptions.IgnoreCase).Success);
@@ -68,6 +82,7 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper
             return false;
         }
 
+        /// <inheritdoc/>
         public bool TryGetFillProperty(string outputDtmi, string outputPropertyName, out FillProperty? fillProperty)
         {
             fillProperty = OntologyMapping.FillProperties.OrderBy(e => e.Priority).FirstOrDefault(e => e.OutputPropertyName == outputPropertyName && Regex.Match(outputDtmi, e.OutputDtmiFilter, RegexOptions.IgnoreCase).Success);
@@ -80,6 +95,7 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper
             return false;
         }
 
+        /// <inheritdoc/>
         public bool ValidateTargetOntologyMapping(IReadOnlyDictionary<Dtmi, DTEntityInfo> targetObjectModel, out List<string> invalidTargets)
         {
             invalidTargets = new List<string>();
@@ -103,6 +119,7 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper
             return !invalidTargets.Any();
         }
 
+        /// <inheritdoc/>
         public bool ValidateSourceOntologyMapping(IReadOnlyDictionary<Dtmi, DTEntityInfo> sourceObjectModel, out List<string> invalidSources)
         {
             invalidSources = new List<string>();
