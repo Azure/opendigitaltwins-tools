@@ -130,7 +130,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.AzureDigitalTwins
         /// <summary>
         /// Add a set of twins to the mapping index cache.
         /// </summary>
-        /// <param name="twins">The twins that will be cache (map key is dtId).</param>
+        /// <param name="twins">The twins that will be cached (map key is dtId).</param>
         /// <returns>An awaitable task.</returns>
         protected async Task UpdateCache(Dictionary<string, BasicDigitalTwin> twins)
         {

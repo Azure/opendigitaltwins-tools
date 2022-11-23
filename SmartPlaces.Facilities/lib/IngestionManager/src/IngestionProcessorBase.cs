@@ -142,6 +142,11 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
             }
         }
 
+        /// <summary>
+        /// Returns a DTMI from the input graph ontology, corresponding to a string representation, if one exists.
+        /// </summary>
+        /// <param name="interfaceType">Sought interface name.</param>
+        /// <returns><c>DTMI</c> representation of said interface, if it exists; else null.</returns>
         protected Dtmi? GetInputInterfaceDtmi(string interfaceType)
         {
             Dtmi? dtmi = null;
@@ -159,6 +164,12 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
             return dtmi;
         }
 
+        /// <summary>
+        /// Get an output Relationship name and direction, after ontology mapping, corresponding to an input Relationship name.
+        /// If no mapping is found, simply returns the input Relationship.
+        /// </summary>
+        /// <param name="inputRelationshipType">The sought input Relationship.</param>
+        /// <returns>A <c>string,bool</c> tuple, where the <c>string</c> indicates output Relationship name, and the <c>bool</c> indicates whether or not the relationship direction is reversed after mapping compared to the input direction.</returns>
         protected Tuple<string, bool> GetOutputRelationshipType(string inputRelationshipType)
         {
             // If there is a remapping, use that. If not, assume the input and output mapping are the same
@@ -170,6 +181,12 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
             return new Tuple<string, bool>(inputRelationshipType, false);
         }
 
+        /// <summary>
+        /// Try to get the output DTMI, after ontology mapping, corresponding to an input DTMI.
+        /// </summary>
+        /// <param name="inputDtmi">The sought input DTMI.</param>
+        /// <param name="outputDtmi">The corresponding output DTMI.</param>
+        /// <returns><c>true</c> if a mapping could be found, in which case <paramref name="outputDtmi"/> will hold a result, else <c>false</c>, in which case <paramref name="outputDtmi"/> will be null.</returns>
         protected bool TryGetOutputInterfaceDtmi(Dtmi inputDtmi, out Dtmi? outputDtmi)
         {
             // Try to get the input DTMI from the output DTDL
