@@ -1,6 +1,6 @@
 # IngestionManager.Mapped
 
-This library works in conjunction with and depends on the `Microsoft.SmartPlaces.Facilities.IngestionManager` library, that defines a interfaces and a generic implementation for ingesting building data graphs into Azure Digital Twins. 
+This library works in conjunction with and depends on the `Microsoft.SmartPlaces.Facilities.IngestionManager` library, that defines interfaces and a generic implementation for ingesting building data graphs into Azure Digital Twins. 
 
 ## Setup
 

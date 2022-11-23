@@ -16,7 +16,7 @@ The following mappings have been created and are being maintained:
 
 ### Usage Instructions
 
-The `MappedOntologyMappingLoader` class enables loading of one of the above listed. An instance of such a loader is passed as input when constructing an `IOntologyMappingManager` instance, from which the mappings can subsequently be read. When instantiating this class, specify the full path of the resource to be loaded. in dot notation, i.e.:
+The `MappedOntologyMappingLoader` class enables loading of one of the above listed. An instance of such a loader is passed as input when constructing an `IOntologyMappingManager` instance, from which the mappings can subsequently be read. When instantiating this class, specify the full path of the resource to be loaded in dot notation, i.e.:
 
 ``` csharp
 var loader = new MappedOntologyMappingLoader(logger, "Mappings.v0.BrickRec.mapped_json_v0_dtdlv2_Brick_1_3-REC_4_0.json");
