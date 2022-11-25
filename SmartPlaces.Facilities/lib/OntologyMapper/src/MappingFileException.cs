@@ -19,6 +19,12 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper
             this.filename = filename;
         }
 
+        public MappingFileException(string message, string filename, Exception innerException)
+            : base(message, innerException)
+        {
+            this.filename = filename;
+        }
+
         public string Filename => filename;
     }
 }
