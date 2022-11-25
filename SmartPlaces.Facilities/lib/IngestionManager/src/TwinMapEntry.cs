@@ -6,7 +6,7 @@
 
 namespace Microsoft.SmartPlaces.Facilities.IngestionManager
 {
-    public class TwinMap
+    public class TwinMapEntry
     {
         /// <summary>
         /// Gets or sets the identity of the twin that is mapped to the cache key
