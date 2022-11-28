@@ -47,6 +47,6 @@ jobs:
     - name: Azure Pipelines Action
       uses: Azure/pipelines@v1
       with:
-        azure-devops-project-url: https://dev.azure.com/dynamicscrm//Solutions/_git/ASPEN
+        azure-devops-project-url: https://dev.azure.com/dynamicscrm/Solutions/_git/ASPEN
         azure-pipeline-name: 'Aspen.Buddy.Main'
         azure-devops-token: ${{ secrets.AZURE_DEVOPS_TOKEN }}     
