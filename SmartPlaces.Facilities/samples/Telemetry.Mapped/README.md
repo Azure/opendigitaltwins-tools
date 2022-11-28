@@ -33,7 +33,6 @@ The following environment variables need to be defined in order to run this code
 | --- | --- | --- | --- |
 | KeyVaultEndpoint | ✔ | The Uri to the KeyVault instance where needed secrets are stored | https://&lt;yourkeyvaultname&gt;.vault.azure.net/ |
 | AzureDigitalTwinsEndpoint | ✔ | The Uri of the ADT Instance to update | https://&lt;youradtname&gt;.api.&lt;yourregion&gt;.digitaltwins.azure.net |
-| RedisCacheConnectionString | ✔ | The endpoint location of the local Redis cluster in the cloud that store the mapping from the MappingKey to the ADT Twin ID | &lt;yourcachename&gt;.redis.cache.windows.net,abortConnect=false,ssl=true,allowAdmin=true,password=&lt;yourpassword&gt; |
 | StorageAccountEndpoint | ✔ | The Uri of the storage account to be used for checkpointing when pulling events from the Event Hub | https://&lt;yourstorageaccountname&gt;.blob.core.windows.net |
 | AppInsightsConnectionString |  | The connection string needed to locate the Application Insights instance for logs and metrics | InstrumentationKey=&lt;yourinstrumentationkey&gt;;IngestionEndpoint=https://&lt;checkregion&gt;.in.applicationinsights.azure.com/;LiveEndpoint=https://&lt;checkregion&gt;.livediagnostics.monitor.azure.com/ |
 
@@ -44,6 +43,7 @@ The following secrets must be defined in the KeyVault in order to run this code:
 
 | Secret Name | Value Source | Example |
 | --- | --- | --- |
+| RedisCacheConnectionString | The endpoint location of the local Redis cluster in the cloud that store the mapping from the MappingKey to the ADT Twin ID | &lt;yourcachename&gt;.redis.cache.windows.net,abortConnect=false,ssl=true,allowAdmin=true,password=&lt;yourpassword&gt; |
 | {EventHubName}-PrimaryConnectionString | The primary connection string for the event hub | Endpoint=sb://&lt;yourEventHubName&gt;.servicebus.windows.net/;SharedAccessKeyName=ListenRule;SharedAccessKey=&lt;yourSharedAccessKey&gt;=;EntityPath=telemetry |
 
 ## Logging and Metrics

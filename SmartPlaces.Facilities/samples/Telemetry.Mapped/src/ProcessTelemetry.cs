@@ -99,7 +99,7 @@ namespace Telemetry
         /// Defines what actions need to be taken when the process is
         /// asked to stop.
         /// </summary>
-        /// <param name="cancellationToken"></param>
+        /// <param name="cancellationToken">A way to stop things</param>
         public override async Task StopAsync(CancellationToken cancellationToken)
         {
             // Stop the processing
