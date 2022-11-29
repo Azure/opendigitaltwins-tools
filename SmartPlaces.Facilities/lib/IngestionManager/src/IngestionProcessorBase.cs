@@ -43,8 +43,6 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
             TelemetryClient = telemetryClient;
             InputGraphManager = inputGraphManager;
             OntologyMappingManager = ontologyMappingManager;
-            var doc = JsonDocument.Parse("{ \"$metadata\": {} }");
-            EmptyComponentElement = doc.RootElement;
             TargetModelParser = new ModelParser();
             OutputGraphManager = outputGraphManager;
         }
@@ -57,7 +55,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
 
         protected IInputGraphManager InputGraphManager { get; }
 
-        protected JsonElement EmptyComponentElement { get; }
+        protected static JsonElement EmptyComponentElement { get => JsonDocument.Parse("{ \"$metadata\": {} }").RootElement; }
 
         protected ModelParser TargetModelParser { get; }
 
