@@ -53,7 +53,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
         /// </summary>
         /// <param name="cancellationToken">CancellationToken</param>
         /// <returns>An awaitable task</returns>
-        protected override async Task GetSites(CancellationToken cancellationToken)
+        protected override async Task ProcessSites(CancellationToken cancellationToken)
         {
             // Generate the outermost query to run against the input graph. Starts by getting the list of sites
             var metricIdentifier = new MetricIdentifier(Metrics.DefaultNamespace, "SiteProcessed", Metrics.SiteDimensionName);
