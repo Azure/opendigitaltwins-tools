@@ -7,8 +7,8 @@
 namespace Microsoft.SmartPlaces.Facilities.IngestionManager
 {
     using System.Net.Sockets;
+    using System.Reflection.Metadata.Ecma335;
     using System.Text.Json;
-    using System.Text.Json.Serialization;
     using System.Threading.Tasks;
     using Microsoft.Extensions.Caching.Distributed;
     using Microsoft.SmartPlaces.Facilities.IngestionManager.Interfaces;
@@ -38,9 +38,13 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
         {
             return await redisRetryPolicy.ExecuteAsync(async () =>
             {
-                var cacheValue = await cache.GetStringAsync(sourceId);
-                var mapEntry = JsonSerializer.Deserialize<TwinMapEntry>(cacheValue);
-                return mapEntry;
+                string? cacheValue = await cache.GetStringAsync(sourceId);
+                if (cacheValue != null)
+                {
+                    var mapEntry = JsonSerializer.Deserialize<TwinMapEntry>(cacheValue);
+                    return mapEntry;
+                }
+                return null;
             });
         }
 
