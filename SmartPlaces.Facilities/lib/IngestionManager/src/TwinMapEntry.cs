@@ -1,12 +1,12 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="RedisTwinMappingIndexer.cs" company="Microsoft">
+// <copyright file="TwinMapEntry.cs" company="Microsoft">
 //   Copyright (c) Microsoft Corporation.  All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------
 
 namespace Microsoft.SmartPlaces.Facilities.IngestionManager
 {
-    public class TwinMap
+    public class TwinMapEntry
     {
         /// <summary>
         /// Gets or sets the identity of the twin that is mapped to the cache key
