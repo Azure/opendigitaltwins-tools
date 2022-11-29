@@ -66,7 +66,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
         // We set this in the Init method
         protected IReadOnlyDictionary<Dtmi, DTEntityInfo> TargetObjectModel { get; private set; } = null!;
 
-        protected abstract Task GetSites(CancellationToken cancellationToken);
+        protected abstract Task ProcessSites(CancellationToken cancellationToken);
 
         /// <summary>
         /// Driver for the Ingestion Process.
@@ -77,7 +77,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
 
             await Init(cancellationToken);
 
-            await GetSites(cancellationToken);
+            await ProcessSites(cancellationToken);
 
             Logger.LogInformation("Completed ingestion process");
             await TelemetryClient.FlushAsync(CancellationToken.None);
