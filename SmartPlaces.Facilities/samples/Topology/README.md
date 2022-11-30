@@ -52,7 +52,7 @@ Logs and Metrics will appear in the Application Insights instance pointed to by 
 
 There are three common ways to monitor / debug the topology loading process:
 
-1. If you deployed the [dashboards](../deploy/deploy.ps1), you should be able to review various graphs to help identify issues. There are 4 types of graphs currently available:
+1. If you deployed the [dashboards](../Deploy/deploy.ps1), you should be able to review various graphs to help identify issues. There are 4 types of graphs currently available:
 
     1. Ingestion Metrics (how many of each type were found in the source graph): 
         1. Number of Sites
