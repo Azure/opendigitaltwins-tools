@@ -586,7 +586,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Test
             GetRelationship(relationships, sourceElementId, inputSourceDtmi, inputRelationshipType, targetDtId, targetInterfaceType);
         }
 
-        protected override Task GetSites(CancellationToken cancellationToken)
+        protected override Task ProcessSites(CancellationToken cancellationToken)
         {
             return Task.CompletedTask;
         }
