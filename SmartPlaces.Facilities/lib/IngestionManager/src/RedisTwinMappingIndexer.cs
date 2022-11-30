@@ -7,7 +7,6 @@
 namespace Microsoft.SmartPlaces.Facilities.IngestionManager
 {
     using System.Net.Sockets;
-    using System.Reflection.Metadata.Ecma335;
     using System.Text.Json;
     using System.Threading.Tasks;
     using Microsoft.Extensions.Caching.Distributed;
