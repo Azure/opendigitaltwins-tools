@@ -114,7 +114,11 @@ exceptions
 
 ```
 
-If you have set up logging for your container instance and routed the logs to a log analytics instance, you can look at the CustomLogs / ContainerInstanceLog_CL in your Log Analytics workspace. If your instance name is "topology", you can run the following query to get all of the logs 
+Verbosity of these logs can be configured in the [appsettings.json](../Topology/src/appsettings.json) file for the Topology app.
+
+3. If you have deployed this sample code within an Azure Container Instance there are additional methods for accessing the logs.
+    - Within the AzureContainerInstance resource in the Azure Portal you can click `Containers` > `Logs` to view the last few minutes of console logs from the Topology process. 
+    - If you've connected the AzureContainerInstance to a LogAnalytics workspace you can query the same console logs given the following queries.
 
 ```
 
@@ -146,5 +150,3 @@ ContainerInstanceLog_CL
 
 ```
 
-3. If you are running the app inside an Azure container, go to the container in the Azure portal, and click on the logs tab in the Containers portal. This will give you a look at the last few minutes of the log. 
-If, for some reason, the app is not starting or processing, this is usually the quickest way to identify the issue. 
