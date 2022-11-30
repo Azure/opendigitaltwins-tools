@@ -30,12 +30,12 @@ When updating the src project for any of the libs, please remember to:
 1. Update the Assembly Version and Package Version in the csproj as appropriate. The projects use [Semantic Versioning](https://semver.org/), so please follow the semantic versioning guidelines when updating.
 2. Add Unit tests for any new features you add or bugs you fix
 3. Ensure the documentation for the lib is up to date
-4. Upon completion of the pull request, sent a note to [smartplacesupport@microsoft.com](mailto:smartplacessupport@microsoft.com) to request that they publish the latest version of the Nuget packages. Response times should be under 2 business days.
+4. Once the commit of the changes is done to the main branch, the nugets should be automatically updated on Nuget.org within 30 minutes.
 5. If you are updating a low level project that one of the other projects depend upon through a Nuget package reference, you will need to do 2 PRs: one for the low level package, and one for the lib referencing the updated package. Note that the second pull request will not succeed until step 4 above is completed by the Smart Places team. 
 
 ### Local Testing
 
-Because of the complexity of the process of getting the official Nuget packages updated, it is always faster to test all the components locally before starting the first pull request. Here are some steps to make testing simpler:
+It is always faster to test all the components locally before starting the first pull request. Here are some steps to make testing simpler:
 
 1. Set up a local folder on your machine to put Nuget packages into (i.e. ..\LocalNugets)
 2. Update the [Nuget.config](./NuGet.config) and add the following line to it. Never check in this file. It will break the builds.
