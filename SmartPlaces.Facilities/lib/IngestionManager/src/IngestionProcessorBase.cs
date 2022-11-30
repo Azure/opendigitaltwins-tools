@@ -43,8 +43,6 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
             TelemetryClient = telemetryClient;
             InputGraphManager = inputGraphManager;
             OntologyMappingManager = ontologyMappingManager;
-            var doc = JsonDocument.Parse("{ \"$metadata\": {} }");
-            EmptyComponentElement = doc.RootElement;
             TargetModelParser = new ModelParser();
             OutputGraphManager = outputGraphManager;
         }
@@ -57,7 +55,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
 
         protected IInputGraphManager InputGraphManager { get; }
 
-        protected JsonElement EmptyComponentElement { get; }
+        protected static JsonElement EmptyComponentElement { get => JsonDocument.Parse("{ \"$metadata\": {} }").RootElement; }
 
         protected ModelParser TargetModelParser { get; }
 
@@ -68,7 +66,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
         // We set this in the Init method
         protected IReadOnlyDictionary<Dtmi, DTEntityInfo> TargetObjectModel { get; private set; } = null!;
 
-        protected abstract Task GetSites(CancellationToken cancellationToken);
+        protected abstract Task ProcessSites(CancellationToken cancellationToken);
 
         /// <summary>
         /// Driver for the Ingestion Process.
@@ -79,7 +77,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
 
             await Init(cancellationToken);
 
-            await GetSites(cancellationToken);
+            await ProcessSites(cancellationToken);
 
             Logger.LogInformation("Completed ingestion process");
             await TelemetryClient.FlushAsync(CancellationToken.None);

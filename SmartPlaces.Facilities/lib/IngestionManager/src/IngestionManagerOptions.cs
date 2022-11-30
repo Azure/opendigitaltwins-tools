@@ -37,7 +37,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
         /// This needs to be changed when working with non-public clouds.
         /// Defaults to https://digitaltwins.azure.net/.default.
         /// </summary>
-        public string AdtResource { get; set; } = "https://digitaltwins.azure.net/.default";
+        public string AzureDigitalTwinsResource { get; set; } = "https://digitaltwins.azure.net/.default";
 
         /// <summary>
         /// Gets or sets the maximum number parallel threads to use when uploading to Azure Digital Twins.
