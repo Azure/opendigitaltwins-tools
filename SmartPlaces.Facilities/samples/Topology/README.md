@@ -49,3 +49,86 @@ The following secrets must be defined in the KeyVault in order to run this code:
 ## Logging and Metrics
 
 Logs and Metrics will appear in the Application Insights instance pointed to by the App Insights connection string. For more information on how to configure the Application Insights SDK, please see: https://learn.microsoft.com/en-us/azure/azure-monitor/app/worker-service
+
+## Monitoring and Debugging the Topology Process
+
+There are three common ways to monitor / debug the topology loading process:
+
+1. If you are running the app inside an Azure container, go to the container in the Azure portal, and click on the logs tab in the Containers portal. This will give you a look at the last few minutes of the log. 
+If, for some reason, the app is not starting or processing, this is usually the quickest way to identify the issue. 
+
+2. If you deployed the [dashboards](..\deploy\deploy.ps), you should be able to review various graphs to help identify issues. There are 4 types of graphs currently available:
+
+    1. Ingestion Metrics (how many of each type were found in the source graph): 
+        1. Number of Sites
+        2. Number of Buildings
+        3. Number of Twins
+        4. Number of Relationships
+    2. Twin Metrics
+        1. Number of Twin creates succeeded
+        2. Number of Twin creates failed
+        3. Number of Throttled Twin creates
+        4. Number of Twin updates succeeded
+        5. Number of Twin updates failed
+        6. Number of Throttled Twin updates
+        7. Number of Twin updates skipped (due to no differences between source and target)
+    3. Relationship Metrics
+        1. Number of Relationship creates succeeded
+        2. Number of Relationship creates failed
+        3. Number of Throttled Relationship creates
+        4. Number of Relationship updates succeeded
+        5. Number of Relationship updates failed
+        6. Number of Throttled Relationship updates
+        7. Number of Relationship updates skipped (due to no differences between source and target)
+    4. Ontology Mapping Metrics
+        1. Mapping for Input DTMI not found: 
+            - Counts the number of the Incoming DTMIs that do not exist in the Source Ontology file that is loaded. 
+            - Entries here indicate that the topology program assemblies are out of sync with the source system's ontology
+        2. Output Mapping for Input DTMI not found:
+            - Counts the number of the Incoming DTMIs that are not mapped to output DTMIs in the mapping file
+            - Entries here indicate that the ontology mapping from source to target is incomplete and should be updated. It is possible that the target ontology is a smaller set than the
+              input ontology and some mappings may not be possible (or needed).
+        3. Target DTMI not found:
+            - An target dtmi entry exists in the mapping file which does not actually exist in the target ontology
+        4. InputInterfaceNotFound not found in Model by InterfaceType
+            - A source dtmi entry exists in the mapping file which does not actually exist in the source ontology
+        5. Relationship Not Found in Model by RelationshipType
+            - A relationship was found in the toplogy that is not found in the target ontology
+        6. Duplicate property found in Model by PropertyName
+            - A invalid model was found with multiple properties with the same name
+        7. Invalid Target DTMI Mappings in MappingFile
+            - The mapping file has a dtmi that is not in the target ontology
+        8. Invalid Output DTMI by OutputDtmi
+            - The mapping file has a malformed DTMI
+
+3. If you have set up logging for your container instance and routed the logs to a log analytics instance, you can look at the CustomLogs / ContainerInstanceLog_CL in your Log Analytics workspace. If your instance name is "topology", you can run the following query to get all of the logs 
+
+```
+
+ContainerInstanceLog_CL
+| where ContainerName_s contains("topology")
+| order by TimeGenerated asc
+
+```
+
+If you want to see all the entries with exceptions:
+
+```
+
+ContainerInstanceLog_CL
+| where ContainerName_s contains("topology")
+| where Message contains("exception")
+| order by TimeGenerated asc
+
+```
+
+If you want to see all the entries with the lines with the word total in them:
+
+```
+
+ContainerInstanceLog_CL
+| where ContainerName_s contains("topology")
+| where Message contains("total")
+| order by TimeGenerated asc
+
+```
