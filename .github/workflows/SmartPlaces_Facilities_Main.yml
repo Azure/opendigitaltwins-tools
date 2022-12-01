@@ -1,4 +1,4 @@
-name: Pull Request Build
+name: Trigger Package Generation
 
 on:
   push:
