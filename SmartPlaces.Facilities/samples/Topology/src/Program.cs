@@ -44,6 +44,7 @@ namespace Topology
                     services.AddApplicationInsightsTelemetryWorkerService(options =>
                     {
                         options.ConnectionString = hostContext.Configuration["AppInsightsConnectionString"];
+                        options.EnableAdaptiveSampling = false;
                     });
 
                     // Implements IInputGraphManager, IGraphIngestionProcessor, IOutputGraphManager, ITelemetryIngestionProcessor
