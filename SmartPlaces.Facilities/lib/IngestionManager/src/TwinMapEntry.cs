@@ -1,6 +1,6 @@
-﻿// -----------------------------------------------------------------------
-// <copyright file="TwinMap.cs" company="Microsoft">
-// Copyright (c) Microsoft Corporation.  All rights reserved.
+//-----------------------------------------------------------------------
+// <copyright file="TwinMapEntry.cs" company="Microsoft">
+//   Copyright (c) Microsoft Corporation.  All rights reserved.
 // </copyright>
 // -----------------------------------------------------------------------
 
@@ -9,7 +9,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
     /// <summary>
     /// Twin cache map value, wrapping a twin's ID and its model ID.
     /// </summary>
-    public class TwinMap
+    public class TwinMapEntry
     {
         /// <summary>
         /// Gets or sets the ID of the twin that is mapped to the cache key.

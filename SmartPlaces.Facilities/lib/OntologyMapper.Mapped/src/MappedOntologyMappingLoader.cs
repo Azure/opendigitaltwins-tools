@@ -56,16 +56,22 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper.Mapped
                     using (StreamReader reader = new StreamReader(stream))
                     {
                         string result = reader.ReadToEnd();
-                        var mappings = JsonSerializer.Deserialize<OntologyMapping>(result, options);
+                        OntologyMapping? mappings;
+                        try
+                        {
+                            mappings = JsonSerializer.Deserialize<OntologyMapping>(result, options);
+                        }
+                        catch (JsonException jex)
+                        {
+                            throw new MappingFileException($"Mappings file '{resourcePath}' is malformed.", resourcePath, jex);
+                        }
 
-                        if (mappings != null)
+                        if (mappings == null)
                         {
-                            return mappings;
+                            throw new MappingFileException($"Mappings file '{resourcePath}' is empty.", resourcePath);
                         }
-                        else
-                        {
-                            throw new MappingFileException("Mappings file is empty or poorly formed.", resourcePath);
-                        }
+
+                        return mappings;
                     }
                 }
                 else

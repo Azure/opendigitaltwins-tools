@@ -17,15 +17,15 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Interfaces
         /// Add or update a mapping to the cache, in the latter case overwriting any existing mapping.
         /// </summary>
         /// <param name="sourceId">The source device ID from the source graph.</param>
-        /// <param name="twinMap">The target twin map (wrapping ID + model) for the target graph.</param>
+        /// <param name="mapEntry">The target twin map entry (wrapping ID + model) for the target graph.</param>
         /// <returns>An awaitable task.</returns>
-        public Task UpsertTwinIndexAsync(string sourceId, TwinMap twinMap);
+        public Task UpsertTwinIndexAsync(string sourceId, TwinMapEntry mapEntry);
 
         /// <summary>
         /// Get a mapping from the cache for a passed in sourceId, if it exists.
         /// </summary>
         /// <param name="sourceId">The source device key from the source graph.</param>
-        /// <returns>The twin map (wrapping ID + model) for the target graph if it exists in the cache, else null.</returns>
-        public Task<TwinMap?> GetTwinIndexAsync(string sourceId);
+        /// <returns>The twin map entry (wrapping ID + model) for the target graph if it exists in the cache, else null.</returns>
+        public Task<TwinMapEntry?> GetTwinIndexAsync(string sourceId);
     }
 }

@@ -51,8 +51,6 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
             TelemetryClient = telemetryClient;
             InputGraphManager = inputGraphManager;
             OntologyMappingManager = ontologyMappingManager;
-            var doc = JsonDocument.Parse("{ \"$metadata\": {} }");
-            EmptyComponentElement = doc.RootElement;
             TargetModelParser = new ModelParser();
             OutputGraphManager = outputGraphManager;
         }
@@ -80,7 +78,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
         /// <summary>
         /// Gets a JSON object with only an empty <c>$metadata</c> field, used to scaffold an empty DTDL Component in target twins.
         /// </summary>
-        protected JsonElement EmptyComponentElement { get; }
+        protected static JsonElement EmptyComponentElement { get => JsonDocument.Parse("{ \"$metadata\": {} }").RootElement; }
 
         /// <summary>
         ///  Gets target model parser, used to read target ontology into memory.
@@ -108,7 +106,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
         /// </summary>
         /// <param name="cancellationToken">Cancellation propagation token for interrupting the ingestion process.</param>
         /// <returns>An awaitable task.</returns>
-        protected abstract Task GetSites(CancellationToken cancellationToken);
+        protected abstract Task ProcessSites(CancellationToken cancellationToken);
 
         /// <inheritdoc/>
         public async Task IngestFromApiAsync(CancellationToken cancellationToken)
@@ -117,7 +115,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
 
             await Init(cancellationToken);
 
-            await GetSites(cancellationToken);
+            await ProcessSites(cancellationToken);
 
             Logger.LogInformation("Completed ingestion process");
             await TelemetryClient.FlushAsync(CancellationToken.None);

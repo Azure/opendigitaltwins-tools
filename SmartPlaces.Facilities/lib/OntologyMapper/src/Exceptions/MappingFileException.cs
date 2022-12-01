@@ -22,9 +22,15 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper
             Filename = filename;
         }
 
+        public MappingFileException(string message, string filename, Exception innerException)
+            : base(message, innerException)
+        {
+            this.filename = filename;
+        }
+
         /// <summary>
         /// Gets the file that caused this error.
         /// </summary>
-        public string Filename { get; }
+        public string Filename => filename;
     }
 }

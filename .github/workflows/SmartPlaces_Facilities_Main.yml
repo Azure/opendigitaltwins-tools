@@ -1,8 +1,9 @@
-name: Pull Request Build
+name: Trigger Package Generation
 
 on:
-  pull_request:
-    branches: [ "main" ]
+  push:
+    branches:
+    - main
     paths: 
       - '.github/**'
       - 'SmartPlaces.Facilities/**'
@@ -30,8 +31,6 @@ jobs:
            dotnet restore SmartPlaces.Facilities\\lib\\OntologyMapper.Mapped
            dotnet restore SmartPlaces.Facilities\\lib\\IngestionManager
            dotnet restore SmartPlaces.Facilities\\lib\\IngestionManager.Mapped
-           dotnet restore SmartPlaces.Facilities\\samples\\EdgeGateway.Mapped
-           dotnet restore SmartPlaces.Facilities\\samples\\Telemetry.Mapped
            dotnet restore SmartPlaces.Facilities\\samples\\Topology
     - name: Build
       run: |
@@ -39,8 +38,6 @@ jobs:
            dotnet build SmartPlaces.Facilities\\lib\\OntologyMapper.Mapped --no-restore
            dotnet build SmartPlaces.Facilities\\lib\\IngestionManager --no-restore
            dotnet build SmartPlaces.Facilities\\lib\\IngestionManager.Mapped --no-restore
-           dotnet build SmartPlaces.Facilities\\samples\\EdgeGateway.Mapped --no-restore
-           dotnet build SmartPlaces.Facilities\\samples\\Telemetry.Mapped --no-restore
            dotnet build SmartPlaces.Facilities\\samples\\Topology --no-restore
     - name: Test
       run: |
@@ -52,5 +49,5 @@ jobs:
       uses: Azure/pipelines@v1
       with:
         azure-devops-project-url: https://dev.azure.com/dynamicscrm/Solutions
-        azure-pipeline-name: 'Main Buddy (ASPEN)'
+        azure-pipeline-name: 'Main Official (ASPEN)'
         azure-devops-token: ${{ secrets.AZURE_DEVOPS_TOKEN }}     

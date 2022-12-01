@@ -49,15 +49,22 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper
                 ReadCommentHandling = JsonCommentHandling.Skip,
             };
 
-            var mappings = JsonSerializer.Deserialize<OntologyMapping>(file, options);
-            if (mappings != null)
+            OntologyMapping? mappings;
+            try
             {
-                return mappings;
+                mappings = JsonSerializer.Deserialize<OntologyMapping>(file, options);
             }
-            else
+            catch (JsonException jex)
             {
-                throw new MappingFileException("Mappings file is empty or poorly formed.", filePath);
+                throw new MappingFileException($"Mappings file '{filePath}' is malformed.", filePath, jex);
             }
+
+            if (mappings == null)
+            {
+                throw new MappingFileException($"Mappings file '{filePath}' is empty.", filePath);
+            }
+
+            return mappings;
         }
     }
 }

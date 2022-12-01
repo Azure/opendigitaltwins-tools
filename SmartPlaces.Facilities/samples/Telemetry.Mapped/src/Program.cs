@@ -4,22 +4,30 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace Topology
+namespace Telemetry
 {
     using System;
     using System.Threading.Tasks;
     using Azure.Identity;
-    using Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped.Extensions;
-    using Microsoft.SmartPlaces.Facilities.IngestionManager.Interfaces;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Hosting;
     using Microsoft.SmartPlaces.Facilities.IngestionManager;
-    using Microsoft.SmartPlaces.Facilities.OntologyMapper;
-    using Microsoft.SmartPlaces.Facilities.OntologyMapper.Mapped;
+    using Microsoft.SmartPlaces.Facilities.IngestionManager.Extensions;
+    using Microsoft.SmartPlaces.Facilities.IngestionManager.Interfaces;
+    using Telemetry.Interfaces;
+    using Telemetry.Processors;
 
     public class Program
     {
+        /// <summary>
+        /// Entry point into Telemetry
+        /// </summary>
+        /// <param name="args">An option for passing in configuration values, though not required</param>
+        /// <exception cref="ArgumentNullException">Thrown when required configuration values are not present</exception>
         public static async Task Main(string[] args)
         {
-            Console.WriteLine("Starting Topology Processing");
+            Console.WriteLine("Starting Telemetry Processing");
 
             using IHost host = Host
                 .CreateDefaultBuilder(args)
@@ -39,26 +47,26 @@ namespace Topology
                 })
                 .ConfigureServices((hostContext, services) =>
                 {
+                    // Configure ILogger
                     services.AddLogging();
 
+                    // Configure options for ApplicationInsights
                     services.AddApplicationInsightsTelemetryWorkerService(options =>
                     {
                         options.ConnectionString = hostContext.Configuration["AppInsightsConnectionString"];
                         options.EnableAdaptiveSampling = false;
                     });
 
-                    // Implements IInputGraphManager, IGraphIngestionProcessor, IOutputGraphManager, ITelemetryIngestionProcessor
-                    services.AddMappedIngestionManager(options =>
+                    // This is for getting the TwinId and TwinModelId 
+                    // based on the MappingKey which is provided by Mapped.
+                    // Implements IOutputGraphManager
+                    services.AddIngestionManager<IngestionManagerOptions>(options =>
                     {
-                        // Mapped Specific
-                        options.MappedToken = hostContext.Configuration["MappedToken"];
-                        options.MappedRootUrl = hostContext.Configuration["MappedRootUrl"];
-
-                        // Ingestion Manager
                         options.AzureDigitalTwinsEndpoint = hostContext.Configuration["AzureDigitalTwinsEndpoint"];
                     });
 
-                    // Ties Topology and Telemetry together
+                    // Ties Topology and Telemetry together setting up 
+                    // Communication with the Cloud Redis
                     // Implements IDistributedCache
                     services.AddStackExchangeRedisCache(options =>
                     {
@@ -66,15 +74,11 @@ namespace Topology
                     });
                     services.AddSingleton<ITwinMappingIndexer, RedisTwinMappingIndexer>();
 
-                    services.AddScoped<IOntologyMappingLoader>(sp =>
-                    {
-                        var logger = sp.GetRequiredService<ILogger<MappedOntologyMappingLoader>>();
-                        return new MappedOntologyMappingLoader(logger, hostContext.Configuration["ontologyMappingFilename"]);
-                    });
+                    // Add the processor for the main worker body
+                    services.AddSingleton<ITelemetryIngestionProcessor, TelemetryIngestionProcessor<IngestionManagerOptions>>();
 
-                    services.AddScoped<IOntologyMappingManager, OntologyMappingManager>();
-
-                    services.AddHostedService<ProcessTopology>();
+                    // Add the main worker body
+                    services.AddHostedService<ProcessTelemetry>();
 
                     if (hostContext.HostingEnvironment.IsDevelopment())
                     {
@@ -86,7 +90,7 @@ namespace Topology
             // Start the host
             await host.RunAsync();
 
-            Console.WriteLine("Completing Topology Processing");
+            Console.WriteLine("Completed Telemetry Processing");
         }
     }
 }
