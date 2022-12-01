@@ -224,12 +224,25 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
             return false;
         }
 
-        protected Dtmi? GetTwin(IDictionary<string, BasicDigitalTwin> twins,
-                                JsonElement targetElement,
-                                string basicDtId,
-                                string interfaceType)
+        /// <summary>
+        /// Adds a new digital twin to the input twins collection, named and typed per the
+        /// input parameters, by parsing an input source element.
+        /// <br/><br/>
+        /// Note that this method will return a DTMI if ontology mapping can be carried out,
+        /// irrespective of whether a new twin was successfully created or not.
+        /// </summary>
+        /// <param name="twins">Collection to which the new twin is added.</param>
+        /// <param name="sourceElement">Element to be parsed in the input graph.</param>
+        /// <param name="targetDtId">dtId for the new twin to add.</param>
+        /// <param name="sourceTwinInterface">The interface of the source twin.</param>
+        /// <returns>Target DTMI corresponding with <paramref name="sourceTwinInterface"/> after
+        /// ontology mapping (or <c>null</c> if no such mapping could be found.</returns>
+        protected Dtmi? AddTwin(IDictionary<string, BasicDigitalTwin> twins,
+                                JsonElement sourceElement,
+                                string targetDtId,
+                                string sourceTwinInterface)
         {
-            Dtmi? inputDtmi = GetInputInterfaceDtmi(interfaceType.ToString());
+            Dtmi? inputDtmi = GetInputInterfaceDtmi(sourceTwinInterface);
 
             if (inputDtmi != null)
             {
@@ -238,7 +251,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
                     // Create a basic twin
                     var basicTwin = new BasicDigitalTwin
                     {
-                        Id = basicDtId,
+                        Id = targetDtId,
 
                         // model Id of digital twin
                         Metadata = { ModelId = outputDtmi.ToString() },
@@ -251,19 +264,19 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
                     if (TargetObjectModel.TryGetValue(outputDtmi, out var model))
                     {
                         // Get a list of the properties of the model
-                        foreach (var property in ((DTInterfaceInfo)model).Contents.Values.Where(v => v.EntityKind == DTEntityKind.Property || v.EntityKind == DTEntityKind.Component))
+                        foreach (var targetContentEntity in ((DTInterfaceInfo)model).Contents.Values.Where(v => v.EntityKind == DTEntityKind.Property || v.EntityKind == DTEntityKind.Component))
                         {
-                            switch (property.EntityKind)
+                            switch (targetContentEntity.EntityKind)
                             {
                                 case DTEntityKind.Property:
                                     {
-                                        AddProperty(targetElement, basicDtId, interfaceType, contentDictionary, property, outputDtmi.ToString());
+                                        AddProperty(sourceElement, targetDtId, sourceTwinInterface, contentDictionary, targetContentEntity, outputDtmi.ToString());
                                         break;
                                     }
 
                                 case DTEntityKind.Component:
                                     {
-                                        AddComponent(targetElement, contentDictionary, property);
+                                        AddComponent(sourceElement, contentDictionary, targetContentEntity);
                                         break;
                                     }
                             }
@@ -271,8 +284,8 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
                     }
                     else
                     {
-                        Logger.LogWarning("Target DTMI: '{outputDtmi}' with InterfaceType: '{interfaceType}' not found in target model parser.", basicDtId, interfaceType);
-                        TelemetryClient.GetMetric(targetDtmiNotFoundMetricIdentifier).TrackValue(1, interfaceType.ToString());
+                        Logger.LogWarning("Target DTMI: '{outputDtmi}' with InterfaceType: '{interfaceType}' not found in target model parser.", targetDtId, sourceTwinInterface);
+                        TelemetryClient.GetMetric(targetDtmiNotFoundMetricIdentifier).TrackValue(1, sourceTwinInterface.ToString());
                     }
 
                     // Twins are required to have a name
@@ -287,7 +300,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
                 }
                 else
                 {
-                    Logger.LogWarning("Output mapping for input Dtmi: '{inputDtmi}' with InterfaceType: '{interfaceType}' to output Dtmi not found.", basicDtId, interfaceType);
+                    Logger.LogWarning("Output mapping for input Dtmi: '{inputDtmi}' with InterfaceType: '{interfaceType}' to output Dtmi not found.", targetDtId, sourceTwinInterface);
                     TelemetryClient.GetMetric(outputMappingForInputDtmiNotFoundMetricIdentifier).TrackValue(1, inputDtmi.ToString());
                 }
 
@@ -295,17 +308,27 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
             }
             else
             {
-                Logger.LogWarning("Mapping for input interface: '{inputDtmi}' with InterfaceType: '{interfaceType}' not found.", basicDtId, interfaceType);
-                TelemetryClient.GetMetric(mappingForInputDtmiNotFoundMetricIdentifier).TrackValue(1, interfaceType.ToString());
+                Logger.LogWarning("Mapping for input interface: '{inputDtmi}' with InterfaceType: '{interfaceType}' not found.", targetDtId, sourceTwinInterface);
+                TelemetryClient.GetMetric(mappingForInputDtmiNotFoundMetricIdentifier).TrackValue(1, sourceTwinInterface.ToString());
 
                 return null;
             }
         }
 
-        protected void AddProperty(JsonElement targetElement, string basicDtId, string interfaceType, Dictionary<string, object> contentDictionary, DTContentInfo property, string outputDtmi)
+        /// <summary>
+        /// Parses a source JSON element and populates a provided Property declaration in the input content
+        /// directory based on the structure of that source element.
+        /// </summary>
+        /// <param name="sourceElement">Element parsed from source graph.</param>
+        /// <param name="basicDtId">dtID of target digital twin that the contents dictionary belongs to (used for logging).</param>
+        /// <param name="interfaceType">Interface of the source digital twin (used for logging).</param>
+        /// <param name="contentDictionary">The content dictionary to which the generated Property will be addded.</param>
+        /// <param name="property">Property declaration on the target twin's Interface.</param>
+        /// <param name="outputDtmi">Interface of the target digital twin (that the contents directory belongs to).</param>
+        protected void AddProperty(JsonElement sourceElement, string basicDtId, string interfaceType, Dictionary<string, object> contentDictionary, DTContentInfo property, string outputDtmi)
         {
             // Find the property on the input type that matches the propertyName of this property
-            if (targetElement.TryGetProperty(property.Name, out var propertyValue))
+            if (sourceElement.TryGetProperty(property.Name, out var propertyValue))
             {
                 if (propertyValue.ValueKind != JsonValueKind.Null)
                 {
@@ -320,7 +343,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
                         foreach (var inputProperty in fillProperty.InputPropertyNames)
                         {
                             // See if the input element has a value for that property
-                            if (targetElement.TryGetProperty(inputProperty, out var inputValue))
+                            if (sourceElement.TryGetProperty(inputProperty, out var inputValue))
                             {
                                 // Take the first one that is not null
                                 if (inputValue.ValueKind != JsonValueKind.Null)
@@ -342,7 +365,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
                     foreach (var inputProperty in propertyProjection.InputPropertyNames)
                     {
                         // Get the value of the input property
-                        if (targetElement.TryGetProperty(inputProperty, out var inputValue))
+                        if (sourceElement.TryGetProperty(inputProperty, out var inputValue))
                         {
                             // If the output target is a collection, add the value to the target collection
                             if (propertyProjection.IsOutputPropertyCollection)
@@ -379,22 +402,40 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
             }
         }
 
-        protected void AddComponent(JsonElement targetElement, Dictionary<string, object> contentDictionary, DTContentInfo property)
+        /// <summary>
+        /// Parses a source JSON element and populates a provided Component declaration in the input content
+        /// directory based on the structure of that source element.
+        /// </summary>
+        /// <param name="sourceElement">Element parsed from source graph.</param>
+        /// <param name="contentDictionary">The content dictionary to which the generated Component will be addded.</param>
+        /// <param name="component">Component declaration on the target twin's Interface.</param>
+        protected void AddComponent(JsonElement sourceElement, Dictionary<string, object> contentDictionary, DTContentInfo component)
         {
             // Find the property on the input type that matches the propertyName of this component
-            if (targetElement.TryGetProperty(property.Name, out var propertyValue) && propertyValue.ValueKind != JsonValueKind.Null)
+            if (sourceElement.TryGetProperty(component.Name, out var propertyValue) && propertyValue.ValueKind != JsonValueKind.Null)
             {
-                contentDictionary.Add(property.Name, propertyValue);
+                contentDictionary.Add(component.Name, propertyValue);
             }
             else
             {
                 // If there is a component field on the Target Model, and there is not input value, create an element with empty $metadata as components are not optional
-                contentDictionary.Add(property.Name, EmptyComponentElement);
+                contentDictionary.Add(component.Name, EmptyComponentElement);
             }
         }
 
-        protected void GetRelationship(IDictionary<string, BasicRelationship> relationships,
-                                      string? sourceElementId,
+        /// <summary>
+        /// Adds a new relationship to the provided relationships collection, based on the provided  parameters
+        /// and employing ontology mapping to translate DTMI of the relationship source/target twins' Interfaces,
+        /// relationship name/direction, etc.
+        /// </summary>
+        /// <param name="relationships">Collection to which the new Relationship is added.</param>
+        /// <param name="sourceDtId">dtId of the input Relationship source.</param>
+        /// <param name="inputSourceDtmi">DTMI of the input Relationship source's Interface.</param>
+        /// <param name="inputRelationshipType">Input relationship name.</param>
+        /// <param name="targetDtId">dtId of the input Relationship target.</param>
+        /// <param name="targetInterfaceType">DTMI of the input Relationship target's Interface.</param>
+        protected void AddRelationship(IDictionary<string, BasicRelationship> relationships,
+                                      string? sourceDtId,
                                       Dtmi? inputSourceDtmi,
                                       string? inputRelationshipType,
                                       string targetDtId,
@@ -423,14 +464,14 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
                         if (outputSourceDtmi != null && TargetObjectModel.TryGetValue(outputSourceDtmi, out var model))
                         {
                             var relationship = ((DTInterfaceInfo)model).Contents.FirstOrDefault(p => p.Value.EntityKind == DTEntityKind.Relationship && p.Value.Name == outputRelationship.Item1);
-                            var relationshipId = outputRelationship.Item2 ? $"{targetDtId}-{sourceElementId}-{outputRelationship.Item1}" :
-                                                                            $"{sourceElementId}-{targetDtId}-{outputRelationship.Item1}";
+                            var relationshipId = outputRelationship.Item2 ? $"{targetDtId}-{sourceDtId}-{outputRelationship.Item1}" :
+                                                                            $"{sourceDtId}-{targetDtId}-{outputRelationship.Item1}";
 
                             // Create a basic relationship
                             var basicRelationship = new BasicRelationship
                             {
-                                SourceId = outputRelationship.Item2 ? targetDtId : sourceElementId,
-                                TargetId = outputRelationship.Item2 ? sourceElementId : targetDtId,
+                                SourceId = outputRelationship.Item2 ? targetDtId : sourceDtId,
+                                TargetId = outputRelationship.Item2 ? sourceDtId : targetDtId,
                                 Id = relationshipId,
                                 Name = outputRelationship.Item1.ToString(),
                             };
@@ -441,7 +482,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
                         {
                             Logger.LogWarning("Output relationship '{relationshipType}' not found in Target Model. Source Element Id: '{sourceElementId}', TargetInterfaceType: '{interfaceType}', TargetId: '{targetId}",
                                 outputRelationship.Item1 ?? string.Empty,
-                                sourceElementId ?? string.Empty,
+                                sourceDtId ?? string.Empty,
                                 targetInterfaceType,
                                 targetDtId);
 
@@ -451,7 +492,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
                     else
                     {
                         Logger.LogWarning("No relationship mapping found from input model to output model: Source Element Id: '{sourceElementId}',  RelationshipType: '{relationshipType}', TargetInterfaceType: '{interfaceType}', TargetId: '{targetId}",
-                            sourceElementId ?? string.Empty,
+                            sourceDtId ?? string.Empty,
                             inputRelationshipType ?? string.Empty,
                             targetInterfaceType,
                             targetDtId);

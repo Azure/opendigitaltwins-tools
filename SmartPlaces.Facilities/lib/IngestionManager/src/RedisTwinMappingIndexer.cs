@@ -51,6 +51,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
                     var mapEntry = JsonSerializer.Deserialize<TwinMapEntry>(cacheValue);
                     return mapEntry;
                 }
+
                 return null;
             });
         }

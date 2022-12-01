@@ -52,7 +52,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
         /// Start the ingestion process for a collection of buildings.
         /// </summary>
         /// <param name="cancellationToken">Cancellation propagation token for interrupting the ingestion process.</param>
-        /// <returns>An awaitable task</returns>
+        /// <returns>An awaitable task.</returns>
         protected override async Task ProcessSites(CancellationToken cancellationToken)
         {
             // Generate the outermost query to run against the input graph. Starts by getting the list of sites
