@@ -189,7 +189,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
             // Look up the Model Id from the Incoming element
             if (thingElement.TryGetProperty("exactType", out var thingExactType))
             {
-                thingDtmi = GetTwin(twins, thingElement, thingDtId, thingExactType.ToString());
+                thingDtmi = AddTwin(twins, thingElement, thingDtId, thingExactType.ToString());
 
                 // Add the relationship to the location
                 var locationElement = thingElement.EnumerateObject().FirstOrDefault(t => t.Name == "hasLocation");
@@ -201,7 +201,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
                     if (locationElement.Value.TryGetProperty("exactType", out var locationExactType))
                     {
                         Dtmi? locationDtmi = GetInputInterfaceDtmi(locationExactType.ToString());
-                        GetRelationship(relationships, locationId, locationDtmi, "isLocationOf", thingDtId, thingExactType.ToString());
+                        AddRelationship(relationships, locationId, locationDtmi, "isLocationOf", thingDtId, thingExactType.ToString());
                     }
                 }
 
@@ -235,9 +235,9 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
                                     // Look up the Model Id from the Incoming element
                                     if (pointElement.TryGetProperty("exactType", out var pointExactType))
                                     {
-                                        GetTwin(twins, pointElement, pointDtId, pointExactType.ToString());
+                                        AddTwin(twins, pointElement, pointDtId, pointExactType.ToString());
 
-                                        GetRelationship(relationships, thingDtId, thingDtmi, "hasPoint", pointDtId, pointExactType.ToString());
+                                        AddRelationship(relationships, thingDtId, thingDtmi, "hasPoint", pointDtId, pointExactType.ToString());
                                     }
                                 }
                             }
@@ -259,7 +259,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
             // Look up the Model Id from the Incoming element
             if (targetElement.TryGetProperty("exactType", out var targetExactType))
             {
-                GetTwin(twins, targetElement, targetDtId, targetExactType.ToString());
+                AddTwin(twins, targetElement, targetDtId, targetExactType.ToString());
 
                 // Determine if the node has descendants, and if so, iterate through them to add child twins
                 var elements = targetElement.EnumerateObject();
@@ -288,7 +288,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
                     var sourceExactType = sourceElement.Value.GetProperty("exactType").ToString();
                     var sourceDtmi = GetInputInterfaceDtmi(sourceExactType);
 
-                    GetRelationship(relationships, sourceDtId, sourceDtmi, relationshipType, targetDtId, targetExactType.ToString());
+                    AddRelationship(relationships, sourceDtId, sourceDtmi, relationshipType, targetDtId, targetExactType.ToString());
                 }
 
                 if (string.Equals(targetExactType.ToString(), "floor", StringComparison.OrdinalIgnoreCase))
