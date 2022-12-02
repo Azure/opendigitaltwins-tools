@@ -38,13 +38,13 @@ services.AddSingleton<IOntologyMappingManager, OntologyMappingManager>();
 
 ## Usage
 
-The entry point to using these libraries is the base class `IngestionProcessorBase.IngestFromApiAsync()` method; that method in turn calls the `MappedGraphIngestionProcessor.GetSites()` method, which initiates ingestion of all sites (e.g., campuses/buildings or other suitable starting nodes) from the input graph.
+The entry point to using these libraries is the base class `IngestionProcessorBase.IngestFromApiAsync()` method; that method in turn calls the `MappedGraphIngestionProcessor.ProcessSites()` method, which initiates ingestion of all sites (e.g., campuses/buildings or other suitable starting nodes) from the input graph.
 
-`GetSites()` calls out to an input graph manager to actually query the source graph for those starting nodes, and iterates over child nodes returned by said graph manager. As wired up above, that input graph manager will be our own `MappedGraphManager`, which knows how to talk to the Mapped API.
+`ProcessSites()` calls out to an input graph manager to actually query the source graph for those starting nodes, and iterates over child nodes returned by said graph manager. As wired up above, that input graph manager will be our own `MappedGraphManager`, which knows how to talk to the Mapped API.
 
 The `MappedGraphManager` is configured (e.g., for access credentials) using the options passed in to the `services.AddMappedIngestionManager()` call shown under Setup above.
 
-So, assuming the Dependency Injection setup as given above, ingestion from Mapped to ADT is achieved in a class where the `MappedGraphIngestionProcessor` has been injected, as follows:
+So, assuming the Dependency Injection setup as given above, ingestion from Mapped to Azure Digital Twins is achieved in a class where the `MappedGraphIngestionProcessor` has been injected, as follows:
 
 ```csharp
 logger.LogInformation("Starting to ingest topology");

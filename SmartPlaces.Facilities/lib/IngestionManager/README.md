@@ -9,9 +9,9 @@ In order to use this library, you need to create at minimum two classes:
 * A subclass of `IngestionProcessorBase` (implementing `IGraphIngestionProcessor`)
 * An implementation of `IInputGraphManager`
 
-The `IngestionProcessorBase` subclass must provide an implementation of the abstract method `GetSites()`. That method should initiate ingestion of all sites (e.g., campuses/buildings or other suitable starting nodes) from the input graph, traverse them and their child nodes (buildings, floors, rooms, etc), translating them as necessary, and storing them in the output ADT graph. 
+The `IngestionProcessorBase` subclass must provide an implementation of the abstract method `ProcessSites()`. That method should initiate ingestion of all sites (e.g., campuses/buildings or other suitable starting nodes) from the input graph, traverse them and their child nodes (buildings, floors, rooms, etc), translating them as necessary, and storing them in the output Azure Digital Twins graph. 
 
-In order to aid in this process, the `IngestionProcessorBase` class references implementations of `IInputGraphManager` and `IOutputGraphManager` that you may use to interact with the input and output graphs, respectively. An ADT-specific implementation of the latter is provided for you in `AzureDigitalTwinsGraphManager`, but you will need to create the former, adapted to whatever data source you are ingesting from.
+In order to aid in this process, the `IngestionProcessorBase` class references implementations of `IInputGraphManager` and `IOutputGraphManager` that you may use to interact with the input and output graphs, respectively. An Azure Digital Twins-specific implementation of the latter is provided for you in `AzureDigitalTwinsGraphManager`, but you will need to create the former, adapted to whatever data source you are ingesting from.
 
 Additionally, in order to reconcile any ontological differences between source and target graph, the `IngestionProcessorBase` provides convenience methods for mapping terms from the input to terms in the output (e.g., DTDL Interfaces, Relationships, etc.). These methods require that an implementation of `IOntologyMappingManager` from the aforementioned `OntologyMapper` library, loaded with a set of mappings between the used ontologies, be passed into to the `IngestionProcessorBase` constructor.
 
@@ -66,4 +66,4 @@ services.AddMappedIngestionManager(options =>
 });
 ```
 
-If all is configured correctly, your code referring to `IGraphIngestionProcessor` should inject your custom `IngestionProcessorBase` subclass, on which you can call the inherited method `IngestFromApiAsync()`. That method will initialise the base processor, and then immediately call your customized `GetSites()` method, kicking off the rest of the ingestion process.
+If all is configured correctly, your code referring to `IGraphIngestionProcessor` should inject your custom `IngestionProcessorBase` subclass, on which you can call the inherited method `IngestFromApiAsync()`. That method will initialise the base processor, and then immediately call your customized `ProcessSites()` method, kicking off the rest of the ingestion process.
