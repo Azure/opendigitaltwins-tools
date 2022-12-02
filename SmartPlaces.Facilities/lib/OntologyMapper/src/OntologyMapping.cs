@@ -148,7 +148,7 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper
 
         /// <summary>
         /// Gets or sets a value indicating whether or not this mapping is currently not ready for use (i.e. invalid), set this so that
-        /// the mapping is declared in the file, but won't be used by the mapper
+        /// the mapping is declared in the file, but won't be used by the mapper.
         /// This allows reviewers to verify broken mappings in the future.
         /// </summary>
         public bool IsIgnored { get; set; } = false;
@@ -171,7 +171,7 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper
 
         /// <summary>
         /// Gets or sets a value indicating whether or not the output mapping is intended to be a reverse mapping of the input.
-        /// i.e. If in the source topology the mapping is fgrom A to B, in the target topology, the mapping will be B to A.
+        /// i.e. If in the source topology the mapping is from A to B, in the target topology, the mapping will be B to A.
         /// </summary>
         public bool ReverseRelationshipDirection { get; set; } = false;
     }

@@ -35,12 +35,12 @@ namespace Telemetry
         private EventHubProcessor<EventProcessorPartition>? processor;
 
         /// <summary>
-        /// Setup for what to do when the process is running
+        /// Setup for what to do when the process is running.
         /// </summary>
-        /// <param name="logger">A way to communicate</param>
-        /// <param name="configuration">Any settings, environment variables, command arguments, etc. that have been passed to the process</param>
-        /// <param name="telemetryIngestionProcessor">An instantiation of what to do with the telemetry</param>
-        /// <param name="telemetryClient">A way to log metrics</param>
+        /// <param name="logger">A way to communicate.</param>
+        /// <param name="configuration">Any settings, environment variables, command arguments, etc. that have been passed to the process.</param>
+        /// <param name="telemetryIngestionProcessor">An instantiation of what to do with the telemetry.</param>
+        /// <param name="telemetryClient">A way to log metrics.</param>
         public ProcessTelemetry(ILogger<ProcessTelemetry> logger, IConfiguration configuration, ITelemetryIngestionProcessor telemetryIngestionProcessor, TelemetryClient telemetryClient)
         {
             this.logger = logger;
@@ -59,13 +59,13 @@ namespace Telemetry
         }
 
         /// <summary>
-        /// Defines what to to during the life of the process
+        /// Defines what to to during the life of the process.
         /// </summary>
-        /// <param name="cancellationToken">A way to stop things</param>
+        /// <param name="cancellationToken">A way to stop things.</param>
         protected override async Task ExecuteAsync(CancellationToken cancellationToken)
         {
-            // Create a blob container client that the event processor will use
-            // Get a reference to the upload container and then create it if it does not exist
+            // Create a blob container client that the event processor will use.
+            // Get a reference to the upload container and then create it if it does not exist.
             logger.LogInformation("Configuring EventHub and Checkpoint");
             Uri containerUri = new Uri($"{storageAccountEndpoint}/{blobContainerName}");
             BlobContainerClient containerClient = new BlobContainerClient(containerUri, new DefaultAzureCredential());
@@ -99,7 +99,7 @@ namespace Telemetry
         /// Defines what actions need to be taken when the process is
         /// asked to stop.
         /// </summary>
-        /// <param name="cancellationToken">A way to stop things</param>
+        /// <param name="cancellationToken">A way to stop things.</param>
         public override async Task StopAsync(CancellationToken cancellationToken)
         {
             // Stop the processing

@@ -11,10 +11,10 @@ namespace Telemetry.Interfaces
     public interface ITelemetryIngestionProcessor
     {
         /// <summary>
-        /// Defines how to processes messages that flow across an eventHub
+        /// Defines how to processes messages that flow across an eventHub.
         /// </summary>
-        /// <param name="telemetryEvent">A single eventHub message</param>
-        /// <param name="cancellationToken">A way to stop things</param>
+        /// <param name="telemetryEvent">A single eventHub message.</param>
+        /// <param name="cancellationToken">A way to stop things.</param>
         Task IngestFromEventHubAsync(EventData telemetryEvent, CancellationToken cancellationToken);
     }
 }

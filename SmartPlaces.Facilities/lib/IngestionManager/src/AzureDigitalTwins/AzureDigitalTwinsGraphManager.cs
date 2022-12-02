@@ -40,7 +40,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.AzureDigitalTwins
         /// <param name="twinMappingIndexer">Twin mapping index cache.</param>
         /// <param name="telemetryClient">Application Insights telemetry client for remote metrics tracking.</param>
         /// <param name="skipUpload">Option denoting whether the manager will upload twins to target
-        /// Azure Digital Twins environment (if skipupload is <c>true</c>, only the cache will be updated).</param>
+        /// Azure Digital Twins environment. If skipUpload is <c>true</c>, only the cache will be updated.</param>
         public AzureDigitalTwinsGraphManager(ILogger<AzureDigitalTwinsGraphManager<TOptions>> logger,
                                IOptions<TOptions> options,
                                ITwinMappingIndexer twinMappingIndexer,
@@ -80,8 +80,8 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.AzureDigitalTwins
         protected ITwinMappingIndexer TwinMappingIndexer { get; }
 
         /// <summary>
-        /// Gets a value indicating whether to upload graph to Azure Digital Twins
-        /// (else, only cache will be updated).
+        /// Gets a value indicating whether to upload graph to Azure Digital Twins.
+        /// Otherwise, only the cache will be updated.
         /// </summary>
         protected bool SkipUpload { get; }
 
@@ -131,7 +131,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.AzureDigitalTwins
         /// <summary>
         /// Add a set of twins to the mapping index cache.
         /// </summary>
-        /// <param name="twins">The twins that will be cached (map key is dtId).</param>
+        /// <param name="twins">The twins that will be cached. Map key is the dtId.</param>
         /// <returns>An awaitable task.</returns>
         protected async Task UpdateCache(Dictionary<string, BasicDigitalTwin> twins)
         {
@@ -196,7 +196,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.AzureDigitalTwins
         /// <summary>
         /// Asynchronously import a set of relationships into the target Azure Digital Twins graph.
         /// </summary>
-        /// <param name="relationships">Relationships to upload (map key is relationship ID).</param>
+        /// <param name="relationships">Relationships to upload. Map key is the relationship ID.</param>
         /// <param name="retryAttempt">Retry counter.</param>
         /// <returns>An awaitable task.</returns>
         protected virtual async Task ImportRelationshipsAsync(IDictionary<string, BasicRelationship> relationships, int retryAttempt = 0)
@@ -352,7 +352,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.AzureDigitalTwins
         /// <summary>
         /// Asynchronously import a set of digital twins into the target Azure Digital Twins graph.
         /// </summary>
-        /// <param name="twins">Twins to upload (map key is dtId).</param>
+        /// <param name="twins">Twins to upload. Map key is the dtId.</param>
         /// <param name="retryAttempt">Retry counter.</param>
         /// <returns>An awaitable task.</returns>
         protected virtual async Task ImportTwinsAsync(IDictionary<string, BasicDigitalTwin> twins, int retryAttempt = 0)

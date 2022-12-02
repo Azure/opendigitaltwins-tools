@@ -21,10 +21,10 @@ namespace Telemetry
     public class Program
     {
         /// <summary>
-        /// Entry point into Telemetry
+        /// Entry point into Telemetry.
         /// </summary>
-        /// <param name="args">An option for passing in configuration values, though not required</param>
-        /// <exception cref="ArgumentNullException">Thrown when required configuration values are not present</exception>
+        /// <param name="args">An option for passing in configuration values, though not required.</param>
+        /// <exception cref="ArgumentNullException">Thrown when required configuration values are not present.</exception>
         public static async Task Main(string[] args)
         {
             Console.WriteLine("Starting Telemetry Processing");

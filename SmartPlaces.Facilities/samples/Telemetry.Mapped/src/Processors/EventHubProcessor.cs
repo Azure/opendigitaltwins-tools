@@ -22,10 +22,10 @@ namespace Telemetry.Processors
 
     /// <summary>
     /// A generic handler for processing eventHub messages in a batch to enable
-    /// higher throughput reducing the overhead of checkpointing each message while
+    /// higher throughput reducing the overhead of check-pointing each message while
     /// also enabling higher resource utilization of the available compute.
     /// </summary>
-    /// <typeparam name="TPartition">A custom Partition</typeparam>
+    /// <typeparam name="TPartition">A custom partition.</typeparam>
     public class EventHubProcessor<TPartition> : EventProcessor<TPartition>
         where TPartition : EventProcessorPartition, new()
     {
@@ -44,13 +44,13 @@ namespace Telemetry.Processors
         /// <summary>
         /// A generic handler for processing events from an eventHub in batches.
         /// </summary>
-        /// <param name="logger">How to communicate what is happening</param>
-        /// <param name="processEventData">What to do with each event</param>
-        /// <param name="eventBatchMaximumCount">How many events to process in a batch</param>
-        /// <param name="consumerGroup">Name of the consumerGroup which is an view of the events flowing through the eventHub</param>
-        /// <param name="connectionString">How to connect to the eventHub</param>
-        /// <param name="storageContainer">Where to store the checkpointing</param>
-        /// <param name="options">Any customizations you would like to specify</param>
+        /// <param name="logger">How to communicate what is happening.</param>
+        /// <param name="processEventData">What to do with each event.</param>
+        /// <param name="eventBatchMaximumCount">How many events to process in a batch.</param>
+        /// <param name="consumerGroup">Name of the consumerGroup which is an view of the events flowing through the eventHub.</param>
+        /// <param name="connectionString">How to connect to the eventHub.</param>
+        /// <param name="storageContainer">Where to store the check-pointing.</param>
+        /// <param name="options">Any customizations you would like to specify.</param>
         public EventHubProcessor(ILogger logger,
                                  Func<EventData, CancellationToken, Task> processEventData,
                                  int eventBatchMaximumCount,
@@ -68,14 +68,14 @@ namespace Telemetry.Processors
         /// <summary>
         /// A generic handler for processing events from an eventHub in batches.
         /// </summary>
-        /// <param name="logger">How to communicate what is happening</param>
-        /// <param name="processEventData">What to do with each event</param>
-        /// <param name="eventBatchMaximumCount">How many events to process in a batch</param>
-        /// <param name="consumerGroup">Name of the consumerGroup which is an view of the events flowing through the eventHub</param>
-        /// <param name="connectionString">How to connect to the eventHub</param>
-        /// <param name="eventHubName">What eventHub should this process be looking at</param>
-        /// <param name="storageContainer">Where to store the checkpointing</param>
-        /// <param name="options">Any customizations you would like to specify</param>
+        /// <param name="logger">How to communicate what is happening.</param>
+        /// <param name="processEventData">What to do with each event.</param>
+        /// <param name="eventBatchMaximumCount">How many events to process in a batch.</param>
+        /// <param name="consumerGroup">Name of the consumerGroup which is an view of the events flowing through the eventHub.</param>
+        /// <param name="connectionString">How to connect to the eventHub.</param>
+        /// <param name="eventHubName">What eventHub should this process be looking at.</param>
+        /// <param name="storageContainer">Where to store the check-pointing.</param>
+        /// <param name="options">Any customizations you would like to specify.</param>
         public EventHubProcessor(ILogger logger,
                                  Func<EventData, CancellationToken, Task> processEventData,
                                  int eventBatchMaximumCount,
@@ -94,15 +94,15 @@ namespace Telemetry.Processors
         /// <summary>
         /// A generic handler for processing events from an eventHub in batches.
         /// </summary>
-        /// <param name="logger">How to communicate what is happening</param>
-        /// <param name="processEventData">What to do with each event</param>
-        /// <param name="eventBatchMaximumCount">How many events to process in a batch</param>
-        /// <param name="consumerGroup">Name of the consumerGroup which is an view of the events flowing through the eventHub</param>
-        /// <param name="fullyQualifiedNamespace">What eventHub namespace should this process be looking at</param>
-        /// <param name="eventHubName">What eventHub should this process be looking at</param>
-        /// <param name="credential">Who you are</param>
-        /// <param name="storageContainer">Where to store the checkpointing</param>
-        /// <param name="options">Any customizations you would like to specify</param>
+        /// <param name="logger">How to communicate what is happening.</param>
+        /// <param name="processEventData">What to do with each event.</param>
+        /// <param name="eventBatchMaximumCount">How many events to process in a batch.</param>
+        /// <param name="consumerGroup">Name of the consumerGroup which is an view of the events flowing through the eventHub.</param>
+        /// <param name="fullyQualifiedNamespace">What eventHub namespace should this process be looking at.</param>
+        /// <param name="eventHubName">What eventHub should this process be looking at.</param>
+        /// <param name="credential">Who you are.</param>
+        /// <param name="storageContainer">Where to store the check-pointing.</param>
+        /// <param name="options">Any customizations you would like to specify.</param>
         public EventHubProcessor(ILogger logger,
                                  Func<EventData, CancellationToken, Task> processEventData,
                                  int eventBatchMaximumCount,
@@ -123,9 +123,9 @@ namespace Telemetry.Processors
         /// Defines how the base EventProcessor can claim one or more partitions for
         /// this process.
         /// </summary>
-        /// <param name="desiredOwnership">Stating which partitions this process would like to claim from others</param>
-        /// <param name="cancellationToken">A way to stop things</param>
-        /// <returns>Which partitions this process was able to claim for itself</returns>
+        /// <param name="desiredOwnership">Stating which partitions this process would like to claim from others.</param>
+        /// <param name="cancellationToken">A way to stop things.</param>
+        /// <returns>Which partitions this process was able to claim for itself.</returns>
         protected override async Task<IEnumerable<EventProcessorPartitionOwnership>> ClaimOwnershipAsync(IEnumerable<EventProcessorPartitionOwnership> desiredOwnership, CancellationToken cancellationToken = default)
         {
             List<EventProcessorPartitionOwnership> claimedOwnerships = new List<EventProcessorPartitionOwnership>();
@@ -196,8 +196,8 @@ namespace Telemetry.Processors
         /// Defines how the base EventProcessor communicates with other processes to load
         /// balance consumption.
         /// </summary>
-        /// <param name="cancellationToken">A way to stop things</param>
-        /// <returns>Who else is working on this same eventHub</returns>
+        /// <param name="cancellationToken">A way to stop things.</param>
+        /// <returns>Who else is working on this same eventHub.</returns>
         protected override async Task<IEnumerable<EventProcessorPartitionOwnership>> ListOwnershipAsync(CancellationToken cancellationToken = default)
         {
             List<EventProcessorPartitionOwnership> partitionOwnerships = new List<EventProcessorPartitionOwnership>();
@@ -223,11 +223,10 @@ namespace Telemetry.Processors
         /// <summary>
         /// Defines how the base EventProcessor should check its progress and how to resume
         /// progress. In this case that is communicating with a blob storage.
-        /// This defines 
         /// </summary>
-        /// <param name="partitionId">What eventHub partition this process is processing</param>
-        /// <param name="cancellationToken">A way to stop things</param>
-        /// <returns>Where to resume consuming message from the eventHub</returns>
+        /// <param name="partitionId">What eventHub partition this process is processing.</param>
+        /// <param name="cancellationToken">A way to stop things.</param>
+        /// <returns>Where to resume consuming message from the eventHub.</returns>
         protected override async Task<EventProcessorCheckpoint?> GetCheckpointAsync(string partitionId, CancellationToken cancellationToken)
         {
             string checkpointName = string.Format(CheckpointBlobNameFormat, FullyQualifiedNamespace.ToLowerInvariant(), EventHubName.ToLowerInvariant(), ConsumerGroup.ToLowerInvariant(), partitionId);
@@ -260,9 +259,9 @@ namespace Telemetry.Processors
         /// Defines what the base EventProcessor should do to checkpoint. In this
         /// case that is having to a checkpoint blob.
         /// </summary>
-        /// <param name="partition">What eventHub partition this process is processing</param>
-        /// <param name="data">Which message is being checkpointed as processed</param>
-        /// <param name="cancellationToken">A way to stop things</param>
+        /// <param name="partition">What eventHub partition this process is processing.</param>
+        /// <param name="data">Which message is being check-pointed as processed.</param>
+        /// <param name="cancellationToken">A way to stop things.</param>
         protected async Task CheckpointAsync(TPartition partition, EventData data, CancellationToken cancellationToken = default)
         {
             string checkpointBlob = string.Format(CheckpointPrefixFormat + partition.PartitionId, FullyQualifiedNamespace.ToLowerInvariant(), EventHubName.ToLowerInvariant(), ConsumerGroup.ToLowerInvariant());
@@ -278,10 +277,10 @@ namespace Telemetry.Processors
         /// <summary>
         /// Defines what to do in case the base EventProcessor runs into an exception.
         /// </summary>
-        /// <param name="exception">What went wrong/param>
-        /// <param name="partition">Where it went wrong</param>
-        /// <param name="operationDescription">How it went wrong, in your own words</param>
-        /// <param name="cancellationToken">A way to stop things</param>
+        /// <param name="exception">What went wrong.</param>
+        /// <param name="partition">Where it went wrong.</param>
+        /// <param name="operationDescription">How it went wrong, in your own words.</param>
+        /// <param name="cancellationToken">A way to stop things.</param>
         protected override Task OnProcessingErrorAsync(Exception exception, TPartition partition, string operationDescription, CancellationToken cancellationToken)
         {
             try
@@ -304,11 +303,11 @@ namespace Telemetry.Processors
         }
 
         /// <summary>
-        /// Determines how to iterate over and checkpoint the messages received in a batch of events from an EventHub
+        /// Determines how to iterate over and checkpoint the messages received in a batch of events from an EventHub.
         /// </summary>
-        /// <param name="events">A collection of messages that have arrived in this batch</param>
-        /// <param name="partition">Information about which eventHub partition the collection of messages came from</param>
-        /// <param name="cancellationToken">A way to stop things</param>
+        /// <param name="events">A collection of messages that have arrived in this batch.</param>
+        /// <param name="partition">Information about which eventHub partition the collection of messages came from./param>
+        /// <param name="cancellationToken">A way to stop things.</param>
         protected override async Task OnProcessingEventBatchAsync(IEnumerable<EventData> events, TPartition partition, CancellationToken cancellationToken)
         {
             try

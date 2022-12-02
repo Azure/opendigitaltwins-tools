@@ -18,7 +18,7 @@ namespace Telemetry.Exceptions
         /// Custom exception for when the DTDL Model has not been defined
         /// for the incoming telemetry. 
         /// </summary>
-        /// <param name="message">In your own words, describe what happened</param>
+        /// <param name="message">In your own words, describe what happened.</param>
         public TargetTypeNotFoundException(string message)
             : base(message)
         {
