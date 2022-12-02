@@ -67,4 +67,4 @@ This sample provides scripts which setup key assets in your Azure subscription n
 
 ## Topology
 
-The topology project is an example of a console application which reads in configuration specifying the source topology graph and the target Azure Digital Twins instance, then copies the source graph to the target ADT instance, and converts from the source ontology to the target ontology as configured. [Read More](./samples/Topology/README.md)
+The topology project is an example of a console application which reads in configuration specifying the source topology graph and the target Azure Digital Twins instance, then copies the source graph to the target Azure Digital Twins instance, and converts from the source ontology to the target ontology as configured. [Read More](./samples/Topology/README.md)

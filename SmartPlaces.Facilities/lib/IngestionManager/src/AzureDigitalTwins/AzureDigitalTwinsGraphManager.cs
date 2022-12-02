@@ -40,7 +40,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.AzureDigitalTwins
         /// <param name="twinMappingIndexer">Twin mapping index cache.</param>
         /// <param name="telemetryClient">Application Insights telemetry client for remote metrics tracking.</param>
         /// <param name="skipUpload">Option denoting whether the manager will upload twins to target
-        /// ADT environment (if skipupload is <c>true</c>, only the cache will be updated).</param>
+        /// Azure Digital Twins environment (if skipupload is <c>true</c>, only the cache will be updated).</param>
         public AzureDigitalTwinsGraphManager(ILogger<AzureDigitalTwinsGraphManager<TOptions>> logger,
                                IOptions<TOptions> options,
                                ITwinMappingIndexer twinMappingIndexer,
@@ -80,7 +80,8 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.AzureDigitalTwins
         protected ITwinMappingIndexer TwinMappingIndexer { get; }
 
         /// <summary>
-        /// Gets a value indicating whether to upload graph to ADT (else, only cache will be updated).
+        /// Gets a value indicating whether to upload graph to Azure Digital Twins
+        /// (else, only cache will be updated).
         /// </summary>
         protected bool SkipUpload { get; }
 
@@ -193,7 +194,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.AzureDigitalTwins
         }
 
         /// <summary>
-        /// Asynchronously import a set of relationships into the target ADT graph.
+        /// Asynchronously import a set of relationships into the target Azure Digital Twins graph.
         /// </summary>
         /// <param name="relationships">Relationships to upload (map key is relationship ID).</param>
         /// <param name="retryAttempt">Retry counter.</param>
@@ -349,7 +350,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.AzureDigitalTwins
         }
 
         /// <summary>
-        /// Asynchronously import a set of digital twins into the target ADT graph.
+        /// Asynchronously import a set of digital twins into the target Azure Digital Twins graph.
         /// </summary>
         /// <param name="twins">Twins to upload (map key is dtId).</param>
         /// <param name="retryAttempt">Retry counter.</param>
