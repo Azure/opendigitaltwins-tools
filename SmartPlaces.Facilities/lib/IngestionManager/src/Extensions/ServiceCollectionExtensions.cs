@@ -18,7 +18,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Extensions
     public static class ServiceCollectionExtensions
     {
         /// <summary>
-        /// Adds a SmartPlaces.Facilities ingestion manager to an IServiceCollection, for DI-based deployment.
+        /// Adds a SmartPlaces.Facilities ingestion manager to an IServiceCollection for DI-based deployment.
         /// </summary>
         /// <typeparam name="TOptions">Ingestion manager options type.</typeparam>
         /// <param name="services">Collection of service descriptors to which Ingestion Manager will be added.</param>

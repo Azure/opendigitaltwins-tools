@@ -75,7 +75,7 @@ namespace EdgeGateway
         /// events which are Mapped communicating network issues they experienced when communicating
         /// with devices.
         /// </summary>
-        /// <param name="cancellationToken">A way to stop things</param>
+        /// <param name="cancellationToken">A way to stop things.</param>
         protected override async Task ExecuteAsync(CancellationToken cancellationToken)
         {
             logger.LogInformation("Starting to process Telemetry");

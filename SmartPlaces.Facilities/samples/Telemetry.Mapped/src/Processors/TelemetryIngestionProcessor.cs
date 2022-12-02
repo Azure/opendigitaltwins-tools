@@ -49,7 +49,7 @@ namespace Telemetry.Processors
         private readonly MetricIdentifier telemetryTypeMetric = new MetricIdentifier(metricsNamespace, "TelemetryType", "SourceType", "TargetType");
 
         /// <summary>
-        /// Setup for how to process an event flowing across an EventHub
+        /// Setup for how to process an event flowing across an EventHub.
         /// </summary>
         /// <param name="logger"></param>
         /// <param name="options"></param>
@@ -80,8 +80,8 @@ namespace Telemetry.Processors
         /// This method defines what actions should be taken to translate from source telemetry data and ingest
         /// into Azure Digital Twins.
         /// </summary>
-        /// <param name="telemetryEvent">Contains the values passed through the IotHub into the EventHub to be processed by Telemetry</param>
-        /// <param name="cancellationToken">A way to stop things</param>
+        /// <param name="telemetryEvent">Contains the values passed through the IotHub into the EventHub to be processed by Telemetry.</param>
+        /// <param name="cancellationToken">A way to stop things.</param>
         public async Task IngestFromEventHubAsync(EventData telemetryEvent, CancellationToken cancellationToken)
         {
             string status = "Failed";
@@ -185,8 +185,8 @@ namespace Telemetry.Processors
         /// Reaches out to the cloud redis which has been populated by the Topology project to determine 
         /// details about the incoming telemetry data such as TwinId and ModelId for the raw data.
         /// </summary>
-        /// <param name="telemetryEvent">Raw event off of the eventHub</param>
-        /// <returns>The data stored on the cloud redis by the Topology project</returns>
+        /// <param name="telemetryEvent">Raw event off of the eventHub.</param>
+        /// <returns>The data stored on the cloud redis by the Topology project.</returns>
         private async Task<(TwinMap? twinMap, string failureReason)> GetTwinMap(EventData telemetryEvent)
         {
             TwinMap? twinMap = null;
@@ -215,9 +215,9 @@ namespace Telemetry.Processors
         /// <summary>
         /// Generates a JsonPatchDocument conforming to the desired data model.
         /// </summary>
-        /// <param name="point">Incoming raw telemetry data</param>
-        /// <param name="targetType">What the DTDL Model says the datatype should be</param>
-        /// <param name="isAdd">Whether to generate an Add or Replace JsonPatchDocument</param>
+        /// <param name="point">Incoming raw telemetry data.</param>
+        /// <param name="targetType">What the DTDL Model says the datatype should be.</param>
+        /// <param name="isAdd">Whether to generate an Add or Replace JsonPatchDocument.</param>
         /// <returns>A properly formatted JsonPatchDocument which AzureDigitalTwins should accept.</returns>
         private JsonPatchDocument CreatePatch(RedisPoint point, DTEntityKind targetType, bool isAdd = false)
         {
@@ -242,10 +242,10 @@ namespace Telemetry.Processors
         }
 
         /// <summary>
-        /// Transforms and formats data between Mapped TypeValues and DTDL DTEntityKind
+        /// Transforms and formats data between Mapped TypeValues and DTDL DTEntityKind.
         /// </summary>
-        /// <param name="sourceData">Incoming telemetry data</param>
-        /// <param name="targetType">Desired outgoing data</param>
+        /// <param name="sourceData">Incoming telemetry data.</param>
+        /// <param name="targetType">Desired outgoing data.</param>
         /// <returns></returns>
         /// <exception cref="InvalidCastException">When a conversion has been attempted in code, but the data is not parsable to the desired datatype.</exception>
         /// <exception cref="NotImplementedException">When a conversion has not been determined in code.</exception>

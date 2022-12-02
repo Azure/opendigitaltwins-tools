@@ -403,11 +403,11 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
         }
 
         /// <summary>
-        /// Parses a source JSON element and populates a provided Component declaration in the input content
+        /// Parses a source JSON element and populates a provided component declaration in the input content
         /// directory based on the structure of that source element.
         /// </summary>
         /// <param name="sourceElement">Element parsed from source graph.</param>
-        /// <param name="contentDictionary">The content dictionary to which the generated Component will be addded.</param>
+        /// <param name="contentDictionary">The content dictionary to which the generated component will be added.</param>
         /// <param name="component">Component declaration on the target twin's Interface.</param>
         protected void AddComponent(JsonElement sourceElement, Dictionary<string, object> contentDictionary, DTContentInfo component)
         {
@@ -428,12 +428,12 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
         /// and employing ontology mapping to translate DTMI of the relationship source/target twins' Interfaces,
         /// relationship name/direction, etc.
         /// </summary>
-        /// <param name="relationships">Collection to which the new Relationship is added.</param>
-        /// <param name="sourceDtId">dtId of the input Relationship source.</param>
-        /// <param name="inputSourceDtmi">DTMI of the input Relationship source's Interface.</param>
+        /// <param name="relationships">Collection to which the new relationship is added.</param>
+        /// <param name="sourceDtId">dtId of the input relationship source.</param>
+        /// <param name="inputSourceDtmi">DTMI of the input relationship source's Interface.</param>
         /// <param name="inputRelationshipType">Input relationship name.</param>
-        /// <param name="targetDtId">dtId of the input Relationship target.</param>
-        /// <param name="targetInterfaceType">DTMI of the input Relationship target's Interface.</param>
+        /// <param name="targetDtId">dtId of the input relationship target.</param>
+        /// <param name="targetInterfaceType">DTMI of the input relationship target's Interface.</param>
         protected void AddRelationship(IDictionary<string, BasicRelationship> relationships,
                                       string? sourceDtId,
                                       Dtmi? inputSourceDtmi,

@@ -23,12 +23,12 @@ namespace Telemetry.Processors
         /// modelId and property field. This method will search up the dependency tree for 
         /// specified models.
         /// </summary>
-        /// <param name="adt">Connection to an AzureDigitalTwins instance</param>
-        /// <param name="modelId">A full DTDL ModelId to search</param>
-        /// <param name="property">Substring of the AbsoluteUri of the property to search the given model(s) for</param>
-        /// <param name="cancellationToken">A way to stop things</param>
-        /// <returns>The target datatype of the property</returns>
-        /// <exception cref="TargetTypeNotFoundException">Thrown when the given modelId does not contain the given property</exception>
+        /// <param name="adt">Connection to an AzureDigitalTwins instance.</param>
+        /// <param name="modelId">A full DTDL ModelId to search.</param>
+        /// <param name="property">Substring of the AbsoluteUri of the property to search the given model(s) for.</param>
+        /// <param name="cancellationToken">A way to stop things.</param>
+        /// <returns>The target datatype of the property.</returns>
+        /// <exception cref="TargetTypeNotFoundException">Thrown when the given modelId does not contain the given property.</exception>
         public static async Task<DTEntityKind> GetEntityKindFromModelIdAsync(DigitalTwinsClient adt, string modelId, string property, CancellationToken cancellationToken = default)
         {
             var response = adt.GetModelsAsync(new GetModelsOptions() { IncludeModelDefinition = true, DependenciesFor = new[] { modelId } }, cancellationToken);

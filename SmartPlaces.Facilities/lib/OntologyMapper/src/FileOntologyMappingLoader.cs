@@ -10,8 +10,8 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper
     using Microsoft.Extensions.Logging;
 
     /// <summary>
-    /// Ontology mapping loader implementation that loads mappings from a file on disk; the path of
-    /// which is input via class constructor.
+    /// Ontology mapping loader implementation that loads mappings from a file. The path for the
+    /// file is injected via the class constructor.
     /// </summary>
     public class FileOntologyMappingLoader : IOntologyMappingLoader
     {

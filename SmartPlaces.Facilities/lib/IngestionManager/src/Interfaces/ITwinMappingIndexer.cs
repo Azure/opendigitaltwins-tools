@@ -9,7 +9,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Interfaces
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Methods for working with a cache store of source IDs to Digital Twin Ids.
+    /// Methods for working with a cache store of source IDs to Digital Twin IDs.
     /// </summary>
     public interface ITwinMappingIndexer
     {
