@@ -9,10 +9,19 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Extensions
     using System;
     using System.Collections.Generic;
 
+    /// <summary>
+    /// Static extension method class for <see cref="IList{T}"/> extensions.
+    /// </summary>
     internal static class ListExtensions
     {
         private static readonly Random Rng = new Random();
 
+        /// <summary>
+        /// Shuffles the order of the list elements randomly.
+        /// </summary>
+        /// <typeparam name="T">Type of elements in list.</typeparam>
+        /// <param name="list">List to shuffle.</param>
+        /// <returns>Shuffled list.</returns>
         public static IList<T> Shuffle<T>(this IList<T> list)
         {
             int n = list.Count;

@@ -573,7 +573,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Test
                       string basicDtId,
                       string interfaceType)
         {
-            return GetTwin(twins, targetElement, basicDtId, interfaceType);
+            return AddTwin(twins, targetElement, basicDtId, interfaceType);
         }
 
         public void TestGetRelationship(IDictionary<string, BasicRelationship> relationships,
@@ -583,7 +583,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Test
                               string targetDtId,
                               string targetInterfaceType)
         {
-            GetRelationship(relationships, sourceElementId, inputSourceDtmi, inputRelationshipType, targetDtId, targetInterfaceType);
+            AddRelationship(relationships, sourceElementId, inputSourceDtmi, inputRelationshipType, targetDtId, targetInterfaceType);
         }
 
         protected override Task ProcessSites(CancellationToken cancellationToken)

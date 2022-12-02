@@ -18,7 +18,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
     using Microsoft.SmartPlaces.Facilities.OntologyMapper;
 
     /// <summary>
-    /// Base class for loading a site graph from input source to output target.
+    /// Abstract base class for loading a site graph from input source to output target.
     /// </summary>
     /// <typeparam name="TOptions">Anything that inherits from the base class of IngestionManagerOptions.</typeparam>
     public abstract class IngestionProcessorBase<TOptions> : IGraphIngestionProcessor
@@ -33,6 +33,14 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
         private readonly MetricIdentifier outputMappingForInputDtmiNotFoundMetricIdentifier = new MetricIdentifier(Metrics.DefaultNamespace, "OutputMappingForInputDtmiNotFound", Metrics.OutputDtmiTypeDimensionName);
         private readonly MetricIdentifier mappingForInputDtmiNotFoundMetricIdentifier = new MetricIdentifier(Metrics.DefaultNamespace, "MappingForInputDtmiNotFound", Metrics.InterfaceTypeDimensionName);
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="IngestionProcessorBase{TOptions}"/> class.
+        /// </summary>
+        /// <param name="logger">Ingestion processor logger, for local logging.</param>
+        /// <param name="inputGraphManager">Manager for the input data graph that this ingestion processor parses.</param>
+        /// <param name="ontologyMappingManager">Manager mapping between ontologies used by the input and output graphs.</param>
+        /// <param name="outputGraphManager">Manager for the output data graph that this ingestion processor writes to.</param>
+        /// <param name="telemetryClient">Application Insights telemetry client for remote metrics tracking.</param>
         protected IngestionProcessorBase(ILogger<IngestionProcessorBase<TOptions>> logger,
                                         IInputGraphManager inputGraphManager,
                                         IOntologyMappingManager ontologyMappingManager,
@@ -47,30 +55,60 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
             OutputGraphManager = outputGraphManager;
         }
 
+        /// <summary>
+        /// Gets ingestion processor local logger.
+        /// </summary>
         protected ILogger Logger { get; }
 
+        /// <summary>
+        /// Gets Application Insights telemetry client.
+        /// </summary>
         protected TelemetryClient TelemetryClient { get; }
 
+        /// <summary>
+        /// Gets ontology mapping manager.
+        /// </summary>
         protected IOntologyMappingManager OntologyMappingManager { get; }
 
+        /// <summary>
+        /// Gets input graph manager.
+        /// </summary>
         protected IInputGraphManager InputGraphManager { get; }
 
+        /// <summary>
+        /// Gets a JSON object with only an empty <c>$metadata</c> field, used to scaffold an empty DTDL Component in target twins.
+        /// </summary>
         protected static JsonElement EmptyComponentElement { get => JsonDocument.Parse("{ \"$metadata\": {} }").RootElement; }
 
+        /// <summary>
+        ///  Gets target model parser, used to read target ontology into memory.
+        /// </summary>
         protected ModelParser TargetModelParser { get; }
 
+        /// <summary>
+        /// Gets output graph manager.
+        /// </summary>
         protected IOutputGraphManager OutputGraphManager { get; }
 
-        // Because this value is determined in an async call, we can't call it in the constructor,
-        // so we use the null-forgiving operator (null!) to tell the compiler that this is set later
-        // We set this in the Init method
+        /// <summary>
+        /// Gets in-memory representation of target ontology model (such that it can be
+        /// queried for mapping validations).
+        /// <br /><br />
+        /// Because this value is determined in an async call, it cannot be called in the constructor,
+        /// so we use the null-forgiving operator (null!) to tell the compiler that this is set later
+        /// (in the Init method).
+        /// </summary>
         protected IReadOnlyDictionary<Dtmi, DTEntityInfo> TargetObjectModel { get; private set; } = null!;
 
+        /// <summary>
+        /// This method initiates ingestion of all sites in the input graph.
+        /// To be implemented by solutions utilizing this library.
+        /// </summary>
+        /// <param name="cancellationToken">Cancellation propagation token for interrupting the ingestion process.</param>
+        /// <returns>An awaitable task.</returns>
         protected abstract Task ProcessSites(CancellationToken cancellationToken);
 
-        /// <summary>
-        /// Driver for the Ingestion Process.
-        /// </summary>
+        /// <inheritdoc/>
         public async Task IngestFromApiAsync(CancellationToken cancellationToken)
         {
             Logger.LogInformation("Starting ingestion process");
@@ -102,6 +140,11 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
             }
         }
 
+        /// <summary>
+        /// Returns a DTMI from the input graph ontology, corresponding to a string representation, if one exists.
+        /// </summary>
+        /// <param name="interfaceType">Sought interface name.</param>
+        /// <returns><c>DTMI</c> representation of said interface, if it exists; else null.</returns>
         protected Dtmi? GetInputInterfaceDtmi(string interfaceType)
         {
             Dtmi? dtmi = null;
@@ -119,6 +162,12 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
             return dtmi;
         }
 
+        /// <summary>
+        /// Get an output Relationship name and direction, after ontology mapping, corresponding to an input Relationship name.
+        /// If no mapping is found, simply returns the input Relationship.
+        /// </summary>
+        /// <param name="inputRelationshipType">The sought input Relationship.</param>
+        /// <returns>A <c>string,bool</c> tuple, where the <c>string</c> indicates output Relationship name, and the <c>bool</c> indicates whether or not the relationship direction is reversed after mapping compared to the input direction.</returns>
         protected Tuple<string, bool> GetOutputRelationshipType(string inputRelationshipType)
         {
             // If there is a remapping, use that. If not, assume the input and output mapping are the same
@@ -130,6 +179,12 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
             return new Tuple<string, bool>(inputRelationshipType, false);
         }
 
+        /// <summary>
+        /// Try to get the output DTMI, after ontology mapping, corresponding to an input DTMI.
+        /// </summary>
+        /// <param name="inputDtmi">The sought input DTMI.</param>
+        /// <param name="outputDtmi">The corresponding output DTMI.</param>
+        /// <returns><c>true</c> if a mapping could be found, in which case <paramref name="outputDtmi"/> will hold a result, else <c>false</c>, in which case <paramref name="outputDtmi"/> will be null.</returns>
         protected bool TryGetOutputInterfaceDtmi(Dtmi inputDtmi, out Dtmi? outputDtmi)
         {
             // Try to get the input DTMI from the output DTDL
@@ -169,12 +224,25 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
             return false;
         }
 
-        protected Dtmi? GetTwin(IDictionary<string, BasicDigitalTwin> twins,
-                                JsonElement targetElement,
-                                string basicDtId,
-                                string interfaceType)
+        /// <summary>
+        /// Adds a new digital twin to the input twins collection, named and typed per the
+        /// input parameters, by parsing an input source element.
+        /// <br/><br/>
+        /// Note that this method will return a DTMI if ontology mapping can be carried out,
+        /// irrespective of whether a new twin was successfully created or not.
+        /// </summary>
+        /// <param name="twins">Collection to which the new twin is added.</param>
+        /// <param name="sourceElement">Element to be parsed in the input graph.</param>
+        /// <param name="targetDtId">dtId for the new twin to add.</param>
+        /// <param name="sourceTwinInterface">The interface of the source twin.</param>
+        /// <returns>Target DTMI corresponding with <paramref name="sourceTwinInterface"/> after
+        /// ontology mapping (or <c>null</c> if no such mapping could be found.</returns>
+        protected Dtmi? AddTwin(IDictionary<string, BasicDigitalTwin> twins,
+                                JsonElement sourceElement,
+                                string targetDtId,
+                                string sourceTwinInterface)
         {
-            Dtmi? inputDtmi = GetInputInterfaceDtmi(interfaceType.ToString());
+            Dtmi? inputDtmi = GetInputInterfaceDtmi(sourceTwinInterface);
 
             if (inputDtmi != null)
             {
@@ -183,7 +251,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
                     // Create a basic twin
                     var basicTwin = new BasicDigitalTwin
                     {
-                        Id = basicDtId,
+                        Id = targetDtId,
 
                         // model Id of digital twin
                         Metadata = { ModelId = outputDtmi.ToString() },
@@ -196,19 +264,19 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
                     if (TargetObjectModel.TryGetValue(outputDtmi, out var model))
                     {
                         // Get a list of the properties of the model
-                        foreach (var property in ((DTInterfaceInfo)model).Contents.Values.Where(v => v.EntityKind == DTEntityKind.Property || v.EntityKind == DTEntityKind.Component))
+                        foreach (var targetContentEntity in ((DTInterfaceInfo)model).Contents.Values.Where(v => v.EntityKind == DTEntityKind.Property || v.EntityKind == DTEntityKind.Component))
                         {
-                            switch (property.EntityKind)
+                            switch (targetContentEntity.EntityKind)
                             {
                                 case DTEntityKind.Property:
                                     {
-                                        AddProperty(targetElement, basicDtId, interfaceType, contentDictionary, property, outputDtmi.ToString());
+                                        AddProperty(sourceElement, targetDtId, sourceTwinInterface, contentDictionary, targetContentEntity, outputDtmi.ToString());
                                         break;
                                     }
 
                                 case DTEntityKind.Component:
                                     {
-                                        AddComponent(targetElement, contentDictionary, property);
+                                        AddComponent(sourceElement, contentDictionary, targetContentEntity);
                                         break;
                                     }
                             }
@@ -216,8 +284,8 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
                     }
                     else
                     {
-                        Logger.LogWarning("Target DTMI: '{outputDtmi}' with InterfaceType: '{interfaceType}' not found in target model parser.", basicDtId, interfaceType);
-                        TelemetryClient.GetMetric(targetDtmiNotFoundMetricIdentifier).TrackValue(1, interfaceType.ToString());
+                        Logger.LogWarning("Target DTMI: '{outputDtmi}' with InterfaceType: '{interfaceType}' not found in target model parser.", targetDtId, sourceTwinInterface);
+                        TelemetryClient.GetMetric(targetDtmiNotFoundMetricIdentifier).TrackValue(1, sourceTwinInterface.ToString());
                     }
 
                     // Twins are required to have a name
@@ -232,7 +300,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
                 }
                 else
                 {
-                    Logger.LogWarning("Output mapping for input Dtmi: '{inputDtmi}' with InterfaceType: '{interfaceType}' to output Dtmi not found.", basicDtId, interfaceType);
+                    Logger.LogWarning("Output mapping for input Dtmi: '{inputDtmi}' with InterfaceType: '{interfaceType}' to output Dtmi not found.", targetDtId, sourceTwinInterface);
                     TelemetryClient.GetMetric(outputMappingForInputDtmiNotFoundMetricIdentifier).TrackValue(1, inputDtmi.ToString());
                 }
 
@@ -240,17 +308,27 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
             }
             else
             {
-                Logger.LogWarning("Mapping for input interface: '{inputDtmi}' with InterfaceType: '{interfaceType}' not found.", basicDtId, interfaceType);
-                TelemetryClient.GetMetric(mappingForInputDtmiNotFoundMetricIdentifier).TrackValue(1, interfaceType.ToString());
+                Logger.LogWarning("Mapping for input interface: '{inputDtmi}' with InterfaceType: '{interfaceType}' not found.", targetDtId, sourceTwinInterface);
+                TelemetryClient.GetMetric(mappingForInputDtmiNotFoundMetricIdentifier).TrackValue(1, sourceTwinInterface.ToString());
 
                 return null;
             }
         }
 
-        protected void AddProperty(JsonElement targetElement, string basicDtId, string interfaceType, Dictionary<string, object> contentDictionary, DTContentInfo property, string outputDtmi)
+        /// <summary>
+        /// Parses a source JSON element and populates a provided Property declaration in the input content
+        /// directory based on the structure of that source element.
+        /// </summary>
+        /// <param name="sourceElement">Element parsed from source graph.</param>
+        /// <param name="basicDtId">dtID of target digital twin that the contents dictionary belongs to (used for logging).</param>
+        /// <param name="interfaceType">Interface of the source digital twin (used for logging).</param>
+        /// <param name="contentDictionary">The content dictionary to which the generated Property will be addded.</param>
+        /// <param name="property">Property declaration on the target twin's Interface.</param>
+        /// <param name="outputDtmi">Interface of the target digital twin (that the contents directory belongs to).</param>
+        protected void AddProperty(JsonElement sourceElement, string basicDtId, string interfaceType, Dictionary<string, object> contentDictionary, DTContentInfo property, string outputDtmi)
         {
             // Find the property on the input type that matches the propertyName of this property
-            if (targetElement.TryGetProperty(property.Name, out var propertyValue))
+            if (sourceElement.TryGetProperty(property.Name, out var propertyValue))
             {
                 if (propertyValue.ValueKind != JsonValueKind.Null)
                 {
@@ -265,7 +343,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
                         foreach (var inputProperty in fillProperty.InputPropertyNames)
                         {
                             // See if the input element has a value for that property
-                            if (targetElement.TryGetProperty(inputProperty, out var inputValue))
+                            if (sourceElement.TryGetProperty(inputProperty, out var inputValue))
                             {
                                 // Take the first one that is not null
                                 if (inputValue.ValueKind != JsonValueKind.Null)
@@ -287,7 +365,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
                     foreach (var inputProperty in propertyProjection.InputPropertyNames)
                     {
                         // Get the value of the input property
-                        if (targetElement.TryGetProperty(inputProperty, out var inputValue))
+                        if (sourceElement.TryGetProperty(inputProperty, out var inputValue))
                         {
                             // If the output target is a collection, add the value to the target collection
                             if (propertyProjection.IsOutputPropertyCollection)
@@ -324,22 +402,40 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
             }
         }
 
-        protected void AddComponent(JsonElement targetElement, Dictionary<string, object> contentDictionary, DTContentInfo property)
+        /// <summary>
+        /// Parses a source JSON element and populates a provided Component declaration in the input content
+        /// directory based on the structure of that source element.
+        /// </summary>
+        /// <param name="sourceElement">Element parsed from source graph.</param>
+        /// <param name="contentDictionary">The content dictionary to which the generated Component will be addded.</param>
+        /// <param name="component">Component declaration on the target twin's Interface.</param>
+        protected void AddComponent(JsonElement sourceElement, Dictionary<string, object> contentDictionary, DTContentInfo component)
         {
             // Find the property on the input type that matches the propertyName of this component
-            if (targetElement.TryGetProperty(property.Name, out var propertyValue) && propertyValue.ValueKind != JsonValueKind.Null)
+            if (sourceElement.TryGetProperty(component.Name, out var propertyValue) && propertyValue.ValueKind != JsonValueKind.Null)
             {
-                contentDictionary.Add(property.Name, propertyValue);
+                contentDictionary.Add(component.Name, propertyValue);
             }
             else
             {
                 // If there is a component field on the Target Model, and there is not input value, create an element with empty $metadata as components are not optional
-                contentDictionary.Add(property.Name, EmptyComponentElement);
+                contentDictionary.Add(component.Name, EmptyComponentElement);
             }
         }
 
-        protected void GetRelationship(IDictionary<string, BasicRelationship> relationships,
-                                      string? sourceElementId,
+        /// <summary>
+        /// Adds a new relationship to the provided relationships collection, based on the provided  parameters
+        /// and employing ontology mapping to translate DTMI of the relationship source/target twins' Interfaces,
+        /// relationship name/direction, etc.
+        /// </summary>
+        /// <param name="relationships">Collection to which the new Relationship is added.</param>
+        /// <param name="sourceDtId">dtId of the input Relationship source.</param>
+        /// <param name="inputSourceDtmi">DTMI of the input Relationship source's Interface.</param>
+        /// <param name="inputRelationshipType">Input relationship name.</param>
+        /// <param name="targetDtId">dtId of the input Relationship target.</param>
+        /// <param name="targetInterfaceType">DTMI of the input Relationship target's Interface.</param>
+        protected void AddRelationship(IDictionary<string, BasicRelationship> relationships,
+                                      string? sourceDtId,
                                       Dtmi? inputSourceDtmi,
                                       string? inputRelationshipType,
                                       string targetDtId,
@@ -368,14 +464,14 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
                         if (outputSourceDtmi != null && TargetObjectModel.TryGetValue(outputSourceDtmi, out var model))
                         {
                             var relationship = ((DTInterfaceInfo)model).Contents.FirstOrDefault(p => p.Value.EntityKind == DTEntityKind.Relationship && p.Value.Name == outputRelationship.Item1);
-                            var relationshipId = outputRelationship.Item2 ? $"{targetDtId}-{sourceElementId}-{outputRelationship.Item1}" :
-                                                                            $"{sourceElementId}-{targetDtId}-{outputRelationship.Item1}";
+                            var relationshipId = outputRelationship.Item2 ? $"{targetDtId}-{sourceDtId}-{outputRelationship.Item1}" :
+                                                                            $"{sourceDtId}-{targetDtId}-{outputRelationship.Item1}";
 
                             // Create a basic relationship
                             var basicRelationship = new BasicRelationship
                             {
-                                SourceId = outputRelationship.Item2 ? targetDtId : sourceElementId,
-                                TargetId = outputRelationship.Item2 ? sourceElementId : targetDtId,
+                                SourceId = outputRelationship.Item2 ? targetDtId : sourceDtId,
+                                TargetId = outputRelationship.Item2 ? sourceDtId : targetDtId,
                                 Id = relationshipId,
                                 Name = outputRelationship.Item1.ToString(),
                             };
@@ -386,7 +482,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
                         {
                             Logger.LogWarning("Output relationship '{relationshipType}' not found in Target Model. Source Element Id: '{sourceElementId}', TargetInterfaceType: '{interfaceType}', TargetId: '{targetId}",
                                 outputRelationship.Item1 ?? string.Empty,
-                                sourceElementId ?? string.Empty,
+                                sourceDtId ?? string.Empty,
                                 targetInterfaceType,
                                 targetDtId);
 
@@ -396,7 +492,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
                     else
                     {
                         Logger.LogWarning("No relationship mapping found from input model to output model: Source Element Id: '{sourceElementId}',  RelationshipType: '{relationshipType}', TargetInterfaceType: '{interfaceType}', TargetId: '{targetId}",
-                            sourceElementId ?? string.Empty,
+                            sourceDtId ?? string.Empty,
                             inputRelationshipType ?? string.Empty,
                             targetInterfaceType,
                             targetDtId);

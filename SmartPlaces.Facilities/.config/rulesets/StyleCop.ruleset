@@ -19,12 +19,6 @@
     <Rule Id="SA1402" Action="None" /> <!-- FileMayOnlyContainASingleType - A C# code file contains more than one unique type. -->
     <Rule Id="SA1501" Action="None" /> <!-- StatementMustNotBeOnSingleLine - A C# statement containing opening and closing braces is written completely on a single line. -->
     <Rule Id="SA1502" Action="None" /> <!-- ElementMustNotBeOnSingleLine - A C# element containing opening and closing braces is written completely on a single line. -->
-    <Rule Id="SA1600" Action="None" /> <!-- ElementsMustBeDocumented - A C# code element is missing a documentation header. -->
-    <Rule Id="SA1601" Action="None" /> <!-- PartialElementsMustBeDocumented - A C# partial element is missing a documentation header. -->
-    <Rule Id="SA1602" Action="None" /> <!-- EnumerationItemsMustBeDocumented - An item within a C# enumeration is missing an Xml documentation header. -->
-    <Rule Id="SA1611" Action="None" /> <!-- ElementParametersMustBeDocumented - A C# method, constructor, delegate or indexer element is missing documentation for one or more of its parameters. -->
-    <Rule Id="SA1615" Action="None" /> <!-- ElementReturnValueMustBeDocumented - A C# element is missing documentation for its return value. -->
-    <Rule Id="SA1642" Action="None" /> <!-- ConstructorSummaryDocumentationMustBeginWithStandardText - The XML documentation header for a C# constructor does not contain the appropriate summary text. -->
 
   </Rules>
 </RuleSet>
