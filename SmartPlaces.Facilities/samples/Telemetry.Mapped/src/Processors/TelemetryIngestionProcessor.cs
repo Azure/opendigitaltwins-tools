@@ -25,6 +25,7 @@ namespace Telemetry.Processors
     using Microsoft.Extensions.Options;
     using Microsoft.SmartPlaces.Facilities.IngestionManager;
     using Microsoft.SmartPlaces.Facilities.IngestionManager.Interfaces;
+    using Telemetry.Exceptions;
     using Telemetry.Interfaces;
 
     public class TelemetryIngestionProcessor<TOptions> : ITelemetryIngestionProcessor
@@ -130,11 +131,18 @@ namespace Telemetry.Processors
 
                             logger.LogDebug("$dtId: {adtTwinId} TwinPatchBody: {body}", twinIdLookupCache.twinMap.TargetTwinId, updateTwinData.ToString());
 
-                            await digitalTwinsClient.UpdateDigitalTwinAsync(twinIdLookupCache.twinMap.TargetTwinId, updateTwinData, cancellationToken: cancellationToken);
+                            var response = await digitalTwinsClient.UpdateDigitalTwinAsync(twinIdLookupCache.twinMap.TargetTwinId, updateTwinData, cancellationToken: cancellationToken);
 
-                            status = "Succeeded";
-                            reason = "Updated";
-                            break;
+                            if (response.IsError)
+                            {
+                                reason = response.ReasonPhrase;
+                            }
+                            else
+                            {
+                                status = "Succeeded";
+                                reason = "Updated";
+                                break;
+                            }
                         }
                         catch (RequestFailedException ex) when (ex.Status == (int)HttpStatusCode.BadRequest && ex.ErrorCode == "ValidationFailed" && ex.Message.StartsWith("Expected value of type"))
                         {
@@ -156,11 +164,18 @@ namespace Telemetry.Processors
 
                             logger.LogDebug("$dtId: {adtTwinId} TwinPatchBody: {body}", twinIdLookupCache.twinMap.TargetTwinId, addTwinData.ToString());
 
-                            await digitalTwinsClient.UpdateDigitalTwinAsync(twinIdLookupCache.twinMap.TargetTwinId, addTwinData, cancellationToken: cancellationToken);
+                            var response = await digitalTwinsClient.UpdateDigitalTwinAsync(twinIdLookupCache.twinMap.TargetTwinId, addTwinData, cancellationToken: cancellationToken);
 
-                            status = "Succeeded";
-                            reason = "Added";
-                            break;
+                            if (response.IsError)
+                            {
+                                reason = response.ReasonPhrase;
+                            }
+                            else
+                            {
+                                status = "Succeeded";
+                                reason = "Added";
+                                break;
+                            }
                         }
                     } while (--retryTypeAttempts>-1);
                 }
@@ -177,7 +192,7 @@ namespace Telemetry.Processors
             }
             finally
             {
-                telemetryClient.GetMetric(twinUpdateMetric).TrackValue(1, status, reason);
+                telemetryClient.GetMetric(twinUpdateMetric).TrackValue(1, status, string.IsNullOrWhiteSpace(reason) ? "Unknown" : reason);
             }
         }
 
@@ -190,14 +205,11 @@ namespace Telemetry.Processors
         private async Task<(TwinMapEntry? twinMap, string failureReason)> GetTwinMap(EventData telemetryEvent)
         {
             TwinMapEntry? twinMap = null;
-            string failureReason = string.Empty;
+            string failureReason = "Unknown";
             if (telemetryEvent.Properties.TryGetValue("mappingKey", out var mappingKey))
             {
-                try
-                {
-                    twinMap = await twinMappingIndexer.GetTwinIndexAsync((string)mappingKey).ConfigureAwait(false);
-                }
-                catch (ArgumentNullException)
+                twinMap = await twinMappingIndexer.GetTwinIndexAsync((string)mappingKey).ConfigureAwait(false);
+                if (twinMap is null)
                 {
                     logger.LogError("MappingKey not found in twin lookup cache: {mappingKey}", mappingKey);
                     failureReason = "MappingKeyNotFoundInTwinIdLookupCache";
@@ -222,20 +234,26 @@ namespace Telemetry.Processors
         private JsonPatchDocument CreatePatch(RedisPoint point, DTEntityKind targetType, bool isAdd = false)
         {
             var patch = new JsonPatchDocument();
-
-            if (isAdd)
+            try
             {
-                patch.AppendAdd<object>($"/{telemetryValueRoot}", new());
-                patch.AppendAdd($"/{telemetryValueRoot}/{telemetryValueKey}", TranslateType(point.PresentValue, targetType));
-                patch.AppendAdd($"/{telemetryValueRoot}/{telemetryTimestampKey}", point.LastUpdate.ToDateTime());
+                if (isAdd)
+                {
+                    patch.AppendAdd<object>($"/{telemetryValueRoot}", new());
+                    patch.AppendAdd($"/{telemetryValueRoot}/{telemetryValueKey}", TranslateType(point.PresentValue, targetType));
+                    patch.AppendAdd($"/{telemetryValueRoot}/{telemetryTimestampKey}", point.LastUpdate.ToDateTime());
+                }
+                else
+                {
+                    // Counting here since the add functionality is a fallback and would duplicate data
+                    telemetryClient.GetMetric(telemetryTypeMetric).TrackValue(1, point.PresentValue.ValueCase.ToString(), targetType.ToString());
+
+                    patch.AppendReplace($"/{telemetryValueRoot}/{telemetryValueKey}", TranslateType(point.PresentValue, targetType));
+                    patch.AppendReplace($"/{telemetryValueRoot}/{telemetryTimestampKey}", point.LastUpdate.ToDateTime());
+                }
             }
-            else
+            catch (ArgumentException ex)
             {
-                // Counting here since the add functionality is a fallback and would duplicate data
-                telemetryClient.GetMetric(telemetryTypeMetric).TrackValue(1, point.PresentValue.ValueCase.ToString(), targetType.ToString());
-
-                patch.AppendReplace($"/{telemetryValueRoot}/{telemetryValueKey}", TranslateType(point.PresentValue, targetType));
-                patch.AppendReplace($"/{telemetryValueRoot}/{telemetryTimestampKey}", point.LastUpdate.ToDateTime());
+                throw new TelemetryValueException($"Failed to create patch document with response from TranslateType when converting {point.PresentValue.ValueCase} to {targetType}", ex);
             }
 
             return patch;
@@ -305,14 +323,7 @@ namespace Telemetry.Processors
                     switch (targetType)
                     {
                         case DTEntityKind.Double:
-                            if (Double.TryParse(sourceData.Float32Value.ToString(), out var outputDouble))
-                            {
-                                return outputDouble;
-                            }
-                            else
-                            {
-                                throw new InvalidCastException($"Failed to cast '{sourceData.Float32Value}' to {targetType}");
-                            }
+                            return Convert.ToDouble(sourceData.Float32Value);
                         case DTEntityKind.Duration:
                             return TimeSpan.FromHours(sourceData.Float32Value);
                         case DTEntityKind.String:
@@ -511,14 +522,7 @@ namespace Telemetry.Processors
                                 throw new InvalidCastException($"Failed to cast '{sourceData.Uint32Value}' to {targetType}");
                             }
                         case DTEntityKind.Double:
-                            if (Double.TryParse(sourceData.Uint32Value.ToString(), out var outputDouble))
-                            {
-                                return outputDouble;
-                            }
-                            else
-                            {
-                                throw new InvalidCastException($"Failed to cast '{sourceData.Uint32Value}' to {targetType}");
-                            }
+                            return Convert.ToDouble(sourceData.Uint32Value);
                         case DTEntityKind.String:
                             return sourceData.Uint32Value.ToString();
                     }
