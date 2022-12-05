@@ -277,6 +277,7 @@ namespace Telemetry.Processors
                         case DTEntityKind.String:
                             return sourceData.BoolArrayValue.ToString();
                     }
+
                     break;
                 case TypedValue.ValueOneofCase.BoolValue:
                     switch (targetType)
@@ -286,6 +287,7 @@ namespace Telemetry.Processors
                         case DTEntityKind.String:
                             return sourceData.BoolValue.ToString();
                     }
+
                     break;
                 case TypedValue.ValueOneofCase.CalendarPeriodValue:
                     switch (targetType)
@@ -293,6 +295,7 @@ namespace Telemetry.Processors
                         case DTEntityKind.String:
                             return sourceData.CalendarPeriodValue.ToString();
                     }
+
                     break;
                 case TypedValue.ValueOneofCase.DateValue:
                     switch (targetType)
@@ -302,6 +305,7 @@ namespace Telemetry.Processors
                         case DTEntityKind.String:
                             return sourceData.DateValue.ToString();
                     }
+
                     break;
                 case TypedValue.ValueOneofCase.DayOfWeekValue:
                     switch (targetType)
@@ -309,6 +313,7 @@ namespace Telemetry.Processors
                         case DTEntityKind.String:
                             return sourceData.DayOfWeekValue.ToString();
                     }
+
                     break;
                 case TypedValue.ValueOneofCase.EnumValue:
                     switch (targetType)
@@ -318,26 +323,41 @@ namespace Telemetry.Processors
                         case DTEntityKind.String:
                             return sourceData.EnumValue.ToString();
                     }
+
                     break;
                 case TypedValue.ValueOneofCase.Float32Value:
                     switch (targetType)
                     {
                         case DTEntityKind.Double:
-                            return Convert.ToDouble(sourceData.Float32Value);
+                            if (sourceData.Float32Value.ToString() != "NaN")
+                            {
+                                return Convert.ToDouble(sourceData.Float32Value);
+                            }
+
+                            logger.LogError("Received NaN as Float32Value");
+                            break;
                         case DTEntityKind.Duration:
                             return TimeSpan.FromHours(sourceData.Float32Value);
                         case DTEntityKind.String:
                             return sourceData.Float32Value.ToString();
                     }
+
                     break;
                 case TypedValue.ValueOneofCase.Float64Value:
                     switch (targetType)
                     {
                         case DTEntityKind.Double:
-                            return sourceData.Float64Value;
+                            if (sourceData.Float32Value.ToString() != "NaN")
+                            {
+                                return Convert.ToDouble(sourceData.Float64Value);
+                            }
+
+                            logger.LogError("Received NaN as Float64Value");
+                            break;
                         case DTEntityKind.String:
                             return sourceData.Float64Value.ToString();
                     }
+
                     break;
                 case TypedValue.ValueOneofCase.GeojsonValue:
                     switch (targetType)
@@ -345,6 +365,7 @@ namespace Telemetry.Processors
                         case DTEntityKind.String:
                             return sourceData.GeojsonValue.ToString();
                     }
+
                     break;
                 case TypedValue.ValueOneofCase.GeopointValue:
                     switch (targetType)
@@ -352,6 +373,7 @@ namespace Telemetry.Processors
                         case DTEntityKind.String:
                             return sourceData.GeopointValue.ToString();
                     }
+
                     break;
                 case TypedValue.ValueOneofCase.Int32Value:
                     switch (targetType)
@@ -359,6 +381,7 @@ namespace Telemetry.Processors
                         case DTEntityKind.String:
                             return sourceData.Int32Value.ToString();
                     }
+
                     break;
                 case TypedValue.ValueOneofCase.Int64Value:
                     switch (targetType)
@@ -368,6 +391,7 @@ namespace Telemetry.Processors
                         case DTEntityKind.String:
                             return sourceData.Int64Value.ToString();
                     }
+
                     break;
                 case TypedValue.ValueOneofCase.IntervalValue:
                     switch (targetType)
@@ -375,6 +399,7 @@ namespace Telemetry.Processors
                         case DTEntityKind.String:
                             return sourceData.IntervalValue.ToString();
                     }
+
                     break;
                 case TypedValue.ValueOneofCase.MoneyValue:
                     switch (targetType)
@@ -382,6 +407,7 @@ namespace Telemetry.Processors
                         case DTEntityKind.String:
                             return sourceData.MoneyValue.ToString();
                     }
+
                     break;
                 case TypedValue.ValueOneofCase.MonthValue:
                     switch (targetType)
@@ -389,6 +415,7 @@ namespace Telemetry.Processors
                         case DTEntityKind.String:
                             return sourceData.MonthValue.ToString();
                     }
+
                     break;
                 case TypedValue.ValueOneofCase.PhoneNumberValue:
                     switch (targetType)
@@ -396,6 +423,7 @@ namespace Telemetry.Processors
                         case DTEntityKind.String:
                             return sourceData.PhoneNumberValue.ToString();
                     }
+
                     break;
                 case TypedValue.ValueOneofCase.PostalAddressValue:
                     switch (targetType)
@@ -403,6 +431,7 @@ namespace Telemetry.Processors
                         case DTEntityKind.String:
                             return sourceData.PostalAddressValue.ToString();
                     }
+
                     break;
                 case TypedValue.ValueOneofCase.StringValue:
                     switch (targetType)
@@ -437,14 +466,20 @@ namespace Telemetry.Processors
                                 throw new InvalidCastException($"Failed to cast '{sourceData.StringValue}' to {targetType}");
                             }
                         case DTEntityKind.Double:
-                            if (Double.TryParse(sourceData.StringValue, out var outputDouble))
+                            if (sourceData.StringValue != "NaN")
                             {
-                                return outputDouble;
+                                if (Double.TryParse(sourceData.StringValue, out var outputDouble))
+                                {
+                                    return outputDouble;
+                                }
+                                else
+                                {
+                                    throw new InvalidCastException($"Failed to cast '{sourceData.StringValue}' to {targetType}");
+                                }
                             }
-                            else
-                            {
-                                throw new InvalidCastException($"Failed to cast '{sourceData.StringValue}' to {targetType}");
-                            }
+
+                            logger.LogError("Received NaN as stringValue");
+                            break;
                         case DTEntityKind.Duration:
                             if (TimeSpan.TryParse(sourceData.StringValue, out var outputTimeSpan))
                             {
@@ -455,14 +490,20 @@ namespace Telemetry.Processors
                                 throw new InvalidCastException($"Failed to cast '{sourceData.StringValue}' to {targetType}");
                             }
                         case DTEntityKind.Float:
-                            if (float.TryParse(sourceData.StringValue, out var outputFloat))
+                            if (sourceData.StringValue != "NaN")
                             {
-                                return outputFloat;
+                                if (float.TryParse(sourceData.StringValue, out var outputFloat))
+                                {
+                                    return outputFloat;
+                                }
+                                else
+                                {
+                                    throw new InvalidCastException($"Failed to cast '{sourceData.StringValue}' to {targetType}");
+                                }
                             }
-                            else
-                            {
-                                throw new InvalidCastException($"Failed to cast '{sourceData.StringValue}' to {targetType}");
-                            }
+
+                            logger.LogError("Received NaN as stringValue");
+                            break;
                         case DTEntityKind.Integer:
                             if (int.TryParse(sourceData.StringValue, out var outputInteger))
                             {
@@ -473,14 +514,20 @@ namespace Telemetry.Processors
                                 throw new InvalidCastException($"Failed to cast '{sourceData.StringValue}' to {targetType}");
                             }
                         case DTEntityKind.Long:
-                            if (long.TryParse(sourceData.StringValue, out var outputLong))
+                            if (sourceData.StringValue != "NaN")
                             {
-                                return outputLong;
+                                if (long.TryParse(sourceData.StringValue, out var outputLong))
+                                {
+                                    return outputLong;
+                                }
+                                else
+                                {
+                                    throw new InvalidCastException($"Failed to cast '{sourceData.StringValue}' to {targetType}");
+                                }
                             }
-                            else
-                            {
-                                throw new InvalidCastException($"Failed to cast '{sourceData.StringValue}' to {targetType}");
-                            }
+
+                            logger.LogError("Received NaN as stringValue");
+                            break;
                         case DTEntityKind.String:
                             return sourceData.StringValue.ToString();
                         case DTEntityKind.Time:
@@ -494,6 +541,7 @@ namespace Telemetry.Processors
                                 throw new InvalidCastException($"Failed to cast '{sourceData.StringValue}' to {targetType}");
                             }
                     }
+
                     break;
                 case TypedValue.ValueOneofCase.TimestampValue:
                     switch (targetType)
@@ -501,6 +549,7 @@ namespace Telemetry.Processors
                         case DTEntityKind.String:
                             return sourceData.TimestampValue.ToString();
                     }
+
                     break;
                 case TypedValue.ValueOneofCase.TimeValue:
                     switch (targetType)
@@ -508,6 +557,7 @@ namespace Telemetry.Processors
                         case DTEntityKind.String:
                             return sourceData.TimeValue.ToString();
                     }
+
                     break;
                 case TypedValue.ValueOneofCase.Uint32Value:
                     switch (targetType)
@@ -526,6 +576,7 @@ namespace Telemetry.Processors
                         case DTEntityKind.String:
                             return sourceData.Uint32Value.ToString();
                     }
+
                     break;
                 case TypedValue.ValueOneofCase.Uint64Value:
                     switch (targetType)
@@ -533,6 +584,7 @@ namespace Telemetry.Processors
                         case DTEntityKind.String:
                             return sourceData.Uint64Value.ToString();
                     }
+
                     break;
                 default:
                     logger.LogError("Uncertain how to cast from {sourceType}", sourceData.ValueCase.ToString());
