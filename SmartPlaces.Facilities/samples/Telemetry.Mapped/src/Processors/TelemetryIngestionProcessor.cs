@@ -187,9 +187,9 @@ namespace Telemetry.Processors
         /// </summary>
         /// <param name="telemetryEvent">Raw event off of the eventHub.</param>
         /// <returns>The data stored on the cloud redis by the Topology project.</returns>
-        private async Task<(TwinMap? twinMap, string failureReason)> GetTwinMap(EventData telemetryEvent)
+        private async Task<(TwinMapEntry? twinMap, string failureReason)> GetTwinMap(EventData telemetryEvent)
         {
-            TwinMap? twinMap = null;
+            TwinMapEntry? twinMap = null;
             string failureReason = string.Empty;
             if (telemetryEvent.Properties.TryGetValue("mappingKey", out var mappingKey))
             {
