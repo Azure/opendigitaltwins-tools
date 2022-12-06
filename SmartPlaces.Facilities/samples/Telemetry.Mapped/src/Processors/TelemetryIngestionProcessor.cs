@@ -334,8 +334,7 @@ namespace Telemetry.Processors
                                 return Convert.ToDouble(sourceData.Float32Value);
                             }
 
-                            logger.LogError("Received NaN as Float32Value");
-                            break;
+                            throw new InvalidCastException($"Failed to cast Double to Float32Value. Received NaN as double.");
                         case DTEntityKind.Duration:
                             return TimeSpan.FromHours(sourceData.Float32Value);
                         case DTEntityKind.String:
@@ -352,8 +351,7 @@ namespace Telemetry.Processors
                                 return Convert.ToDouble(sourceData.Float64Value);
                             }
 
-                            logger.LogError("Received NaN as Float64Value");
-                            break;
+                            throw new InvalidCastException($"Failed to cast Float64Value to Double. Received NaN as Float64Value.");
                         case DTEntityKind.String:
                             return sourceData.Float64Value.ToString();
                     }
@@ -478,8 +476,7 @@ namespace Telemetry.Processors
                                 }
                             }
 
-                            logger.LogError("Received NaN as stringValue");
-                            break;
+                            throw new InvalidCastException($"Failed to cast '{sourceData.StringValue}' to {targetType}. Received NaN as stringValue.");
                         case DTEntityKind.Duration:
                             if (TimeSpan.TryParse(sourceData.StringValue, out var outputTimeSpan))
                             {
@@ -502,8 +499,7 @@ namespace Telemetry.Processors
                                 }
                             }
 
-                            logger.LogError("Received NaN as stringValue");
-                            break;
+                            throw new InvalidCastException($"Failed to cast '{sourceData.StringValue}' to {targetType}. Received NaN as stringValue.");
                         case DTEntityKind.Integer:
                             if (int.TryParse(sourceData.StringValue, out var outputInteger))
                             {
@@ -526,8 +522,7 @@ namespace Telemetry.Processors
                                 }
                             }
 
-                            logger.LogError("Received NaN as stringValue");
-                            break;
+                            throw new InvalidCastException($"Failed to cast '{sourceData.StringValue}' to {targetType}. Received NaN as stringValue.");
                         case DTEntityKind.String:
                             return sourceData.StringValue.ToString();
                         case DTEntityKind.Time:
