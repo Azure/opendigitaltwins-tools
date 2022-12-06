@@ -346,7 +346,7 @@ namespace Telemetry.Processors
                     switch (targetType)
                     {
                         case DTEntityKind.Double:
-                            if (sourceData.Float32Value.ToString() != "NaN")
+                            if (sourceData.Float64Value.ToString() != "NaN")
                             {
                                 return Convert.ToDouble(sourceData.Float64Value);
                             }
