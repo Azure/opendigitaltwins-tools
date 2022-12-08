@@ -177,6 +177,11 @@ namespace Telemetry.Processors
                                 break;
                             }
                         }
+                        catch (InvalidCastException ex)
+                        {
+                            logger.LogError(ex, $"Error processing twin Id: {twinIdLookupCache.twinMap.TargetTwinId}.");
+                            throw;
+                        }
                     } while (--retryTypeAttempts>-1);
                 }
                 else
@@ -329,12 +334,14 @@ namespace Telemetry.Processors
                     switch (targetType)
                     {
                         case DTEntityKind.Double:
-                            if (sourceData.Float32Value.ToString() != "NaN")
+                            var convertDouble = Convert.ToDouble(sourceData.Float32Value);
+                            
+                            if (double.IsFinite(convertDouble))
                             {
-                                return Convert.ToDouble(sourceData.Float32Value);
+                                return convertDouble;
                             }
 
-                            throw new InvalidCastException($"Failed to cast Double to Float32Value. Received NaN as double.");
+                            throw new InvalidCastException($"Failed to cast Float32Value to Double: value '{sourceData.Float32Value}'  ");
                         case DTEntityKind.Duration:
                             return TimeSpan.FromHours(sourceData.Float32Value);
                         case DTEntityKind.String:
@@ -346,12 +353,14 @@ namespace Telemetry.Processors
                     switch (targetType)
                     {
                         case DTEntityKind.Double:
-                            if (sourceData.Float64Value.ToString() != "NaN")
+                            var convertDouble = Convert.ToDouble(sourceData.Float64Value);
+
+                            if (double.IsFinite(convertDouble))
                             {
-                                return Convert.ToDouble(sourceData.Float64Value);
+                                return convertDouble;
                             }
 
-                            throw new InvalidCastException($"Failed to cast Float64Value to Double. Received NaN as Float64Value.");
+                            throw new InvalidCastException($"Failed to cast Float64Value to Double: value '{sourceData.Float64Value}'");
                         case DTEntityKind.String:
                             return sourceData.Float64Value.ToString();
                     }
