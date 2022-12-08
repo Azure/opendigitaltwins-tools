@@ -98,6 +98,7 @@ namespace Telemetry.Processors
                     {
                         //Decode the event data
                         point = RedisPoint.Parser.ParseFrom(telemetryEvent.EventBody);
+                        logger.LogTrace("MappedProtobuf: {protobuf} ParsedValue: {originalValue}", BitConverter.ToString(telemetryEvent.EventBody.ToArray()), point);
                     }
                     catch (InvalidProtocolBufferException ex)
                     {
@@ -113,7 +114,15 @@ namespace Telemetry.Processors
                         if (!modelIdToTypeCache.TryGetValue(twinIdLookupCache.twinMap.TargetModelId, out DTEntityKind targetType))
                         {
                             // This sample is using a consistent field `lastKnownValue.value` across all DTDL Models to store Telemetry
-                            targetType = await ModelProcessor.GetEntityKindFromModelIdAsync(digitalTwinsClient, twinIdLookupCache.twinMap.TargetModelId, $"contents:__{telemetryValueRoot}:_schema:_fields:__{telemetryValueKey}", cancellationToken);
+                            try
+                            {
+                                targetType = await ModelProcessor.GetEntityKindFromModelIdAsync(digitalTwinsClient, twinIdLookupCache.twinMap.TargetModelId, $"contents:__{telemetryValueRoot}:_schema:_fields:__{telemetryValueKey}", cancellationToken);
+                            }
+                            catch
+                            {
+                                logger.LogError("ModelId lookup failed for $dtId: {adtTwinId}", twinIdLookupCache.twinMap.TargetTwinId);
+                                throw;
+                            }
 
                             try
                             {
@@ -239,12 +248,14 @@ namespace Telemetry.Processors
         private JsonPatchDocument CreatePatch(RedisPoint point, DTEntityKind targetType, bool isAdd = false)
         {
             var patch = new JsonPatchDocument();
+            dynamic? value = null;
             try
             {
+                value = TranslateType(point.PresentValue, targetType);
                 if (isAdd)
                 {
                     patch.AppendAdd<object>($"/{telemetryValueRoot}", new());
-                    patch.AppendAdd($"/{telemetryValueRoot}/{telemetryValueKey}", TranslateType(point.PresentValue, targetType));
+                    patch.AppendAdd($"/{telemetryValueRoot}/{telemetryValueKey}", value);
                     patch.AppendAdd($"/{telemetryValueRoot}/{telemetryTimestampKey}", point.LastUpdate.ToDateTime());
                 }
                 else
@@ -252,13 +263,13 @@ namespace Telemetry.Processors
                     // Counting here since the add functionality is a fallback and would duplicate data
                     telemetryClient.GetMetric(telemetryTypeMetric).TrackValue(1, point.PresentValue.ValueCase.ToString(), targetType.ToString());
 
-                    patch.AppendReplace($"/{telemetryValueRoot}/{telemetryValueKey}", TranslateType(point.PresentValue, targetType));
+                    patch.AppendReplace($"/{telemetryValueRoot}/{telemetryValueKey}", value);
                     patch.AppendReplace($"/{telemetryValueRoot}/{telemetryTimestampKey}", point.LastUpdate.ToDateTime());
                 }
             }
             catch (ArgumentException ex)
             {
-                throw new TelemetryValueException($"Failed to create patch document with response from TranslateType when converting {point.PresentValue.ValueCase} to {targetType}", ex);
+                throw new TelemetryValueException($"Failed to create patch document with value '{value}' when converting {point.PresentValue.ValueCase} to {targetType}", ex);
             }
 
             return patch;
@@ -282,7 +293,6 @@ namespace Telemetry.Processors
                         case DTEntityKind.String:
                             return sourceData.BoolArrayValue.ToString();
                     }
-
                     break;
                 case TypedValue.ValueOneofCase.BoolValue:
                     switch (targetType)
@@ -292,7 +302,6 @@ namespace Telemetry.Processors
                         case DTEntityKind.String:
                             return sourceData.BoolValue.ToString();
                     }
-
                     break;
                 case TypedValue.ValueOneofCase.CalendarPeriodValue:
                     switch (targetType)
@@ -300,7 +309,6 @@ namespace Telemetry.Processors
                         case DTEntityKind.String:
                             return sourceData.CalendarPeriodValue.ToString();
                     }
-
                     break;
                 case TypedValue.ValueOneofCase.DateValue:
                     switch (targetType)
@@ -310,7 +318,6 @@ namespace Telemetry.Processors
                         case DTEntityKind.String:
                             return sourceData.DateValue.ToString();
                     }
-
                     break;
                 case TypedValue.ValueOneofCase.DayOfWeekValue:
                     switch (targetType)
@@ -318,7 +325,6 @@ namespace Telemetry.Processors
                         case DTEntityKind.String:
                             return sourceData.DayOfWeekValue.ToString();
                     }
-
                     break;
                 case TypedValue.ValueOneofCase.EnumValue:
                     switch (targetType)
@@ -328,43 +334,50 @@ namespace Telemetry.Processors
                         case DTEntityKind.String:
                             return sourceData.EnumValue.ToString();
                     }
-
                     break;
-                case TypedValue.ValueOneofCase.Float32Value:
+                 case TypedValue.ValueOneofCase.Float32Value:
                     switch (targetType)
                     {
                         case DTEntityKind.Double:
                             var convertDouble = Convert.ToDouble(sourceData.Float32Value);
-                            
                             if (double.IsFinite(convertDouble))
                             {
                                 return convertDouble;
                             }
-
-                            throw new InvalidCastException($"Failed to cast Float32Value to Double: value '{sourceData.Float32Value}'  ");
+                            else
+                            {
+                                throw new InvalidCastException($"Failed to cast '{sourceData.Float32Value}' to {targetType} from {sourceData.ValueCase}");
+                            }
                         case DTEntityKind.Duration:
                             return TimeSpan.FromHours(sourceData.Float32Value);
+                        case DTEntityKind.Float:
+                            if (float.IsFinite(sourceData.Float32Value))
+                            {
+                                return sourceData.Float32Value;
+                            }
+                            else
+                            {
+                                throw new InvalidCastException($"Failed to cast '{sourceData.Float32Value}' to {targetType} from {sourceData.ValueCase}");
+                            }
                         case DTEntityKind.String:
                             return sourceData.Float32Value.ToString();
                     }
-
                     break;
                 case TypedValue.ValueOneofCase.Float64Value:
                     switch (targetType)
                     {
                         case DTEntityKind.Double:
-                            var convertDouble = Convert.ToDouble(sourceData.Float64Value);
-
-                            if (double.IsFinite(convertDouble))
+                            if (Double.IsFinite(sourceData.Float64Value))
                             {
-                                return convertDouble;
+                                return sourceData.Float64Value;
                             }
-
-                            throw new InvalidCastException($"Failed to cast Float64Value to Double: value '{sourceData.Float64Value}'");
+                            else
+                            {
+                                throw new InvalidCastException($"Failed to cast '{sourceData.Float64Value}' to {targetType} from {sourceData.ValueCase}");
+                            }
                         case DTEntityKind.String:
                             return sourceData.Float64Value.ToString();
                     }
-
                     break;
                 case TypedValue.ValueOneofCase.GeojsonValue:
                     switch (targetType)
@@ -372,7 +385,6 @@ namespace Telemetry.Processors
                         case DTEntityKind.String:
                             return sourceData.GeojsonValue.ToString();
                     }
-
                     break;
                 case TypedValue.ValueOneofCase.GeopointValue:
                     switch (targetType)
@@ -380,7 +392,6 @@ namespace Telemetry.Processors
                         case DTEntityKind.String:
                             return sourceData.GeopointValue.ToString();
                     }
-
                     break;
                 case TypedValue.ValueOneofCase.Int32Value:
                     switch (targetType)
@@ -388,7 +399,6 @@ namespace Telemetry.Processors
                         case DTEntityKind.String:
                             return sourceData.Int32Value.ToString();
                     }
-
                     break;
                 case TypedValue.ValueOneofCase.Int64Value:
                     switch (targetType)
@@ -398,7 +408,6 @@ namespace Telemetry.Processors
                         case DTEntityKind.String:
                             return sourceData.Int64Value.ToString();
                     }
-
                     break;
                 case TypedValue.ValueOneofCase.IntervalValue:
                     switch (targetType)
@@ -406,7 +415,6 @@ namespace Telemetry.Processors
                         case DTEntityKind.String:
                             return sourceData.IntervalValue.ToString();
                     }
-
                     break;
                 case TypedValue.ValueOneofCase.MoneyValue:
                     switch (targetType)
@@ -414,7 +422,6 @@ namespace Telemetry.Processors
                         case DTEntityKind.String:
                             return sourceData.MoneyValue.ToString();
                     }
-
                     break;
                 case TypedValue.ValueOneofCase.MonthValue:
                     switch (targetType)
@@ -422,7 +429,6 @@ namespace Telemetry.Processors
                         case DTEntityKind.String:
                             return sourceData.MonthValue.ToString();
                     }
-
                     break;
                 case TypedValue.ValueOneofCase.PhoneNumberValue:
                     switch (targetType)
@@ -430,7 +436,6 @@ namespace Telemetry.Processors
                         case DTEntityKind.String:
                             return sourceData.PhoneNumberValue.ToString();
                     }
-
                     break;
                 case TypedValue.ValueOneofCase.PostalAddressValue:
                     switch (targetType)
@@ -438,7 +443,6 @@ namespace Telemetry.Processors
                         case DTEntityKind.String:
                             return sourceData.PostalAddressValue.ToString();
                     }
-
                     break;
                 case TypedValue.ValueOneofCase.StringValue:
                     switch (targetType)
@@ -451,7 +455,7 @@ namespace Telemetry.Processors
                             }
                             else
                             {
-                                throw new InvalidCastException($"Failed to cast '{sourceData.Uint32Value}' to {targetType}");
+                                throw new InvalidCastException($"Failed to cast '{sourceData.StringValue}' to {targetType} from {sourceData.ValueCase}");
                             }
                         case DTEntityKind.Date:
                             if (DateTime.TryParse(sourceData.StringValue, out var outputDate))
@@ -461,7 +465,7 @@ namespace Telemetry.Processors
                             }
                             else
                             {
-                                throw new InvalidCastException($"Failed to cast '{sourceData.StringValue}' to {targetType}");
+                                throw new InvalidCastException($"Failed to cast '{sourceData.StringValue}' to {targetType} from {sourceData.ValueCase}");
                             }
                         case DTEntityKind.DateTime:
                             if (DateTime.TryParse(sourceData.StringValue, out var outputDateTime))
@@ -470,22 +474,17 @@ namespace Telemetry.Processors
                             }
                             else
                             {
-                                throw new InvalidCastException($"Failed to cast '{sourceData.StringValue}' to {targetType}");
+                                throw new InvalidCastException($"Failed to cast '{sourceData.StringValue}' to {targetType} from {sourceData.ValueCase}");
                             }
                         case DTEntityKind.Double:
-                            if (sourceData.StringValue != "NaN")
+                            if (Double.TryParse(sourceData.StringValue, out var outputDouble) && Double.IsFinite(outputDouble))
                             {
-                                if (Double.TryParse(sourceData.StringValue, out var outputDouble))
-                                {
-                                    return outputDouble;
-                                }
-                                else
-                                {
-                                    throw new InvalidCastException($"Failed to cast '{sourceData.StringValue}' to {targetType}");
-                                }
+                                return outputDouble;
                             }
-
-                            throw new InvalidCastException($"Failed to cast '{sourceData.StringValue}' to {targetType}. Received NaN as stringValue.");
+                            else
+                            {
+                                throw new InvalidCastException($"Failed to cast '{sourceData.StringValue}' to {targetType} from {sourceData.ValueCase}");
+                            }
                         case DTEntityKind.Duration:
                             if (TimeSpan.TryParse(sourceData.StringValue, out var outputTimeSpan))
                             {
@@ -493,22 +492,17 @@ namespace Telemetry.Processors
                             }
                             else
                             {
-                                throw new InvalidCastException($"Failed to cast '{sourceData.StringValue}' to {targetType}");
+                                throw new InvalidCastException($"Failed to cast '{sourceData.StringValue}' to {targetType} from {sourceData.ValueCase}");
                             }
                         case DTEntityKind.Float:
-                            if (sourceData.StringValue != "NaN")
+                            if (float.TryParse(sourceData.StringValue, out var outputFloat) && float.IsFinite(outputFloat))
                             {
-                                if (float.TryParse(sourceData.StringValue, out var outputFloat))
-                                {
-                                    return outputFloat;
-                                }
-                                else
-                                {
-                                    throw new InvalidCastException($"Failed to cast '{sourceData.StringValue}' to {targetType}");
-                                }
+                                return outputFloat;
                             }
-
-                            throw new InvalidCastException($"Failed to cast '{sourceData.StringValue}' to {targetType}. Received NaN as stringValue.");
+                            else
+                            {
+                                throw new InvalidCastException($"Failed to cast '{sourceData.StringValue}' to {targetType} from {sourceData.ValueCase}");
+                            }
                         case DTEntityKind.Integer:
                             if (int.TryParse(sourceData.StringValue, out var outputInteger))
                             {
@@ -516,36 +510,30 @@ namespace Telemetry.Processors
                             }
                             else
                             {
-                                throw new InvalidCastException($"Failed to cast '{sourceData.StringValue}' to {targetType}");
+                                throw new InvalidCastException($"Failed to cast '{sourceData.StringValue}' to {targetType} from {sourceData.ValueCase}");
                             }
                         case DTEntityKind.Long:
-                            if (sourceData.StringValue != "NaN")
+                            if (long.TryParse(sourceData.StringValue, out var outputLong))
                             {
-                                if (long.TryParse(sourceData.StringValue, out var outputLong))
-                                {
-                                    return outputLong;
-                                }
-                                else
-                                {
-                                    throw new InvalidCastException($"Failed to cast '{sourceData.StringValue}' to {targetType}");
-                                }
+                                return outputLong;
                             }
-
-                            throw new InvalidCastException($"Failed to cast '{sourceData.StringValue}' to {targetType}. Received NaN as stringValue.");
+                            else
+                            {
+                                throw new InvalidCastException($"Failed to cast '{sourceData.StringValue}' to {targetType} from {sourceData.ValueCase}");
+                            }
                         case DTEntityKind.String:
                             return sourceData.StringValue.ToString();
                         case DTEntityKind.Time:
-                            if(DateTime.TryParse(sourceData.StringValue, out var outputTime))
+                            if (DateTime.TryParse(sourceData.StringValue, out var outputTime))
                             {
                                 //TODO: Is there a built in dotnet way to get ISO8601 times?
                                 return outputTime.ToString("hh:mm:ss.FFFFFFF");
                             }
                             else
                             {
-                                throw new InvalidCastException($"Failed to cast '{sourceData.StringValue}' to {targetType}");
+                                throw new InvalidCastException($"Failed to cast '{sourceData.StringValue}' to {targetType} from {sourceData.ValueCase}");
                             }
                     }
-
                     break;
                 case TypedValue.ValueOneofCase.TimestampValue:
                     switch (targetType)
@@ -553,7 +541,6 @@ namespace Telemetry.Processors
                         case DTEntityKind.String:
                             return sourceData.TimestampValue.ToString();
                     }
-
                     break;
                 case TypedValue.ValueOneofCase.TimeValue:
                     switch (targetType)
@@ -561,7 +548,6 @@ namespace Telemetry.Processors
                         case DTEntityKind.String:
                             return sourceData.TimeValue.ToString();
                     }
-
                     break;
                 case TypedValue.ValueOneofCase.Uint32Value:
                     switch (targetType)
@@ -573,14 +559,13 @@ namespace Telemetry.Processors
                             }
                             else
                             {
-                                throw new InvalidCastException($"Failed to cast '{sourceData.Uint32Value}' to {targetType}");
+                                throw new InvalidCastException($"Failed to cast '{sourceData.Uint32Value}' to {targetType} from {sourceData.ValueCase}");
                             }
                         case DTEntityKind.Double:
                             return Convert.ToDouble(sourceData.Uint32Value);
                         case DTEntityKind.String:
                             return sourceData.Uint32Value.ToString();
                     }
-
                     break;
                 case TypedValue.ValueOneofCase.Uint64Value:
                     switch (targetType)
@@ -588,7 +573,6 @@ namespace Telemetry.Processors
                         case DTEntityKind.String:
                             return sourceData.Uint64Value.ToString();
                     }
-
                     break;
                 default:
                     logger.LogError("Uncertain how to cast from {sourceType}", sourceData.ValueCase.ToString());
