@@ -52,5 +52,5 @@ jobs:
       uses: Azure/pipelines@v1
       with:
         azure-devops-project-url: https://dev.azure.com/dynamicscrm/Solutions
-        azure-pipeline-name: 'Main Buddy (ASPEN)'
+        azure-pipeline-name: 'Main PR (ASPEN)'
         azure-devops-token: ${{ secrets.AZURE_DEVOPS_TOKEN }}     
