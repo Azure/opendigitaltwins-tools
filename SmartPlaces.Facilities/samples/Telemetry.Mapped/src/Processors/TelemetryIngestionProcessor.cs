@@ -120,7 +120,7 @@ namespace Telemetry.Processors
                             }
                             catch
                             {
-                                logger.LogError("ModelId lookup failed for $dtId: {adtTwinId}", twinIdLookupCache.twinMap.TargetTwinId);
+                                logger.LogError("Telemetry EntityKind lookup failed for $dtId: {adtTwinId}", twinIdLookupCache.twinMap.TargetTwinId);
                                 throw;
                             }
 
