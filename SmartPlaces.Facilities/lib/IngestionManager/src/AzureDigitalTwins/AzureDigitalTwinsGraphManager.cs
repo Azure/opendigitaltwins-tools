@@ -11,6 +11,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.AzureDigitalTwins
     using System.Text.Json;
     using System.Threading;
     using global::Azure;
+    using global::Azure.Core.Pipeline;
     using global::Azure.DigitalTwins.Core;
     using global::Azure.Identity;
     using Microsoft.ApplicationInsights;
@@ -39,12 +40,14 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.AzureDigitalTwins
         /// <param name="options">Ingestion manager options.</param>
         /// <param name="twinMappingIndexer">Twin mapping index cache.</param>
         /// <param name="telemetryClient">Application Insights telemetry client for remote metrics tracking.</param>
+        /// <param name="httpClientFactory">Generator of HttpClients with custom additions.</param>
         /// <param name="skipUpload">Option denoting whether the manager will upload twins to target
         /// Azure Digital Twins environment. If skipUpload is <c>true</c>, only the cache will be updated.</param>
         public AzureDigitalTwinsGraphManager(ILogger<AzureDigitalTwinsGraphManager<TOptions>> logger,
                                IOptions<TOptions> options,
                                ITwinMappingIndexer twinMappingIndexer,
                                TelemetryClient telemetryClient,
+                               IHttpClientFactory httpClientFactory,
                                bool skipUpload = false)
         {
             Logger = logger;
@@ -55,7 +58,10 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.AzureDigitalTwins
 
             for (int i = 0; i < this.options.MaxDegreeOfParallelism; i++)
             {
-                queue.Enqueue(new DigitalTwinsClient(new Uri(options.Value.AzureDigitalTwinsEndpoint), new DefaultAzureCredential()));
+                queue.Enqueue(new DigitalTwinsClient(new Uri(options.Value.AzureDigitalTwinsEndpoint), new DefaultAzureCredential(), new DigitalTwinsClientOptions
+                {
+                    Transport = new HttpClientTransport(httpClientFactory.CreateClient("Microsoft.SmartPlaces.Facilities")),
+                }));
             }
 
             parallelOptions = new ()
