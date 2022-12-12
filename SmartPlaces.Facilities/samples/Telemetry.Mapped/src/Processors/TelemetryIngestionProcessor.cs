@@ -98,6 +98,7 @@ namespace Telemetry.Processors
                     {
                         //Decode the event data
                         point = RedisPoint.Parser.ParseFrom(telemetryEvent.EventBody);
+                        logger.LogTrace("MappedProtobuf: {protobuf} ParsedValue: {originalValue}", BitConverter.ToString(telemetryEvent.EventBody.ToArray()), point);
                     }
                     catch (InvalidProtocolBufferException ex)
                     {
@@ -113,7 +114,15 @@ namespace Telemetry.Processors
                         if (!modelIdToTypeCache.TryGetValue(twinIdLookupCache.twinMap.TargetModelId, out DTEntityKind targetType))
                         {
                             // This sample is using a consistent field `lastKnownValue.value` across all DTDL Models to store Telemetry
-                            targetType = await ModelProcessor.GetEntityKindFromModelIdAsync(digitalTwinsClient, twinIdLookupCache.twinMap.TargetModelId, $"contents:__{telemetryValueRoot}:_schema:_fields:__{telemetryValueKey}", cancellationToken);
+                            try
+                            {
+                                targetType = await ModelProcessor.GetEntityKindFromModelIdAsync(digitalTwinsClient, twinIdLookupCache.twinMap.TargetModelId, $"contents:__{telemetryValueRoot}:_schema:_fields:__{telemetryValueKey}", cancellationToken);
+                            }
+                            catch
+                            {
+                                logger.LogError("Telemetry EntityKind lookup failed for $dtId: {adtTwinId}", twinIdLookupCache.twinMap.TargetTwinId);
+                                throw;
+                            }
 
                             try
                             {
@@ -177,6 +186,11 @@ namespace Telemetry.Processors
                                 break;
                             }
                         }
+                        catch (InvalidCastException ex)
+                        {
+                            logger.LogError(ex, $"Error processing twin Id: {twinIdLookupCache.twinMap.TargetTwinId}.");
+                            throw;
+                        }
                     } while (--retryTypeAttempts>-1);
                 }
                 else
@@ -234,12 +248,14 @@ namespace Telemetry.Processors
         private JsonPatchDocument CreatePatch(RedisPoint point, DTEntityKind targetType, bool isAdd = false)
         {
             var patch = new JsonPatchDocument();
+            dynamic? value = null;
             try
             {
+                value = TranslateType(point.PresentValue, targetType);
                 if (isAdd)
                 {
                     patch.AppendAdd<object>($"/{telemetryValueRoot}", new());
-                    patch.AppendAdd($"/{telemetryValueRoot}/{telemetryValueKey}", TranslateType(point.PresentValue, targetType));
+                    patch.AppendAdd($"/{telemetryValueRoot}/{telemetryValueKey}", value);
                     patch.AppendAdd($"/{telemetryValueRoot}/{telemetryTimestampKey}", point.LastUpdate.ToDateTime());
                 }
                 else
@@ -247,13 +263,13 @@ namespace Telemetry.Processors
                     // Counting here since the add functionality is a fallback and would duplicate data
                     telemetryClient.GetMetric(telemetryTypeMetric).TrackValue(1, point.PresentValue.ValueCase.ToString(), targetType.ToString());
 
-                    patch.AppendReplace($"/{telemetryValueRoot}/{telemetryValueKey}", TranslateType(point.PresentValue, targetType));
+                    patch.AppendReplace($"/{telemetryValueRoot}/{telemetryValueKey}", value);
                     patch.AppendReplace($"/{telemetryValueRoot}/{telemetryTimestampKey}", point.LastUpdate.ToDateTime());
                 }
             }
             catch (ArgumentException ex)
             {
-                throw new TelemetryValueException($"Failed to create patch document with response from TranslateType when converting {point.PresentValue.ValueCase} to {targetType}", ex);
+                throw new TelemetryValueException($"Failed to create patch document with value '{value}' when converting {point.PresentValue.ValueCase} to {targetType}", ex);
             }
 
             return patch;
@@ -319,13 +335,30 @@ namespace Telemetry.Processors
                             return sourceData.EnumValue.ToString();
                     }
                     break;
-                case TypedValue.ValueOneofCase.Float32Value:
+                 case TypedValue.ValueOneofCase.Float32Value:
                     switch (targetType)
                     {
                         case DTEntityKind.Double:
-                            return Convert.ToDouble(sourceData.Float32Value);
+                            var convertDouble = Convert.ToDouble(sourceData.Float32Value);
+                            if (double.IsFinite(convertDouble))
+                            {
+                                return convertDouble;
+                            }
+                            else
+                            {
+                                throw new InvalidCastException($"Failed to cast '{sourceData.Float32Value}' to {targetType} from {sourceData.ValueCase}");
+                            }
                         case DTEntityKind.Duration:
                             return TimeSpan.FromHours(sourceData.Float32Value);
+                        case DTEntityKind.Float:
+                            if (float.IsFinite(sourceData.Float32Value))
+                            {
+                                return sourceData.Float32Value;
+                            }
+                            else
+                            {
+                                throw new InvalidCastException($"Failed to cast '{sourceData.Float32Value}' to {targetType} from {sourceData.ValueCase}");
+                            }
                         case DTEntityKind.String:
                             return sourceData.Float32Value.ToString();
                     }
@@ -334,7 +367,14 @@ namespace Telemetry.Processors
                     switch (targetType)
                     {
                         case DTEntityKind.Double:
-                            return sourceData.Float64Value;
+                            if (Double.IsFinite(sourceData.Float64Value))
+                            {
+                                return sourceData.Float64Value;
+                            }
+                            else
+                            {
+                                throw new InvalidCastException($"Failed to cast '{sourceData.Float64Value}' to {targetType} from {sourceData.ValueCase}");
+                            }
                         case DTEntityKind.String:
                             return sourceData.Float64Value.ToString();
                     }
@@ -415,7 +455,7 @@ namespace Telemetry.Processors
                             }
                             else
                             {
-                                throw new InvalidCastException($"Failed to cast '{sourceData.Uint32Value}' to {targetType}");
+                                throw new InvalidCastException($"Failed to cast '{sourceData.StringValue}' to {targetType} from {sourceData.ValueCase}");
                             }
                         case DTEntityKind.Date:
                             if (DateTime.TryParse(sourceData.StringValue, out var outputDate))
@@ -425,7 +465,7 @@ namespace Telemetry.Processors
                             }
                             else
                             {
-                                throw new InvalidCastException($"Failed to cast '{sourceData.StringValue}' to {targetType}");
+                                throw new InvalidCastException($"Failed to cast '{sourceData.StringValue}' to {targetType} from {sourceData.ValueCase}");
                             }
                         case DTEntityKind.DateTime:
                             if (DateTime.TryParse(sourceData.StringValue, out var outputDateTime))
@@ -434,16 +474,16 @@ namespace Telemetry.Processors
                             }
                             else
                             {
-                                throw new InvalidCastException($"Failed to cast '{sourceData.StringValue}' to {targetType}");
+                                throw new InvalidCastException($"Failed to cast '{sourceData.StringValue}' to {targetType} from {sourceData.ValueCase}");
                             }
                         case DTEntityKind.Double:
-                            if (Double.TryParse(sourceData.StringValue, out var outputDouble))
+                            if (Double.TryParse(sourceData.StringValue, out var outputDouble) && Double.IsFinite(outputDouble))
                             {
                                 return outputDouble;
                             }
                             else
                             {
-                                throw new InvalidCastException($"Failed to cast '{sourceData.StringValue}' to {targetType}");
+                                throw new InvalidCastException($"Failed to cast '{sourceData.StringValue}' to {targetType} from {sourceData.ValueCase}");
                             }
                         case DTEntityKind.Duration:
                             if (TimeSpan.TryParse(sourceData.StringValue, out var outputTimeSpan))
@@ -452,16 +492,16 @@ namespace Telemetry.Processors
                             }
                             else
                             {
-                                throw new InvalidCastException($"Failed to cast '{sourceData.StringValue}' to {targetType}");
+                                throw new InvalidCastException($"Failed to cast '{sourceData.StringValue}' to {targetType} from {sourceData.ValueCase}");
                             }
                         case DTEntityKind.Float:
-                            if (float.TryParse(sourceData.StringValue, out var outputFloat))
+                            if (float.TryParse(sourceData.StringValue, out var outputFloat) && float.IsFinite(outputFloat))
                             {
                                 return outputFloat;
                             }
                             else
                             {
-                                throw new InvalidCastException($"Failed to cast '{sourceData.StringValue}' to {targetType}");
+                                throw new InvalidCastException($"Failed to cast '{sourceData.StringValue}' to {targetType} from {sourceData.ValueCase}");
                             }
                         case DTEntityKind.Integer:
                             if (int.TryParse(sourceData.StringValue, out var outputInteger))
@@ -470,7 +510,7 @@ namespace Telemetry.Processors
                             }
                             else
                             {
-                                throw new InvalidCastException($"Failed to cast '{sourceData.StringValue}' to {targetType}");
+                                throw new InvalidCastException($"Failed to cast '{sourceData.StringValue}' to {targetType} from {sourceData.ValueCase}");
                             }
                         case DTEntityKind.Long:
                             if (long.TryParse(sourceData.StringValue, out var outputLong))
@@ -479,19 +519,19 @@ namespace Telemetry.Processors
                             }
                             else
                             {
-                                throw new InvalidCastException($"Failed to cast '{sourceData.StringValue}' to {targetType}");
+                                throw new InvalidCastException($"Failed to cast '{sourceData.StringValue}' to {targetType} from {sourceData.ValueCase}");
                             }
                         case DTEntityKind.String:
                             return sourceData.StringValue.ToString();
                         case DTEntityKind.Time:
-                            if(DateTime.TryParse(sourceData.StringValue, out var outputTime))
+                            if (DateTime.TryParse(sourceData.StringValue, out var outputTime))
                             {
                                 //TODO: Is there a built in dotnet way to get ISO8601 times?
                                 return outputTime.ToString("hh:mm:ss.FFFFFFF");
                             }
                             else
                             {
-                                throw new InvalidCastException($"Failed to cast '{sourceData.StringValue}' to {targetType}");
+                                throw new InvalidCastException($"Failed to cast '{sourceData.StringValue}' to {targetType} from {sourceData.ValueCase}");
                             }
                     }
                     break;
@@ -519,7 +559,7 @@ namespace Telemetry.Processors
                             }
                             else
                             {
-                                throw new InvalidCastException($"Failed to cast '{sourceData.Uint32Value}' to {targetType}");
+                                throw new InvalidCastException($"Failed to cast '{sourceData.Uint32Value}' to {targetType} from {sourceData.ValueCase}");
                             }
                         case DTEntityKind.Double:
                             return Convert.ToDouble(sourceData.Uint32Value);
