@@ -13,7 +13,7 @@ env:
 
 jobs:
   build:
-    uses: '.github/SmartPlaces_Facilities.yml'
+    uses: '.github/workflows/SmartPlaces_Facilities.yml'
     with:
       build: 'Main Official (ASPEN)'
     secrets: inherit
