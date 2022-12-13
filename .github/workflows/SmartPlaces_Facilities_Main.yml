@@ -9,45 +9,11 @@ on:
       - 'SmartPlaces.Facilities/**'
 
 env: 
-  BUILD_CONFIGURATION: 'Release'    # set this to the appropriate build configuration
   DOTNET_VERSION: '6.x' 
 
 jobs:
   build:
-
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v3
-
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v2
-      with:
-        dotnet-version: 6.0.x
-
-    - name: Restore dependencies
-      run: |
-           dotnet restore SmartPlaces.Facilities\\lib\\OntologyMapper
-           dotnet restore SmartPlaces.Facilities\\lib\\OntologyMapper.Mapped
-           dotnet restore SmartPlaces.Facilities\\lib\\IngestionManager
-           dotnet restore SmartPlaces.Facilities\\lib\\IngestionManager.Mapped
-           dotnet restore SmartPlaces.Facilities\\samples\\Topology
-    - name: Build
-      run: |
-           dotnet build SmartPlaces.Facilities\\lib\\OntologyMapper --no-restore
-           dotnet build SmartPlaces.Facilities\\lib\\OntologyMapper.Mapped --no-restore
-           dotnet build SmartPlaces.Facilities\\lib\\IngestionManager --no-restore
-           dotnet build SmartPlaces.Facilities\\lib\\IngestionManager.Mapped --no-restore
-           dotnet build SmartPlaces.Facilities\\samples\\Topology --no-restore
-    - name: Test
-      run: |
-           dotnet test SmartPlaces.Facilities\\lib\\OntologyMapper --no-build --verbosity normal
-           dotnet test SmartPlaces.Facilities\\lib\\OntologyMapper.Mapped --no-build --verbosity normal
-           dotnet test SmartPlaces.Facilities\\lib\\IngestionManager --no-build --verbosity normal
-           dotnet test SmartPlaces.Facilities\\lib\\IngestionManager.Mapped --no-build --verbosity normal
-    - name: Azure Pipelines Action
-      uses: Azure/pipelines@v1
-      with:
-        azure-devops-project-url: https://dev.azure.com/dynamicscrm/Solutions
-        azure-pipeline-name: 'Main Official (ASPEN)'
-        azure-devops-token: ${{ secrets.AZURE_DEVOPS_TOKEN }}     
+    uses: '.github/SmartPlaces_Facilities.yml'
+    with:
+      build: 'Main Official (ASPEN)'
+    secrets: inherit
