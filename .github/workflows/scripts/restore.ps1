@@ -1,13 +1,13 @@
 Set-StrictMode -Version latest
 $ErrorActionPreference = "Stop"
-Import-Module "$PSScriptRoot\Common.psm1" -Force
+Import-Module "$PSScriptRoot/Common.psm1" -Force
 $root = Get-Root
 
 function Test-NugetConfig
 {
     param($root)
 
-    $pathToNugetConfig = Join-Path $root\SmartPlaces.Facilities -ChildPath "NuGet.config"
+    $pathToNugetConfig = Join-Path $root/SmartPlaces.Facilities -ChildPath "NuGet.config"
     [xml]$nugetConfigFile = Get-Content $pathToNugetConfig
     if($($nugetConfigFile.configuration.packageSources.add.Count) `
        -and $($nugetConfigFile.configuration.packageSources.add.Count -gt 1))
@@ -36,4 +36,4 @@ foreach($solution in $(Get-Solutions)) {
 }
 
 Write-Output "Restored Packages: "
-$(get-childitem -Path $root\SmartPlaces.Facilities\packages\ -Directory).FullName
+$(get-childitem -Path $root/SmartPlaces.Facilities/packages/ -Directory).FullName

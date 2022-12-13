@@ -1,6 +1,6 @@
 Set-StrictMode -Version latest
 $ErrorActionPreference = "Stop"
-Import-Module "$PSScriptRoot\Common.psm1" -Force
+Import-Module "$PSScriptRoot/Common.psm1" -Force
 
 
 foreach($solution in $(Get-Solutions)) {

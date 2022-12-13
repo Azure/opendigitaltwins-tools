@@ -7,13 +7,13 @@ function Get-Root {
 }
 
 function Get-Solutions {
-    $list = @(Get-ChildItem $root\SmartPlaces.Facilities -File -Recurse | Where-Object {($_.FullName -like "*.sln")})
+    $list = @(Get-ChildItem $root/SmartPlaces.Facilities -File -Recurse | Where-Object {($_.FullName -like "*.sln")})
     return $list
 }
 
 function Show-SDKs {
     Write-Output "Global.json contents:"
-    Get-Content $root\SmartPlaces.Facilities\global.json
+    Get-Content $root/SmartPlaces.Facilities/global.json
     Write-Output "Installed SDK versions:"
     dotnet --list-sdks
     Write-Output "Active SDK Version:"
