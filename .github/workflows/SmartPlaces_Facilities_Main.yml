@@ -15,5 +15,5 @@ jobs:
   build:
     uses: './.github/workflows/SmartPlaces_Facilities.yml'
     with:
-      build: 'Main Official (ASPEN)'
+      build-type: 'Main Official (ASPEN)'
     secrets: inherit
