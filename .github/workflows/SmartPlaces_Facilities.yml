@@ -24,14 +24,14 @@ jobs:
 
     - name: Restore dependencies
       shell: pwsh
-      run: .\scripts\restore.ps1
+      run: ${{ github.action_path }}\scripts\restore.ps1
 
     - name: Build
       shell: pwsh
-      run: .\scripts\build.ps1
+      run: ${{ github.action_path }}\scripts\build.ps1
 
     - name: Test
-      run: .\scripts\test.ps1
+      run: ${{ github.action_path }}\scripts\test.ps1
 
     - name: Trigger internal validations
       uses: Azure/pipelines@v1
