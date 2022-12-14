@@ -2,10 +2,13 @@ name: Pull Request Build
 
 on:
   pull_request:
-    branches: [ "main" ]
-    paths: 
-      - '.github/**'
-      - 'SmartPlaces.Facilities/**'
+    branches: [
+      "main",
+    ]
+    paths: [
+      '.github/**',
+      'SmartPlaces.Facilities/**',
+    ]
 
 env: 
   DOTNET_VERSION: '6.x' 

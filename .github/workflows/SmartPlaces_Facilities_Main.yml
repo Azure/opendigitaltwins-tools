@@ -2,11 +2,13 @@ name: Trigger Package Generation
 
 on:
   push:
-    branches:
-    - main
-    paths: 
-      - '.github/**'
-      - 'SmartPlaces.Facilities/**'
+    branches: [
+      "main",
+    ]
+    paths: [
+      '.github/**',
+      'SmartPlaces.Facilities/**',
+    ]
 
 env: 
   DOTNET_VERSION: '6.x' 
