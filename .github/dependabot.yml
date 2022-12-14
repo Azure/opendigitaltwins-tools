@@ -10,7 +10,7 @@ updates:
     open-pull-requests-limit: 10
     allow:
       - dependency-name: Microsoft.SmartPlaces.Facilities.*
-    assignees:
+    reviewers:
       - "Tyler-Angell"
       - "joebeernink"
       - "hammar"
