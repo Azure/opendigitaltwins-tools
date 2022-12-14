@@ -35,7 +35,7 @@ jobs:
       run: "& ./.github/workflows/scripts/test.ps1"
 
     - name: Trigger internal validations
-      uses: Azure/pipelines@v1
+      uses: Azure/pipelines@v1.2
       with:
         azure-devops-project-url: https://dev.azure.com/dynamicscrm/Solutions
         azure-pipeline-name: '${{ inputs.build-type }}'
