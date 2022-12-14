@@ -1,7 +1,6 @@
 Set-StrictMode -Version latest
 $ErrorActionPreference = "Stop"
-Write-Output $PSScriptRoot
-Import-Module "$PSScriptRoot/Common.psm1" -Force
+Import-Module "$PSScriptRoot/common.psm1" -Force
 $root = Get-Root
 
 function Test-NugetConfig
