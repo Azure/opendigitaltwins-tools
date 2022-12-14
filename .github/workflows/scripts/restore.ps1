@@ -1,5 +1,6 @@
 Set-StrictMode -Version latest
 $ErrorActionPreference = "Stop"
+Set-PSRepository PSGallery -InstallationPolicy Trusted
 Import-Module "$PSScriptRoot/Common.psm1" -Force
 $root = Get-Root
 
