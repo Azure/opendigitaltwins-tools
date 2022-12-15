@@ -1,0 +1,16 @@
+# Please see the documentation for all configuration options:
+# https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
+
+version: 2
+updates:
+  - package-ecosystem: "nuget"
+    directory: "/SmartPlaces.Facilities"
+    schedule:
+      interval: "daily"
+    open-pull-requests-limit: 10
+    allow:
+      - dependency-name: Microsoft.SmartPlaces.Facilities.*
+    reviewers:
+      - "Tyler-Angell"
+      - "joebeernink"
+      - "hammar"

@@ -1,0 +1,43 @@
+name: SmartPlaces.Facilities Build
+
+on:
+  workflow_call:
+    inputs:
+      build-type:
+        required: true
+        type: string
+    secrets:
+      AZURE_DEVOPS_TOKEN:
+        required: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+    - uses: actions/checkout@v3
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 6.0.x
+
+    - name: Restore dependencies
+      shell: pwsh
+      run: "& ./.github/workflows/scripts/restore.ps1"
+
+    - name: Build
+      shell: pwsh
+      run: "& ./.github/workflows/scripts/build.ps1"
+
+    - name: Test
+      shell: pwsh
+      run: "& ./.github/workflows/scripts/test.ps1"
+
+    - name: Trigger internal validations
+      uses: Azure/pipelines@v1.2
+      with:
+        azure-devops-project-url: https://dev.azure.com/dynamicscrm/Solutions
+        azure-pipeline-name: '${{ inputs.build-type }}'
+        azure-devops-token: ${{ secrets.AZURE_DEVOPS_TOKEN }}
+        azure-pipeline-variables: '{"CDP_ASPEN_OPENDIGITALTWINSTOOLS_BRANCH": "${{ github.GITHUB_HEAD_REF }}"}'
