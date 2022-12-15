@@ -338,6 +338,15 @@ namespace Telemetry.Processors
                  case TypedValue.ValueOneofCase.Float32Value:
                     switch (targetType)
                     {
+                        case DTEntityKind.Boolean:
+                            if (sourceData.Float32Value == 1 || sourceData.Float32Value == 0)
+                            {
+                                return sourceData.Float32Value == 1;
+                            }
+                            else
+                            {
+                                throw new InvalidCastException($"Failed to cast '{sourceData.Float32Value}' to {targetType} from {sourceData.ValueCase}");
+                            }
                         case DTEntityKind.Double:
                             var convertDouble = Convert.ToDouble(sourceData.Float32Value);
                             if (double.IsFinite(convertDouble))
