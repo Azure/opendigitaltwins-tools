@@ -1,13 +1,115 @@
 # Please see the documentation for all configuration options:
 # https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
 
+# Each csproj must be individually defined
+# https://github.com/dependabot/dependabot-core/issues/2178
+
 version: 2
 updates:
   - package-ecosystem: "nuget"
-    directory: "/SmartPlaces.Facilities"
+    directory: "/SmartPlaces.Facilities/lib/IngestionManager/src"
     schedule:
       interval: "daily"
-    open-pull-requests-limit: 10
+    allow:
+      - dependency-name: Microsoft.SmartPlaces.Facilities.*
+    reviewers:
+      - "Tyler-Angell"
+      - "joebeernink"
+      - "hammar"
+  - package-ecosystem: "nuget"
+    directory: "/SmartPlaces.Facilities/lib/IngestionManager/test"
+    schedule:
+      interval: "daily"
+    allow:
+      - dependency-name: Microsoft.SmartPlaces.Facilities.*
+    reviewers:
+      - "Tyler-Angell"
+      - "joebeernink"
+      - "hammar"
+  - package-ecosystem: "nuget"
+    directory: "/SmartPlaces.Facilities/lib/IngestionManager.Mapped/src"
+    schedule:
+      interval: "daily"
+    allow:
+      - dependency-name: Microsoft.SmartPlaces.Facilities.*
+    reviewers:
+      - "Tyler-Angell"
+      - "joebeernink"
+      - "hammar"
+  - package-ecosystem: "nuget"
+    directory: "/SmartPlaces.Facilities/lib/IngestionManager.Mapped/test"
+    schedule:
+      interval: "daily"
+    allow:
+      - dependency-name: Microsoft.SmartPlaces.Facilities.*
+    reviewers:
+      - "Tyler-Angell"
+      - "joebeernink"
+      - "hammar"
+  - package-ecosystem: "nuget"
+    directory: "/SmartPlaces.Facilities/lib/OntologyMapper/src"
+    schedule:
+      interval: "daily"
+    allow:
+      - dependency-name: Microsoft.SmartPlaces.Facilities.*
+    reviewers:
+      - "Tyler-Angell"
+      - "joebeernink"
+      - "hammar"
+  - package-ecosystem: "nuget"
+    directory: "/SmartPlaces.Facilities/lib/OntologyMapper/test"
+    schedule:
+      interval: "daily"
+    allow:
+      - dependency-name: Microsoft.SmartPlaces.Facilities.*
+    reviewers:
+      - "Tyler-Angell"
+      - "joebeernink"
+      - "hammar"
+  - package-ecosystem: "nuget"
+    directory: "/SmartPlaces.Facilities/lib/OntologyMapper.Mapped/src"
+    schedule:
+      interval: "daily"
+    allow:
+      - dependency-name: Microsoft.SmartPlaces.Facilities.*
+    reviewers:
+      - "Tyler-Angell"
+      - "joebeernink"
+      - "hammar"
+  - package-ecosystem: "nuget"
+    directory: "/SmartPlaces.Facilities/lib/OntologyMapper.Mapped/test"
+    schedule:
+      interval: "daily"
+    allow:
+      - dependency-name: Microsoft.SmartPlaces.Facilities.*
+    reviewers:
+      - "Tyler-Angell"
+      - "joebeernink"
+      - "hammar"
+  - package-ecosystem: "nuget"
+    directory: "/SmartPlaces.Facilities/samples/EdgeGateway.Mapped/src"
+    schedule:
+      interval: "daily"
+    allow:
+      - dependency-name: Microsoft.SmartPlaces.Facilities.*
+    reviewers:
+      - "Tyler-Angell"
+      - "joebeernink"
+      - "hammar"
+  - package-ecosystem: "nuget"
+    directory: "/SmartPlaces.Facilities/samples/Telemetry.Mapped/src"
+    schedule:
+      interval: "daily"
+    allow:
+      - dependency-name: Microsoft.SmartPlaces.Facilities.*
+    reviewers:
+      - "Tyler-Angell"
+      - "joebeernink"
+      - "hammar"
+  - package-ecosystem: "nuget"
+    directory: "/SmartPlaces.Facilities/samples/Topology/src"
+    schedule:
+      interval: "daily"
     allow:
       - dependency-name: Microsoft.SmartPlaces.Facilities.*
     reviewers:
