@@ -32,6 +32,7 @@ updates:
       interval: "daily"
     allow:
       - dependency-name: Microsoft.SmartPlaces.Facilities.*
+      - dependency-name: Mapped.*
     reviewers:
       - "Tyler-Angell"
       - "joebeernink"
@@ -82,6 +83,7 @@ updates:
       interval: "daily"
     allow:
       - dependency-name: Microsoft.SmartPlaces.Facilities.*
+      - dependency-name: Mapped.*
     reviewers:
       - "Tyler-Angell"
       - "joebeernink"
@@ -92,6 +94,7 @@ updates:
       interval: "daily"
     allow:
       - dependency-name: Microsoft.SmartPlaces.Facilities.*
+      - dependency-name: Mapped.*
     reviewers:
       - "Tyler-Angell"
       - "joebeernink"
@@ -102,6 +105,7 @@ updates:
       interval: "daily"
     allow:
       - dependency-name: Microsoft.SmartPlaces.Facilities.*
+      - dependency-name: Mapped.*
     reviewers:
       - "Tyler-Angell"
       - "joebeernink"
