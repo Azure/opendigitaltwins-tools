@@ -7,8 +7,8 @@
 namespace Microsoft.SmartPlaces.Facilities.OntologyMapper
 {
     using System.Text.RegularExpressions;
-    using Microsoft.Azure.DigitalTwins.Parser;
-    using Microsoft.Azure.DigitalTwins.Parser.Models;
+    using DTDLParser;
+    using DTDLParser.Models;
 
     /// <summary>
     /// Implements methods for consuming ontology mappings, i.e., to fetch ontology names (DTMIs, relationship names,
