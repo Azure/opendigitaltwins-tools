@@ -6,7 +6,7 @@
 
 namespace Microsoft.SmartPlaces.Facilities.OntologyMapper.Mapped.Test
 {
-    using Microsoft.Azure.DigitalTwins.Parser;
+    using DTDLParser;
     using Microsoft.Extensions.Logging;
     using Microsoft.SmartPlaces.Facilities.OntologyMapper;
     using Moq;
@@ -121,7 +121,7 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper.Mapped.Test
             var resourceLoader = new MappedOntologyMappingLoader(mockLogger.Object, resourcePath);
             var ontologyMappingManager = new OntologyMappingManager(resourceLoader);
             var modelParser = new ModelParser();
-            var inputDtmi = LoadDtdl("RealEstateCore_DTDLv2.json");
+            var inputDtmi = LoadDtdl("RealEstateCore.DTDLv2.jsonld");
             var inputModels = modelParser.Parse(inputDtmi);
             ontologyMappingManager.ValidateTargetOntologyMapping(inputModels, out var invalidSources);
 
