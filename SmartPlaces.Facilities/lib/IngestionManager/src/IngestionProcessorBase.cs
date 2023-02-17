@@ -6,13 +6,14 @@
 
 namespace Microsoft.SmartPlaces.Facilities.IngestionManager
 {
+    using System.Linq;
     using System.Text.Json;
     using System.Threading.Tasks;
+    using DTDLParser;
+    using DTDLParser.Models;
     using global::Azure.DigitalTwins.Core;
     using Microsoft.ApplicationInsights;
     using Microsoft.ApplicationInsights.Metrics;
-    using Microsoft.Azure.DigitalTwins.Parser;
-    using Microsoft.Azure.DigitalTwins.Parser.Models;
     using Microsoft.Extensions.Logging;
     using Microsoft.SmartPlaces.Facilities.IngestionManager.Interfaces;
     using Microsoft.SmartPlaces.Facilities.OntologyMapper;
@@ -51,7 +52,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
             TelemetryClient = telemetryClient;
             InputGraphManager = inputGraphManager;
             OntologyMappingManager = ontologyMappingManager;
-            TargetModelParser = new ModelParser();
+            TargetModelParser = new ModelParser(new ParsingOptions() { AllowUndefinedExtensions = true });
             OutputGraphManager = outputGraphManager;
         }
 
@@ -126,7 +127,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
             var targetModelList = await OutputGraphManager.GetModelAsync(cancellationToken);
 
             // Load the target model into the Model Parser, to make it possible to write queries against the model
-            TargetObjectModel = await TargetModelParser.ParseAsync(targetModelList);
+            TargetObjectModel = await TargetModelParser.ParseAsync(targetModelList.ToAsyncEnumerable(), cancellationToken: cancellationToken);
 
             // Validate the target map. Don't need to stop processing if there is an error, but results will show up in the logs
             if (!OntologyMappingManager.ValidateTargetOntologyMapping(TargetObjectModel, out var invalidTargets) && invalidTargets != null)
