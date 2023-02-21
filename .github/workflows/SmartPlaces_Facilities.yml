@@ -40,4 +40,3 @@ jobs:
         azure-devops-project-url: https://dev.azure.com/dynamicscrm/Solutions
         azure-pipeline-name: '${{ inputs.build-type }}'
         azure-devops-token: ${{ secrets.AZURE_DEVOPS_TOKEN }}
-        azure-pipeline-variables: '{"CDP_ASPEN_OPENDIGITALTWINSTOOLS_BRANCH": "${{ github.GITHUB_HEAD_REF }}"}'
