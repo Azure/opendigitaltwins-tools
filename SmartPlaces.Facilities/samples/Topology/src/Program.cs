@@ -51,11 +51,11 @@ namespace Topology
                     services.AddMappedIngestionManager(options =>
                     {
                         // Mapped Specific
-                        options.MappedToken = hostContext.Configuration["MappedToken"];
-                        options.MappedRootUrl = hostContext.Configuration["MappedRootUrl"];
+                        options.MappedToken = hostContext.Configuration["MappedToken"] ?? throw new NullReferenceException("MappedToken");
+                        options.MappedRootUrl = hostContext.Configuration["MappedRootUrl"] ?? throw new NullReferenceException("MappedRootUrl");
 
                         // Ingestion Manager
-                        options.AzureDigitalTwinsEndpoint = hostContext.Configuration["AzureDigitalTwinsEndpoint"];
+                        options.AzureDigitalTwinsEndpoint = hostContext.Configuration["AzureDigitalTwinsEndpoint"] ?? throw new NullReferenceException("AzureDigitalTwinsEndpoint");
                     });
 
                     // Ties Topology and Telemetry together
@@ -69,7 +69,7 @@ namespace Topology
                     services.AddScoped<IOntologyMappingLoader>(sp =>
                     {
                         var logger = sp.GetRequiredService<ILogger<MappedOntologyMappingLoader>>();
-                        return new MappedOntologyMappingLoader(logger, hostContext.Configuration["ontologyMappingFilename"]);
+                        return new MappedOntologyMappingLoader(logger, hostContext.Configuration["ontologyMappingFilename"] ?? throw new NullReferenceException("ontologyMappingFilename"));
                     });
 
                     services.AddScoped<IOntologyMappingManager, OntologyMappingManager>();
