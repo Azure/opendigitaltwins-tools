@@ -145,8 +145,8 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper.Mapped.Test
         //    var mockLogger = new Mock<ILogger>();
         //    var resourceLoader = new MappedOntologyMappingLoader(mockLogger.Object, resourcePath);
         //    var ontologyMappingManager = new OntologyMappingManager(resourceLoader);
-        //    var modelParser = new ModelParser();
-        //    var inputDtmi = LoadDtdl("Willow_Dtdlv2.json");
+        //    var modelParser = new ModelParser(new ParsingOptions() { AllowUndefinedExtensions = true });
+        //    var inputDtmi = LoadDtdl("Willow.DTDLv2.jsonld");
         //    var inputModels = modelParser.Parse(inputDtmi);
         //    ontologyMappingManager.ValidateTargetOntologyMapping(inputModels, out var invalidSources);
 
