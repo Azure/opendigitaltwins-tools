@@ -5,7 +5,7 @@
       "environmentVariables": {
         "AppInsightsConnectionString": "",
         "KeyVaultEndpoint": "",
-        "OntologyMappingFilename": "mapped_json_v0_dtdlv2_Brick_1_3-REC_4_0.json",
+        "OntologyMappingFilename": "",
         "AzureDigitalTwinsEndpoint": "",
         "MappedRootUrl": "https://api.mapped.com/graphql",
         "TopologyRefreshIntervalInHours": "12"

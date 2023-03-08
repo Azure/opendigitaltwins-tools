@@ -5,12 +5,6 @@ namespace UploadModels
 {
     internal class Options
     {
-        [Option('t', "tenantId", SetName = "upload", Required = true, HelpText = "The application's tenant id for connecting to Azure Digital Twins.")]
-        public string TenantId { get; set; }
-
-        [Option('c', "clientId", SetName = "upload", Required = true, HelpText = "The application's client id for connecting to Azure Digital Twins.")]
-        public string ClientId { get; set; }
-
         [Option('h', "hostName", SetName = "upload", Required = true, HelpText = "The host name of your Azure Digital Twins instance.")]
         public string HostName { get; set; }
 

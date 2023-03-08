@@ -4,7 +4,8 @@ using Azure.DigitalTwins.Core;
 using Azure.Identity;
 using CommandLine;
 using Ganss.IO;
-using Microsoft.Azure.DigitalTwins.Parser;
+using DTDLParser;
+using DTDLParser.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -81,7 +82,7 @@ namespace UploadModels
             Log.Write("Uploaded interfaces:");
             try
             {
-                var credential = new InteractiveBrowserCredential(options.TenantId, options.ClientId);
+                var credential = new DefaultAzureCredential();
                 var client = new DigitalTwinsClient(new UriBuilder("https", options.HostName).Uri, credential);
 
                 for (int i = 0; i < (orderedInterfaces.Count() / options.BatchSize) + 1; i++)
@@ -143,8 +144,8 @@ namespace UploadModels
             IReadOnlyDictionary<Dtmi, DTEntityInfo> entities = null;
             try
             {
-                var parser = new ModelParser();
-                entities = await parser.ParseAsync(modelTexts.Values);
+                var parser = new ModelParser(new ParsingOptions() { AllowUndefinedExtensions = true });
+                entities = await parser.ParseAsync(modelTexts.Values.ToAsyncEnumerable());
             }
             catch (ParsingException ex)
             {

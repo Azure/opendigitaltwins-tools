@@ -32,7 +32,7 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.2" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Console" Version="6.0.0" />
 		<PackageReference Include="Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped" Version="0.5.0-preview" />
-		<PackageReference Include="Microsoft.SmartPlaces.Facilities.OntologyMapper.Mapped" Version="0.10.0-preview" />
+		<PackageReference Include="Microsoft.SmartPlaces.Facilities.OntologyMapper.Mapped" Version="0.10.1-preview" />
 	</ItemGroup>
 
 	<PropertyGroup Condition="'$(BuildingInsideVisualStudio)' != 'true'">

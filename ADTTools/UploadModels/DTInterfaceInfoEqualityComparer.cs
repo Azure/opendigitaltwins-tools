@@ -1,4 +1,4 @@
-﻿using Microsoft.Azure.DigitalTwins.Parser;
+﻿using DTDLParser.Models;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 
