@@ -5,6 +5,8 @@ This folder contains the code, configuration, and documentation for the Smart Pl
 ## Required Software
 
 1. Visual Studio 2022+ or Visual Studio Code
+2. Some scripts may require Powershell
+2. Some scripts may require Azure CLI
 
 ## Libraries
 
