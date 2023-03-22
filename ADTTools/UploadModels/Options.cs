@@ -11,10 +11,10 @@ namespace UploadModels
         [Option('e', "allowUndefinedExtensions", SetName = "upload", Required = false, HelpText = "If this flag is set to true, the parser will allow Undefined Extensions in the DTDL.")]
         public bool AllowUndefinedExtensions { get; set; } = false;
 
-        [Option('t', "tenantId", SetName = "upload", Required = true, HelpText = "The application's tenant id for connecting to Azure Digital Twins.")]
+        [Option('t', "tenantId", SetName = "upload", Required = false, HelpText = "The application's tenant id for connecting to Azure Digital Twins.")]
         public string TenantId { get; set; }
 
-        [Option('c', "clientId", SetName = "upload", Required = true, HelpText = "The application's client id for connecting to Azure Digital Twins.")]
+        [Option('c', "clientId", SetName = "upload", Required = false, HelpText = "The application's client id for connecting to Azure Digital Twins.")]
         public string ClientId { get; set; }
 
         [Option('s', "clientSecret", SetName = "upload", Required = false, HelpText = "The application's client secret for connecting to Azure Digital Twins.")]
