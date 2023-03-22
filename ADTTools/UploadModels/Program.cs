@@ -131,14 +131,14 @@ namespace UploadModels
 
         private static bool ParseModelJson(Dictionary<string, string> modelTexts)
         {
-            var jsonErrors = new Dictionary<string, System.Text.Json.JsonException>();
+            var jsonErrors = new Dictionary<string, JsonException>();
             foreach (string fileName in modelTexts.Keys)
             {
                 try
                 {
                     JsonDocument jsonDoc = JsonDocument.Parse(modelTexts[fileName]);
                 }
-                catch (System.Text.Json.JsonException ex)
+                catch (JsonException ex)
                 {
                     jsonErrors.Add(fileName, ex);
                 }
@@ -156,12 +156,12 @@ namespace UploadModels
             return jsonErrors.Count == 0;
         }
 
-        private static async Task<IReadOnlyDictionary<Dtmi, DTEntityInfo>> ParseModelsAsync(Dictionary<string, string> modelTexts)
+        private async Task<IReadOnlyDictionary<Dtmi, DTEntityInfo>> ParseModelsAsync(Dictionary<string, string> modelTexts)
         {
             IReadOnlyDictionary<Dtmi, DTEntityInfo> entities = null;
             try
             {
-                var parser = new ModelParser(new ParsingOptions() { AllowUndefinedExtensions = true });
+                var parser = new ModelParser(new ParsingOptions() { AllowUndefinedExtensions = options.AllowUndefinedExtensions });
                 entities = await parser.ParseAsync(modelTexts.Values.ToAsyncEnumerable());
             }
             catch (ParsingException ex)
