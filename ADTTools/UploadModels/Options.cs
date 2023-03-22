@@ -5,6 +5,18 @@ namespace UploadModels
 {
     internal class Options
     {
+        [Option('d', "useDefaultAzureCredentials", SetName = "upload", Required = true, HelpText = "If this flag is set to true, DefaultAzureCredentials will be used.")]
+        public bool UseDefaultAzureCredentials { get; set; }
+
+        [Option('t', "tenantId", SetName = "upload", Required = true, HelpText = "The application's tenant id for connecting to Azure Digital Twins.")]
+        public string TenantId { get; set; }
+
+        [Option('c', "clientId", SetName = "upload", Required = true, HelpText = "The application's client id for connecting to Azure Digital Twins.")]
+        public string ClientId { get; set; }
+
+        [Option('s', "clientSecret", SetName = "upload", Required = false, HelpText = "The application's client secret for connecting to Azure Digital Twins.")]
+        public string ClientSecret { get; set; }
+
         [Option('h', "hostName", SetName = "upload", Required = true, HelpText = "The host name of your Azure Digital Twins instance.")]
         public string HostName { get; set; }
 

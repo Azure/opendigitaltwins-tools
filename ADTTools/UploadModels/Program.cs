@@ -12,6 +12,7 @@ using System.IO;
 using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Azure.Core;
 
 namespace UploadModels
 {
@@ -82,7 +83,23 @@ namespace UploadModels
             Log.Write("Uploaded interfaces:");
             try
             {
-                var credential = new DefaultAzureCredential();
+                TokenCredential credential;
+                if (options.UseDefaultAzureCredentials)
+                {
+                    credential = new DefaultAzureCredential();
+                }
+                else
+                {
+                    if (string.IsNullOrEmpty(options.ClientSecret))
+                    {
+                        credential = new InteractiveBrowserCredential(options.TenantId, options.ClientId);
+                    }
+                    else
+                    {
+                        credential = new ClientSecretCredential(options.TenantId, options.ClientId, options.ClientSecret);
+                    }
+                }
+
                 var client = new DigitalTwinsClient(new UriBuilder("https", options.HostName).Uri, credential);
 
                 for (int i = 0; i < (orderedInterfaces.Count() / options.BatchSize) + 1; i++)
