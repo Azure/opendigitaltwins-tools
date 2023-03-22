@@ -4,6 +4,12 @@ This sample is dedicated to demonstrating easy deployment of the sample projects
 
 Each sample should have a flag dedicated to deploying it. Just append the relevant `-deploy<Thing>` flag and it will take care of the rest.
 
+## Prerequisites
+
+1. Azure CLI installed on your computer
+
+## Getting Started
+
 Open powershell and run the following command
 
 ```powershell

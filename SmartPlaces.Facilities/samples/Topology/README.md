@@ -9,6 +9,13 @@ The Topology project is an example of how to pull the topology from a Mapped Ins
 2. A Personal Access Token (PAT) for the Mapped instance
 3. An Azure Digital Twins Instance
 4. An instance of Redis Cache running in the cloud
+5. Azure CLI installed on your computer
+6. Log in to Azure at least once prior to running the app locally using the following command, and set the default subscription for your session. This is needed even if running from within Visual Studio.
+
+```
+    az login
+    az account set --subscription <subscriptionId>
+```
 
 ## Data Flow
 

@@ -13,6 +13,7 @@ forwarding into Azure Digital Twins.
 4. A KeyVault
 5. Azure Active Directory App Identity
 6. (Optional) An App Insights Instance
+7. Azure CLI installed on your computer
 
 ## Data Flow
 
