@@ -13,6 +13,7 @@ The Telemetry sample project is an demonstration of how to pull device telemetry
 5. A KeyVault
 6. The Topology process must have previously run to ingest the topology from Mapped to Azure Digital Twins
 7. (Optional) An App Insights Instance
+8. Azure CLI installed on your computer
 
 ## Data Flow
 
