@@ -11,6 +11,9 @@ namespace UploadModels
         [Option('c', "clientId", SetName = "upload", Required = true, HelpText = "The application's client id for connecting to Azure Digital Twins.")]
         public string ClientId { get; set; }
 
+        [Option('s', "clientSecret", SetName = "upload", Required = false, HelpText = "The application's client secret for connecting to Azure Digital Twins.")]
+        public string ClientSecret { get; set; }
+
         [Option('h', "hostName", SetName = "upload", Required = true, HelpText = "The host name of your Azure Digital Twins instance.")]
         public string HostName { get; set; }
 
