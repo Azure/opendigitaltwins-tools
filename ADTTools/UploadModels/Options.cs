@@ -5,8 +5,8 @@ namespace UploadModels
 {
     internal class Options
     {
-        [Option('d', "useDefaultAzureCredentials", SetName = "upload", Required = true, HelpText = "If this flag is set to true, DefaultAzureCredentials will be used.")]
-        public bool UseDefaultAzureCredentials { get; set; }
+        [Option('d', "useDefaultAzureCredentials", SetName = "upload", Required = false, HelpText = "If this flag is set to true, DefaultAzureCredentials will be used.")]
+        public bool UseDefaultAzureCredentials { get; set; } = false;
 
         [Option('t', "tenantId", SetName = "upload", Required = true, HelpText = "The application's tenant id for connecting to Azure Digital Twins.")]
         public string TenantId { get; set; }
