@@ -138,7 +138,7 @@
             parser.DtmiResolver = new DtmiResolver(Resolver);
             try
             {
-                IReadOnlyDictionary<Dtmi, DTEntityInfo> om = parser.ParseAsync(modelList).GetAwaiter().GetResult();
+                IReadOnlyDictionary<Dtmi, DTEntityInfo> om = parser.Parse(modelList);
                 Log.Out("");
                 Log.Ok($"**********************************************");
                 Log.Ok($"** Validated all files - Your DTDL is valid **");
@@ -161,9 +161,9 @@
             
                 Environment.Exit(0);
             }
-            catch (ResolutionException)
+            catch (ResolutionException ex)
             {
-                Log.Error("Could not resolve required references");
+                Log.Error(ex, "Could not resolve required references");
                 Environment.Exit(0);
             }
         }

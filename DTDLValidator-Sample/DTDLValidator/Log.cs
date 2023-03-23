@@ -25,5 +25,11 @@
         {
             Out(s, ConsoleColor.DarkGreen);
         }
+
+        static public void Error(Exception ex, string s)
+        {
+            var exception = s + "\n" + ex.ToString();
+            Out(exception, ConsoleColor.DarkRed);
+        }
     }
 }
