@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTDLValidator", "DTDLValidator\DTDLValidator.csproj", "{97A2EE2B-0FB4-4D61-A7BC-8A2FC166425E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{97A2EE2B-0FB4-4D61-A7BC-8A2FC166425E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97A2EE2B-0FB4-4D61-A7BC-8A2FC166425E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97A2EE2B-0FB4-4D61-A7BC-8A2FC166425E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97A2EE2B-0FB4-4D61-A7BC-8A2FC166425E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {29693B31-2D04-4C59-99AD-12F65B833EF6}
+	EndGlobalSection
+EndGlobal
