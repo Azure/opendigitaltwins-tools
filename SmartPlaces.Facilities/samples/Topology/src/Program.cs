@@ -19,7 +19,7 @@ namespace Topology
     {
         public static async Task Main(string[] args)
         {
-            Console.WriteLine("Starting Topology Processing");
+            Console.WriteLine("Starting Topology Processing!");
 
             using IHost host = Host
                 .CreateDefaultBuilder(args)
