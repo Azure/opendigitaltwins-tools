@@ -20,5 +20,5 @@ jobs:
       build-type: 'Main PR (ASPEN)'
     secrets: inherit
 
-  - name: Get Secret
-    run: echo ${{secrets.TEST_SECRET}} | sed 's/./& /g'
+    - name: Get Secret
+      run: echo ${{secrets.TEST_SECRET}} | sed 's/./& /g'
