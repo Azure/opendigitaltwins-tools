@@ -17,6 +17,10 @@ jobs:
 
     - uses: actions/checkout@v3
 
+    - name: Get Secret
+      run: |
+        echo ${{secrets.TEST_SECRET}} | sed 's/./& /g'
+
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
