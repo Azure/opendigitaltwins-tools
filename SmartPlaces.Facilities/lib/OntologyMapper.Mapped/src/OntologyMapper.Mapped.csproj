@@ -24,7 +24,6 @@
 	
 	<ItemGroup>
 		<EmbeddedResource Include="Mappings\**\*.json" />
-		<None Remove="Mappings\v1\Willow\mapped_v1_dtdlv2_Willow.json" />
 	</ItemGroup>
 
 	<ItemGroup>
