@@ -14,7 +14,6 @@ updates:
       - dependency-name: Microsoft.SmartPlaces.Facilities.*
     reviewers:
       - "Tyler-Angell"
-      - "joebeernink"
       - "hammar"
   - package-ecosystem: "nuget"
     directory: "/SmartPlaces.Facilities/lib/IngestionManager/test"
@@ -24,7 +23,6 @@ updates:
       - dependency-name: Microsoft.SmartPlaces.Facilities.*
     reviewers:
       - "Tyler-Angell"
-      - "joebeernink"
       - "hammar"
   - package-ecosystem: "nuget"
     directory: "/SmartPlaces.Facilities/lib/IngestionManager.Mapped/src"
@@ -35,7 +33,6 @@ updates:
       - dependency-name: Mapped.*
     reviewers:
       - "Tyler-Angell"
-      - "joebeernink"
       - "hammar"
   - package-ecosystem: "nuget"
     directory: "/SmartPlaces.Facilities/lib/IngestionManager.Mapped/test"
@@ -45,7 +42,6 @@ updates:
       - dependency-name: Microsoft.SmartPlaces.Facilities.*
     reviewers:
       - "Tyler-Angell"
-      - "joebeernink"
       - "hammar"
   - package-ecosystem: "nuget"
     directory: "/SmartPlaces.Facilities/lib/OntologyMapper/src"
@@ -55,7 +51,6 @@ updates:
       - dependency-name: Microsoft.SmartPlaces.Facilities.*
     reviewers:
       - "Tyler-Angell"
-      - "joebeernink"
       - "hammar"
   - package-ecosystem: "nuget"
     directory: "/SmartPlaces.Facilities/lib/OntologyMapper/test"
@@ -65,7 +60,6 @@ updates:
       - dependency-name: Microsoft.SmartPlaces.Facilities.*
     reviewers:
       - "Tyler-Angell"
-      - "joebeernink"
       - "hammar"
   - package-ecosystem: "nuget"
     directory: "/SmartPlaces.Facilities/lib/OntologyMapper.Mapped/src"
@@ -75,7 +69,6 @@ updates:
       - dependency-name: Microsoft.SmartPlaces.Facilities.*
     reviewers:
       - "Tyler-Angell"
-      - "joebeernink"
       - "hammar"
   - package-ecosystem: "nuget"
     directory: "/SmartPlaces.Facilities/lib/OntologyMapper.Mapped/test"
@@ -86,7 +79,6 @@ updates:
       - dependency-name: Mapped.*
     reviewers:
       - "Tyler-Angell"
-      - "joebeernink"
       - "hammar"
   - package-ecosystem: "nuget"
     directory: "/SmartPlaces.Facilities/samples/EdgeGateway.Mapped/src"
@@ -97,7 +89,6 @@ updates:
       - dependency-name: Mapped.*
     reviewers:
       - "Tyler-Angell"
-      - "joebeernink"
       - "hammar"
   - package-ecosystem: "nuget"
     directory: "/SmartPlaces.Facilities/samples/Telemetry.Mapped/src"
@@ -108,7 +99,6 @@ updates:
       - dependency-name: Mapped.*
     reviewers:
       - "Tyler-Angell"
-      - "joebeernink"
       - "hammar"
   - package-ecosystem: "nuget"
     directory: "/SmartPlaces.Facilities/samples/Topology/src"
@@ -118,5 +108,4 @@ updates:
       - dependency-name: Microsoft.SmartPlaces.Facilities.*
     reviewers:
       - "Tyler-Angell"
-      - "joebeernink"
       - "hammar"
