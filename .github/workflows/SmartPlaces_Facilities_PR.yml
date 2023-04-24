@@ -15,4 +15,4 @@ env:
 
 jobs:
   build:
-    uses: './.github/workflows/SmartPlaces_Facilities.yml'
+    uses: 'Azure/opendigitaltwins-tools/.github/workflows/SmartPlaces_Facilities.yml@main'
