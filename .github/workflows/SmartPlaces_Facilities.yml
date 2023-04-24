@@ -35,7 +35,7 @@ jobs:
       run: "& ./.github/workflows/scripts/test.ps1"
 
     - name: Trigger internal validations
-      if: ${{ inputs.build-type -ne ''}}
+      if: ${{ inputs.build-type != ''}}
       uses: Azure/pipelines@v1.2
       with:
         azure-devops-project-url: https://dev.azure.com/dynamicscrm/Solutions
