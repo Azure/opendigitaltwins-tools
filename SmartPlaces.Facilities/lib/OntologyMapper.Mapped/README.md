@@ -12,7 +12,7 @@ The following mappings have been created and are being maintained:
 | Mappings\v0\BrickRec\mapped_json_v0_dtdlv3_Brick_1_3-Rec_4_0.json | Mapped | V0 (not strict DTDL compliance) | Brick 1.3, Rec 4.0 | v3 | Deprecated |
 | Mappings\v0\Willow\mapped_json_v0_dtdlv2_Willow.json | Mapped | V0 (not strict DTDL compliance) | Willow | v2 | Deprecated |
 | Mappings\v1\BrickRec\mapped_v1_dtdlv2_Brick_1_3-Rec_4_0.json | Mapped | V3 | Brick 1.3, Rec 4.0 | v2 | |
-| Mappings\v1\Willow\mapped_v1_dtdlv3_Willow.json | Mapped | V3 | Willow | v3 | |
+| Mappings\v1\Willow\mapped_v1_dtdlv2_Willow.json | Mapped | V3 | Willow | v2 | |
 
 ### Usage Instructions
 

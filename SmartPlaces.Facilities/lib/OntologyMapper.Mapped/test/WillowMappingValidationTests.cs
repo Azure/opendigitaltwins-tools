@@ -24,7 +24,7 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper.Mapped.Test
 
         [Theory]
         [InlineData("Mappings.v0.Willow.mapped_json_v0_dtdlv2_Willow.json")]
-        [InlineData("Mappings.v1.Willow.mapped_v1_dtdlv3_Willow.json")]
+        [InlineData("Mappings.v1.Willow.mapped_v1_dtdlv2_Willow.json")]
         public void ValidateMappedDtmisAreValidFormat(string resourcePath)
         {
             var mockLogger = new Mock<ILogger>();
@@ -97,10 +97,10 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper.Mapped.Test
         }
 
         [Theory]
-        [InlineData("Mappings.v1.Willow.mapped_v1_dtdlv3_Willow.json", true, "dtmi:org:brickschema:schema:Brick:Ablutions_Room;1", "dtmi:com:willowinc:Room;1")]
-        [InlineData("Mappings.v1.Willow.mapped_v1_dtdlv3_Willow.json", true, "dtmi:org:brickschema:schema:Brick:Ablutions;1", "dtmi:com:willowinc:Ablutions;1")]
-        [InlineData("Mappings.v1.Willow.mapped_v1_dtdlv3_Willow.json", false, "dtmi:org:fakeschema:schema:Brick:Ablutions;1", null)]
-        [InlineData("Mappings.v1.Willow.mapped_v1_dtdlv3_Willow.json", true, "dtmi:org:brickschema:schema:Brick:CO2_Alarm_Setpoint;1", "dtmi:com:willowinc:CO2_Alarm_Setpoint;1")]
+        [InlineData("Mappings.v1.Willow.mapped_v1_dtdlv2_Willow.json", true, "dtmi:org:brickschema:schema:Brick:Ablutions_Room;1", "dtmi:com:willowinc:Room;1")]
+        [InlineData("Mappings.v1.Willow.mapped_v1_dtdlv2_Willow.json", true, "dtmi:org:brickschema:schema:Brick:Ablutions;1", "dtmi:com:willowinc:Ablutions;1")]
+        [InlineData("Mappings.v1.Willow.mapped_v1_dtdlv2_Willow.json", false, "dtmi:org:fakeschema:schema:Brick:Ablutions;1", null)]
+        [InlineData("Mappings.v1.Willow.mapped_v1_dtdlv2_Willow.json", true, "dtmi:org:brickschema:schema:Brick:CO2_Alarm_Setpoint;1", "dtmi:com:willowinc:CO2_Alarm_Setpoint;1")]
         public void ValidateInterfaceMappings(string resourcePath, bool isFound, string input, string? expected)
         {
             var mockLogger = new Mock<ILogger>();
@@ -124,7 +124,7 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper.Mapped.Test
         }
 
         [Theory]
-        [InlineData("Mappings.v1.Willow.mapped_v1_dtdlv3_Willow.json")]
+        [InlineData("Mappings.v1.Willow.mapped_v1_dtdlv2_Willow.json")]
         public void ValidateSourceDtmisAreValid(string resourcePath)
         {
             var mockLogger = new Mock<ILogger>();
@@ -139,7 +139,7 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper.Mapped.Test
         }
 
         [Theory]
-        [InlineData("Mappings.v1.Willow.mapped_v1_dtdlv3_Willow.json")]
+        [InlineData("Mappings.v1.Willow.mapped_v1_dtdlv2_Willow.json")]
         public void ValidateTargetDtmisAreValid(string resourcePath)
         {
             var mockLogger = new Mock<ILogger>();
