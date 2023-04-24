@@ -15,7 +15,7 @@ env:
 
 jobs:
   build:
-    uses: './.github/workflows/SmartPlaces_Facilities.yml@main'
+    uses: 'Azure/opendigitaltwins-tools/.github/workflows/SmartPlaces_Facilities.yml@main'
     with:
       build-type: 'Main Official (ASPEN)'
     secrets: inherit
