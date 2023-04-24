@@ -16,5 +16,3 @@ env:
 jobs:
   build:
     uses: './.github/workflows/SmartPlaces_Facilities.yml'
-    with:
-      build-type: 'Main PR (ASPEN)'
