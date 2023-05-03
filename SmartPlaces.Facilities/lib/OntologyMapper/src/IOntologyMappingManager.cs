@@ -6,8 +6,8 @@
 
 namespace Microsoft.SmartPlaces.Facilities.OntologyMapper
 {
-    using DTDLParser;
-    using DTDLParser.Models;
+    using Microsoft.Azure.DigitalTwins.Parser;
+    using Microsoft.Azure.DigitalTwins.Parser.Models;
 
     /// <summary>
     /// Defines the methods to be implemented by an OntologyMappingManager.
