@@ -8,8 +8,8 @@
 		<Version>$(VersionPrefix)</Version>
 		<Authors>Microsoft</Authors>
 		<Description>Support for converting from one DTDL-based Ontology to a different DTDL Based Ontology</Description>
-		<AssemblyVersion>0.7.1</AssemblyVersion>
-		<PackageVersion>0.7.1-preview</PackageVersion>
+		<AssemblyVersion>0.7.2</AssemblyVersion>
+		<PackageVersion>0.7.2-preview</PackageVersion>
 		<RepositoryUrl>https://github.com/Azure/opendigitaltwins-tools</RepositoryUrl>
 		<PackageProjectUrl>https://github.com/Azure/opendigitaltwins-tools/</PackageProjectUrl>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -23,7 +23,7 @@
 	</ItemGroup>
 	
 	<ItemGroup>
-		<PackageReference Include="DTDLParser" Version="1.0.12-preview-ge5017bcd00" />
+		<PackageReference Include="Microsoft.Azure.DigitalTwins.Parser" Version="6.4.0-preview" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.2" />
 		<PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
 		  <PrivateAssets>all</PrivateAssets>
