@@ -6,7 +6,7 @@
 
 namespace Microsoft.SmartPlaces.Facilities.OntologyMapper.Mapped.Test
 {
-    using DTDLParser;
+    using Microsoft.Azure.DigitalTwins.Parser;
     using Microsoft.Extensions.Logging;
     using Moq;
     using System.Reflection;
@@ -123,35 +123,61 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper.Mapped.Test
             }
         }
 
-        //[Theory]
-        //[InlineData("Mappings.v1.Willow.mapped_v1_dtdlv2_Willow.json")]
-        //public void ValidateSourceDtmisAreValid(string resourcePath)
-        //{
-        //    var mockLogger = new Mock<ILogger>();
-        //    var resourceLoader = new MappedOntologyMappingLoader(mockLogger.Object, resourcePath);
-        //    var ontologyMappingManager = new OntologyMappingManager(resourceLoader);
-        //    var modelParser = new ModelParser();
-        //    var inputDtmi = LoadDtdl("mapped_dtdl.json");
-        //    var inputModels = modelParser.Parse(inputDtmi);
-        //    ontologyMappingManager.ValidateSourceOntologyMapping(inputModels, out var invalidSources);
+        [Theory]
+        [InlineData("Mappings.v1.Willow.mapped_v1_dtdlv2_Willow.json", false, "isFedBy", "isFedBy")]
+        [InlineData("Mappings.v1.Willow.mapped_v1_dtdlv2_Willow.json", true, "floors", "isPartOf")]
+        [InlineData("Mappings.v1.Willow.mapped_v1_dtdlv2_Willow.json", true, "isLocationOf", "locatedIn")]
+        [InlineData("Mappings.v1.Willow.mapped_v1_dtdlv2_Willow.json", true, "hasPoint", "isCapabilityOf")]
+        public void ValidateRelationshipMappings(string resourcePath, bool isFound, string inputRelationship, string? expected)
+        {
+            var mockLogger = new Mock<ILogger>();
+            var resourceLoader = new MappedOntologyMappingLoader(mockLogger.Object, resourcePath);
+            var ontologyMappingManager = new OntologyMappingManager(resourceLoader);
 
-        //    Assert.Empty(invalidSources);
-        //}
+            var result = ontologyMappingManager.TryGetRelationshipRemap(inputRelationship, out var relationshipRemap);
 
-        //[Theory]
-        //[InlineData("Mappings.v1.Willow.mapped_v1_dtdlv2_Willow.json")]
-        //public void ValidateTargetDtmisAreValid(string resourcePath)
-        //{
-        //    var mockLogger = new Mock<ILogger>();
-        //    var resourceLoader = new MappedOntologyMappingLoader(mockLogger.Object, resourcePath);
-        //    var ontologyMappingManager = new OntologyMappingManager(resourceLoader);
-        //    var modelParser = new ModelParser(new ParsingOptions() { AllowUndefinedExtensions = true });
-        //    var inputDtmi = LoadDtdl("Willow.DTDLv2.jsonld");
-        //    var inputModels = modelParser.Parse(inputDtmi);
-        //    ontologyMappingManager.ValidateTargetOntologyMapping(inputModels, out var invalidSources);
+            Assert.Equal(isFound, result);
 
-        //    Assert.Empty(invalidSources);
-        //}
+            if (isFound)
+            {
+                Assert.NotNull(relationshipRemap);
+                Assert.Equal(expected, relationshipRemap.OutputRelationship);
+            }
+            else
+            {
+                Assert.Null(relationshipRemap);
+            }
+        }
+
+        [Theory]
+        [InlineData("Mappings.v1.Willow.mapped_v1_dtdlv2_Willow.json")]
+        public void ValidateSourceDtmisAreValid(string resourcePath)
+        {
+            var mockLogger = new Mock<ILogger>();
+            var resourceLoader = new MappedOntologyMappingLoader(mockLogger.Object, resourcePath);
+            var ontologyMappingManager = new OntologyMappingManager(resourceLoader);
+            var modelParser = new ModelParser();
+            var inputDtmi = LoadDtdl("mapped_dtdl.json");
+            var inputModels = modelParser.Parse(inputDtmi);
+            ontologyMappingManager.ValidateSourceOntologyMapping(inputModels, out var invalidSources);
+
+            Assert.Empty(invalidSources);
+        }
+
+        [Theory]
+        [InlineData("Mappings.v1.Willow.mapped_v1_dtdlv2_Willow.json")]
+        public void ValidateTargetDtmisAreValid(string resourcePath)
+        {
+            var mockLogger = new Mock<ILogger>();
+            var resourceLoader = new MappedOntologyMappingLoader(mockLogger.Object, resourcePath);
+            var ontologyMappingManager = new OntologyMappingManager(resourceLoader);
+            var modelParser = new ModelParser();
+            var inputDtmi = LoadDtdl("Willow.Ontology.DTDLv3.jsonld");
+            var inputModels = modelParser.Parse(inputDtmi);
+            ontologyMappingManager.ValidateTargetOntologyMapping(inputModels, out var invalidSources);
+
+            Assert.Empty(invalidSources);
+        }
 
         private IEnumerable<string> LoadDtdl(string dtdlFile)
         {

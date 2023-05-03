@@ -6,7 +6,7 @@
 
 namespace Microsoft.SmartPlaces.Facilities.OntologyMapper.Mapped.Test
 {
-    using DTDLParser;
+    using Microsoft.Azure.DigitalTwins.Parser;
     using Microsoft.Extensions.Logging;
     using Microsoft.SmartPlaces.Facilities.OntologyMapper;
     using Moq;
