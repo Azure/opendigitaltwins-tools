@@ -13,7 +13,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Test
     using System.Text.Json;
     using System.Threading;
     using System.Threading.Tasks;
-    using DTDLParser;
+    using Microsoft.Azure.DigitalTwins.Parser;
     using global::Azure.DigitalTwins.Core;
     using Microsoft.ApplicationInsights;
     using Microsoft.ApplicationInsights.Channel;
