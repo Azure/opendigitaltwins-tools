@@ -6,11 +6,11 @@
 
 namespace Microsoft.SmartPlaces.Facilities.OntologyMapper.Mapped.Test
 {
-    using System.Reflection;
     using Microsoft.Azure.DigitalTwins.Parser;
     using Microsoft.Extensions.Logging;
     using Microsoft.SmartPlaces.Facilities.OntologyMapper;
     using Moq;
+    using System.Reflection;
     using Xunit;
     using Xunit.Abstractions;
 
