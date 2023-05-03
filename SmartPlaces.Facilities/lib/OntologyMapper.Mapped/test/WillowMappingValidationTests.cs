@@ -6,10 +6,10 @@
 
 namespace Microsoft.SmartPlaces.Facilities.OntologyMapper.Mapped.Test
 {
-    using System.Reflection;
     using Microsoft.Azure.DigitalTwins.Parser;
     using Microsoft.Extensions.Logging;
     using Moq;
+    using System.Reflection;
     using Xunit;
     using Xunit.Abstractions;
 
@@ -120,6 +120,32 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper.Mapped.Test
             else
             {
                 Assert.Null(dtmiRemap);
+            }
+        }
+
+        [Theory]
+        [InlineData("Mappings.v1.Willow.mapped_v1_dtdlv2_Willow.json", false, "isFedBy", "isFedBy")]
+        [InlineData("Mappings.v1.Willow.mapped_v1_dtdlv2_Willow.json", true, "floors", "isPartOf")]
+        [InlineData("Mappings.v1.Willow.mapped_v1_dtdlv2_Willow.json", true, "isLocationOf", "locatedIn")]
+        [InlineData("Mappings.v1.Willow.mapped_v1_dtdlv2_Willow.json", true, "hasPoint", "isCapabilityOf")]
+        public void ValidateRelationshipMappings(string resourcePath, bool isFound, string inputRelationship, string? expected)
+        {
+            var mockLogger = new Mock<ILogger>();
+            var resourceLoader = new MappedOntologyMappingLoader(mockLogger.Object, resourcePath);
+            var ontologyMappingManager = new OntologyMappingManager(resourceLoader);
+
+            var result = ontologyMappingManager.TryGetRelationshipRemap(inputRelationship, out var relationshipRemap);
+
+            Assert.Equal(isFound, result);
+
+            if (isFound)
+            {
+                Assert.NotNull(relationshipRemap);
+                Assert.Equal(expected, relationshipRemap.OutputRelationship);
+            }
+            else
+            {
+                Assert.Null(relationshipRemap);
             }
         }
 
