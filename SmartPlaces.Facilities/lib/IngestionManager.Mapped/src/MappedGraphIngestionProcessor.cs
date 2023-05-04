@@ -8,10 +8,10 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
 {
     using System.Text.Json;
     using System.Threading.Tasks;
-    using DTDLParser;
     using global::Azure.DigitalTwins.Core;
     using Microsoft.ApplicationInsights;
     using Microsoft.ApplicationInsights.Metrics;
+    using Microsoft.Azure.DigitalTwins.Parser;
     using Microsoft.Extensions.Logging;
     using Microsoft.SmartPlaces.Facilities.IngestionManager.Interfaces;
     using Microsoft.SmartPlaces.Facilities.OntologyMapper;
@@ -202,6 +202,22 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
                     {
                         Dtmi? locationDtmi = GetInputInterfaceDtmi(locationExactType.ToString());
                         AddRelationship(relationships, locationId, locationDtmi, "isLocationOf", thingDtId, thingExactType.ToString());
+                    }
+                }
+
+                // Add the isFedBy Relationships
+                var isFedBys = thingElement.EnumerateObject().FirstOrDefault(t => t.Name == "isFedBy");
+
+                if (isFedBys.Value.ValueKind != JsonValueKind.Null)
+                {
+                    foreach (var fedByElement in isFedBys.Value.EnumerateArray())
+                    {
+                        var fedById = fedByElement.GetProperty("id").GetString();
+                        if (fedByElement.TryGetProperty("exactType", out var fedByExactType))
+                        {
+                            Dtmi? fedByDtmi = GetInputInterfaceDtmi(fedByExactType.ToString());
+                            AddRelationship(relationships, fedById, fedByDtmi, "isFedBy", thingDtId, thingExactType.ToString());
+                        }
                     }
                 }
 

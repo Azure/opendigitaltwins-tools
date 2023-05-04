@@ -103,7 +103,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
         /// <returns>A formatted graph query.</returns>
         public string GetBuildingThingsQuery(string buildingDtId)
         {
-            return "{ buildings(filter: { id: { eq: \"" + buildingDtId + "\"} }) { things{ description,exactType,firmwareVersion,id,mappingKey,name,hasLocation{ exactType,id,name} } } }";
+            return "{ buildings(filter: { id: { eq: \"" + buildingDtId + "\"} }) { things{ description,exactType,firmwareVersion,id,mappingKey,name,hasLocation{ exactType,id,name},isFedBy{ id,name,exactType}} } }";
         }
 
         /// <summary>
