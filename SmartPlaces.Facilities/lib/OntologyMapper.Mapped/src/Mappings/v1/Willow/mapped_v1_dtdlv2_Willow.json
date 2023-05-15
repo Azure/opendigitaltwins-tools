@@ -4771,6 +4771,12 @@
       "OutputPropertyName": "externalIds",
       "InputPropertyNames": [ "mappingKey" ],
       "IsOutputPropertyCollection": true
+    },
+    {
+      "OutputDtmiFilter": ".*",
+      "OutputPropertyName": "externalID",
+      "InputPropertyNames": [ "id" ],
+      "IsOutputPropertyCollection": false
     }
   ],
   "FillProperties": [
