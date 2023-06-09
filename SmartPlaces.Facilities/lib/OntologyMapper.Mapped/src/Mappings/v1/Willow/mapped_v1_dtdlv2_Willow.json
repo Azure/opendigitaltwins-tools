@@ -75,14 +75,6 @@
       "OutputDtmi": "dtmi:com:willowinc:Sensor;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Apparent_Energy_Sensor;1",
-      "OutputDtmi": "dtmi:com:willowinc:ApparentElectricalEnergySensor;1"
-    },
-    {
-      "InputDtmi": "dtmi:mapped:core:Apparent_Power_Sensor;1",
-      "OutputDtmi": "dtmi:com:willowinc:ApparentElectricalPowerSensor;1"
-    },
-    {
       "InputDtmi": "dtmi:mapped:core:Audio_Gain_Status;1",
       "OutputDtmi": "dtmi:com:willowinc:State;1"
     },
@@ -1207,8 +1199,7 @@
     },
     {
       "InputDtmi": "dtmi:org:brickschema:schema:Brick:Cold_Box;1",
-      "OutputDtmi": "dtmi:com:willowinc:ColdBox;1",
-      "IsIgnored": true
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
     },
     {
       "InputDtmi": "dtmi:org:brickschema:schema:Brick:Coldest_Zone_Air_Temperature_Sensor;1",
@@ -1473,9 +1464,8 @@
       "OutputDtmi": "dtmi:com:willowinc:Room;1"
     },
     {
-      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Device;1",
-      "OutputDtmi": "dtmi:com:willowinc:Device;1",
-      "IsIgnored": true
+      "InputDtmi": "dtmi:mapped:core:Device;1",
+      "OutputDtmi": "dtmi:com:willowinc:SensorEquipment;1"
     },
     {
       "InputDtmi": "dtmi:org:brickschema:schema:Brick:Dewpoint_Sensor;1",
@@ -2515,13 +2505,16 @@
       "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
     },
     {
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Humidity_Sensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:HumiditySensor;1"
+    },
+    {
       "InputDtmi": "dtmi:org:brickschema:schema:Brick:Humidity_Tolerance_Parameter;1",
       "OutputDtmi": "dtmi:com:willowinc:Parameter;1"
     },
     {
       "InputDtmi": "dtmi:org:brickschema:schema:Brick:IDF;1",
-      "OutputDtmi": "dtmi:com:willowinc:IDF;1",
-      "IsIgnored": true
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
     },
     {
       "InputDtmi": "dtmi:org:brickschema:schema:Brick:IP_v4_Address;1",
@@ -3169,6 +3162,10 @@
       "OutputDtmi": "dtmi:com:willowinc:ModeState;1"
     },
     {
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Motion_Sensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:MotionSensor;1"
+    },
+    {
       "InputDtmi": "dtmi:org:brickschema:schema:Brick:Motor;1",
       "OutputDtmi": "dtmi:com:willowinc:Motor;1",
       "IsIgnored": true
@@ -3625,6 +3622,10 @@
     {
       "InputDtmi": "dtmi:org:brickschema:schema:Brick:Pre_Filter_Status;1",
       "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Precipitation_Accumulation_Sensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:PrecipitationAccumulationSensor;1"
     },
     {
       "InputDtmi": "dtmi:org:brickschema:schema:Brick:Preheat_Command;1",
@@ -4679,6 +4680,10 @@
     {
       "InputDtmi": "dtmi:org:brickschema:schema:Brick:Wind_Direction_Sensor;1",
       "OutputDtmi": "dtmi:com:willowinc:WindDirectionSensor;1"
+    },
+    {
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Wind_Speed_Sensor;1",
+      "OutputDtmi": "dtmi:com:willowinc:WindSpeedSensor;1"
     },
     {
       "InputDtmi": "dtmi:org:brickschema:schema:Brick:Wing;1",

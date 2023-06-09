@@ -43,16 +43,6 @@
       "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Status;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Apparent_Energy_Sensor;1",
-      // Mapped to Base - Review needed
-      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Energy_Sensor;1"
-    },
-    {
-      "InputDtmi": "dtmi:mapped:core:Apparent_Power_Sensor;1",
-      // Mapped to Base - Review needed
-      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Power_Sensor;1"
-    },
-    {
       "InputDtmi": "dtmi:mapped:core:BACnet_Device;1",
       // Mapped to Base - Review needed
       "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Equipment;1"
