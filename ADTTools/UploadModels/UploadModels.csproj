@@ -10,7 +10,7 @@
     <PackageReference Include="Azure.Identity" Version="1.9.0-beta.2" />
     <PackageReference Include="CommandLineParser" Version="2.9.1" />
     <PackageReference Include="Glob.cs" Version="5.1.1198" />
-    <PackageReference Include="DTDLParser" Version="1.0.37-preview-g0f8f3131c8" />
+    <PackageReference Include="DTDLParser" Version="1.0.52" />
     <PackageReference Include="System.Linq.Async" Version="6.0.1" />
   </ItemGroup>
 
