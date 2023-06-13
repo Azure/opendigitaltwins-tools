@@ -73,10 +73,10 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper.Mapped.Test
                 }
             }
 
-            // Verify that the property projections are unique for an output property
+            // Verify that the property projections are unique for an output property, unless it is a collection, then the original name can be used.
             foreach (var projection in ontologyMappingManager.OntologyMapping.PropertyProjections)
             {
-                var matchingProjectionsCount = ontologyMappingManager.OntologyMapping.PropertyProjections.Count(p => p.OutputPropertyName == projection.OutputPropertyName);
+                var matchingProjectionsCount = ontologyMappingManager.OntologyMapping.PropertyProjections.Count(p => p.OutputPropertyName == projection.OutputPropertyName && projection.IsOutputPropertyCollection == false);
                 if (matchingProjectionsCount > 1)
                 {
                     exceptions.Add($"Duplicate PropertyProjection: {projection.OutputPropertyName}");
