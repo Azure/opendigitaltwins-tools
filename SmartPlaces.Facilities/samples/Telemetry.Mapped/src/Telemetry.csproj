@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Worker">
+<Project Sdk="Microsoft.NET.Sdk.Worker">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -13,7 +13,7 @@
     <PackageReference Include="Azure.Messaging.EventHubs" Version="5.7.3" />
     <PackageReference Include="Azure.Messaging.EventHubs.Processor" Version="5.7.3" />
     <PackageReference Include="coverlet.collector" Version="3.1.0" />
-    <PackageReference Include="Mapped.PB" Version="0.33.4.15" />
+    <PackageReference Include="Mapped.PB" Version="0.42.8.19" />
     <PackageReference Include="Microsoft.ApplicationInsights.WorkerService" Version="2.21.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="6.0.1" />
