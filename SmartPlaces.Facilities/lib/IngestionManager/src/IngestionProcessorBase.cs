@@ -33,7 +33,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
         private readonly MetricIdentifier targetDtmiNotFoundMetricIdentifier = new MetricIdentifier(Metrics.DefaultNamespace, "TargetDtmiNotFound", Metrics.InterfaceTypeDimensionName);
         private readonly MetricIdentifier outputMappingForInputDtmiNotFoundMetricIdentifier = new MetricIdentifier(Metrics.DefaultNamespace, "OutputMappingForInputDtmiNotFound", Metrics.OutputDtmiTypeDimensionName);
         private readonly MetricIdentifier mappingForInputDtmiNotFoundMetricIdentifier = new MetricIdentifier(Metrics.DefaultNamespace, "MappingForInputDtmiNotFound", Metrics.InterfaceTypeDimensionName);
-        private readonly IGraphNamingManager graphNaming;
+        private readonly IGraphNamingManager graphNamingManager;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="IngestionProcessorBase{TOptions}"/> class.
@@ -42,13 +42,13 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
         /// <param name="inputGraphManager">Manager for the input data graph that this ingestion processor parses.</param>
         /// <param name="ontologyMappingManager">Manager mapping between ontologies used by the input and output graphs.</param>
         /// <param name="outputGraphManager">Manager for the output data graph that this ingestion processor writes to.</param>
-        /// <param name="graphNaming">Manager for the naming of the elements of the graph.</param>
+        /// <param name="graphNamingManager">Manager for the naming of the elements of the graph.</param>
         /// <param name="telemetryClient">Application Insights telemetry client for remote metrics tracking.</param>
         protected IngestionProcessorBase(ILogger<IngestionProcessorBase<TOptions>> logger,
                                         IInputGraphManager inputGraphManager,
                                         IOntologyMappingManager ontologyMappingManager,
                                         IOutputGraphManager outputGraphManager,
-                                        IGraphNamingManager graphNaming,
+                                        IGraphNamingManager graphNamingManager,
                                         TelemetryClient telemetryClient)
         {
             Logger = logger;
@@ -57,7 +57,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
             OntologyMappingManager = ontologyMappingManager;
             TargetModelParser = new ModelParser();
             OutputGraphManager = outputGraphManager;
-            this.graphNaming = graphNaming;
+            this.graphNamingManager = graphNamingManager;
         }
 
         /// <summary>
@@ -471,8 +471,8 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
                         if (outputSourceDtmi != null && TargetObjectModel.TryGetValue(outputSourceDtmi, out var model))
                         {
                             var relationship = ((DTInterfaceInfo)model).Contents.FirstOrDefault(p => p.Value.EntityKind == DTEntityKind.Relationship && p.Value.Name == outputRelationship.Item1);
-                            var relationshipId = outputRelationship.Item2 ? graphNaming.GetRelationshipName(targetDtId, sourceDtId, outputRelationship.Item1, relationshipProperties) :
-                                                                            graphNaming.GetRelationshipName(sourceDtId, targetDtId, outputRelationship.Item1, relationshipProperties);
+                            var relationshipId = outputRelationship.Item2 ? graphNamingManager.GetRelationshipName(targetDtId, sourceDtId, outputRelationship.Item1, relationshipProperties) :
+                                                                            graphNamingManager.GetRelationshipName(sourceDtId, targetDtId, outputRelationship.Item1, relationshipProperties);
 
                             // Create a basic relationship
                             var basicRelationship = new BasicRelationship
