@@ -33,6 +33,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
         private readonly MetricIdentifier targetDtmiNotFoundMetricIdentifier = new MetricIdentifier(Metrics.DefaultNamespace, "TargetDtmiNotFound", Metrics.InterfaceTypeDimensionName);
         private readonly MetricIdentifier outputMappingForInputDtmiNotFoundMetricIdentifier = new MetricIdentifier(Metrics.DefaultNamespace, "OutputMappingForInputDtmiNotFound", Metrics.OutputDtmiTypeDimensionName);
         private readonly MetricIdentifier mappingForInputDtmiNotFoundMetricIdentifier = new MetricIdentifier(Metrics.DefaultNamespace, "MappingForInputDtmiNotFound", Metrics.InterfaceTypeDimensionName);
+        private readonly IGraphNamingManager graphNaming;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="IngestionProcessorBase{TOptions}"/> class.
@@ -41,11 +42,13 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
         /// <param name="inputGraphManager">Manager for the input data graph that this ingestion processor parses.</param>
         /// <param name="ontologyMappingManager">Manager mapping between ontologies used by the input and output graphs.</param>
         /// <param name="outputGraphManager">Manager for the output data graph that this ingestion processor writes to.</param>
+        /// <param name="graphNaming">Manager for the naming of the elements of the graph.</param>
         /// <param name="telemetryClient">Application Insights telemetry client for remote metrics tracking.</param>
         protected IngestionProcessorBase(ILogger<IngestionProcessorBase<TOptions>> logger,
                                         IInputGraphManager inputGraphManager,
                                         IOntologyMappingManager ontologyMappingManager,
                                         IOutputGraphManager outputGraphManager,
+                                        IGraphNamingManager graphNaming,
                                         TelemetryClient telemetryClient)
         {
             Logger = logger;
@@ -54,6 +57,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
             OntologyMappingManager = ontologyMappingManager;
             TargetModelParser = new ModelParser();
             OutputGraphManager = outputGraphManager;
+            this.graphNaming = graphNaming;
         }
 
         /// <summary>
@@ -435,12 +439,14 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
         /// <param name="inputRelationshipType">Input relationship name.</param>
         /// <param name="targetDtId">dtId of the input relationship target.</param>
         /// <param name="targetInterfaceType">DTMI of the input relationship target's Interface.</param>
+        /// <param name="relationshipProperties">A dictionary of proporties for the relationship.</param>
         protected void AddRelationship(IDictionary<string, BasicRelationship> relationships,
-                                      string? sourceDtId,
+                                      string sourceDtId,
                                       Dtmi? inputSourceDtmi,
                                       string? inputRelationshipType,
                                       string targetDtId,
-                                      string targetInterfaceType)
+                                      string targetInterfaceType,
+                                      IDictionary<string, object> relationshipProperties)
         {
             // Get the Dtmi for the input Target entity
             Dtmi? targetInputDtmi = GetInputInterfaceDtmi(targetInterfaceType);
@@ -465,8 +471,8 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
                         if (outputSourceDtmi != null && TargetObjectModel.TryGetValue(outputSourceDtmi, out var model))
                         {
                             var relationship = ((DTInterfaceInfo)model).Contents.FirstOrDefault(p => p.Value.EntityKind == DTEntityKind.Relationship && p.Value.Name == outputRelationship.Item1);
-                            var relationshipId = outputRelationship.Item2 ? $"{targetDtId}-{sourceDtId}-{outputRelationship.Item1}" :
-                                                                            $"{sourceDtId}-{targetDtId}-{outputRelationship.Item1}";
+                            var relationshipId = outputRelationship.Item2 ? graphNaming.GetRelationshipName(targetDtId, sourceDtId, outputRelationship.Item1, relationshipProperties) :
+                                                                            graphNaming.GetRelationshipName(sourceDtId, targetDtId, outputRelationship.Item1, relationshipProperties);
 
                             // Create a basic relationship
                             var basicRelationship = new BasicRelationship
@@ -476,6 +482,14 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
                                 Id = relationshipId,
                                 Name = outputRelationship.Item1.ToString(),
                             };
+
+                            if (relationshipProperties != null)
+                            {
+                                foreach (var relationshipProperty in relationshipProperties)
+                                {
+                                    basicRelationship.Properties.Add(new KeyValuePair<string, object>(relationshipProperty.Key, relationshipProperty.Value));
+                                }
+                            }
 
                             relationships.TryAdd(basicRelationship.Id, basicRelationship);
                         }

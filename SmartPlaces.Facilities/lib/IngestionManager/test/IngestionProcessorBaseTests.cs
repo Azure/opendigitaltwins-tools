@@ -81,6 +81,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Test
                                                                         telemetryClient,
                                                                         mockInputGraphManager.Object,
                                                                         ontologyMappingManager,
+                                                                        new DefaultGraphNamingManager(),
                                                                         mockOutputGraphManager.Object);
             await mockedIngestionProcessor.IngestFromApiAsync(CancellationToken.None);
         }
@@ -92,6 +93,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Test
                                                                         telemetryClient,
                                                                         mockInputGraphManager.Object,
                                                                         ontologyMappingManager,
+                                                                        new DefaultGraphNamingManager(),
                                                                         mockOutputGraphManager.Object);
 
             var dtmi = mockedIngestionProcessor.TestInputInterfaceDtmi("invalidType");
@@ -105,6 +107,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Test
                                                                         telemetryClient,
                                                                         mockInputGraphManager.Object,
                                                                         ontologyMappingManager,
+                                                                        new DefaultGraphNamingManager(),
                                                                         mockOutputGraphManager.Object);
 
             var dtmi = mockedIngestionProcessor.TestInputInterfaceDtmi("Space");
@@ -118,6 +121,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Test
                                                                         telemetryClient,
                                                                         mockInputGraphManager.Object,
                                                                         ontologyMappingManager,
+                                                                        new DefaultGraphNamingManager(),
                                                                         mockOutputGraphManager.Object);
 
             var expectedRelationshipType = "isA";
@@ -133,6 +137,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Test
                                                                         telemetryClient,
                                                                         mockInputGraphManager.Object,
                                                                         ontologyMappingManager,
+                                                                        new DefaultGraphNamingManager(),
                                                                         mockOutputGraphManager.Object);
 
             var inputRelationshipType = "wasA";
@@ -147,6 +152,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Test
                                                                         telemetryClient,
                                                                         mockInputGraphManager.Object,
                                                                         ontologyMappingManager,
+                                                                        new DefaultGraphNamingManager(),
                                                                         mockOutputGraphManager.Object);
 
             var inputDtmi = new Dtmi("dtmi:org:w3id:rec:Space;1");
@@ -165,6 +171,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Test
                                                                         telemetryClient,
                                                                         mockInputGraphManager.Object,
                                                                         ontologyMappingManager,
+                                                                        new DefaultGraphNamingManager(),
                                                                         mockOutputGraphManager.Object);
 
             var inputDtmi = new Dtmi("dtmi:twin:main:CleaningRoom;1");
@@ -184,6 +191,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Test
                                                                         telemetryClient,
                                                                         mockInputGraphManager.Object,
                                                                         ontologyMappingManager,
+                                                                        new DefaultGraphNamingManager(),
                                                                         mockOutputGraphManager.Object);
 
             var inputDtmi = new Dtmi("dtmi:twin:main:SpaceShip;1");
@@ -201,6 +209,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Test
                                                                         telemetryClient,
                                                                         mockInputGraphManager.Object,
                                                                         ontologyMappingManager,
+                                                                        new DefaultGraphNamingManager(),
                                                                         mockOutputGraphManager.Object);
 
             await mockedIngestionProcessor.IngestFromApiAsync(CancellationToken.None);
@@ -220,6 +229,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Test
                                                                         telemetryClient,
                                                                         mockInputGraphManager.Object,
                                                                         ontologyMappingManager,
+                                                                        new DefaultGraphNamingManager(),
                                                                         mockOutputGraphManager.Object);
 
             await mockedIngestionProcessor.IngestFromApiAsync(CancellationToken.None);
@@ -239,6 +249,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Test
                                                                         telemetryClient,
                                                                         mockInputGraphManager.Object,
                                                                         ontologyMappingManager,
+                                                                        new DefaultGraphNamingManager(),
                                                                         mockOutputGraphManager.Object);
 
             var expectedDtmi = "dtmi:org:w3id:rec:Space;1";
@@ -266,6 +277,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Test
                                                                         telemetryClient,
                                                                         mockInputGraphManager.Object,
                                                                         ontologyMappingManager,
+                                                                        new DefaultGraphNamingManager(),
                                                                         mockOutputGraphManager.Object);
 
             var expectedDtmi = "dtmi:org:w3id:rec:Space;1";
@@ -293,6 +305,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Test
                                                                         telemetryClient,
                                                                         mockInputGraphManager.Object,
                                                                         ontologyMappingManager,
+                                                                        new DefaultGraphNamingManager(),
                                                                         mockOutputGraphManager.Object);
 
             var expectedDtmi = "dtmi:org:w3id:rec:SpaceWithBox;1";
@@ -321,6 +334,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Test
                                                                         telemetryClient,
                                                                         mockInputGraphManager.Object,
                                                                         ontologyMappingManager,
+                                                                        new DefaultGraphNamingManager(),
                                                                         mockOutputGraphManager.Object);
 
             var expectedDtmi = "dtmi:org:w3id:rec:Space;1";
@@ -352,6 +366,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Test
                                                                         telemetryClient,
                                                                         mockInputGraphManager.Object,
                                                                         ontologyMappingManager,
+                                                                        new DefaultGraphNamingManager(),
                                                                         mockOutputGraphManager.Object);
 
             var expectedDtmi = "dtmi:org:w3id:rec:Space;1";
@@ -384,6 +399,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Test
                                                                         telemetryClient,
                                                                         mockInputGraphManager.Object,
                                                                         ontologyMappingManager,
+                                                                        new DefaultGraphNamingManager(),
                                                                         mockOutputGraphManager.Object);
 
             IDictionary<string, BasicRelationship> relationships = new Dictionary<string, BasicRelationship>();
@@ -392,10 +408,14 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Test
             var inputRelationshipType = "isLocationOf";
             string targetDtId = "CLSKkDFMgbojZZ54MorD6B11R";
             string targetInterfaceType = "Space";
+            IDictionary<string, object> relationshipProperties = new Dictionary<string, object>
+            {
+                { "testKey", "testValue" }
+            };
 
             await mockedIngestionProcessor.IngestFromApiAsync(CancellationToken.None);
 
-            mockedIngestionProcessor.TestGetRelationship(relationships, sourceDtId, inputSourceDtmi, inputRelationshipType, targetDtId, targetInterfaceType);
+            mockedIngestionProcessor.TestGetRelationship(relationships, sourceDtId, inputSourceDtmi, inputRelationshipType, targetDtId, targetInterfaceType, relationshipProperties);
 
             Assert.Single(relationships);
             var outputRelationship = relationships.First();
@@ -406,6 +426,8 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Test
             Assert.Equal(targetDtId, outputRelationship.Value.TargetId);
             Assert.Equal($"{sourceDtId}-{targetDtId}-{outputRelationship.Value.Name}", outputRelationship.Value.Id);
             Assert.NotNull(outputRelationship.Value.Id);
+            Assert.Equal("testKey", outputRelationship.Value.Properties.First().Key);
+            Assert.Equal("testValue", outputRelationship.Value.Properties.First().Value);
         }
 
         [Fact]
@@ -415,6 +437,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Test
                                                                         telemetryClient,
                                                                         mockInputGraphManager.Object,
                                                                         ontologyMappingManager,
+                                                                        new DefaultGraphNamingManager(),
                                                                         mockOutputGraphManager.Object);
 
             IDictionary<string, BasicRelationship> relationships = new Dictionary<string, BasicRelationship>();
@@ -423,12 +446,13 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Test
             var inputRelationshipType = "hasA";
             string targetDtId = "CLSKkDFMgbojZZ54MorD6B11R";
             string targetInterfaceType = "Space";
+            IDictionary<string, object> relationshipProperties = new Dictionary<string, object>();
 
             var expectedRelationshipType = "isA";
 
             await mockedIngestionProcessor.IngestFromApiAsync(CancellationToken.None);
 
-            mockedIngestionProcessor.TestGetRelationship(relationships, sourceDtId, inputSourceDtmi, inputRelationshipType, targetDtId, targetInterfaceType);
+            mockedIngestionProcessor.TestGetRelationship(relationships, sourceDtId, inputSourceDtmi, inputRelationshipType, targetDtId, targetInterfaceType, relationshipProperties);
 
             Assert.Single(relationships);
             var outputRelationship = relationships.First();
@@ -448,6 +472,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Test
                                                                         telemetryClient,
                                                                         mockInputGraphManager.Object,
                                                                         ontologyMappingManager,
+                                                                        new DefaultGraphNamingManager(),
                                                                         mockOutputGraphManager.Object);
 
             IDictionary<string, BasicRelationship> relationships = new Dictionary<string, BasicRelationship>();
@@ -456,12 +481,13 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Test
             var inputRelationshipType = "hasPoint";
             string targetDtId = "CLSKkDFMgbojZZ54MorD6B11R";
             string targetInterfaceType = "Space";
+            IDictionary<string, object> relationshipProperties = new Dictionary<string, object>();
 
             var expectedRelationshipType = "isPointOf";
 
             await mockedIngestionProcessor.IngestFromApiAsync(CancellationToken.None);
 
-            mockedIngestionProcessor.TestGetRelationship(relationships, sourceDtId, inputSourceDtmi, inputRelationshipType, targetDtId, targetInterfaceType);
+            mockedIngestionProcessor.TestGetRelationship(relationships, sourceDtId, inputSourceDtmi, inputRelationshipType, targetDtId, targetInterfaceType, relationshipProperties);
 
             Assert.Single(relationships);
             var outputRelationship = relationships.First();
@@ -548,8 +574,9 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Test
                                         TelemetryClient telemetryClient,
                                         IInputGraphManager inputGraphManager,
                                         IOntologyMappingManager ontologyMappingManager,
+                                        IGraphNamingManager graphNamingManager,
                                         IOutputGraphManager outputGraphManager)
-            : base(logger, inputGraphManager, ontologyMappingManager, outputGraphManager, telemetryClient)
+            : base(logger, inputGraphManager, ontologyMappingManager, outputGraphManager, graphNamingManager, telemetryClient)
         {
         }
 
@@ -577,13 +604,14 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Test
         }
 
         public void TestGetRelationship(IDictionary<string, BasicRelationship> relationships,
-                              string? sourceElementId,
+                              string sourceElementId,
                               Dtmi? inputSourceDtmi,
                               string? inputRelationshipType,
                               string targetDtId,
-                              string targetInterfaceType)
+                              string targetInterfaceType,
+                              IDictionary<string, object> relationshipProperties)
         {
-            AddRelationship(relationships, sourceElementId, inputSourceDtmi, inputRelationshipType, targetDtId, targetInterfaceType);
+            AddRelationship(relationships, sourceElementId, inputSourceDtmi, inputRelationshipType, targetDtId, targetInterfaceType, relationshipProperties);
         }
 
         protected override Task ProcessSites(CancellationToken cancellationToken)
