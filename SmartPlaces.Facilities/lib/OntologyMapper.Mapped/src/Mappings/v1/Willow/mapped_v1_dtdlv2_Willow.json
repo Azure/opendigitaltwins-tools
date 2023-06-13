@@ -1797,7 +1797,7 @@
     },
     {
       "InputDtmi": "dtmi:org:brickschema:schema:Brick:Elevator_Shaft;1",
-      "OutputDtmi": "dtmi:com:willowinc:ElevatorShaft;1"
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
     },
     {
       "InputDtmi": "dtmi:org:brickschema:schema:Brick:Elevator_Space;1",
@@ -2172,6 +2172,10 @@
     {
       "InputDtmi": "dtmi:org:brickschema:schema:Brick:Freeze_Status;1",
       "OutputDtmi": "dtmi:com:willowinc:State;1"
+    },
+    {
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Freezer;1",
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
     },
     {
       "InputDtmi": "dtmi:org:brickschema:schema:Brick:Frequency_Command;1",
@@ -3983,6 +3987,10 @@
       "OutputDtmi": "dtmi:com:willowinc:AlarmSensor;1"
     },
     {
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Shower;1",
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
+    },
+    {
       "InputDtmi": "dtmi:org:brickschema:schema:Brick:Site;1",
       "OutputDtmi": "dtmi:com:willowinc:Land;1"
     },
@@ -4064,7 +4072,7 @@
     },
     {
       "InputDtmi": "dtmi:org:brickschema:schema:Brick:Staircase;1",
-      "OutputDtmi": "dtmi:com:willowinc:Stairway;1"
+      "OutputDtmi": "dtmi:com:willowinc:Room;1"
     },
     {
       "InputDtmi": "dtmi:org:brickschema:schema:Brick:Standby_Fan;1",
@@ -4776,6 +4784,12 @@
       "OutputPropertyName": "externalIds",
       "InputPropertyNames": [ "mappingKey" ],
       "IsOutputPropertyCollection": true
+    },
+    {
+      "OutputDtmiFilter": ".*",
+      "OutputPropertyName": "alternateClassification",
+      "InputPropertyNames": [ "exactType" ],
+      "IsOutputPropertyCollection": false
     },
     {
       "OutputDtmiFilter": ".*",
