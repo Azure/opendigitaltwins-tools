@@ -122,7 +122,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
                         {
                             foreach (var buildingsElement in sitesElement.EnumerateObject().Where(e => e.Name == "buildings"))
                             {
-                                foreach (var buildingElement in buildingsElement.Value.EnumerateArray().Where(e => e.ValueKind != JsonValueKind.Null))
+                                foreach (var buildingElement in buildingsElement.Value.EnumerateArray().Where(e => e.ValueKind != JsonValueKind.Null && buildingsElement.Value.ValueKind != JsonValueKind.Undefined))
                                 {
                                     await GetPlacesAsync(twins, relationships, buildingElement, sitesElement, "hasPart");
 
@@ -198,7 +198,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
                 // Add the relationship to the location
                 var locationElement = thingElement.EnumerateObject().FirstOrDefault(t => t.Name == "hasLocation");
 
-                if (locationElement.Value.ValueKind != JsonValueKind.Null)
+                if (locationElement.Value.ValueKind != JsonValueKind.Null && locationElement.Value.ValueKind != JsonValueKind.Undefined)
                 {
                     var locationId = locationElement.Value.GetProperty("id").GetString();
                     var relationshipProperties = new Dictionary<string, object>();
@@ -216,7 +216,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
                 // Add the isFedBy Relationships
                 var isFedBys = thingElement.EnumerateObject().FirstOrDefault(t => t.Name == "isFedBy");
 
-                if (isFedBys.Value.ValueKind != JsonValueKind.Null)
+                if (isFedBys.Value.ValueKind != JsonValueKind.Null && isFedBys.Value.ValueKind != JsonValueKind.Undefined)
                 {
                     foreach (var fedByElement in isFedBys.Value.EnumerateArray())
                     {
@@ -228,7 +228,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
                         {
                             var fedByProperties = fedByElement.EnumerateObject().FirstOrDefault(t => t.Name == "properties");
 
-                            if (fedByProperties.Value.ValueKind != JsonValueKind.Null)
+                            if (fedByProperties.Value.ValueKind != JsonValueKind.Null && fedByProperties.Value.ValueKind != JsonValueKind.Undefined)
                             {
                                 foreach (var fedByProperty in fedByProperties.Value.EnumerateObject())
                                 {

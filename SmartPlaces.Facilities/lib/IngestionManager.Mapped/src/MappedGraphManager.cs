@@ -147,7 +147,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
                 var root = model.RootElement.EnumerateArray();
 
                 var element = root.FirstOrDefault(e => e.TryGetProperty("displayName", out var propertyName) && string.Compare(propertyName.ToString(), exactType, StringComparison.OrdinalIgnoreCase) == 0);
-                if (element.ValueKind != JsonValueKind.Null && element.TryGetProperty("@id", out var idProperty))
+                if (element.ValueKind != JsonValueKind.Null && element.ValueKind != JsonValueKind.Undefined && element.TryGetProperty("@id", out var idProperty))
                 {
                     dtmi = idProperty.ToString();
                     return true;

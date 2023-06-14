@@ -30,8 +30,11 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped.Test
 
         private const string organizationQuery = "{sites{description,exactType,id,name}}";
         private const string siteQuery = "{ sites(filter: { id: { eq: \"SITE44nUdjjbqSX1sEXuwEWucr\"} }) { description,exactType,id,name,dateCreated,dateUpdated,type,buildings{ address{countryName,dateCreated,dateUpdated,id,locality,postalCode,region,streetAddress},description,exactType,id,identities { ... on ExternalIdentity { dateCreated, dateUpdated, value } },name,type,floors{ dateCreated,dateUpdated,description,exactType,id,level,name,type} } } }";
+        private const string buildingThingsQuery = "{ buildings(filter: { id: { eq: \"BLDG5o26DguWKu5T9nRvSYn5Em\"} }) { things{ dateCreated,dateUpdated,description,exactType,firmwareVersion,id,mappingKey,model { id,description,manufacturer { id,name,description,logoUrl }, manufacturerId,name,imageUrl,seeAlsoUrls },name,hasLocation{ exactType,id,name },isFedBy{ id,name,exactType }} } }";
+        
         private JsonDocument? siteJsonDocument;
         private JsonDocument? organizationJsonDocument;
+        private JsonDocument? buildingThingsJsonDocument;
 
         public MappedGraphIngestionProcessorTests(ITestOutputHelper output)
         {
@@ -44,6 +47,10 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped.Test
             var siteJsonFile = System.IO.File.ReadAllText("data/site.json");
             var siteReader = new Utf8JsonReader(System.Text.Encoding.UTF8.GetBytes(siteJsonFile));
             _ = JsonDocument.TryParseValue(ref siteReader, out siteJsonDocument);
+
+            var buildingThingsJsonFile = System.IO.File.ReadAllText("data/buildingThings.json");
+            var buildingThingsReader = new Utf8JsonReader(System.Text.Encoding.UTF8.GetBytes(buildingThingsJsonFile));
+            _ = JsonDocument.TryParseValue(ref buildingThingsReader, out buildingThingsJsonDocument);
         }
 
         [Fact]
@@ -80,9 +87,11 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped.Test
             
             mockInputGraphManager.Setup(x => x.GetOrganizationQuery()).Returns(organizationQuery);
             mockInputGraphManager.Setup(x => x.GetBuildingsForSiteQuery(It.IsAny<string>())).Returns(siteQuery);
+            mockInputGraphManager.Setup(x => x.GetBuildingThingsQuery(It.IsAny<string>())).Returns(buildingThingsQuery);
 
             mockInputGraphManager.Setup(x => x.GetTwinGraphAsync(organizationQuery)).ReturnsAsync(organizationJsonDocument);
             mockInputGraphManager.Setup(x => x.GetTwinGraphAsync(siteQuery)).ReturnsAsync(siteJsonDocument);
+            mockInputGraphManager.Setup(x => x.GetTwinGraphAsync(buildingThingsQuery)).ReturnsAsync(buildingThingsJsonDocument);
 
             var mockOutputGraphManager = new Mock<IOutputGraphManager>();
 
