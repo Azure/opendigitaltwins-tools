@@ -62,7 +62,6 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped.Test
                         string result = reader.ReadToEnd();
                         var organizationReader = new Utf8JsonReader(Encoding.UTF8.GetBytes(result));
                         _ = JsonDocument.TryParseValue(ref organizationReader, out jsonDocument);
-
                     }
                 }
                 else
