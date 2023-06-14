@@ -2521,16 +2521,6 @@
       "OutputDtmi": "dtmi:com:willowinc:Room;1"
     },
     {
-      "InputDtmi": "dtmi:org:brickschema:schema:Brick:IP_v4_Address;1",
-      "OutputDtmi": "dtmi:com:willowinc:IPv4Address;1",
-      "IsIgnored": true
-    },
-    {
-      "InputDtmi": "dtmi:org:brickschema:schema:Brick:IP_v6_Address;1",
-      "OutputDtmi": "dtmi:com:willowinc:IPv6Address;1",
-      "IsIgnored": true
-    },
-    {
       "InputDtmi": "dtmi:org:brickschema:schema:Brick:Ice_Tank_Leaving_Water_Temperature_Sensor;1",
       "OutputDtmi": "dtmi:com:willowinc:LeavingChilledWaterTemperatureSensor;1"
     },
@@ -2802,11 +2792,6 @@
     {
       "InputDtmi": "dtmi:org:brickschema:schema:Brick:Luminance_Command;1",
       "OutputDtmi": "dtmi:com:willowinc:Actuator;1"
-    },
-    {
-      "InputDtmi": "dtmi:org:brickschema:schema:Brick:MAC_Address;1",
-      "OutputDtmi": "dtmi:com:willowinc:MACAddress;1",
-      "IsIgnored": true
     },
     {
       "InputDtmi": "dtmi:org:brickschema:schema:Brick:MAU;1",
@@ -4729,31 +4714,6 @@
     {
       "InputDtmi": "dtmi:org:brickschema:schema:Brick:Zone_Unoccupied_Load_Shed_Command;1",
       "OutputDtmi": "dtmi:com:willowinc:UnoccupiedActuator;1"
-    },
-    {
-      "InputDtmi": "dtmi:org:brickschema:schema:Brick:attachment;1",
-      "OutputDtmi": "dtmi:com:willowinc:attachment;1",
-      "IsIgnored": true
-    },
-    {
-      "InputDtmi": "dtmi:org:brickschema:schema:Brick:callInfo;1",
-      "OutputDtmi": "dtmi:com:willowinc:callInfo;1",
-      "IsIgnored": true
-    },
-    {
-      "InputDtmi": "dtmi:org:brickschema:schema:Brick:connected_Data_Source_Id;1",
-      "OutputDtmi": "dtmi:com:willowinc:connectedDataSourceId;1",
-      "IsIgnored": true
-    },
-    {
-      "InputDtmi": "dtmi:org:brickschema:schema:Brick:firmware_Version;1",
-      "OutputDtmi": "dtmi:com:willowinc:firmwareVersion;1",
-      "IsIgnored": true
-    },
-    {
-      "InputDtmi": "dtmi:org:brickschema:schema:Brick:postal_Code;1",
-      "OutputDtmi": "dtmi:com:willowinc:postalCode;1",
-      "IsIgnored": true
     }
   ],
   "RelationshipRemaps": [
