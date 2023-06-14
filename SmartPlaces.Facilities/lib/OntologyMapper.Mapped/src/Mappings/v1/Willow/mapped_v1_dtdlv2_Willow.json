@@ -368,7 +368,7 @@
       "OutputDtmi": "dtmi:com:willowinc:State;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Library;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Library;1",
       "OutputDtmi": "dtmi:com:willowinc:Library;1",
       "IsIgnored": true
     },
@@ -687,7 +687,7 @@
       "OutputDtmi": "dtmi:com:willowinc:TemperatureSetpoint;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:TestPoint;1",
+      "InputDtmi": "dtmi:mapped:core:Test_Point;1",
       "OutputDtmi": "dtmi:com:willowinc:Capability;1",
       "IsIgnored": true
     },
@@ -806,7 +806,7 @@
       "IsIgnored": true
     },
     {
-      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Air_Quality_Sensing_Device;1",
+      "InputDtmi": "dtmi:mapped:core:Air_Quality_Sensing_Device;1",
       "OutputDtmi": "dtmi:com:willowinc:Device;1",
       "IsIgnored": true
     },
@@ -904,12 +904,12 @@
       "OutputDtmi": "dtmi:com:willowinc:ZoneAirTemperatureSensor;1"
     },
     {
-      "InputDtmi": "dtmi:org:brickschema:schema:Brick:BACnet_Object_Id;1",
+      "InputDtmi": "dtmi:mapped:core:BACnet_Object_Id;1",
       "OutputDtmi": "dtmi:com:willowinc:BACnetObjectId;1",
       "IsIgnored": true
     },
     {
-      "InputDtmi": "dtmi:org:brickschema:schema:Brick:BACnet_Vendor_Id;1",
+      "InputDtmi": "dtmi:mapped:core:BACnet_Vendor_Id;1",
       "OutputDtmi": "dtmi:com:willowinc:BACnetVendorId;1",
       "IsIgnored": true
     },
@@ -1069,17 +1069,17 @@
       "OutputDtmi": "dtmi:com:willowinc:Room;1"
     },
     {
-      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Calendar;1",
+      "InputDtmi": "dtmi:mapped:core:Calendar;1",
       "OutputDtmi": "dtmi:com:willowinc:Calendar;1",
       "IsIgnored": true
     },
     {
-      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Calendar_Event;1",
+      "InputDtmi": "dtmi:mapped:core:Calendar_Event;1",
       "OutputDtmi": "dtmi:com:willowinc:Event;1",
       "IsIgnored": true
     },
     {
-      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Calendar_Event_Invitation;1",
+      "InputDtmi": "dtmi:mapped:core:Calendar_Event_Invitation;1",
       "OutputDtmi": "dtmi:com:willowinc:CalendarEventInvitation;1",
       "IsIgnored": true
     },
@@ -1170,7 +1170,7 @@
       "OutputDtmi": "dtmi:com:willowinc:Valve;1"
     },
     {
-      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Class;1",
+      "InputDtmi": "dtmi:mapped:core:Class;1",
       "OutputDtmi": "dtmi:com:willowinc:Class;1",
       "IsIgnored": true
     },
@@ -1179,17 +1179,17 @@
       "OutputDtmi": "dtmi:com:willowinc:Limit;1"
     },
     {
-      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Cloud_Layer1_Height_Code_Sensor;1",
+      "InputDtmi": "dtmi:mapped:core:Cloud_Layer_1_Height_Code_Sensor;1",
       "OutputDtmi": "dtmi:com:willowinc:CloudLayer1HeightCodeSensor;1",
       "IsIgnored": true
     },
     {
-      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Cloud_Layer2_Height_Code_Sensor;1",
+      "InputDtmi": "dtmi:mapped:core:Cloud_Layer_2_Height_Code_Sensor;1",
       "OutputDtmi": "dtmi:com:willowinc:CloudLayer2HeightCodeSensor;1",
       "IsIgnored": true
     },
     {
-      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Cloud_Layer3_Height_Code_Sensor;1",
+      "InputDtmi": "dtmi:mapped:core:Cloud_Layer_3_Height_Code_Sensor;1",
       "OutputDtmi": "dtmi:com:willowinc:CloudLayer3HeightCodeSensor;1",
       "IsIgnored": true
     },
@@ -1537,7 +1537,7 @@
       "OutputDtmi": "dtmi:com:willowinc:FanCoilUnit;1"
     },
     {
-      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Direct_Expansion_Unit;1",
+      "InputDtmi": "dtmi:mapped:core:Direct_Expansion_Unit;1",
       "OutputDtmi": "dtmi:com:willowinc:DirectExpansionUnit;1",
       "IsIgnored": true
     },
@@ -1690,7 +1690,7 @@
       "OutputDtmi": "dtmi:com:willowinc:AirDiffuser;1"
     },
     {
-      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Display;1",
+      "InputDtmi": "dtmi:mapped:core:Display;1",
       "OutputDtmi": "dtmi:com:willowinc:Display;1",
       "IsIgnored": true
     },
@@ -1804,12 +1804,12 @@
       "OutputDtmi": "dtmi:com:willowinc:Room;1"
     },
     {
-      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Email;1",
+      "InputDtmi": "dtmi:mapped:core:Email;1",
       "OutputDtmi": "dtmi:com:willowinc:Email;1",
       "IsIgnored": true
     },
     {
-      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Email_Identity;1",
+      "InputDtmi": "dtmi:mapped:core:Email_Identity;1",
       "OutputDtmi": "dtmi:com:willowinc:EmailIdentity;1",
       "IsIgnored": true
     },
@@ -1971,7 +1971,7 @@
       "OutputDtmi": "dtmi:com:willowinc:State;1"
     },
     {
-      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Event;1",
+      "InputDtmi": "dtmi:mapped:core:Event;1",
       "OutputDtmi": "dtmi:com:willowinc:Event;1",
       "IsIgnored": true
     },
@@ -2044,12 +2044,12 @@
       "OutputDtmi": "dtmi:com:willowinc:ExhaustFan;1"
     },
     {
-      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Exhaust_Fan_Disable_Command;1",
+      "InputDtmi": "dtmi:mapped:core:Exhaust_Fan_Disable_Command;1",
       "OutputDtmi": "dtmi:com:willowinc:DisableActuator;1",
       "IsIgnored": true
     },
     {
-      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Exhaust_Fan_Enable_Command;1",
+      "InputDtmi": "dtmi:mapped:core:Exhaust_Fan_Enable_Command;1",
       "OutputDtmi": "dtmi:com:willowinc:EnableActuator;1",
       "IsIgnored": true
     },
@@ -2157,7 +2157,7 @@
       "OutputDtmi": "dtmi:com:willowinc:Level;1"
     },
     {
-      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Floor_Level_Identity;1",
+      "InputDtmi": "dtmi:mapped:core:Floor_Level_Identity;1",
       "OutputDtmi": "dtmi:com:willowinc:FloorLevelIdentity;1",
       "IsIgnored": true
     },
@@ -2535,7 +2535,7 @@
       "OutputDtmi": "dtmi:com:willowinc:LeavingChilledWaterTemperatureSensor;1"
     },
     {
-      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Identity;1",
+      "InputDtmi": "dtmi:mapped:core:Identity;1",
       "OutputDtmi": "dtmi:com:willowinc:Identity;1",
       "IsIgnored": true
     },
@@ -2700,7 +2700,7 @@
       "OutputDtmi": "dtmi:com:willowinc:OnOffState;1"
     },
     {
-      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Lock_Unlock_Command;1",
+      "InputDtmi": "dtmi:mapped:core:Lock_Unlock_Command;1",
       "OutputDtmi": "dtmi:com:willowinc:OnOffActuator;1",
       "IsIgnored": true
     },
@@ -2722,7 +2722,7 @@
       "OutputDtmi": "dtmi:com:willowinc:Room;1"
     },
     {
-      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Louver;1",
+      "InputDtmi": "dtmi:mapped:core:Louver;1",
       "OutputDtmi": "dtmi:com:willowinc:Louver;1",
       "IsIgnored": true
     },
@@ -3005,7 +3005,7 @@
       "OutputDtmi": "dtmi:com:willowinc:HotWaterDeltaPressureSetpoint;1"
     },
     {
-      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Meta;1",
+      "InputDtmi": "dtmi:mapped:core:Meta;1",
       "OutputDtmi": "dtmi:com:willowinc:Meta;1",
       "IsIgnored": true
     },
@@ -3204,7 +3204,7 @@
       "OutputDtmi": "dtmi:com:willowinc:NO2Sensor;1"
     },
     {
-      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Name_Identity;1",
+      "InputDtmi": "dtmi:mapped:core:Name_Identity;1",
       "OutputDtmi": "dtmi:com:willowinc:NameIdentity;1",
       "IsIgnored": true
     },
@@ -3333,7 +3333,7 @@
       "OutputDtmi": "dtmi:com:willowinc:Room;1"
     },
     {
-      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Offset;1",
+      "InputDtmi": "dtmi:mapped:core:Offset;1",
       "OutputDtmi": "dtmi:com:willowinc:Setpoint;1",
       "IsIgnored": true
     },
@@ -3366,7 +3366,7 @@
       "OutputDtmi": "dtmi:com:willowinc:Room;1"
     },
     {
-      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Opening;1",
+      "InputDtmi": "dtmi:mapped:core:Opening;1",
       "OutputDtmi": "dtmi:com:willowinc:Opening;1",
       "IsIgnored": true
     },
@@ -3564,7 +3564,7 @@
       "OutputDtmi": "dtmi:com:willowinc:PowerSensor;1"
     },
     {
-      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Person_Profile;1",
+      "InputDtmi": "dtmi:mapped:core:Person_Profile;1",
       "OutputDtmi": "dtmi:com:willowinc:PersonProfile;1",
       "IsIgnored": true
     },
@@ -3578,7 +3578,7 @@
       "OutputDtmi": "dtmi:com:willowinc:Sensor;1"
     },
     {
-      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Plug_Strip;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:PlugStrip;1",
       "OutputDtmi": "dtmi:com:willowinc:PlugStrip;1",
       "IsIgnored": true
     },
@@ -3599,7 +3599,7 @@
       "OutputDtmi": "dtmi:com:willowinc:Limit;1"
     },
     {
-      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Postal_Address_Identity;1",
+      "InputDtmi": "dtmi:mapped:core:Postal_Address_Identity;1",
       "OutputDtmi": "dtmi:com:willowinc:PostalAddressIdentity;1",
       "IsIgnored": true
     },
@@ -3672,12 +3672,12 @@
       "OutputDtmi": "dtmi:com:willowinc:Room;1"
     },
     {
-      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Projection_Screen;1",
+      "InputDtmi": "dtmi:mapped:core:Projection_Screen;1",
       "OutputDtmi": "dtmi:com:willowinc:ProjectionScreen;1",
       "IsIgnored": true
     },
     {
-      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Property_Bag;1",
+      "InputDtmi": "dtmi:mapped:core:PropertyBag;1",
       "OutputDtmi": "dtmi:com:willowinc:PropertyBag;1",
       "IsIgnored": true
     },
@@ -3817,7 +3817,7 @@
       "OutputDtmi": "dtmi:com:willowinc:OnOffState;1"
     },
     {
-      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Request;1",
+      "InputDtmi": "dtmi:mapped:core:Request;1",
       "OutputDtmi": "dtmi:com:willowinc:Request;1",
       "IsIgnored": true
     },
@@ -3969,7 +3969,7 @@
       "OutputDtmi": "dtmi:com:willowinc:Room;1"
     },
     {
-      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Setpoint_Offset;1",
+      "InputDtmi": "dtmi:mapped:core:Setpoint_Offset;1",
       "OutputDtmi": "dtmi:com:willowinc:Setpoint;1",
       "IsIgnored": true
     },
@@ -4016,7 +4016,7 @@
       "IsIgnored": true
     },
     {
-      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Space_Code;1",
+      "InputDtmi": "dtmi:mapped:core:SpaceCode;1",
       "OutputDtmi": "dtmi:com:willowinc:SpaceCode;1",
       "IsIgnored": true
     },
@@ -4025,7 +4025,7 @@
       "OutputDtmi": "dtmi:com:willowinc:UnitHeater;1"
     },
     {
-      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Speaker;1",
+      "InputDtmi": "dtmi:mapped:core:Speaker;1",
       "OutputDtmi": "dtmi:com:willowinc:Speaker;1",
       "IsIgnored": true
     },
@@ -4062,7 +4062,7 @@
       "OutputDtmi": "dtmi:com:willowinc:EnableActuator;1"
     },
     {
-      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Stage_Riser;1",
+      "InputDtmi": "dtmi:mapped:core:Stage_Riser;1",
       "OutputDtmi": "dtmi:com:willowinc:StageRiser;1",
       "IsIgnored": true
     },
@@ -4333,7 +4333,7 @@
       "OutputDtmi": "dtmi:com:willowinc:Room;1"
     },
     {
-      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Teleconference_Unit;1",
+      "InputDtmi": "dtmi:mapped:core:Teleconference_Unit;1",
       "OutputDtmi": "dtmi:com:willowinc:TeleconferenceUnit;1",
       "IsIgnored": true
     },
@@ -4386,7 +4386,7 @@
       "OutputDtmi": "dtmi:com:willowinc:State;1"
     },
     {
-      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Test_Point;1",
+      "InputDtmi": "dtmi:mapped:core:Test_Point;1",
       "OutputDtmi": "dtmi:com:willowinc:Capability;1",
       "IsIgnored": true
     },
@@ -4412,7 +4412,7 @@
       "OutputDtmi": "dtmi:com:willowinc:Valve;1"
     },
     {
-      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Thing;1",
+      "InputDtmi": "dtmi:mapped:core:Thing;1",
       "OutputDtmi": "dtmi:com:willowinc:Equipment;1",
       "IsIgnored": true
     },
