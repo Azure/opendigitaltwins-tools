@@ -6,6 +6,10 @@
 
 namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped.Test
 {
+    using System.IO;
+    using System.Linq;
+    using System.Reflection;
+    using System.Text;
     using System.Text.Json;
     using System.Threading;
     using System.Threading.Tasks;
@@ -31,25 +35,43 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped.Test
         private const string siteQuery = "{ sites(filter: { id: { eq: \"SITE44nUdjjbqSX1sEXuwEWucr\"} }) { description,exactType,id,name,dateCreated,dateUpdated,type,buildings{ address{countryName,dateCreated,dateUpdated,id,locality,postalCode,region,streetAddress},description,exactType,id,identities { ... on ExternalIdentity { dateCreated, dateUpdated, value } },name,type,floors{ dateCreated,dateUpdated,description,exactType,id,level,name,type} } } }";
         private const string buildingThingsQuery = "{ buildings(filter: { id: { eq: \"BLDG5o26DguWKu5T9nRvSYn5Em\"} }) { things{ dateCreated,dateUpdated,description,exactType,firmwareVersion,id,mappingKey,model { id,description,manufacturer { id,name,description,logoUrl }, manufacturerId,name,imageUrl,seeAlsoUrls },name,hasLocation{ exactType,id,name },isFedBy{ id,name,exactType }} } }";
         
-        private JsonDocument? siteJsonDocument;
-        private JsonDocument? organizationJsonDocument;
-        private JsonDocument? buildingThingsJsonDocument;
+        private readonly JsonDocument? siteJsonDocument;
+        private readonly JsonDocument? organizationJsonDocument;
+        private readonly JsonDocument? buildingThingsJsonDocument;
 
         public MappedGraphIngestionProcessorTests(ITestOutputHelper output)
         {
             this.output = output;
 
-            var organizationJsonFile = System.IO.File.ReadAllText("data/organization.json");
-            var organizationReader = new Utf8JsonReader(System.Text.Encoding.UTF8.GetBytes(organizationJsonFile));
-            _ = JsonDocument.TryParseValue(ref organizationReader, out organizationJsonDocument);
+            organizationJsonDocument = GetDocumentFromResource("organization.json");
+            siteJsonDocument = GetDocumentFromResource("site.json");
+            buildingThingsJsonDocument = GetDocumentFromResource("buildingThings.json");
+        }
 
-            var siteJsonFile = System.IO.File.ReadAllText("data/site.json");
-            var siteReader = new Utf8JsonReader(System.Text.Encoding.UTF8.GetBytes(siteJsonFile));
-            _ = JsonDocument.TryParseValue(ref siteReader, out siteJsonDocument);
+        private static JsonDocument? GetDocumentFromResource(string resourceName)
+        {
+            var assembly = Assembly.GetExecutingAssembly();
+            var resource = assembly.GetManifestResourceNames().Single(str => str.EndsWith(resourceName));
+            var jsonDocument = null as JsonDocument;
+            using (Stream? stream = assembly.GetManifestResourceStream(resource))
+            {
+                if (stream != null)
+                {
+                    using (StreamReader reader = new StreamReader(stream))
+                    {
+                        string result = reader.ReadToEnd();
+                        var organizationReader = new Utf8JsonReader(Encoding.UTF8.GetBytes(result));
+                        _ = JsonDocument.TryParseValue(ref organizationReader, out jsonDocument);
 
-            var buildingThingsJsonFile = System.IO.File.ReadAllText("data/buildingThings.json");
-            var buildingThingsReader = new Utf8JsonReader(System.Text.Encoding.UTF8.GetBytes(buildingThingsJsonFile));
-            _ = JsonDocument.TryParseValue(ref buildingThingsReader, out buildingThingsJsonDocument);
+                    }
+                }
+                else
+                {
+                    throw new FileNotFoundException(resourceName);
+                }
+            }
+
+            return jsonDocument;
         }
 
         [Fact]
