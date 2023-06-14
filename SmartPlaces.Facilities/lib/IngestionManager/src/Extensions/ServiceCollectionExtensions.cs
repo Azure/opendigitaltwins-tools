@@ -37,6 +37,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Extensions
                 options.DefaultRequestHeaders.Add("ms-smartfacilities-version", Assembly.GetExecutingAssembly().GetName().Version?.ToString() ?? "0.0.0");
             });
 
+            services.AddSingleton<IGraphNamingManager, DefaultGraphNamingManager>();
             services.AddSingleton<IOutputGraphManager, AzureDigitalTwinsGraphManager<TOptions>>();
             return services;
         }
