@@ -6,7 +6,6 @@
 
 namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped.Test
 {
-    using System;
     using System.Text.Json;
     using System.Threading;
     using System.Threading.Tasks;

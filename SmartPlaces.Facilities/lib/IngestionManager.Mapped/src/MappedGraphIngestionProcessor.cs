@@ -6,7 +6,6 @@
 
 namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
 {
-    using System.Security.Cryptography.X509Certificates;
     using System.Text.Json;
     using System.Threading.Tasks;
     using global::Azure.DigitalTwins.Core;
