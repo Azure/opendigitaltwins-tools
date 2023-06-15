@@ -266,7 +266,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Test
             Assert.Equal(basicDtId, twins.First().Key);
             Assert.Equal(basicDtId, twins.First().Value.Id);
             Assert.Equal(expectedDtmi, twins.First().Value.Metadata.ModelId);
-            Assert.Equal(2,twins.First().Value.Contents.Count);
+            Assert.Single(twins.First().Value.Contents);
             Assert.Equal("AV 31", twins.First().Value.Contents["name"].ToString());
         }
 
@@ -294,7 +294,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Test
             Assert.Equal(basicDtId, twins.First().Key);
             Assert.Equal(basicDtId, twins.First().Value.Id);
             Assert.Equal(expectedDtmi, twins.First().Value.Metadata.ModelId);
-            Assert.Equal(2, twins.First().Value.Contents.Count);
+            Assert.Single(twins.First().Value.Contents);
             Assert.Equal("test", twins.First().Value.Contents["name"].ToString());
         }
 
@@ -322,7 +322,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Test
             Assert.Equal(basicDtId, twins.First().Key);
             Assert.Equal(basicDtId, twins.First().Value.Id);
             Assert.Equal(expectedDtmi, twins.First().Value.Metadata.ModelId);
-            Assert.Equal(3, twins.First().Value.Contents.Count);
+            Assert.Equal(2, twins.First().Value.Contents.Count);
             Assert.Equal("test", twins.First().Value.Contents["name"].ToString());
             Assert.Equal("{ \"$metadata\": {} }", twins.First().Value.Contents["box"].ToString());
         }
@@ -351,7 +351,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Test
             Assert.Equal(basicDtId, twins.First().Key);
             Assert.Equal(basicDtId, twins.First().Value.Id);
             Assert.Equal(expectedDtmi, twins.First().Value.Metadata.ModelId);
-            Assert.Equal(3, twins.First().Value.Contents.Count);
+            Assert.Equal(2, twins.First().Value.Contents.Count);
 
             var contents = twins.First().Value.Contents as IDictionary<string, object>;
             var externalIds = contents["externalIds"] as IDictionary<string, string>;
@@ -383,7 +383,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Test
             Assert.Equal(basicDtId, twins.First().Key);
             Assert.Equal(basicDtId, twins.First().Value.Id);
             Assert.Equal(expectedDtmi, twins.First().Value.Metadata.ModelId);
-            Assert.Equal(3, twins.First().Value.Contents.Count);
+            Assert.Equal(2, twins.First().Value.Contents.Count);
 
             var contents = twins.First().Value.Contents as IDictionary<string, object>;
             var externalIds = contents["externalIds"] as IDictionary<string, string>;
