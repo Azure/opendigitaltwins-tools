@@ -113,7 +113,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
         /// <returns>A formatted graph query.</returns>
         public virtual string GetPointsForThingQuery(string thingDtId)
         {
-            return "{ things(filter: { id: { eq: \"" + thingDtId + "\" } }) { points(filter: { exactType: { ne: \"Point\"} }) { dateCreated,dateUpdated,description,exactType,id,mappingKey,name,unit{description,id,name} } }";
+            return "{ things(filter: { id: { eq: \"" + thingDtId + "\" } }) { points(filter: { exactType: { ne: \"Point\"} }) { dateCreated,dateUpdated,description,exactType,id,mappingKey,name,unit{description,id,name} } } }";
         }
 
         /// <summary>

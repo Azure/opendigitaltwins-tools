@@ -10,11 +10,13 @@
 	  <None Remove="Data\buildingThings.json" />
 	  <None Remove="Data\organization.json" />
 	  <None Remove="Data\site.json" />
+	  <None Remove="Data\thingPoints.json" />
 	</ItemGroup>
 	
 	<ItemGroup>
 	  <EmbeddedResource Include="Data\buildingThings.json" />
 	  <EmbeddedResource Include="Data\organization.json" />
+	  <EmbeddedResource Include="Data\thingPoints.json" />
 	  <EmbeddedResource Include="Data\site.json" />
 	</ItemGroup>
 
