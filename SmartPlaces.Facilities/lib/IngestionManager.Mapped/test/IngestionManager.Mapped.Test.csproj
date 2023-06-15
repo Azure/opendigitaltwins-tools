@@ -5,6 +5,20 @@
 		<Nullable>enable</Nullable>
 		<IsPackable>false</IsPackable>
 	</PropertyGroup>
+	
+	<ItemGroup>
+	  <None Remove="Data\buildingThings.json" />
+	  <None Remove="Data\organization.json" />
+	  <None Remove="Data\site.json" />
+	  <None Remove="Data\thingPoints.json" />
+	</ItemGroup>
+	
+	<ItemGroup>
+	  <EmbeddedResource Include="Data\buildingThings.json" />
+	  <EmbeddedResource Include="Data\organization.json" />
+	  <EmbeddedResource Include="Data\thingPoints.json" />
+	  <EmbeddedResource Include="Data\site.json" />
+	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="coverlet.collector" Version="3.1.2">
@@ -31,6 +45,11 @@
 	<!-- Can be removed once Microsoft.NET.Test.Sdk fixes the vulnerability -->
 	<ItemGroup>
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+	</ItemGroup>
+	<ItemGroup>
+	  <None Update="Data\*.json">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
 	</ItemGroup>
 
 </Project>
