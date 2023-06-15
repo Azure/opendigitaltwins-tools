@@ -4787,12 +4787,6 @@
     },
     {
       "OutputDtmiFilter": ".*",
-      "OutputPropertyName": "alternateClassification",
-      "InputPropertyNames": [ "exactType" ],
-      "IsOutputPropertyCollection": false
-    },
-    {
-      "OutputDtmiFilter": ".*",
       "OutputPropertyName": "externalID",
       "InputPropertyNames": [ "id" ],
       "IsOutputPropertyCollection": false
