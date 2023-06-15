@@ -265,6 +265,10 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
                     // Populate the content of the twin
                     var contentDictionary = new Dictionary<string, object>();
 
+                    // Add the alternate classification to the twin (brickSchema)
+                    var alternateClassification = new { BrickSchema = inputDtmi.AbsoluteUri };
+                    contentDictionary.Add("alternateClassification", JsonSerializer.SerializeToDocument(alternateClassification).RootElement);
+
                     // Get the model needed
                     if (TargetObjectModel.TryGetValue(outputDtmi, out var model))
                     {
