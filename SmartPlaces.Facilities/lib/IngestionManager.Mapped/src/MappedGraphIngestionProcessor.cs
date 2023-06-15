@@ -309,7 +309,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
                     switch (innerElement.Value.ValueKind)
                     {
                         case JsonValueKind.Array:
-                            foreach (var item in innerElement.Value.EnumerateArray().Where(x => x.ValueKind != JsonValueKind.String))
+                            foreach (var item in innerElement.Value.EnumerateArray().Where(x => x.ValueKind == JsonValueKind.Object))
                             {
                                 await GetPlacesAsync(twins, relationships, item, targetElement, innerElement.Name);
                             }
