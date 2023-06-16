@@ -113,6 +113,16 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
         /// <returns>An awaitable task.</returns>
         protected abstract Task ProcessSites(CancellationToken cancellationToken);
 
+        /// <summary>
+        /// This method is called for each twin in the graph to add properties to the twin based on inputs.
+        /// </summary>
+        /// <param name="inputDtmi">The DTMI of the input twin.</param>
+        /// <returns>A dictionary of strings and objects to add to the contents of the twin.</returns>
+        protected virtual IDictionary<string, object> GetTargetSpecificContents(Dtmi inputDtmi)
+        {
+            return new Dictionary<string, object>();
+        }
+
         /// <inheritdoc/>
         public async Task IngestFromApiAsync(CancellationToken cancellationToken)
         {
@@ -264,6 +274,17 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
 
                     // Populate the content of the twin
                     var contentDictionary = new Dictionary<string, object>();
+
+                    // Check to see if there are any custom properties that need to be added to the twin based on the input DTMI.
+                    var targetSpecificContents = GetTargetSpecificContents(inputDtmi);
+
+                    if (targetSpecificContents != null)
+                    {
+                        foreach (var content in targetSpecificContents)
+                        {
+                            contentDictionary.Add(content.Key, JsonSerializer.SerializeToDocument(content.Value).RootElement);
+                        }
+                    }
 
                     // Get the model needed
                     if (TargetObjectModel.TryGetValue(outputDtmi, out var model))
