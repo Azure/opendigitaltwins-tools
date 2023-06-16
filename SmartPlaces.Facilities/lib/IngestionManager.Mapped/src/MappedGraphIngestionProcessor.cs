@@ -59,7 +59,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
         protected override async Task ProcessSites(CancellationToken cancellationToken)
         {
             // Generate the outermost query to run against the input graph. Starts by getting the list of sites
-            var metricIdentifier = new MetricIdentifier(Metrics.DefaultNamespace, "SiteProcessed", Metrics.SiteDimensionName);
+            var metricIdentifier = new MetricIdentifier(Metrics.DefaultNamespace, "SiteProcessed", Metrics.SiteDimensionName, Metrics.IsSuccessDimensionName);
 
             var query = InputGraphManager.GetOrganizationQuery();
 
@@ -75,8 +75,8 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
                     {
                         foreach (var siteElement in dataElement.Value.EnumerateArray())
                         {
-                            await UpdateOutputSiteAsync(siteElement, cancellationToken);
-                            TelemetryClient.GetMetric(metricIdentifier).TrackValue(1, siteElement.GetProperty("name").ToString());
+                            var isSuccessful = await UpdateOutputSiteAsync(siteElement, cancellationToken);
+                            TelemetryClient.GetMetric(metricIdentifier).TrackValue(1, siteElement.GetProperty("name").ToString(), isSuccessful.ToString());
                         }
                     }
                 }
@@ -87,7 +87,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
             }
         }
 
-        private async Task UpdateOutputSiteAsync(JsonElement siteElement, CancellationToken cancellationToken)
+        private async Task<bool> UpdateOutputSiteAsync(JsonElement siteElement, CancellationToken cancellationToken)
         {
             Logger.LogInformation("Creating Site...");
 
@@ -101,8 +101,8 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
 
             if (!siteElement.TryGetProperty("id", out var idProp))
             {
-                Logger.LogInformation("No SiteId found...");
-                return;
+                Logger.LogWarning("No SiteId found...");
+                return false;
             }
 
             var siteDtId = idProp.ToString();
@@ -150,6 +150,8 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
             await OutputGraphManager.UploadGraphAsync(twins, relationships, cancellationToken);
 
             Logger.LogInformation("Completed updating site.");
+
+            return true;
         }
 
         private async Task GetBuildingThingsAsync(IDictionary<string, BasicDigitalTwin> twins,
