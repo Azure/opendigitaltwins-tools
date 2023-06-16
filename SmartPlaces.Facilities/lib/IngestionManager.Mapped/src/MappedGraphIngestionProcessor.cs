@@ -160,6 +160,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
         {
             if (!targetElement.TryGetProperty("id", out var basicDtIdProp))
             {
+                Logger.LogInformation("Building id is missing... skipping.");
                 return;
             }
 
