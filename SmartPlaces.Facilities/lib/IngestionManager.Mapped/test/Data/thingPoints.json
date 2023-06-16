@@ -1,0 +1,24 @@
+﻿{
+  "data": {
+    "things": [
+      {
+        "points": [
+          {
+            "dateCreated": "2023-04-05T06:40:30.241",
+            "dateUpdated": "2023-04-05T06:42:13.861",
+            "description": null,
+            "exactType": "Damper_Position_Sensor",
+            "id": "PNTDj4dxY9XJpnZmbBgf3ykG8",
+            "mappingKey": "mkey://CONCskq1UEa1z9JuHHpkQaQuS@MAPPED_UG/BLDG5o26DguWKu5T9nRvSYn5Em/Floor_2_Exam_7_VAV_Box_Component#Zone_Air_Terminal_VAV_Damper_Position",
+            "name": "Floor_2_Exam_7_VAV_Box_Component#Zone_Air_Terminal_VAV_Damper_Position",
+            "unit": {
+              "description": "An explicit unit to say something has no units.",
+              "id": "UNITLESS",
+              "name": "Unitless"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

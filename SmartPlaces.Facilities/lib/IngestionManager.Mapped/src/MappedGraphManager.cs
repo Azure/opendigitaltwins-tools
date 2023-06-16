@@ -81,7 +81,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
         /// Creates a query that returns all the sites associated to an organization.
         /// </summary>
         /// <returns>A formatted graph query.</returns>
-        public string GetOrganizationQuery()
+        public virtual string GetOrganizationQuery()
         {
             return "{sites{description,exactType,id,name}}";
         }
@@ -91,9 +91,9 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
         /// </summary>
         /// <param name="siteId">Site to search.</param>
         /// <returns>A formatted graph query.</returns>
-        public string GetBuildingsForSiteQuery(string siteId)
+        public virtual string GetBuildingsForSiteQuery(string siteId)
         {
-            return "{ sites(filter: { id: { eq: \"" + siteId + "\"} }) { description,exactType,id,name,buildings{ description,exactType,id,name,floors{ description,exactType,id,level,name} } } }";
+            return "{ sites(filter: { id: { eq: \"" + siteId + "\"} }) { description,exactType,id,name,dateCreated,dateUpdated,buildings{ address{countryName,dateCreated,dateUpdated,id,locality,postalCode,region,streetAddress},description,exactType,id,identities { ... on ExternalIdentity { dateCreated, dateUpdated, value } },name,floors{ dateCreated,dateUpdated,description,exactType,id,level,name} } } }";
         }
 
         /// <summary>
@@ -101,9 +101,9 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
         /// </summary>
         /// <param name="buildingDtId">Building to search.</param>
         /// <returns>A formatted graph query.</returns>
-        public string GetBuildingThingsQuery(string buildingDtId)
+        public virtual string GetBuildingThingsQuery(string buildingDtId)
         {
-            return "{ buildings(filter: { id: { eq: \"" + buildingDtId + "\"} }) { things{ description,exactType,firmwareVersion,id,mappingKey,name,hasLocation{ exactType,id,name},isFedBy{ id,name,exactType}} } }";
+            return "{ buildings(filter: { id: { eq: \"" + buildingDtId + "\"} }) { things{ dateCreated,dateUpdated,description,exactType,firmwareVersion,id,mappingKey,model { id,description,manufacturer { id,name,description,logoUrl }, manufacturerId,name,imageUrl,seeAlsoUrls },name,hasLocation{ exactType,id,name },isFedBy{ id,name,exactType }} } }";
         }
 
         /// <summary>
@@ -111,9 +111,9 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
         /// </summary>
         /// <param name="thingDtId">Thing to search.</param>
         /// <returns>A formatted graph query.</returns>
-        public string GetPointsForThingQuery(string thingDtId)
+        public virtual string GetPointsForThingQuery(string thingDtId)
         {
-            return "{ things(filter: { id: { eq: \"" + thingDtId + "\" } }) { points(filter: { exactType: { ne: \"Point\"} }) { description,exactType,id,mappingKey,name} } }";
+            return "{ things(filter: { id: { eq: \"" + thingDtId + "\" } }) { points(filter: { exactType: { ne: \"Point\"} }) { dateCreated,dateUpdated,description,exactType,id,mappingKey,name,unit{description,id,name} } } }";
         }
 
         /// <summary>
@@ -121,9 +121,9 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
         /// </summary>
         /// <param name="buildingDtId">Building to search.</param>
         /// <returns>A formatted graph query.</returns>
-        public string GetFloorQuery(string buildingDtId)
+        public virtual string GetFloorQuery(string buildingDtId)
         {
-            return "{ floors(filter: { id: { eq: \"" + buildingDtId + "\"} }) { description,exactType,id,level,name,hasPart{ exactType,id,name},zones{ description,exactType,id,name} } }";
+            return "{ floors(filter: { id: { eq: \"" + buildingDtId + "\"} }) { dateCreated,dateUpdated,description,exactType,id,level,name,hasPart{ exactType,id,name },zones{ description,exactType,id,name } } }";
         }
 
         /// <summary>
@@ -147,7 +147,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
                 var root = model.RootElement.EnumerateArray();
 
                 var element = root.FirstOrDefault(e => e.TryGetProperty("displayName", out var propertyName) && string.Compare(propertyName.ToString(), exactType, StringComparison.OrdinalIgnoreCase) == 0);
-                if (element.ValueKind != JsonValueKind.Null && element.TryGetProperty("@id", out var idProperty))
+                if (element.ValueKind != JsonValueKind.Null && element.ValueKind != JsonValueKind.Undefined && element.TryGetProperty("@id", out var idProperty))
                 {
                     dtmi = idProperty.ToString();
                     return true;
