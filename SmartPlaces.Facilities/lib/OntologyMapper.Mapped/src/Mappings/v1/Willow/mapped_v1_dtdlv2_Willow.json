@@ -179,11 +179,6 @@
       "OutputDtmi": "dtmi:com:willowinc:WaterTemperatureSensor;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Direct_Expansion_Unit;1",
-      "OutputDtmi": "dtmi:com:willowinc:DirectExpansionUnit;1",
-      "IsIgnored": true
-    },
-    {
       "InputDtmi": "dtmi:mapped:core:Discharge_Air_Temperature_Reset_Setpoint;1",
       "OutputDtmi": "dtmi:com:willowinc:ResetSetpoint;1"
     },
@@ -680,11 +675,6 @@
     {
       "InputDtmi": "dtmi:mapped:core:Temperature_Alarm_Setpoint;1",
       "OutputDtmi": "dtmi:com:willowinc:TemperatureSetpoint;1"
-    },
-    {
-      "InputDtmi": "dtmi:mapped:core:Test_Point;1",
-      "OutputDtmi": "dtmi:com:willowinc:Capability;1",
-      "IsIgnored": true
     },
     {
       "InputDtmi": "dtmi:mapped:core:Thing;1",
@@ -4390,11 +4380,6 @@
     {
       "InputDtmi": "dtmi:org:brickschema:schema:Brick:Thermostatic_Mixing_Valve;1",
       "OutputDtmi": "dtmi:com:willowinc:Valve;1"
-    },
-    {
-      "InputDtmi": "dtmi:mapped:core:Thing;1",
-      "OutputDtmi": "dtmi:com:willowinc:Equipment;1",
-      "IsIgnored": true
     },
     {
       "InputDtmi": "dtmi:org:brickschema:schema:Brick:Ticketing_Booth;1",
