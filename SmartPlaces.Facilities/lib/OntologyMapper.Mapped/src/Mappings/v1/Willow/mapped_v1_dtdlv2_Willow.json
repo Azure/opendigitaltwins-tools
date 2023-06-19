@@ -465,11 +465,6 @@
       "OutputDtmi": "dtmi:com:willowinc:OccupiedHeatingSetpoint;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Offset;1",
-      "OutputDtmi": "dtmi:com:willowinc:Setpoint;1",
-      "IsIgnored": true
-    },
-    {
       "InputDtmi": "dtmi:mapped:core:Outside_Air_Temperature_Reset_Setpoint;1",
       "OutputDtmi": "dtmi:com:willowinc:ResetSetpoint;1"
     },
