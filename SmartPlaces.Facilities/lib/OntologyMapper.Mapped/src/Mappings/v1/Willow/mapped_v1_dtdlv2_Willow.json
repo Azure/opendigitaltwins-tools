@@ -3934,6 +3934,11 @@
       "OutputDtmi": "dtmi:com:willowinc:Room;1"
     },
     {
+      "InputDtmi": "dtmi:mapped:core:Setpoint_Offset;1",
+      "OutputDtmi": "dtmi:com:willowinc:Setpoint;1",
+      "IsIgnored": true
+    },
+    {
       "InputDtmi": "dtmi:org:brickschema:schema:Brick:Shading_System;1",
       "OutputDtmi": "dtmi:com:willowinc:ShadingSystem;1",
       "IsIgnored": true
@@ -4370,6 +4375,11 @@
     {
       "InputDtmi": "dtmi:org:brickschema:schema:Brick:Thermostatic_Mixing_Valve;1",
       "OutputDtmi": "dtmi:com:willowinc:Valve;1"
+    },
+    {
+      "InputDtmi": "dtmi:mapped:core:Thing;1",
+      "OutputDtmi": "dtmi:com:willowinc:Equipment;1",
+      "IsIgnored": true
     },
     {
       "InputDtmi": "dtmi:org:brickschema:schema:Brick:Ticketing_Booth;1",

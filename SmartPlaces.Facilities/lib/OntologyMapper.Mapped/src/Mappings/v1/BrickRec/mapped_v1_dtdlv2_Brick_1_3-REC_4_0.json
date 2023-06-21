@@ -73,12 +73,6 @@
       "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Status;1"
     },
     {
-      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Direct_Expansion_Unit;1",
-      // Invalid Output DTMI - Review Needed
-      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Direct_Expansion_Unit;1",
-      "IsIgnored": true
-    },
-    {
       "InputDtmi": "dtmi:mapped:core:Discharge_Air_Temperature_Reset_Setpoint;1",
       // Temporary until further decision with Brick
       "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Reset_Setpoint;1"
