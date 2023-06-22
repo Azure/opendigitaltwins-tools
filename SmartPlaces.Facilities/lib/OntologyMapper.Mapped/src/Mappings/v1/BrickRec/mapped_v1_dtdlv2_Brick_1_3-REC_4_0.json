@@ -415,10 +415,6 @@
       "OutputDtmi": "dtmi:org:w3id:rec:OfficeRoom;1"
     },
     {
-      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Operating_Mode_Status;1",
-      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Operating_Mode_Status;1"
-    },
-    {
       "InputDtmi": "dtmi:org:brickschema:schema:Brick:Outdoor_Area;1",
       "OutputDtmi": "dtmi:org:w3id:rec:Space;1"
     },
