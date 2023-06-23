@@ -16,6 +16,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
         internal const string IdDimensionName = "Id";
         internal const string SiteDimensionName = "Site";
         internal const string BuildingDimensionName = "Building";
+        internal const string IsSuccessDimensionName = "IsSuccess";
 #pragma warning restore SA1600 // Elements should be documented
     }
 }

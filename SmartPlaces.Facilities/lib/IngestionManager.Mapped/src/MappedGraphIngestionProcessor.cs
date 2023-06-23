@@ -34,16 +34,19 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
         /// <param name="inputGraphManager">An instance of an <see cref="IInputGraphManager">IInputGraphManager</see> used to load a graph from the input source.</param>
         /// <param name="ontologyMappingManager">An instance of an <see cref="IOntologyMappingManager">IOntologyMappingManager</see> used to map the input ontology to the output ontology.</param>
         /// <param name="outputGraphManager">An instance of an <see cref="IOutputGraphManager">IOutputGraphManager</see> used to save a graph to the output target.</param>
+        /// <param name="graphNamingManager">An instance of an <see cref="IGraphNamingManager">IGraphNamingManager</see> used to build the names of items in the graph.</param>
         /// <param name="telemetryClient">An instance of a <see cref="TelemetryClient">telemetry client</see> used to record metrics to a metrics store.</param>
         public MappedGraphIngestionProcessor(ILogger<MappedGraphIngestionProcessor<TOptions>> logger,
                                              IInputGraphManager inputGraphManager,
                                              IOntologyMappingManager ontologyMappingManager,
                                              IOutputGraphManager outputGraphManager,
+                                             IGraphNamingManager graphNamingManager,
                                              TelemetryClient telemetryClient)
             : base(logger,
                    inputGraphManager,
                    ontologyMappingManager,
                    outputGraphManager,
+                   graphNamingManager,
                    telemetryClient)
         {
         }
@@ -56,7 +59,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
         protected override async Task ProcessSites(CancellationToken cancellationToken)
         {
             // Generate the outermost query to run against the input graph. Starts by getting the list of sites
-            var metricIdentifier = new MetricIdentifier(Metrics.DefaultNamespace, "SiteProcessed", Metrics.SiteDimensionName);
+            var metricIdentifier = new MetricIdentifier(Metrics.DefaultNamespace, "SiteProcessed", Metrics.SiteDimensionName, Metrics.IsSuccessDimensionName);
 
             var query = InputGraphManager.GetOrganizationQuery();
 
@@ -72,8 +75,8 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
                     {
                         foreach (var siteElement in dataElement.Value.EnumerateArray())
                         {
-                            await UpdateOutputSiteAsync(siteElement, cancellationToken);
-                            TelemetryClient.GetMetric(metricIdentifier).TrackValue(1, siteElement.GetProperty("name").ToString());
+                            var isSuccessful = await UpdateOutputSiteAsync(siteElement, cancellationToken);
+                            TelemetryClient.GetMetric(metricIdentifier).TrackValue(1, siteElement.GetProperty("name").ToString(), isSuccessful.ToString());
                         }
                     }
                 }
@@ -84,7 +87,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
             }
         }
 
-        private async Task UpdateOutputSiteAsync(JsonElement siteElement, CancellationToken cancellationToken)
+        private async Task<bool> UpdateOutputSiteAsync(JsonElement siteElement, CancellationToken cancellationToken)
         {
             Logger.LogInformation("Creating Site...");
 
@@ -96,7 +99,13 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
 
             await GetPlacesAsync(twins, relationships, siteElement, null, null);
 
-            var siteDtId = siteElement.GetProperty("id").ToString();
+            if (!siteElement.TryGetProperty("id", out var idProp))
+            {
+                Logger.LogWarning("No SiteId found...");
+                return false;
+            }
+
+            var siteDtId = idProp.ToString();
 
             var filteredQuery = InputGraphManager.GetBuildingsForSiteQuery(siteDtId);
 
@@ -118,7 +127,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
                         {
                             foreach (var buildingsElement in sitesElement.EnumerateObject().Where(e => e.Name == "buildings"))
                             {
-                                foreach (var buildingElement in buildingsElement.Value.EnumerateArray().Where(e => e.ValueKind != JsonValueKind.Null))
+                                foreach (var buildingElement in buildingsElement.Value.EnumerateArray().Where(e => e.ValueKind != JsonValueKind.Null && buildingsElement.Value.ValueKind != JsonValueKind.Undefined))
                                 {
                                     await GetPlacesAsync(twins, relationships, buildingElement, sitesElement, "hasPart");
 
@@ -141,13 +150,22 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
             await OutputGraphManager.UploadGraphAsync(twins, relationships, cancellationToken);
 
             Logger.LogInformation("Completed updating site.");
+
+            return true;
         }
 
         private async Task GetBuildingThingsAsync(IDictionary<string, BasicDigitalTwin> twins,
                                    IDictionary<string, BasicRelationship> relationships,
                                    JsonElement targetElement)
         {
-            var basicDtId = targetElement.GetProperty("id").ToString();
+            if (!targetElement.TryGetProperty("id", out var basicDtIdProp))
+            {
+                Logger.LogWarning("Building id is missing... skipping.");
+                return;
+            }
+
+            var basicDtId = basicDtIdProp.ToString();
+
             var query = InputGraphManager.GetBuildingThingsQuery(basicDtId);
 
             // Get the Things for the building
@@ -178,7 +196,12 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
         private async Task GetThingAsync(IDictionary<string, BasicDigitalTwin> twins, IDictionary<string, BasicRelationship> relationships, JsonElement thingElement)
         {
             // Get the Id of the individual item in the graph
-            var thingDtId = thingElement.GetProperty("id").ToString();
+            if (!thingElement.TryGetProperty("id", out var thingDtIdProp))
+            {
+                return;
+            }
+
+            var thingDtId = thingDtIdProp.ToString();
 
             thingElement.TryGetProperty("mappingKey", out var mappingKeyProperty);
 
@@ -194,29 +217,55 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
                 // Add the relationship to the location
                 var locationElement = thingElement.EnumerateObject().FirstOrDefault(t => t.Name == "hasLocation");
 
-                if (locationElement.Value.ValueKind != JsonValueKind.Null)
+                if (locationElement.Value.ValueKind != JsonValueKind.Null && locationElement.Value.ValueKind != JsonValueKind.Undefined)
                 {
-                    var locationId = locationElement.Value.GetProperty("id").GetString();
-
-                    if (locationElement.Value.TryGetProperty("exactType", out var locationExactType))
+                    if (locationElement.Value.TryGetProperty("id", out var locationIdProp))
                     {
-                        Dtmi? locationDtmi = GetInputInterfaceDtmi(locationExactType.ToString());
-                        AddRelationship(relationships, locationId, locationDtmi, "isLocationOf", thingDtId, thingExactType.ToString());
+                        var locationId = locationIdProp.GetString();
+                        var relationshipProperties = new Dictionary<string, object>();
+
+                        if (locationId != null)
+                        {
+                            if (locationElement.Value.TryGetProperty("exactType", out var locationExactType))
+                            {
+                                Dtmi? locationDtmi = GetInputInterfaceDtmi(locationExactType.ToString());
+                                AddRelationship(relationships, locationId, locationDtmi, "isLocationOf", thingDtId, thingExactType.ToString(), relationshipProperties);
+                            }
+                        }
                     }
                 }
 
                 // Add the isFedBy Relationships
                 var isFedBys = thingElement.EnumerateObject().FirstOrDefault(t => t.Name == "isFedBy");
 
-                if (isFedBys.Value.ValueKind != JsonValueKind.Null)
+                if (isFedBys.Value.ValueKind != JsonValueKind.Null && isFedBys.Value.ValueKind != JsonValueKind.Undefined)
                 {
                     foreach (var fedByElement in isFedBys.Value.EnumerateArray())
                     {
-                        var fedById = fedByElement.GetProperty("id").GetString();
-                        if (fedByElement.TryGetProperty("exactType", out var fedByExactType))
+                        var relationshipProperties = new Dictionary<string, object>();
+
+                        if (fedByElement.TryGetProperty("id", out var idProp))
                         {
-                            Dtmi? fedByDtmi = GetInputInterfaceDtmi(fedByExactType.ToString());
-                            AddRelationship(relationships, fedById, fedByDtmi, "isFedBy", thingDtId, thingExactType.ToString());
+                            var fedById = idProp.GetString();
+
+                            if (fedById != null)
+                            {
+                                var fedByProperties = fedByElement.EnumerateObject().FirstOrDefault(t => t.Name == "properties");
+
+                                if (fedByProperties.Value.ValueKind != JsonValueKind.Null && fedByProperties.Value.ValueKind != JsonValueKind.Undefined)
+                                {
+                                    foreach (var fedByProperty in fedByProperties.Value.EnumerateObject())
+                                    {
+                                        relationshipProperties.Add(fedByProperty.Name, fedByProperty.Value.ToString());
+                                    }
+                                }
+
+                                if (fedByElement.TryGetProperty("exactType", out var fedByExactType))
+                                {
+                                    Dtmi? fedByDtmi = GetInputInterfaceDtmi(fedByExactType.ToString());
+                                    AddRelationship(relationships, fedById, fedByDtmi, "isFedBy", thingDtId, thingExactType.ToString(), relationshipProperties);
+                                }
+                            }
                         }
                     }
                 }
@@ -246,14 +295,20 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
                                 foreach (var pointElement in pointsElement.Value.EnumerateArray())
                                 {
                                     // Get the Id of the individual item in the graph
-                                    var pointDtId = pointElement.GetProperty("id").ToString();
+                                    if (!pointElement.TryGetProperty("id", out var pointIdProp))
+                                    {
+                                        return;
+                                    }
+
+                                    var pointDtId = pointIdProp.ToString();
 
                                     // Look up the Model Id from the Incoming element
                                     if (pointElement.TryGetProperty("exactType", out var pointExactType))
                                     {
                                         AddTwin(twins, pointElement, pointDtId, pointExactType.ToString());
+                                        var relationshipProperties = new Dictionary<string, object>();
 
-                                        AddRelationship(relationships, thingDtId, thingDtmi, "hasPoint", pointDtId, pointExactType.ToString());
+                                        AddRelationship(relationships, thingDtId, thingDtmi, "hasPoint", pointDtId, pointExactType.ToString(), relationshipProperties);
                                     }
                                 }
                             }
@@ -270,7 +325,13 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
                                      string? relationshipType)
         {
             // Get the Id of the individual item in the graph
-            var targetDtId = targetElement.GetProperty("id").ToString();
+            // If the element has no id, then it is not a twin, so return
+            if (!targetElement.TryGetProperty("id", out var targetIdProp))
+            {
+                return;
+            }
+
+            var targetDtId = targetIdProp.ToString();
 
             // Look up the Model Id from the Incoming element
             if (targetElement.TryGetProperty("exactType", out var targetExactType))
@@ -285,7 +346,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
                     switch (innerElement.Value.ValueKind)
                     {
                         case JsonValueKind.Array:
-                            foreach (var item in innerElement.Value.EnumerateArray())
+                            foreach (var item in innerElement.Value.EnumerateArray().Where(x => x.ValueKind == JsonValueKind.Object))
                             {
                                 await GetPlacesAsync(twins, relationships, item, targetElement, innerElement.Name);
                             }
@@ -300,11 +361,16 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
 
                 if (sourceElement != null && !string.IsNullOrWhiteSpace(relationshipType) && targetElement.ValueKind != JsonValueKind.Array)
                 {
-                    var sourceDtId = sourceElement.Value.GetProperty("id").ToString();
-                    var sourceExactType = sourceElement.Value.GetProperty("exactType").ToString();
-                    var sourceDtmi = GetInputInterfaceDtmi(sourceExactType);
+                    if (sourceElement.Value.TryGetProperty("id", out var idProp))
+                    {
+                        var sourceDtId = idProp.ToString();
+                        var sourceExactType = sourceElement.Value.GetProperty("exactType").ToString();
+                        var sourceDtmi = GetInputInterfaceDtmi(sourceExactType);
 
-                    AddRelationship(relationships, sourceDtId, sourceDtmi, relationshipType, targetDtId, targetExactType.ToString());
+                        var relationshipProperties = new Dictionary<string, object>();
+
+                        AddRelationship(relationships, sourceDtId, sourceDtmi, relationshipType, targetDtId, targetExactType.ToString(), relationshipProperties);
+                    }
                 }
 
                 if (string.Equals(targetExactType.ToString(), "floor", StringComparison.OrdinalIgnoreCase))

@@ -1,0 +1,95 @@
+﻿{
+    "data": {
+        "sites": [
+            {
+                "description": null,
+                "exactType": "Site",
+                "id": "SITE44nUdjjbqSX1sEXuwEWucr",
+                "name": "Cure Corridor",
+                "dateCreated": "2023-04-05T06:29:52.356",
+                "dateUpdated": "2023-04-05T06:29:52.356",
+                "type": [
+                    "Class",
+                    "Entity",
+                    "Place",
+                    "Site"
+                ],
+                "buildings": [
+                  {
+                    "address": {
+                      "countryName": "United States",
+                      "dateCreated": "2023-04-25T05:59:46.467",
+                      "dateUpdated": "2023-04-25T05:59:46.467",
+                      "id": "METABCx712hSb9AGGvzJTtc3Ny",
+                      "locality": "Woodrow",
+                      "postalCode": "80757",
+                      "region": "Colorado",
+                      "streetAddress": "12188 Colorado Highway 71"
+                    },
+                    "description": null,
+                    "exactType": "Building",
+                    "id": "BLDG5o26DguWKu5T9nRvSYn5Em",
+                    "identities": [
+                      {},
+                      {}
+                    ],
+                    "name": "Intellicare Infirmary",
+                    "type": [
+                      "Building",
+                      "Class",
+                      "Entity",
+                      "Place"
+                    ],
+                    "floors": [
+                      {
+                        "dateCreated": "2023-04-05T06:30:55.906",
+                        "dateUpdated": "2023-04-13T04:28:13.132",
+                        "description": null,
+                        "exactType": "Floor",
+                        "id": "FLR297rRVtCm34Qzp2idcynFC",
+                        "level": 2,
+                        "name": "Floor_3",
+                        "type": [
+                          "Class",
+                          "Entity",
+                          "Floor",
+                          "Place"
+                        ]
+                      },
+                      {
+                        "dateCreated": "2023-04-05T06:30:55.901",
+                        "dateUpdated": "2023-04-12T23:50:41.896",
+                        "description": null,
+                        "exactType": "Floor",
+                        "id": "FLR8R1K5f9HtjRtVgohCAEGas",
+                        "level": 0,
+                        "name": "Floor_1",
+                        "type": [
+                          "Class",
+                          "Entity",
+                          "Floor",
+                          "Place"
+                        ]
+                      },
+                      {
+                        "dateCreated": "2023-04-05T06:30:55.904",
+                        "dateUpdated": "2023-04-12T23:50:41.879",
+                        "description": null,
+                        "exactType": "Floor",
+                        "id": "FLRUDY8ChSobVHrTvpfKk4fru",
+                        "level": 1,
+                        "name": "Floor_2",
+                        "type": [
+                          "Class",
+                          "Entity",
+                          "Floor",
+                          "Place"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+            }
+        ]
+    }
+}
