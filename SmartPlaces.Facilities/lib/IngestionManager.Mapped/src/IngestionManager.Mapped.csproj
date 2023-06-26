@@ -23,14 +23,14 @@
 		<PackageReference Include="Azure.Identity" Version="1.7.0" />
 		<PackageReference Include="Azure.Messaging.EventHubs" Version="5.7.3" />
 		<PackageReference Include="Azure.Storage.Blobs" Version="12.14.0" />
-		<PackageReference Include="Mapped.Ontologies.Core.Dtdl" Version="1.2.617" />
+		<PackageReference Include="Mapped.Ontologies.Core.Dtdl" Version="1.8.0" />
 		<PackageReference Include="Microsoft.ApplicationInsights" Version="2.21.0" />
 		<PackageReference Include="Microsoft.Azure.DigitalTwins.Parser" Version="6.4.0-preview" />
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.1" />
 		<PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
 		<PackageReference Include="Microsoft.Net.Http.Headers" Version="2.2.8" />
-		<PackageReference Include="Microsoft.SmartPlaces.Facilities.IngestionManager" Version="0.5.3-preview" />
+		<PackageReference Include="Microsoft.SmartPlaces.Facilities.IngestionManager" Version="0.5.5-preview" />
 		<PackageReference Include="StackExchange.Redis" Version="2.6.70" />
 		<PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
 		  <PrivateAssets>all</PrivateAssets>
