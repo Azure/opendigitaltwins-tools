@@ -185,8 +185,7 @@
     },
     {
       "InputDtmi": "dtmi:mapped:core:AirQualitySensingDevice;1",
-      // Invalid Output DTMI - Review Needed
-      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Air_Quality_Sensing_Device;1",
+      "OutputDtmi": "dtmi:mapped:core:Air_Quality_Sensing_Device;1",
       "IsIgnored": true
     },
     {
@@ -328,14 +327,12 @@
     },
     {
       "InputDtmi": "dtmi:mapped:core:BACnetObjectId;1",
-      // Invalid Output DTMI - Review Needed
-      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:BACnet_Object_Id;1",
+      "OutputDtmi": "dtmi:mapped:core:BACnet_Object_Id;1",
       "IsIgnored": true
     },
     {
       "InputDtmi": "dtmi:mapped:core:BACnetVendorId;1",
-      // Invalid Output DTMI - Review Needed
-      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:BACnet_Vendor_Id;1",
+      "OutputDtmi": "dtmi:mapped:core:BACnet_Vendor_Id;1",
       "IsIgnored": true
     },
     {
@@ -468,21 +465,13 @@
       "OutputDtmi": "dtmi:org:w3id:rec:CafeteriaRoom;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Calendar;1",
-      // Invalid Output DTMI - Review Needed
-      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Calendar;1",
-      "IsIgnored": true
-    },
-    {
       "InputDtmi": "dtmi:mapped:core:CalendarEvent;1",
-      // Invalid Output DTMI - Review Needed
-      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Calendar_Event;1",
+      "OutputDtmi": "dtmi:mapped:core:Calendar_Event;1",
       "IsIgnored": true
     },
     {
       "InputDtmi": "dtmi:mapped:core:CalendarEventInvitation;1",
-      // Invalid Output DTMI - Review Needed
-      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Calendar_Event_Invitation;1",
+      "OutputDtmi": "dtmi:mapped:core:Calendar_Event_Invitation;1",
       "IsIgnored": true
     },
     {
@@ -659,12 +648,6 @@
     {
       "InputDtmi": "dtmi:mapped:core:Chiller;1",
       "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Chiller;1"
-    },
-    {
-      "InputDtmi": "dtmi:mapped:core:Class;1",
-      // Invalid Output DTMI - Review Needed
-      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Class;1",
-      "IsIgnored": true
     },
     {
       "InputDtmi": "dtmi:mapped:core:CloseLimit;1",
@@ -1180,8 +1163,7 @@
     },
     {
       "InputDtmi": "dtmi:mapped:core:DirectExpansionUnit;1",
-      // Invalid Output DTMI - Review Needed
-      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Direct_Expansion_Unit;1",
+      "OutputDtmi": "dtmi:mapped:core:Direct_Expansion_Unit;1",
       "IsIgnored": true
     },
     {
@@ -1399,12 +1381,6 @@
       "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Displacement_Flow_Air_Diffuser;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Display;1",
-      // Invalid Output DTMI - Review Needed
-      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Display;1",
-      "IsIgnored": true
-    },
-    {
       "InputDtmi": "dtmi:mapped:core:DisplayResolutionStatus;1",
       // Mapped to Base - Review needed
       "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Status;1"
@@ -1580,15 +1556,8 @@
       "OutputDtmi": "dtmi:org:w3id:rec:ElevatorRoom;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Email;1",
-      // Invalid Output DTMI - Review Needed
-      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Email;1",
-      "IsIgnored": true
-    },
-    {
       "InputDtmi": "dtmi:mapped:core:EmailIdentity;1",
-      // Invalid Output DTMI - Review Needed
-      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Email_Identity;1",
+      "OutputDtmi": "dtmi:mapped:core:Email_Identity;1",
       "IsIgnored": true
     },
     {
@@ -1787,12 +1756,6 @@
     {
       "InputDtmi": "dtmi:mapped:core:EvenMonthStatus;1",
       "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Even_Month_Status;1"
-    },
-    {
-      "InputDtmi": "dtmi:mapped:core:Event;1",
-      // Invalid Output DTMI - Review Needed
-      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Event;1",
-      "IsIgnored": true
     },
     {
       "InputDtmi": "dtmi:mapped:core:ExerciseRoom;1",
@@ -2019,8 +1982,7 @@
     },
     {
       "InputDtmi": "dtmi:mapped:core:FloorLevelIdentity;1",
-      // Invalid Output DTMI - Review Needed
-      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Floor_Level_Identity;1",
+      "OutputDtmi": "dtmi:mapped:core:Floor_Level_Identity;1",
       "IsIgnored": true
     },
     {
@@ -2540,12 +2502,6 @@
       "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Ice_Tank_Leaving_Water_Temperature_Sensor;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Identity;1",
-      // Invalid Output DTMI - Review Needed
-      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Identity;1",
-      "IsIgnored": true
-    },
-    {
       "InputDtmi": "dtmi:mapped:core:IDF;1",
       // Invalid Output DTMI - Review Needed
       "OutputDtmi": "dtmi:org:brickschema:schema:Brick:IDF;1",
@@ -2775,12 +2731,6 @@
     {
       "InputDtmi": "dtmi:mapped:core:Lounge;1",
       "OutputDtmi": "dtmi:org:w3id:rec:RecreationalRoom;1"
-    },
-    {
-      "InputDtmi": "dtmi:mapped:core:Louver;1",
-      // Invalid Output DTMI - Review Needed
-      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Louver;1",
-      "IsIgnored": true
     },
     {
       "InputDtmi": "dtmi:mapped:core:LowAirFlowAlarm;1",
@@ -3137,12 +3087,6 @@
       "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Medium_Temperature_Hot_Water_Supply_Temperature_Sensor;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Meta;1",
-      // Invalid Output DTMI - Review Needed
-      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Meta;1",
-      "IsIgnored": true
-    },
-    {
       "InputDtmi": "dtmi:mapped:core:Meter;1",
       "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Meter;1"
     },
@@ -3368,8 +3312,7 @@
     },
     {
       "InputDtmi": "dtmi:mapped:core:NameIdentity;1",
-      // Invalid Output DTMI - Review Needed
-      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Name_Identity;1",
+      "OutputDtmi": "dtmi:mapped:core:Name_Identity;1",
       "IsIgnored": true
     },
     {
@@ -3572,12 +3515,6 @@
       "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Open_Heating_Valve_Outside_Air_Temperature_Setpoint;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Opening;1",
-      // Invalid Output DTMI - Review Needed
-      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Opening;1",
-      "IsIgnored": true
-    },
-    {
       "InputDtmi": "dtmi:mapped:core:OpenOffice;1",
       "OutputDtmi": "dtmi:org:w3id:rec:OfficeRoom;1"
     },
@@ -3756,8 +3693,7 @@
     },
     {
       "InputDtmi": "dtmi:mapped:core:PersonProfile;1",
-      // Invalid Output DTMI - Review Needed
-      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Person_Profile;1",
+      "OutputDtmi": "dtmi:mapped:core:Person_Profile;1",
       "IsIgnored": true
     },
     {
@@ -3782,8 +3718,7 @@
     },
     {
       "InputDtmi": "dtmi:mapped:core:PlugStrip;1",
-      // Invalid Output DTMI - Review Needed
-      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Plug_Strip;1",
+      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:PlugStrip;1",
       "IsIgnored": true
     },
     {
@@ -3838,8 +3773,7 @@
     },
     {
       "InputDtmi": "dtmi:mapped:core:PostalAddressIdentity;1",
-      // Invalid Output DTMI - Review Needed
-      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Postal_Address_Identity;1",
+      "OutputDtmi": "dtmi:mapped:core:Postal_Address_Identity;1",
       "IsIgnored": true
     },
     {
@@ -3977,14 +3911,7 @@
     },
     {
       "InputDtmi": "dtmi:mapped:core:ProjectionScreen;1",
-      // Invalid Output DTMI - Review Needed
-      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Projection_Screen;1",
-      "IsIgnored": true
-    },
-    {
-      "InputDtmi": "dtmi:mapped:core:PropertyBag;1",
-      // Invalid Output DTMI - Review Needed
-      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Property_Bag;1",
+      "OutputDtmi": "dtmi:mapped:core:Projection_Screen;1",
       "IsIgnored": true
     },
     {
@@ -4152,12 +4079,6 @@
     {
       "InputDtmi": "dtmi:mapped:core:RemotelyOnOffStatus;1",
       "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Remotely_On_Off_Status;1"
-    },
-    {
-      "InputDtmi": "dtmi:mapped:core:Request;1",
-      // Invalid Output DTMI - Review Needed
-      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Request;1",
-      "IsIgnored": true
     },
     {
       "InputDtmi": "dtmi:mapped:core:ResetCommand;1",
@@ -4488,20 +4409,8 @@
       "OutputDtmi": "dtmi:org:w3id:rec:Space;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:SpaceCode;1",
-      // Invalid Output DTMI - Review Needed
-      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Space_Code;1",
-      "IsIgnored": true
-    },
-    {
       "InputDtmi": "dtmi:mapped:core:SpaceHeater;1",
       "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Space_Heater;1"
-    },
-    {
-      "InputDtmi": "dtmi:mapped:core:Speaker;1",
-      // Invalid Output DTMI - Review Needed
-      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Speaker;1",
-      "IsIgnored": true
     },
     {
       "InputDtmi": "dtmi:mapped:core:SpeedCommand;1",
@@ -4541,8 +4450,7 @@
     },
     {
       "InputDtmi": "dtmi:mapped:core:StageRiser;1",
-      // Invalid Output DTMI - Review Needed
-      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Stage_Riser;1",
+      "OutputDtmi": "dtmi:mapped:core:Stage_Riser;1",
       "IsIgnored": true
     },
     {
@@ -4894,8 +4802,7 @@
     },
     {
       "InputDtmi": "dtmi:mapped:core:TeleconferenceUnit;1",
-      // Invalid Output DTMI - Review Needed
-      "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Teleconference_Unit;1",
+      "OutputDtmi": "dtmi:mapped:core:Teleconference_Unit;1",
       "IsIgnored": true
     },
     {
@@ -4961,7 +4868,7 @@
       "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Terminal_Unit;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:TestPoint;1",
+      "InputDtmi": "dtmi:mapped:core:Test_Point;1",
       // Mapped to Base - Review needed
       "OutputDtmi": "dtmi:org:brickschema:schema:Brick:Point;1"
     },
