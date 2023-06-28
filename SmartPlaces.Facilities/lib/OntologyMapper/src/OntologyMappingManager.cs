@@ -96,6 +96,27 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper
         }
 
         /// <inheritdoc/>
+        public ObjectTransformationMatch TryGetObjectTransformation(string outputDtmi, string outputPropertyName, out ObjectTransformation? objectTransformation)
+        {
+            var doesPropertyHaveTransformation = OntologyMapping.ObjectTransformations.Any(e => e.OutputPropertyName == outputPropertyName);
+
+            if (!doesPropertyHaveTransformation)
+            {
+                objectTransformation = null;
+                return ObjectTransformationMatch.NoPropertyMatch;
+            }
+
+            objectTransformation = OntologyMapping.ObjectTransformations.OrderBy(e => e.Priority).FirstOrDefault(e => e.OutputPropertyName == outputPropertyName && Regex.Match(outputDtmi, e.OutputDtmiFilter, RegexOptions.IgnoreCase).Success);
+
+            if (objectTransformation != null)
+            {
+                return ObjectTransformationMatch.PropertyAndTypeMatch;
+            }
+
+            return ObjectTransformationMatch.PropertyMatchOnly;
+        }
+
+        /// <inheritdoc/>
         public bool ValidateTargetOntologyMapping(IReadOnlyDictionary<Dtmi, DTEntityInfo> targetObjectModel, out List<string> invalidTargets)
         {
             invalidTargets = new List<string>();

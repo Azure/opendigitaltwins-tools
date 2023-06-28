@@ -65,5 +65,18 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper
         /// <param name="propertyProjection">The property projection for the output property if there is one.</param>
         /// <returns>true if a mapping exists, false otherwise.</returns>
         public bool TryGetPropertyProjection(string outputDtmiFilter, string outputPropertyName, out PropertyProjection? propertyProjection);
+
+        /// <summary>
+        /// In some cases, a property of the input model contains an object where one of the properties of that object needs to be put into a different field in the target model. A declaration can be made to map the input field to the appropriate output field.
+        /// </summary>
+        /// <param name="outputDtmiFilter">A regex which describes which output dtmi's this rule applies to.</param>
+        /// <param name="outputPropertyName">The name of the output property.</param>
+        /// <param name="objectTransformation">The objectTransformation for the output property if there is one.</param>
+        /// <returns>
+        /// NoPropertyMatch (There is no match on the property passed in at all. No use testing further by type).
+        /// PropertyMatchOnly (There is a match on the property name, but not on the type. Try ancestors.
+        /// PropertyAndTypeMatch There is a match on the property name and the type. We have a match.
+        /// </returns>
+        public ObjectTransformationMatch TryGetObjectTransformation(string outputDtmiFilter, string outputPropertyName, out ObjectTransformation? objectTransformation);
     }
 }
