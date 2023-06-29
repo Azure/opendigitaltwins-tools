@@ -177,6 +177,15 @@ In some cases, a property of the input model contains an object where one of the
       "OutputPropertyName": "output-property-name",
       "InputPropertyNames": [ "input-property-name2, input-property-name1" ]
     }
+  ],
+  "ObjectTransformations" : [
+    {
+      inputProperty: unit
+      inputPropertyName: id
+      outputDtmiFilter: *. 
+      outputProperty: flatunit
+      priority: 1
+    }  
   ]
 }
 ```
