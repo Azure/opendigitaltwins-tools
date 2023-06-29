@@ -16,6 +16,8 @@ This library provides helpers useful for mapping one Digital Twins Definition La
 1. Relationships
 1. Property Projections
 1. Backfilling of Properties
+1. Object Transformations
+
 
 A json file can be created with collections of these types of mappings, and then that can be used in a process which uses one DTDL ontology as an input and outputs a different DTDL ontology.
 
@@ -99,6 +101,18 @@ A collection of mappings from one or more property names to another property nam
 | InputPropertyNames | A collection of names of the input property to assign to the output property. Can only specify multiple input properties if the output property is a collection |
 | Priority | If there are multiple fillproperties for a single output property based on different DtmiFilters, priority is taken into account in ascending order |
 
+### ObjectTransformations
+
+In some cases, a property of the input model contains an object where one of the properties of that object needs to be put into a different field in the target model. A declaration can be made to map the input field to the appropriate output field.
+
+| Field | Description |
+| --- | --- |
+| OutputDtmiFilter | A regex filter which allows filtering so that the mapping is only applied to output property names which match the filter. ".*" to apply to all output properties |
+| OutputPropertyName | The name of the output property to assign the input property to |
+| InputProperty | The input property to use as the parent of the InputPropertyName |
+| InputPropertyName | The names of the input property to assign to the output property |
+| Priority | If there are multiple object transformations for a single output property based on different DtmiFilters, priority is taken into account in ascending order |
+
 ## Sample File
 
 ``` json
@@ -163,6 +177,15 @@ A collection of mappings from one or more property names to another property nam
       "OutputPropertyName": "output-property-name",
       "InputPropertyNames": [ "input-property-name2, input-property-name1" ]
     }
+  ],
+  "ObjectTransformations" : [
+    {
+      inputProperty: unit
+      inputPropertyName: id
+      outputDtmiFilter: *. 
+      outputProperty: flatunit
+      priority: 1
+    }  
   ]
 }
 ```
