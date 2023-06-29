@@ -10,9 +10,11 @@
 	  <None Remove="TestData\Box.json" />
 	  <None Remove="TestData\Space.json" />
 	  <None Remove="TestData\SpaceWithBox.json" />
+	  <None Remove="TestData\SpaceWithUnit.json" />
 	</ItemGroup>
 
 	<ItemGroup>
+	  <EmbeddedResource Include="TestData\SpaceWithUnit.json" />
 	  <EmbeddedResource Include="TestData\Box.json" />
 	  <EmbeddedResource Include="TestData\SpaceWithBox.json" />
 	  <EmbeddedResource Include="TestData\Space.json" />

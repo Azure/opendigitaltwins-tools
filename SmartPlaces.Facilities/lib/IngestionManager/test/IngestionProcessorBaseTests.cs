@@ -46,9 +46,11 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Test
 
             var spaceDtmi = "dtmi:org:w3id:rec:Space;1";
             var spaceWithBoxDtmi = "dtmi:org:w3id:rec:SpaceWithBox;1";
+            var spaceWithUnitDtmi = "dtmi:org:w3id:rec:SpaceWithUnit;1";
 
             mockInputGraphManager.Setup(m => m.TryGetDtmi("Space", out spaceDtmi)).Returns(true);
             mockInputGraphManager.Setup(m => m.TryGetDtmi("SpaceWithBox", out spaceWithBoxDtmi)).Returns(true);
+            mockInputGraphManager.Setup(m => m.TryGetDtmi("SpaceWithUnit", out spaceWithUnitDtmi)).Returns(true);
 
             mockOutputGraphManager = new Mock<IOutputGraphManager>();
 
@@ -57,6 +59,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Test
                     "IngestionManager.Test.TestData.Box.json",
                     "IngestionManager.Test.TestData.Space.json",
                     "IngestionManager.Test.TestData.SpaceWithBox.json",
+                    "IngestionManager.Test.TestData.SpaceWithUnit.json"
                 };
 
             mockOutputGraphManager.Setup(m => m.GetModelAsync(CancellationToken.None)).ReturnsAsync(LoadDtdl(listOfDtdlFiles));
@@ -393,6 +396,41 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Test
         }
 
         [Fact]
+        public async Task GetTwin_ObjectTransform_WhenValidObjectTransformSpecified()
+        {
+            var mockedIngestionProcessor = new MockedIngestionProcessor<IngestionManagerOptions>(mockLogger.Object,
+                                                                        telemetryClient,
+                                                                        mockInputGraphManager.Object,
+                                                                        ontologyMappingManager,
+                                                                        new DefaultGraphNamingManager(),
+                                                                        mockOutputGraphManager.Object);
+
+            var expectedDtmi = "dtmi:org:w3id:rec:SpaceWithUnit;1";
+            await mockedIngestionProcessor.IngestFromApiAsync(CancellationToken.None);
+            IDictionary<string, BasicDigitalTwin> twins = new Dictionary<string, BasicDigitalTwin>();
+            JsonElement jsonElement = GetJsonElementWithMultipleKeys();
+            string basicDtId = "CLSKkDFMgbojZZ54MorD6B11P";
+            string interfaceType = "SpaceWithUnit";
+
+            var result = mockedIngestionProcessor.TestGetTwin(twins, jsonElement, basicDtId, interfaceType);
+
+            Assert.NotNull(result);
+            Assert.Equal(expectedDtmi, result?.ToString());
+            Assert.Single(twins);
+            Assert.Equal(basicDtId, twins.First().Key);
+            Assert.Equal(basicDtId, twins.First().Value.Id);
+            Assert.Equal(expectedDtmi, twins.First().Value.Metadata.ModelId);
+            Assert.Equal(3, twins.First().Value.Contents.Count);
+
+            var contents = twins.First().Value.Contents as IDictionary<string, object>;
+            var externalIds = contents["externalIds"] as IDictionary<string, string>;
+            Assert.NotNull(externalIds);
+            Assert.Equal("12345", externalIds?["mappingKey"]);
+            Assert.Equal("678", externalIds?["deviceId"]);
+            Assert.Equal("A", contents["unit"]);
+        }
+
+        [Fact]
         public async Task GetRelationship_GetsRelationship_WhenValidRelationship()
         {
             var mockedIngestionProcessor = new MockedIngestionProcessor<IngestionManagerOptions>(mockLogger.Object,
@@ -520,7 +558,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Test
 
         private static JsonElement GetJsonElementWithMultipleKeys()
         {
-            var doc = JsonDocument.Parse("{ \"id\": \"CLSKkDFMgbojZZ54MorD6B11P\", \"exactType\": \"TemperatureAlarmSetpoint\", \"mappingKey\": \"12345\", \"deviceId\": \"678\" }");
+            var doc = JsonDocument.Parse("{ \"id\": \"CLSKkDFMgbojZZ54MorD6B11P\", \"exactType\": \"SpaceWithBox\", \"mappingKey\": \"12345\", \"deviceId\": \"678\", \"unit\": { \"id\": \"A\" } }");
             return doc.RootElement;
         }
 
@@ -532,10 +570,12 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Test
             ontologyMapping.Header.OutputOntologies.Add(new Ontology { DtdlVersion = "v2", Name = "org1", Version = "1.1" });
             ontologyMapping.Header.OutputOntologies.Add(new Ontology { DtdlVersion = "v3", Name = "org2", Version = "1.2" });
             ontologyMapping.InterfaceRemaps.Add(new DtmiRemap { InputDtmi = "dtmi:twin:main:CleaningRoom;1", OutputDtmi = "dtmi:org:w3id:rec:Space;1" });
+            ontologyMapping.InterfaceRemaps.Add(new DtmiRemap { InputDtmi = "dtmi:twin:main:SpaceWithUnit;1", OutputDtmi = "dtmi:org:w3id:rec:SpaceWithUnit;1" });
             ontologyMapping.RelationshipRemaps.Add(new RelationshipRemap { InputRelationship = "hasA", OutputRelationship = "isA" });
             ontologyMapping.RelationshipRemaps.Add(new RelationshipRemap { InputRelationship = "hasPoint", OutputRelationship = "isPointOf", ReverseRelationshipDirection = true });
             ontologyMapping.FillProperties.Add(new FillProperty { InputPropertyNames = new List<string>() { "name", "description" }, OutputDtmiFilter = ".*", OutputPropertyName = "name" });
             ontologyMapping.PropertyProjections.Add(new PropertyProjection { InputPropertyNames = new List<string> { "mappingKey", "deviceId" }, OutputDtmiFilter = ".*", IsOutputPropertyCollection = true, OutputPropertyName = "externalIds" });
+            ontologyMapping.ObjectTransformations.Add(new ObjectTransformation { InputProperty = "unit", InputPropertyName = "id", OutputPropertyName = "unit", Priority = 1, OutputDtmiFilter = ".*" });
             return ontologyMapping;
         }
 
