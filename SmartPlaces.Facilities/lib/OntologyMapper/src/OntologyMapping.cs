@@ -49,6 +49,13 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper
         /// a chain of fields can be set here so that there is a priority list of fields that will backfill the name field if the input name field is null.
         /// </summary>
         public List<FillProperty> FillProperties { get; set; } = new List<FillProperty>();
+
+        /// <summary>
+        /// Gets or sets object transformations.
+        /// In some cases, the contents of one input property may be an object which needs to be transformed to a field in the target ontology. For instance, if
+        /// the target ontology requires that the unit field be a string, but the source property is an object, a transformation can be defined here to extract the unit field.
+        /// </summary>
+        public List<ObjectTransformation> ObjectTransformations { get; set; } = new List<ObjectTransformation>();
     }
 
     /// <summary>
@@ -190,6 +197,39 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper
         /// Gets or sets the output namespace as a regex string.
         /// </summary>
         public string OutputNamespace { get; set; } = string.Empty;
+    }
+
+    /// <summary>
+    /// Defines how to map one input property into a target property if the names don't match.
+    /// </summary>
+    public class ObjectTransformation
+    {
+        /// <summary>
+        /// Gets or sets a regex describing the output DTMI's targeted by this projection. ".*" for all.
+        /// </summary>
+        public string OutputDtmiFilter { get; set; } = string.Empty;
+
+        /// <summary>
+        /// Gets or sets the name of the output property in the target ontology.
+        /// </summary>
+        public string OutputPropertyName { get; set; } = string.Empty;
+
+        /// <summary>
+        /// Gets or sets the input property in the source ontology that map to the target.
+        /// </summary>
+        public string InputProperty { get; set; } = string.Empty;
+
+        /// <summary>
+        /// Gets or sets the input property name in the source ontology that map to the target.
+        /// </summary>
+        public string InputPropertyName { get; set; } = string.Empty;
+
+        /// <summary>
+        /// Gets or sets projection priority.
+        /// If there are multiple projections for a single output property based on different DtmiFilters,
+        /// priority is taken into account in ascending order.
+        /// </summary>
+        public int Priority { get; set; } = 0;
     }
 
     /// <summary>

@@ -364,6 +364,62 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper.Test
             Assert.Equal("dtmi:org:w3id:rec:Building;1", invalidTargets[0]);
         }
 
+        [Fact]
+        public void TryGetObjectTransformation_ReturnsPropertyMatch_WhenFound()
+        {
+            var mockOntologyLoader = new Mock<IOntologyMappingLoader>();
+            mockOntologyLoader.Setup(m => m.LoadOntologyMapping()).Returns(GetOntologyMappingWithMultipleProjections);
+
+            var ontologyMappingManager = new OntologyMappingManager(mockOntologyLoader.Object);
+
+            var outputPropertyName = "Unit";
+            var outputDtmiFilter = ".*";
+            var inputProperty = "Unit";
+            var inputPropertyName = "Id";
+
+            var result = ontologyMappingManager.TryGetObjectTransformation(outputDtmiFilter, outputPropertyName, out var objectTransformation);
+
+            Assert.Equal(ObjectTransformationMatch.PropertyAndTypeMatch, result);
+            Assert.NotNull(objectTransformation);
+            Assert.Equal(outputPropertyName, objectTransformation?.OutputPropertyName);
+            Assert.Equal(inputProperty, objectTransformation?.InputProperty);
+            Assert.Equal(inputPropertyName, objectTransformation?.InputPropertyName);
+        }
+
+        [Fact]
+        public void TryGetObjectTransformation_ReturnsPropertyMatchOnly_WhenPropertyFoundForDifferentType()
+        {
+            var mockOntologyLoader = new Mock<IOntologyMappingLoader>();
+            mockOntologyLoader.Setup(m => m.LoadOntologyMapping()).Returns(GetOntologyMappingWithMultipleProjections);
+
+            var ontologyMappingManager = new OntologyMappingManager(mockOntologyLoader.Object);
+
+            var outputPropertyName = "UnitCheck";
+            var outputDtmiFilter = "XXXX";
+
+            var result = ontologyMappingManager.TryGetObjectTransformation(outputDtmiFilter, outputPropertyName, out var objectTransformation);
+
+            Assert.Equal(ObjectTransformationMatch.PropertyMatchOnly, result);
+            Assert.Null(objectTransformation);
+        }
+
+        [Fact]
+        public void TryGetObjectTransformation_ReturnsNoPropertyMatch_WhenPropertyNotFoundAtAll()
+        {
+            var mockOntologyLoader = new Mock<IOntologyMappingLoader>();
+            mockOntologyLoader.Setup(m => m.LoadOntologyMapping()).Returns(GetOntologyMappingWithMultipleProjections);
+
+            var ontologyMappingManager = new OntologyMappingManager(mockOntologyLoader.Object);
+
+            var outputPropertyName = "Unitz";
+            var outputDtmiFilter = "XXXX";
+
+            var result = ontologyMappingManager.TryGetObjectTransformation(outputDtmiFilter, outputPropertyName, out var objectTransformation);
+
+            Assert.Equal(ObjectTransformationMatch.NoPropertyMatch, result);
+            Assert.Null(objectTransformation);
+        }
+
         private OntologyMapping GetOntologyMapping()
         {
             var ontologyMapping = new OntologyMapping();
@@ -407,6 +463,9 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper.Test
             ontologyMapping.InterfaceRemaps.Add(new DtmiRemap { InputDtmi = "dtmi:twin:main:RandomRoom;1", OutputDtmi = "dtmi:org:org1:schema:test:Office;1", IsIgnored = true });
 
             ontologyMapping.RelationshipRemaps.Add(new RelationshipRemap { InputRelationship = "isA", OutputRelationship = "wasA" });
+
+            ontologyMapping.ObjectTransformations.Add(new ObjectTransformation { InputProperty = "Unit", InputPropertyName = "Id", OutputPropertyName = "Unit", Priority = 1, OutputDtmiFilter = ".*" });
+            ontologyMapping.ObjectTransformations.Add(new ObjectTransformation { InputProperty = "UnitCheck", InputPropertyName = "Id", OutputPropertyName = "UnitCheck", Priority = 1, OutputDtmiFilter = ".*check.*" });
 
             return ontologyMapping;
         }

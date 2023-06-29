@@ -2197,7 +2197,7 @@
       "OutputDtmi": "dtmi:com:willowinc:WaterTemperatureSetpoint;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:Library;1",
+      "InputDtmi": "dtmi:org:brickschema:schema:Brick:Library;1",
       "OutputDtmi": "dtmi:com:willowinc:Library;1",
       "IsIgnored": true
     },
@@ -4148,7 +4148,7 @@
       "OutputDtmi": "dtmi:com:willowinc:State;1"
     },
     {
-      "InputDtmi": "dtmi:mapped:core:TestPoint;1",
+      "InputDtmi": "dtmi:mapped:core:Test_Point;1",
       "OutputDtmi": "dtmi:com:willowinc:Capability;1",
       "IsIgnored": true
     },
