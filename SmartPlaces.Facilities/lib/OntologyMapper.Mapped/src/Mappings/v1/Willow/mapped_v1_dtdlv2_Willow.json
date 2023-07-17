@@ -4728,5 +4728,14 @@
       "OutputPropertyName": "name",
       "InputPropertyNames": [ "name", "description" ]
     }
+  ],
+  "ObjectTransformations": [
+    {
+      "OutputDtmiFilter": ".*",
+      "OutputPropertyName": "unit",
+      "InputProperty": "unit",
+      "InputPropertyName": "id",
+      "Priority": 1
+    }
   ]
 }

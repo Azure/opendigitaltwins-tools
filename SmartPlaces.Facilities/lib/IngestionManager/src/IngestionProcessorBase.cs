@@ -140,18 +140,25 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
         {
             var targetModelList = await OutputGraphManager.GetModelAsync(cancellationToken);
 
-            // Load the target model into the Model Parser, to make it possible to write queries against the model
-            TargetObjectModel = TargetModelParser.Parse(targetModelList);
-
-            // Validate the target map. Don't need to stop processing if there is an error, but results will show up in the logs
-            if (!OntologyMappingManager.ValidateTargetOntologyMapping(TargetObjectModel, out var invalidTargets) && invalidTargets != null)
+            try
             {
-                TelemetryClient.GetMetric(invalidTargetDtmisMetricIdentifier).TrackValue(invalidTargets.Count);
+                // Load the target model into the Model Parser, to make it possible to write queries against the model
+                TargetObjectModel = TargetModelParser.Parse(targetModelList);
 
-                foreach (var invalidTarget in invalidTargets)
+                // Validate the target map. Don't need to stop processing if there is an error, but results will show up in the logs
+                if (!OntologyMappingManager.ValidateTargetOntologyMapping(TargetObjectModel, out var invalidTargets) && invalidTargets != null)
                 {
-                    Logger.LogWarning("Invalid Target DTMI found: {invalidTarget}", invalidTarget);
+                    TelemetryClient.GetMetric(invalidTargetDtmisMetricIdentifier).TrackValue(invalidTargets.Count);
+
+                    foreach (var invalidTarget in invalidTargets)
+                    {
+                        Logger.LogWarning("Invalid Target DTMI found: {invalidTarget}", invalidTarget);
+                    }
                 }
+            }
+            catch (ParsingException ex)
+            {
+                Logger.LogError(ex, "Error parsing models: {errors}", ex.Errors);
             }
         }
 
@@ -353,12 +360,54 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
         /// <param name="outputDtmi">Interface of the target digital twin (that the contents directory belongs to).</param>
         protected void AddProperty(JsonElement sourceElement, string basicDtId, string interfaceType, Dictionary<string, object> contentDictionary, DTContentInfo property, string outputDtmi)
         {
+            // Do the transform first to see if there is a special mapping for this property
+            var matchResult = OntologyMappingManager.TryGetObjectTransformation(outputDtmi, property.Name, out var objectTransformation);
+
+            if (matchResult == ObjectTransformationMatch.PropertyAndTypeMatch)
+            {
+                Logger.LogInformation("Found object transformation for property: '{propertyName}' on interface: '{interfaceType}' for target DTMI: '{outputDtmi}'.", property.Name, interfaceType, outputDtmi);
+                PerformObjectTransformation(sourceElement, basicDtId, interfaceType, contentDictionary, objectTransformation);
+            }
+            else if (matchResult == ObjectTransformationMatch.PropertyMatchOnly)
+            {
+                Logger.LogDebug("No object transformation found for property: '{propertyName}' on interface: '{interfaceType}' for target DTMI: '{outputDtmi}'. Checking ancestors.", property.Name, interfaceType, outputDtmi);
+
+                var oDtmi = new Dtmi(outputDtmi);
+                var hashSet = new HashSet<string>();
+                var queue = new Queue<Dtmi>();
+
+                GetParentModels(queue, hashSet, oDtmi);
+
+                var dequeueSuccess = queue.TryDequeue(out var parent);
+
+                // Walk the ancestor tree to find the first parent that has a mapping
+                while (dequeueSuccess && parent != null)
+                {
+                    Logger.LogDebug("No object transformation found for property: '{propertyName}' on interface: '{interfaceType}' for target DTMI: '{outputDtmi}'. Checking parent: '{parentDtmi}'.", property.Name, interfaceType, outputDtmi, parent);
+                    if (OntologyMappingManager.TryGetObjectTransformation(parent.ToString(), property.Name, out objectTransformation) == ObjectTransformationMatch.PropertyAndTypeMatch)
+                    {
+                        Logger.LogInformation("Found object transformation for property: '{propertyName}' on interface: '{interfaceType}' for target DTMI: '{outputDtmi}'.", property.Name, interfaceType, outputDtmi);
+                        PerformObjectTransformation(sourceElement, basicDtId, interfaceType, contentDictionary, objectTransformation);
+
+                        // Stop at the first match
+                        break;
+                    }
+                    else
+                    {
+                        GetParentModels(queue, hashSet, parent);
+                    }
+
+                    dequeueSuccess = queue.TryDequeue(out parent);
+                }
+            }
+
             // Find the property on the input type that matches the propertyName of this property
             if (sourceElement.TryGetProperty(property.Name, out var propertyValue))
             {
                 if (propertyValue.ValueKind != JsonValueKind.Null)
                 {
-                    contentDictionary.Add(property.Name, propertyValue);
+                    // If the property already exists, we don't want to overwrite it
+                    contentDictionary.TryAdd(property.Name, propertyValue);
                 }
                 else
                 {
@@ -374,7 +423,8 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
                                 // Take the first one that is not null
                                 if (inputValue.ValueKind != JsonValueKind.Null)
                                 {
-                                    contentDictionary.Add(property.Name, inputValue);
+                                    // If the property already exists, we don't want to overwrite it
+                                    contentDictionary.TryAdd(property.Name, inputValue);
                                     break;
                                 }
                             }
@@ -422,6 +472,28 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
                                     TelemetryClient.GetMetric(duplicateMappingPropertyFoundMetricIdentifier).TrackValue(1, propertyProjection.OutputPropertyName);
                                 }
                             }
+                        }
+                    }
+                }
+            }
+        }
+
+        private void PerformObjectTransformation(JsonElement sourceElement, string basicDtId, string interfaceType, Dictionary<string, object> contentDictionary, ObjectTransformation? objectTransformation)
+        {
+            if (objectTransformation != null)
+            {
+                Logger.LogInformation("Performing object transformation for property: '{outputPropertyName}' with InterfaceType: '{interfaceType}' for DTMI: '{dtId}'.", objectTransformation.OutputPropertyName, interfaceType, basicDtId);
+
+                // Get the value of the input property
+                if (sourceElement.TryGetProperty(objectTransformation.InputProperty, out var inputProperty))
+                {
+                    // Get the value of the input property
+                    if (inputProperty.TryGetProperty(objectTransformation.InputPropertyName, out var inputPropertyValue))
+                    {
+                        if (!contentDictionary.TryAdd(objectTransformation.OutputPropertyName, inputPropertyValue.ToString()))
+                        {
+                            Logger.LogWarning("Duplicate target property: '{outputPropertyName}' with InterfaceType: '{interfaceType}' for DTMI: '{dtId}'.", objectTransformation.OutputPropertyName, interfaceType, basicDtId);
+                            TelemetryClient.GetMetric(duplicateMappingPropertyFoundMetricIdentifier).TrackValue(1, objectTransformation.OutputPropertyName);
                         }
                     }
                 }
@@ -537,6 +609,39 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
                     }
                 }
             }
+        }
+
+        private void GetParentModels(Queue<Dtmi> queue, HashSet<string> hashSet, Dtmi model)
+        {
+            if (model == null)
+            {
+                return;
+            }
+
+            var dtInterfaceInfo = TargetObjectModel.FirstOrDefault(p => p.Key == model && p.Value.EntityKind == DTEntityKind.Interface);
+
+            if (dtInterfaceInfo.Value != null)
+            {
+                var p = dtInterfaceInfo.Value as DTInterfaceInfo;
+
+                if (p != null)
+                {
+                    var extends = p.Extends.ToList();
+                    if (extends.Any())
+                    {
+                        foreach (var dtInterface in extends)
+                        {
+                            if (!hashSet.Contains(dtInterface.Id.ToString()))
+                            {
+                                hashSet.Add(dtInterface.Id.ToString());
+                                queue.Enqueue(dtInterface.Id);
+                            }
+                        }
+                    }
+                }
+            }
+
+            return;
         }
     }
 }
