@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 	
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
@@ -21,7 +21,7 @@
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="Divergic.Logging.Xunit" Version="4.2.0" />
-		<PackageReference Include="Mapped.Ontologies.Core.Dtdl" Version="1.8.0" />
+		<PackageReference Include="Mapped.Ontologies.Core.Dtdl" Version="1.27.10" />
 		<PackageReference Include="RealEstateCore.Ontology.DTDLv2" Version="4.0.0.19" />
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.3.2" />
 		<PackageReference Include="Moq" Version="4.18.2" />
