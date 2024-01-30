@@ -1,37 +1,37 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-	<PropertyGroup>
-		<TargetFramework>net6.0</TargetFramework>
-		<ImplicitUsings>enable</ImplicitUsings>
-		<Nullable>enable</Nullable>
-		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
-		<Version>$(VersionPrefix)</Version>
-		<Authors>Microsoft</Authors>
-		<Description>Support for converting from one Mapped Ontology to a different DTDL Based Ontology</Description>
-		<AssemblyVersion>0.10.12</AssemblyVersion>
-		<PackageVersion>0.10.12-preview</PackageVersion>
-		<RepositoryUrl>https://github.com/Azure/opendigitaltwins-tools</RepositoryUrl>
-		<PackageProjectUrl>https://github.com/Azure/opendigitaltwins-tools/</PackageProjectUrl>
-		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-		<RequireLicenseAcceptance>true</RequireLicenseAcceptance>
-		<Copyright>© Microsoft Corporation. All rights reserved.</Copyright>
-		<PackageReadmeFile>README.md</PackageReadmeFile>
-	</PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+    <Version>$(VersionPrefix)</Version>
+    <Authors>Microsoft</Authors>
+    <Description>Support for converting from one Mapped Ontology to a different DTDL Based Ontology</Description>
+    <AssemblyVersion>0.11.0</AssemblyVersion>
+    <PackageVersion>0.11.0-preview</PackageVersion>
+    <RepositoryUrl>https://github.com/Azure/opendigitaltwins-tools</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/Azure/opendigitaltwins-tools/</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RequireLicenseAcceptance>true</RequireLicenseAcceptance>
+    <Copyright>© Microsoft Corporation. All rights reserved.</Copyright>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
 
-	<ItemGroup>
-		<None Include="..\README.md" Pack="true" PackagePath="\" />
-	</ItemGroup>
-	
-	<ItemGroup>
-		<EmbeddedResource Include="Mappings\**\*.json" />
-	</ItemGroup>
+  <ItemGroup>
+    <None Include="..\README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
 
-	<ItemGroup>
-		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.2" />
-		<PackageReference Include="Microsoft.SmartPlaces.Facilities.OntologyMapper" Version="0.7.5-preview" />
-		<PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
-		  <PrivateAssets>all</PrivateAssets>
-		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-		</PackageReference>
-	</ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mappings\**\*.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.2" />
+    <PackageReference Include="Microsoft.SmartPlaces.Facilities.OntologyMapper" Version="0.8.0-preview" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
 </Project>

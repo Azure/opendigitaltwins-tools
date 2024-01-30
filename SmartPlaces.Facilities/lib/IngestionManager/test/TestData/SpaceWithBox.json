@@ -104,7 +104,6 @@
     "en": "SpaceWithBox"
   },
   "@context": [
-    "dtmi:dtdl:context;3",
-    "dtmi:dtdl:extension:initialization;1"
+    "dtmi:dtdl:context;3"
   ]
 }
