@@ -13,6 +13,13 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper.Test
 
     public class OntologyMappingManagerTests
     {
+        public static IEnumerable<object[]> DtdlFiles =>
+        new List<object[]>
+        {
+            new object[] { "DTDLv2.Space.json" },
+            new object[] { "DTDLv3.Space.json" },
+        };
+
         [Fact]
         public void TryGetInterfaceRemapDtmi_ReturnsTrue_When_Found()
         {
@@ -327,8 +334,7 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper.Test
         }
 
         [Theory]
-        [InlineData("DTDLv2.Space.json")]
-        [InlineData("DTDLv3.Space.json")]
+        [MemberData(nameof(DtdlFiles))]
         public void ValidateTargetOntologyMapping_ReturnsTrue_ForValidOntologyMapping(string model)
         {
             var targetObjectModel = GetTargetObjectModel(model);
@@ -345,26 +351,7 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper.Test
         }
 
         [Theory]
-        [InlineData("DTDLv2.Space.json")]
-        [InlineData("DTDLv3.Space.json")]
-        public void ValidateTargetOntologyMapping_ReturnsTrue_ExhaustiveMapping(string model)
-        {
-            var targetObjectModel = GetTargetObjectModel(model);
-
-            var mockOntologyLoader = new Mock<IOntologyMappingLoader>();
-            mockOntologyLoader.Setup(m => m.LoadOntologyMapping()).Returns(GetSpaceOnlyMapping);
-
-            var ontologyMappingManager = new OntologyMappingManager(mockOntologyLoader.Object);
-
-            var result = ontologyMappingManager.ValidateTargetOntologyMapping(targetObjectModel, out var invalidTargets);
-
-            Assert.True(result);
-            Assert.False(invalidTargets.Any());
-        }
-
-        [Theory]
-        [InlineData("DTDLv2.Space.json")]
-        [InlineData("DTDLv3.Space.json")]
+        [MemberData(nameof(DtdlFiles))]
         public void ValidateTargetOntologyMapping_ReturnsFalse_ForInvalidOntologyMapping(string model)
         {
             var targetObjectModel = GetTargetObjectModel(model);
