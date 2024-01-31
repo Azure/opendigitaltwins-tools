@@ -4,8 +4,8 @@
 namespace Microsoft.SmartPlaces.Facilities.OntologyMapper.Test
 {
     using System.Reflection;
-    using Microsoft.Azure.DigitalTwins.Parser;
-    using Microsoft.Azure.DigitalTwins.Parser.Models;
+    using DTDLParser;
+    using DTDLParser.Models;
     using Microsoft.SmartPlaces.Facilities.OntologyMapper;
     using Moq;
     using Xunit;
@@ -13,12 +13,12 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper.Test
 
     public class OntologyMappingManagerTests
     {
-        private readonly ITestOutputHelper output;
-
-        public OntologyMappingManagerTests(ITestOutputHelper output)
+        public static IEnumerable<object[]> DtdlFiles =>
+        new List<object[]>
         {
-            this.output = output;
-        }
+            new object[] { "DTDLv2.Space.json" },
+            new object[] { "DTDLv3.Space.json" },
+        };
 
         [Fact]
         public void TryGetInterfaceRemapDtmi_ReturnsTrue_When_Found()
@@ -333,10 +333,12 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper.Test
             Assert.Null(propertyFill);
         }
 
-        [Fact]
-        public void ValidateTargetOntologyMapping_ReturnsTrue_ForValidOntologyMapping()
+        [Theory]
+        [MemberData(nameof(DtdlFiles))]
+        public void ValidateTargetOntologyMapping_ReturnsTrue_ForValidOntologyMapping(string model)
         {
-            var targetObjectModel = GetTargetObjectModel();
+            var targetObjectModel = GetTargetObjectModel(model);
+
             var mockOntologyLoader = new Mock<IOntologyMappingLoader>();
             mockOntologyLoader.Setup(m => m.LoadOntologyMapping()).Returns(GetSpaceOnlyMapping);
 
@@ -348,10 +350,11 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper.Test
             Assert.False(invalidTargets.Any());
         }
 
-        [Fact]
-        public void ValidateTargetOntologyMapping_ReturnsFalse_ForInvalidOntologyMapping()
+        [Theory]
+        [MemberData(nameof(DtdlFiles))]
+        public void ValidateTargetOntologyMapping_ReturnsFalse_ForInvalidOntologyMapping(string model)
         {
-            var targetObjectModel = GetTargetObjectModel();
+            var targetObjectModel = GetTargetObjectModel(model);
             var mockOntologyLoader = new Mock<IOntologyMappingLoader>();
             mockOntologyLoader.Setup(m => m.LoadOntologyMapping()).Returns(GetBuildingOnlyMapping);
 
@@ -492,11 +495,19 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper.Test
             return ontologyMapping;
         }
 
-        private static IReadOnlyDictionary<Dtmi, DTEntityInfo> GetTargetObjectModel()
+        private static IReadOnlyDictionary<Dtmi, DTEntityInfo> GetTargetObjectModel(string model)
         {
-            var objectModelParser = new ModelParser();
-            var jsonTexts = LoadDtdl("Space.json");
-            return objectModelParser.Parse(jsonTexts);
+            try
+            {
+                var objectModelParser = new ModelParser();
+                var jsonTexts = LoadDtdl(model);
+                return objectModelParser.Parse(jsonTexts);
+            }
+            catch (ParsingException ex)
+            {
+                Assert.Empty(ex.Errors);
+                throw;
+            }
         }
 
         private static List<string> LoadDtdl(string fileName)
