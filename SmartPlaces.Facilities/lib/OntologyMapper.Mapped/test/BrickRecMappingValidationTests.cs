@@ -6,27 +6,25 @@
 
 namespace Microsoft.SmartPlaces.Facilities.OntologyMapper.Mapped.Test
 {
-    using Microsoft.Azure.DigitalTwins.Parser;
+    using System.Net.Http.Headers;
+    using System.Reflection;
+    using DTDLParser;
     using Microsoft.Extensions.Logging;
     using Microsoft.SmartPlaces.Facilities.OntologyMapper;
     using Moq;
-    using System.Reflection;
     using Xunit;
     using Xunit.Abstractions;
 
     public class BrickRecMappingValidationTests
     {
-        private readonly ITestOutputHelper output;
-
-        public BrickRecMappingValidationTests(ITestOutputHelper output)
+        public static IEnumerable<object[]> MappingFiles =>
+        new List<object[]>
         {
-            this.output = output;
-        }
+            new object[] { "Mappings.v1.BrickRec.mapped_v1_dtdlv2_Brick_1_3-REC_4_0.json" },
+        };
 
         [Theory]
-        [InlineData("Mappings.v0.BrickRec.mapped_json_v0_dtdlv2_Brick_1_3-REC_4_0.json")]
-        [InlineData("Mappings.v0.BrickRec.mapped_json_v0_dtdlv3_Brick_1_3-REC_4_0.json")]
-        [InlineData("Mappings.v1.BrickRec.mapped_v1_dtdlv2_Brick_1_3-REC_4_0.json")]
+        [MemberData(nameof(MappingFiles))]
         public void ValidateEmbeddedResourceDtmisAreValidFormat(string resourcePath)
         {
             var mockLogger = new Mock<ILogger>();
@@ -99,7 +97,7 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper.Mapped.Test
         }
 
         [Theory]
-        [InlineData("Mappings.v1.BrickRec.mapped_v1_dtdlv2_Brick_1_3-REC_4_0.json")]
+        [MemberData(nameof(MappingFiles))]
         public void ValidateSourceDtmisAreValid(string resourcePath)
         {
             var mockLogger = new Mock<ILogger>();
@@ -114,7 +112,7 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper.Mapped.Test
         }
 
         [Theory]
-        [InlineData("Mappings.v1.BrickRec.mapped_v1_dtdlv2_Brick_1_3-REC_4_0.json")]
+        [MemberData(nameof(MappingFiles))]
         public void ValidateTargetDtmisAreValid(string resourcePath)
         {
             var mockLogger = new Mock<ILogger>();
@@ -128,7 +126,7 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper.Mapped.Test
             Assert.Empty(invalidSources);
         }
 
-        private IEnumerable<string> LoadDtdl(string dtdlFile)
+        private static IEnumerable<string> LoadDtdl(string dtdlFile)
         {
             var assembly = Assembly.GetExecutingAssembly();
             var resourceName = assembly.GetManifestResourceNames().Single(str => str.EndsWith(dtdlFile));

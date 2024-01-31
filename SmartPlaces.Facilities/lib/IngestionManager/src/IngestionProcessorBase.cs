@@ -9,11 +9,11 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
     using System.Linq;
     using System.Text.Json;
     using System.Threading.Tasks;
+    using DTDLParser;
+    using DTDLParser.Models;
     using global::Azure.DigitalTwins.Core;
     using Microsoft.ApplicationInsights;
     using Microsoft.ApplicationInsights.Metrics;
-    using Microsoft.Azure.DigitalTwins.Parser;
-    using Microsoft.Azure.DigitalTwins.Parser.Models;
     using Microsoft.Extensions.Logging;
     using Microsoft.SmartPlaces.Facilities.IngestionManager.Interfaces;
     using Microsoft.SmartPlaces.Facilities.OntologyMapper;

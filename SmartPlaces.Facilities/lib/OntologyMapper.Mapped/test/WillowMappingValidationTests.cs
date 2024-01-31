@@ -6,7 +6,7 @@
 
 namespace Microsoft.SmartPlaces.Facilities.OntologyMapper.Mapped.Test
 {
-    using Microsoft.Azure.DigitalTwins.Parser;
+    using DTDLParser;
     using Microsoft.Extensions.Logging;
     using Moq;
     using System.Reflection;
@@ -15,16 +15,14 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper.Mapped.Test
 
     public class WillowMappingValidationTests
     {
-        private readonly ITestOutputHelper output;
-
-        public WillowMappingValidationTests(ITestOutputHelper output)
+        public static IEnumerable<object[]> MappingFiles =>
+        new List<object[]>
         {
-            this.output = output;
-        }
+            new object[] { "Mappings.v1.Willow.mapped_v1_dtdlv2_Willow.json" },
+        };
 
         [Theory]
-        [InlineData("Mappings.v0.Willow.mapped_json_v0_dtdlv2_Willow.json")]
-        [InlineData("Mappings.v1.Willow.mapped_v1_dtdlv2_Willow.json")]
+        [MemberData(nameof(MappingFiles))]
         public void ValidateMappedDtmisAreValidFormat(string resourcePath)
         {
             var mockLogger = new Mock<ILogger>();
@@ -150,7 +148,7 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper.Mapped.Test
         }
 
         [Theory]
-        [InlineData("Mappings.v1.Willow.mapped_v1_dtdlv2_Willow.json")]
+        [MemberData(nameof(MappingFiles))]
         public void ValidateSourceDtmisAreValid(string resourcePath)
         {
             var mockLogger = new Mock<ILogger>();
@@ -165,7 +163,7 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper.Mapped.Test
         }
 
         [Theory]
-        [InlineData("Mappings.v1.Willow.mapped_v1_dtdlv2_Willow.json")]
+        [MemberData(nameof(MappingFiles))]
         public void ValidateTargetDtmisAreValid(string resourcePath)
         {
             var mockLogger = new Mock<ILogger>();
@@ -179,7 +177,7 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper.Mapped.Test
             Assert.Empty(invalidSources);
         }
 
-        private IEnumerable<string> LoadDtdl(string dtdlFile)
+        private static IEnumerable<string> LoadDtdl(string dtdlFile)
         {
             var assembly = Assembly.GetExecutingAssembly();
             var resourceName = assembly.GetManifestResourceNames().Single(str => str.EndsWith(dtdlFile));

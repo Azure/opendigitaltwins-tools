@@ -1,47 +1,37 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-	
-	<PropertyGroup>
-		<TargetFramework>net6.0</TargetFramework>
-		<Nullable>enable</Nullable>
-		<IsPackable>false</IsPackable>
-	</PropertyGroup>
 
-	<ItemGroup>
-	  <None Remove="TestData\Box.json" />
-	  <None Remove="TestData\Space.json" />
-	  <None Remove="TestData\SpaceWithBox.json" />
-	  <None Remove="TestData\SpaceWithUnit.json" />
-	</ItemGroup>
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
 
-	<ItemGroup>
-	  <EmbeddedResource Include="TestData\SpaceWithUnit.json" />
-	  <EmbeddedResource Include="TestData\Box.json" />
-	  <EmbeddedResource Include="TestData\SpaceWithBox.json" />
-	  <EmbeddedResource Include="TestData\Space.json" />
-	</ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="TestData\*.json" />
+  </ItemGroup>
 
-	<ItemGroup>
-		<PackageReference Include="coverlet.collector" Version="3.1.2" />
-		<PackageReference Include="Divergic.Logging.Xunit" Version="4.2.0" />
-		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.3.2" />
-		<PackageReference Include="Moq" Version="4.18.2" />
-		<PackageReference Include="MSTest.TestAdapter" Version="2.2.10" />
-		<PackageReference Include="MSTest.TestFramework" Version="2.2.10" />
-		<PackageReference Include="xunit" Version="2.4.2" />
-		<PackageReference Include="xunit.runner.visualstudio" Version="2.4.5">
-			<PrivateAssets>all</PrivateAssets>
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-		</PackageReference>
-	</ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="coverlet.collector" Version="3.1.2" />
+    <PackageReference Include="Divergic.Logging.Xunit" Version="4.2.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.3.2" />
+    <PackageReference Include="Moq" Version="4.18.2" />
+    <PackageReference Include="MSTest.TestAdapter" Version="2.2.10" />
+    <PackageReference Include="MSTest.TestFramework" Version="2.2.10" />
+    <PackageReference Include="xunit" Version="2.4.2" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
 
-	<ItemGroup>
-	  <ProjectReference Include="..\src\IngestionManager.csproj" />
-	</ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\src\IngestionManager.csproj" />
+  </ItemGroup>
 
-    <!-- Added Explicitly for GHSA-5crp-9r3c-p9vr -->
-	<!-- Can be removed once Microsoft.NET.Test.Sdk fixes the vulnerability -->
-	<ItemGroup>
-		<PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
-	</ItemGroup>
+  <!-- Added Explicitly for GHSA-5crp-9r3c-p9vr -->
+  <!-- Can be removed once Microsoft.NET.Test.Sdk fixes the vulnerability -->
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+  </ItemGroup>
 
 </Project>
