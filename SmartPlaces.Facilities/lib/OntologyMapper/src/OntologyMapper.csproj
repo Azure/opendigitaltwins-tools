@@ -1,15 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
     <Version>$(VersionPrefix)</Version>
     <Authors>Microsoft</Authors>
     <Description>Support for converting from one DTDL-based Ontology to a different DTDL Based Ontology</Description>
-    <AssemblyVersion>0.8.0</AssemblyVersion>
-    <PackageVersion>0.8.0-preview</PackageVersion>
+    <AssemblyVersion>0.9.0</AssemblyVersion>
+    <PackageVersion>0.9.0-preview</PackageVersion>
     <RepositoryUrl>https://github.com/Azure/opendigitaltwins-tools</RepositoryUrl>
     <PackageProjectUrl>https://github.com/Azure/opendigitaltwins-tools/</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -24,7 +24,7 @@
 
   <ItemGroup>
     <PackageReference Include="DTDLParser" Version="1.0.52" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.0" />
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

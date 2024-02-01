@@ -4,6 +4,7 @@
 namespace Microsoft.SmartPlaces.Facilities.OntologyMapper.Test
 {
     using System.Reflection;
+    using System.Reflection.PortableExecutable;
     using DTDLParser;
     using DTDLParser.Models;
     using Microsoft.SmartPlaces.Facilities.OntologyMapper;
@@ -13,11 +14,9 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper.Test
 
     public class OntologyMappingManagerTests
     {
-        public static IEnumerable<object[]> DtdlFiles =>
-        new List<object[]>
-        {
-            new object[] { "DTDLv2.Space.json" },
-            new object[] { "DTDLv3.Space.json" },
+        public static TheoryData<string> DtdlFiles => new() {
+            "DTDLv2.Space.json",
+            "DTDLv3.Space.json",
         };
 
         [Fact]
@@ -347,7 +346,7 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper.Test
             var result = ontologyMappingManager.ValidateTargetOntologyMapping(targetObjectModel, out var invalidTargets);
 
             Assert.True(result);
-            Assert.False(invalidTargets.Any());
+            Assert.Empty(invalidTargets);
         }
 
         [Theory]
