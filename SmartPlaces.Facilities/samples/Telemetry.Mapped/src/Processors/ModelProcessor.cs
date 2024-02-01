@@ -9,9 +9,10 @@ namespace Telemetry.Processors
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
+    using Azure;
     using Azure.DigitalTwins.Core;
-    using Microsoft.Azure.DigitalTwins.Parser;
-    using Microsoft.Azure.DigitalTwins.Parser.Models;
+    using DTDLParser;
+    using DTDLParser.Models;
     using Telemetry.Exceptions;
 
     internal static class ModelProcessor
@@ -32,13 +33,8 @@ namespace Telemetry.Processors
         public static async Task<DTEntityKind> GetEntityKindFromModelIdAsync(DigitalTwinsClient adt, string modelId, string property, CancellationToken cancellationToken = default)
         {
             var response = adt.GetModelsAsync(new GetModelsOptions() { IncludeModelDefinition = true, DependenciesFor = new[] { modelId } }, cancellationToken);
-            var models = new List<string>();
-            await foreach (var digitalTwinsModelData in response)
-            {
-                models.Add(digitalTwinsModelData.DtdlModel);
-            }
 
-            var parseResult = await modelParser.ParseAsync(models);
+            var parseResult = await modelParser.ParseAsync(GetModels(response), cancellationToken: cancellationToken);
 
             // The Value needs cast to get to its Schema EntityKind
             var dtEntityInfo = (DTFieldInfo)parseResult.Where(x => x.Key.AbsoluteUri.Contains(property)).FirstOrDefault().Value;
@@ -49,6 +45,14 @@ namespace Telemetry.Processors
             }
 
             return dtEntityInfo.Schema.EntityKind;
+        }
+
+        private static async IAsyncEnumerable<string> GetModels(AsyncPageable<DigitalTwinsModelData> models)
+        {
+            await foreach (var digitalTwinsModelData in models)
+            {
+                yield return digitalTwinsModelData.DtdlModel;
+            }
         }
     }
 }
