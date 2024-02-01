@@ -8,8 +8,8 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped
 {
     using System.Text.Json;
     using System.Threading.Tasks;
-    using global::Azure.DigitalTwins.Core;
     using DTDLParser;
+    using global::Azure.DigitalTwins.Core;
     using Microsoft.ApplicationInsights;
     using Microsoft.ApplicationInsights.Metrics;
     using Microsoft.Extensions.Logging;
