@@ -13,15 +13,7 @@ updates:
     allow:
       - dependency-name: Microsoft.SmartPlaces.Facilities.*
     reviewers:
-      - "Tyler-Angell"
-      - "hammar"
-  - package-ecosystem: "nuget"
-    directory: "/SmartPlaces.Facilities/lib/IngestionManager/test"
-    schedule:
-      interval: "daily"
-    allow:
-      - dependency-name: Microsoft.SmartPlaces.Facilities.*
-    reviewers:
+      - "stdrenchen"
       - "Tyler-Angell"
       - "hammar"
   - package-ecosystem: "nuget"
@@ -32,6 +24,7 @@ updates:
       - dependency-name: Microsoft.SmartPlaces.Facilities.*
       - dependency-name: Mapped.*
     reviewers:
+      - "stdrenchen"
       - "Tyler-Angell"
       - "hammar"
   - package-ecosystem: "nuget"
@@ -39,8 +32,9 @@ updates:
     schedule:
       interval: "daily"
     allow:
-      - dependency-name: Microsoft.SmartPlaces.Facilities.*
+      - dependency-name: Mapped.*
     reviewers:
+      - "stdrenchen"
       - "Tyler-Angell"
       - "hammar"
   - package-ecosystem: "nuget"
@@ -49,16 +43,9 @@ updates:
       interval: "daily"
     allow:
       - dependency-name: Microsoft.SmartPlaces.Facilities.*
+      - dependency-name: DTDLParser
     reviewers:
-      - "Tyler-Angell"
-      - "hammar"
-  - package-ecosystem: "nuget"
-    directory: "/SmartPlaces.Facilities/lib/OntologyMapper/test"
-    schedule:
-      interval: "daily"
-    allow:
-      - dependency-name: Microsoft.SmartPlaces.Facilities.*
-    reviewers:
+      - "stdrenchen"
       - "Tyler-Angell"
       - "hammar"
   - package-ecosystem: "nuget"
@@ -68,6 +55,7 @@ updates:
     allow:
       - dependency-name: Microsoft.SmartPlaces.Facilities.*
     reviewers:
+      - "stdrenchen"
       - "Tyler-Angell"
       - "hammar"
   - package-ecosystem: "nuget"
@@ -77,7 +65,10 @@ updates:
     allow:
       - dependency-name: Microsoft.SmartPlaces.Facilities.*
       - dependency-name: Mapped.*
+      - dependency-name: RealEstateCore.*
+      - dependency-name: WillowInc.*
     reviewers:
+      - "stdrenchen"
       - "Tyler-Angell"
       - "hammar"
   - package-ecosystem: "nuget"
@@ -85,9 +76,9 @@ updates:
     schedule:
       interval: "daily"
     allow:
-      - dependency-name: Microsoft.SmartPlaces.Facilities.*
       - dependency-name: Mapped.*
     reviewers:
+      - "stdrenchen"
       - "Tyler-Angell"
       - "hammar"
   - package-ecosystem: "nuget"
@@ -98,6 +89,7 @@ updates:
       - dependency-name: Microsoft.SmartPlaces.Facilities.*
       - dependency-name: Mapped.*
     reviewers:
+      - "stdrenchen"
       - "Tyler-Angell"
       - "hammar"
   - package-ecosystem: "nuget"
@@ -107,5 +99,6 @@ updates:
     allow:
       - dependency-name: Microsoft.SmartPlaces.Facilities.*
     reviewers:
+      - "stdrenchen"
       - "Tyler-Angell"
       - "hammar"
