@@ -17,6 +17,10 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper
     {
         private readonly ILogger logger;
         private readonly string filePath = string.Empty;
+        private readonly JsonSerializerOptions jsonSerializerOptions = new JsonSerializerOptions
+        {
+            ReadCommentHandling = JsonCommentHandling.Skip,
+        };
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FileOntologyMappingLoader"/> class.
@@ -44,15 +48,10 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper
 
             var file = File.ReadAllText(filePath);
 
-            var options = new JsonSerializerOptions
-            {
-                ReadCommentHandling = JsonCommentHandling.Skip,
-            };
-
             OntologyMapping? mappings;
             try
             {
-                mappings = JsonSerializer.Deserialize<OntologyMapping>(file, options);
+                mappings = JsonSerializer.Deserialize<OntologyMapping>(file, jsonSerializerOptions);
             }
             catch (JsonException jex)
             {
