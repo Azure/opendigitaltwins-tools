@@ -8,8 +8,8 @@
     <Version>$(VersionPrefix)</Version>
     <Authors>Microsoft</Authors>
     <Description>This is library injects data from one DTDL based graph, then converts and inserts the data into another DTDL base graph.</Description>
-    <AssemblyVersion>0.6.0</AssemblyVersion>
-    <PackageVersion>0.6.0-preview</PackageVersion>
+    <AssemblyVersion>0.6.1</AssemblyVersion>
+    <PackageVersion>0.6.1-preview</PackageVersion>
     <RepositoryUrl>https://github.com/Azure/opendigitaltwins-tools</RepositoryUrl>
     <PackageProjectUrl>https://github.com/Azure/opendigitaltwins-tools/</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -20,7 +20,7 @@
 
   <ItemGroup>
     <PackageReference Include="Azure.DigitalTwins.Core" Version="1.4.0" />
-    <PackageReference Include="Azure.Identity" Version="1.7.0" />
+    <PackageReference Include="Azure.Identity" Version="1.10.4" />
     <PackageReference Include="DTDLParser" Version="1.0.52" />
     <PackageReference Include="Microsoft.ApplicationInsights" Version="2.21.0" />
     <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="6.0.1" />
