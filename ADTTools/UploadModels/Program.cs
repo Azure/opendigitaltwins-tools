@@ -105,10 +105,24 @@ namespace UploadModels
                 for (int i = 0; i < (orderedInterfaces.Count() / options.BatchSize) + 1; i++)
                 {
                     IEnumerable<DTInterfaceInfo> batch = orderedInterfaces.Skip(i * options.BatchSize).Take(options.BatchSize);
-                    Response<DigitalTwinsModelData[]> response = await client.CreateModelsAsync(batch.Select(i => i.GetJsonLdText()));
-                    foreach (DTInterfaceInfo @interface in batch)
+                    try
                     {
-                        Log.Ok(@interface.Id.AbsoluteUri);
+                        Response<DigitalTwinsModelData[]> response = await client.CreateModelsAsync(batch.Select(i => i.GetJsonLdText()));
+                        foreach (DTInterfaceInfo @interface in batch)
+                        {
+                            Log.Ok(@interface.Id.AbsoluteUri);
+                        }
+                    }
+                    catch(Exception ex)
+                    {
+                        if (ex.Message.Contains("ModelIdAlreadyExists"))
+                        {
+                            Log.Ok($"Model already exists: {ex.Message}");
+                        }
+                        else
+                        {
+                            throw;
+                        }
                     }
                 }
             }
@@ -161,7 +175,7 @@ namespace UploadModels
             IReadOnlyDictionary<Dtmi, DTEntityInfo> entities = null;
             try
             {
-                var parser = new ModelParser(new ParsingOptions() { AllowUndefinedExtensions = options.AllowUndefinedExtensions });
+                var parser = new ModelParser(new ParsingOptions() { AllowUndefinedExtensions = WhenToAllow.Always });
                 entities = await parser.ParseAsync(modelTexts.Values.ToAsyncEnumerable());
             }
             catch (ParsingException ex)
