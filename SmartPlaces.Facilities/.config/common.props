@@ -10,6 +10,10 @@
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
     <AnalysisLevel>latest</AnalysisLevel>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NetCoreAppCurrent>net8.0</NetCoreAppCurrent>
+    <NetCoreAppPrevious>net7.0</NetCoreAppPrevious>
+    <NetCoreAppMinimum>net6.0</NetCoreAppMinimum>
+    <NetFrameworkMinimum>net462</NetFrameworkMinimum>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(BuildingInsideVisualStudio)' != 'true'">
