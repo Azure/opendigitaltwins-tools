@@ -103,7 +103,7 @@ namespace Telemetry
         public override async Task StopAsync(CancellationToken cancellationToken)
         {
             // Stop the processing
-            logger.LogInformation("Shutting down Telemetry Service", nameof(ITelemetryIngestionProcessor));
+            logger.LogInformation("Shutting down Telemetry Service");
             if (processor != null)
             {
                 await processor.StopProcessingAsync(cancellationToken);

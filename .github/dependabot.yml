@@ -16,6 +16,15 @@ updates:
       - "Tyler-Angell"
       - "hammar"
   - package-ecosystem: "nuget"
+    directory: "/SmartPlaces.Facilities/lib/IngestionManager/test"
+    schedule:
+      interval: "daily"
+    allow:
+      - dependency-name: Microsoft.SmartPlaces.Facilities.*
+    reviewers:
+      - "Tyler-Angell"
+      - "hammar"
+  - package-ecosystem: "nuget"
     directory: "/SmartPlaces.Facilities/lib/IngestionManager.Mapped/src"
     schedule:
       interval: "daily"
@@ -30,7 +39,7 @@ updates:
     schedule:
       interval: "daily"
     allow:
-      - dependency-name: Mapped.*
+      - dependency-name: Microsoft.SmartPlaces.Facilities.*
     reviewers:
       - "Tyler-Angell"
       - "hammar"
@@ -40,7 +49,15 @@ updates:
       interval: "daily"
     allow:
       - dependency-name: Microsoft.SmartPlaces.Facilities.*
-      - dependency-name: DTDLParser
+    reviewers:
+      - "Tyler-Angell"
+      - "hammar"
+  - package-ecosystem: "nuget"
+    directory: "/SmartPlaces.Facilities/lib/OntologyMapper/test"
+    schedule:
+      interval: "daily"
+    allow:
+      - dependency-name: Microsoft.SmartPlaces.Facilities.*
     reviewers:
       - "Tyler-Angell"
       - "hammar"
@@ -60,8 +77,6 @@ updates:
     allow:
       - dependency-name: Microsoft.SmartPlaces.Facilities.*
       - dependency-name: Mapped.*
-      - dependency-name: RealEstateCore.*
-      - dependency-name: WillowInc.*
     reviewers:
       - "Tyler-Angell"
       - "hammar"
@@ -70,6 +85,7 @@ updates:
     schedule:
       interval: "daily"
     allow:
+      - dependency-name: Microsoft.SmartPlaces.Facilities.*
       - dependency-name: Mapped.*
     reviewers:
       - "Tyler-Angell"
