@@ -16,11 +16,11 @@ namespace Telemetry.Processors
     using Azure.Identity;
     using Azure.Messaging.EventHubs;
     using Google.Protobuf;
+    using DTDLParser;
     using Mapped.Cloud.Types;
     using Mapped.Gateway;
     using Microsoft.ApplicationInsights;
     using Microsoft.ApplicationInsights.Metrics;
-    using Microsoft.Azure.DigitalTwins.Parser;
     using Microsoft.Extensions.Logging;
     using Microsoft.Extensions.Options;
     using Microsoft.SmartPlaces.Facilities.IngestionManager;
