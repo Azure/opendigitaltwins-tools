@@ -23,13 +23,9 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped.Test
     using Microsoft.SmartPlaces.Facilities.OntologyMapper;
     using Moq;
     using Xunit;
-    using Xunit.Abstractions;
 
     public class MappedGraphIngestionProcessorTests
     {
-#pragma warning disable IDE0052 // Remove unread private members
-        private readonly ITestOutputHelper output;
-#pragma warning restore IDE0052 // Remove unread private members
 
         private const string organizationQuery = "{sites{description,exactType,id,name}}";
         private const string siteQuery = "{ sites(filter: { id: { eq: \"SITE44nUdjjbqSX1sEXuwEWucr\"} }) { description,exactType,id,name,dateCreated,dateUpdated,type,buildings{ address{countryName,dateCreated,dateUpdated,id,locality,postalCode,region,streetAddress},description,exactType,id,identities { ... on ExternalIdentity { dateCreated, dateUpdated, value } },name,type,floors{ dateCreated,dateUpdated,description,exactType,id,level,name,type} } } }";
@@ -41,10 +37,8 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped.Test
         private readonly JsonDocument? buildingThingsJsonDocument;
         private readonly JsonDocument? thingPointsJsonDocument;
 
-        public MappedGraphIngestionProcessorTests(ITestOutputHelper output)
+        public MappedGraphIngestionProcessorTests()
         {
-            this.output = output;
-
             organizationJsonDocument = GetDocumentFromResource("organization.json");
             siteJsonDocument = GetDocumentFromResource("site.json");
             buildingThingsJsonDocument = GetDocumentFromResource("buildingThings.json");
