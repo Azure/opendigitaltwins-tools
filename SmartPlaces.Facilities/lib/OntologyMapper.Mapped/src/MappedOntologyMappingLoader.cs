@@ -18,6 +18,10 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper.Mapped
     {
         private readonly ILogger logger;
         private readonly string resourcePath = string.Empty;
+        private readonly JsonSerializerOptions jsonSerializerOptions = new JsonSerializerOptions
+        {
+            ReadCommentHandling = JsonCommentHandling.Skip,
+        };
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MappedOntologyMappingLoader"/> class.
@@ -44,11 +48,6 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper.Mapped
             var resources = assembly.GetManifestResourceNames();
             var resourceName = resources.Single(str => str.ToLowerInvariant().EndsWith(resourcePath.ToLowerInvariant()));
 
-            var options = new JsonSerializerOptions
-            {
-                ReadCommentHandling = JsonCommentHandling.Skip,
-            };
-
             using (Stream? stream = assembly.GetManifestResourceStream(resourceName))
             {
                 if (stream != null)
@@ -59,7 +58,7 @@ namespace Microsoft.SmartPlaces.Facilities.OntologyMapper.Mapped
                         OntologyMapping? mappings;
                         try
                         {
-                            mappings = JsonSerializer.Deserialize<OntologyMapping>(result, options);
+                            mappings = JsonSerializer.Deserialize<OntologyMapping>(result, jsonSerializerOptions);
                         }
                         catch (JsonException jex)
                         {

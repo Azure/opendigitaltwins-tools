@@ -329,7 +329,17 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
 
                     basicTwin.Contents = contentDictionary;
 
+#if NET5_0_OR_GREATER
                     twins.TryAdd(basicTwin.Id, basicTwin);
+#else
+                    lock (twins)
+                    {
+                        if (!twins.ContainsKey(basicTwin.Id))
+                        {
+                            twins.Add(basicTwin.Id, basicTwin);
+                        }
+                    }
+#endif
                 }
                 else
                 {
@@ -378,7 +388,14 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
 
                 GetParentModels(queue, hashSet, oDtmi);
 
-                var dequeueSuccess = queue.TryDequeue(out var parent);
+                Dtmi? parent = null;
+                bool dequeueSuccess = false;
+
+                if (queue.Count > 0)
+                {
+                    parent = queue.Dequeue();
+                    dequeueSuccess = true;
+                }
 
                 // Walk the ancestor tree to find the first parent that has a mapping
                 while (dequeueSuccess && parent != null)
@@ -397,7 +414,15 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
                         GetParentModels(queue, hashSet, parent);
                     }
 
-                    dequeueSuccess = queue.TryDequeue(out parent);
+                    if (queue.Count > 0)
+                    {
+                        parent = queue.Dequeue();
+                        dequeueSuccess = true;
+                    }
+                    else
+                    {
+                        dequeueSuccess = false;
+                    }
                 }
             }
 
@@ -407,7 +432,17 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
                 if (propertyValue.ValueKind != JsonValueKind.Null)
                 {
                     // If the property already exists, we don't want to overwrite it
+#if NET5_0_OR_GREATER
                     contentDictionary.TryAdd(property.Name, propertyValue);
+#else
+                    lock (contentDictionary)
+                    {
+                        if (!contentDictionary.ContainsKey(property.Name))
+                        {
+                            contentDictionary.Add(property.Name, propertyValue);
+                        }
+                    }
+#endif
                 }
                 else
                 {
@@ -424,7 +459,17 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
                                 if (inputValue.ValueKind != JsonValueKind.Null)
                                 {
                                     // If the property already exists, we don't want to overwrite it
+#if NET5_0_OR_GREATER
                                     contentDictionary.TryAdd(property.Name, inputValue);
+#else
+                                    lock (contentDictionary)
+                                    {
+                                        if (!contentDictionary.ContainsKey(property.Name))
+                                        {
+                                            contentDictionary.Add(property.Name, inputValue);
+                                        }
+                                    }
+#endif
                                     break;
                                 }
                             }
@@ -446,19 +491,26 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
                             // If the output target is a collection, add the value to the target collection
                             if (propertyProjection.IsOutputPropertyCollection)
                             {
-                                if (!contentDictionary.TryGetValue(propertyProjection.OutputPropertyName, out var outputProperty))
+                                lock (contentDictionary)
                                 {
-                                    var newProperty = new Dictionary<string, string>() { { inputProperty, inputValue.ToString() } };
-                                    contentDictionary.Add(propertyProjection.OutputPropertyName, newProperty);
-                                }
-                                else
-                                {
-                                    if (outputProperty is Dictionary<string, string> coll)
+                                    if (!contentDictionary.TryGetValue(propertyProjection.OutputPropertyName, out var outputProperty))
                                     {
-                                        if (!coll.TryAdd(inputProperty, inputValue.ToString()))
+                                        var newProperty = new Dictionary<string, string>() { { inputProperty, inputValue.ToString() } };
+                                        contentDictionary.Add(propertyProjection.OutputPropertyName, newProperty);
+                                    }
+                                    else if (outputProperty is Dictionary<string, string> coll)
+                                    {
+                                        lock (coll)
                                         {
-                                            Logger.LogWarning("Duplicate target property in collection: '{outputPropertyName}' with InterfaceType: '{interfaceType}' for DTMI: '{dtId}'.", propertyProjection.OutputPropertyName, interfaceType, basicDtId);
-                                            TelemetryClient.GetMetric(duplicateMappingPropertyFoundMetricIdentifier).TrackValue(1, propertyProjection.OutputPropertyName);
+                                            if (coll.ContainsKey(inputProperty))
+                                            {
+                                                Logger.LogWarning("Duplicate target property in collection: '{outputPropertyName}' with InterfaceType: '{interfaceType}' for DTMI: '{dtId}'.", propertyProjection.OutputPropertyName, interfaceType, basicDtId);
+                                                TelemetryClient.GetMetric(duplicateMappingPropertyFoundMetricIdentifier).TrackValue(1, propertyProjection.OutputPropertyName);
+                                            }
+                                            else
+                                            {
+                                                coll.Add(inputProperty, inputValue.ToString());
+                                            }
                                         }
                                     }
                                 }
@@ -466,10 +518,17 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
                             else
                             {
                                 // If the output target is not a collection, add the value to the target
-                                if (!contentDictionary.TryAdd(propertyProjection.OutputPropertyName, inputValue.ToString()))
+                                lock (contentDictionary)
                                 {
-                                    Logger.LogWarning("Duplicate target property: '{outputPropertyName}' with InterfaceType: '{interfaceType}' for DTMI: '{dtId}'.", propertyProjection.OutputPropertyName, interfaceType, basicDtId);
-                                    TelemetryClient.GetMetric(duplicateMappingPropertyFoundMetricIdentifier).TrackValue(1, propertyProjection.OutputPropertyName);
+                                    if (contentDictionary.ContainsKey(propertyProjection.OutputPropertyName))
+                                    {
+                                        Logger.LogWarning("Duplicate target property: '{outputPropertyName}' with InterfaceType: '{interfaceType}' for DTMI: '{dtId}'.", propertyProjection.OutputPropertyName, interfaceType, basicDtId);
+                                        TelemetryClient.GetMetric(duplicateMappingPropertyFoundMetricIdentifier).TrackValue(1, propertyProjection.OutputPropertyName);
+                                    }
+                                    else
+                                    {
+                                        contentDictionary.Add(propertyProjection.OutputPropertyName, inputValue.ToString());
+                                    }
                                 }
                             }
                         }
@@ -490,10 +549,17 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
                     // Get the value of the input property
                     if (inputProperty.TryGetProperty(objectTransformation.InputPropertyName, out var inputPropertyValue))
                     {
-                        if (!contentDictionary.TryAdd(objectTransformation.OutputPropertyName, inputPropertyValue.ToString()))
+                        lock (contentDictionary)
                         {
-                            Logger.LogWarning("Duplicate target property: '{outputPropertyName}' with InterfaceType: '{interfaceType}' for DTMI: '{dtId}'.", objectTransformation.OutputPropertyName, interfaceType, basicDtId);
-                            TelemetryClient.GetMetric(duplicateMappingPropertyFoundMetricIdentifier).TrackValue(1, objectTransformation.OutputPropertyName);
+                            if (contentDictionary.ContainsKey(objectTransformation.OutputPropertyName))
+                            {
+                                Logger.LogWarning("Duplicate target property: '{outputPropertyName}' with InterfaceType: '{interfaceType}' for DTMI: '{dtId}'.", objectTransformation.OutputPropertyName, interfaceType, basicDtId);
+                                TelemetryClient.GetMetric(duplicateMappingPropertyFoundMetricIdentifier).TrackValue(1, objectTransformation.OutputPropertyName);
+                            }
+                            else
+                            {
+                                contentDictionary.Add(objectTransformation.OutputPropertyName, inputPropertyValue.ToString());
+                            }
                         }
                     }
                 }
@@ -559,7 +625,7 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
                     if (!string.IsNullOrEmpty(inputRelationshipType))
                     {
                         // Get Output relationship
-                        var outputRelationship = GetOutputRelationshipType(inputRelationshipType);
+                        var outputRelationship = GetOutputRelationshipType(inputRelationshipType!);
 
                         if (outputSourceDtmi != null && TargetObjectModel.TryGetValue(outputSourceDtmi, out var model))
                         {
@@ -583,8 +649,17 @@ namespace Microsoft.SmartPlaces.Facilities.IngestionManager
                                     basicRelationship.Properties.Add(new KeyValuePair<string, object>(relationshipProperty.Key, relationshipProperty.Value));
                                 }
                             }
-
+#if NET5_0_OR_GREATER
                             relationships.TryAdd(basicRelationship.Id, basicRelationship);
+#else
+                            lock (relationships)
+                            {
+                                if (!relationships.ContainsKey(basicRelationship.Id))
+                                {
+                                    relationships.Add(basicRelationship.Id, basicRelationship);
+                                }
+                            }
+#endif
                         }
                         else
                         {

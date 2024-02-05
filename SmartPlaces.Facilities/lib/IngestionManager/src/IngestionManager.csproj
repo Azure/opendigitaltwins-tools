@@ -1,15 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFrameworks>$(NetCoreAppCurrent);$(NetCoreAppPrevious);$(NetCoreAppMinimum);netstandard2.0;$(NetFrameworkMinimum)</TargetFrameworks>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
     <Version>$(VersionPrefix)</Version>
     <Authors>Microsoft</Authors>
     <Description>This is library injects data from one DTDL based graph, then converts and inserts the data into another DTDL base graph.</Description>
-    <AssemblyVersion>0.6.1</AssemblyVersion>
-    <PackageVersion>0.6.1-preview</PackageVersion>
+    <AssemblyVersion>0.6.2</AssemblyVersion>
+    <PackageVersion>$(AssemblyVersion)-preview</PackageVersion>
     <RepositoryUrl>https://github.com/Azure/opendigitaltwins-tools</RepositoryUrl>
     <PackageProjectUrl>https://github.com/Azure/opendigitaltwins-tools/</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -22,28 +22,19 @@
     <PackageReference Include="Azure.DigitalTwins.Core" Version="1.4.0" />
     <PackageReference Include="Azure.Identity" Version="1.10.4" />
     <PackageReference Include="DTDLParser" Version="1.0.52" />
-    <PackageReference Include="Microsoft.ApplicationInsights" Version="2.21.0" />
-    <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="6.0.1" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.1" />
-    <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
-    <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Options.DataAnnotations" Version="6.0.0" />
-    <PackageReference Include="Microsoft.SmartPlaces.Facilities.OntologyMapper" Version="0.8.0-preview" />
-    <PackageReference Include="Microsoft.Net.Http.Headers" Version="2.2.8" />
-    <PackageReference Include="Polly" Version="7.2.3" />
-    <PackageReference Include="StackExchange.Redis" Version="2.6.70" />
+    <PackageReference Include="Microsoft.ApplicationInsights" Version="2.22.0" />
+    <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="8.0.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Options.DataAnnotations" Version="8.0.0" />
+    <PackageReference Include="Microsoft.SmartPlaces.Facilities.OntologyMapper" Version="0.8.1-preview" />
+    <PackageReference Include="Polly" Version="8.2.1" />
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-  </ItemGroup>
-
-  <!-- Added Explicitly for CVE-2021-24112 -->
-  <!-- Can be removed once StackExchange.Redis fixes the vulnerability -->
-  <ItemGroup>
-    <PackageReference Include="System.Drawing.Common" Version="5.0.3" />
-    <PackageReference Include="System.Linq.Async" Version="6.0.1" />
   </ItemGroup>
 
   <ItemGroup>
