@@ -31,4 +31,10 @@
     <ProjectReference Include="..\src\IngestionManager.Mapped.csproj" />
   </ItemGroup>
 
+  <!-- Added Explicitly for GHSA-5crp-9r3c-p9vr -->
+  <!-- Can be removed once Microsoft.NET.Test.Sdk fixes the vulnerability -->
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
 </Project>
