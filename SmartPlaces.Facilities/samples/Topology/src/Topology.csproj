@@ -34,8 +34,8 @@
     <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.1" />
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="8.0.0" />
-    <PackageReference Include="Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped" Version="0.7.0-preview" />
-    <PackageReference Include="Microsoft.SmartPlaces.Facilities.OntologyMapper.Mapped" Version="0.11.0-preview" />
+    <PackageReference Include="Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped" Version="0.7.1-preview" />
+    <PackageReference Include="Microsoft.SmartPlaces.Facilities.OntologyMapper.Mapped" Version="0.11.1-preview" />
   </ItemGroup>
 
   <PropertyGroup Condition="'$(BuildingInsideVisualStudio)' != 'true'">
@@ -53,5 +53,11 @@
   <!-- Can be removed once Microsoft.AspNet.WebApi.Client fixes the vulnerability -->
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <!-- Added Explicitly for CVE-2024-30105 -->
+  <!-- Can be removed once Microsoft.Extensions.Logging.Console & Microsoft.Extensions.Hosting & Azure.Identity & Azure.Extensions.AspNetCore.Configurtation.Secrets & Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped & Microsoft.SmartPlaces.Facilities.OntologyMapper.Mapped fixes the vulnerability -->
+  <ItemGroup>
+    <PackageReference Include="System.Text.Json" Version="8.0.4" />
   </ItemGroup>
 </Project>

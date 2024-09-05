@@ -8,8 +8,8 @@
     <Version>$(VersionPrefix)</Version>
     <Authors>Microsoft</Authors>
     <Description>This is library injects data from one DTDL based graph, then converts and inserts the data into another DTDL base graph.</Description>
-    <AssemblyVersion>0.6.2</AssemblyVersion>
-    <PackageVersion>0.6.2-preview</PackageVersion>
+    <AssemblyVersion>0.6.3</AssemblyVersion>
+    <PackageVersion>0.6.3-preview</PackageVersion>
     <RepositoryUrl>https://github.com/Azure/opendigitaltwins-tools</RepositoryUrl>
     <PackageProjectUrl>https://github.com/Azure/opendigitaltwins-tools/</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -29,7 +29,7 @@
     <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
     <PackageReference Include="Microsoft.Extensions.Options.DataAnnotations" Version="8.0.0" />
-    <PackageReference Include="Microsoft.SmartPlaces.Facilities.OntologyMapper" Version="0.8.0-preview" />
+    <PackageReference Include="Microsoft.SmartPlaces.Facilities.OntologyMapper" Version="0.8.2-preview" />
     <PackageReference Include="Microsoft.Net.Http.Headers" Version="2.2.8" />
     <PackageReference Include="Polly" Version="8.4.1" />
     <PackageReference Include="StackExchange.Redis" Version="2.8.12" />
@@ -37,6 +37,18 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <!-- Added Explicitly for CVE-2024-30105 -->
+  <!-- Can be removed once Microsoft.Extensions.Hosting & DTDLParser & Azure.Identity & Azure.DigitalTwins.Core & Microsoft.SmartPlaces.Facilities.OntologyMapper fixes the vulnerability -->
+  <ItemGroup>
+    <PackageReference Include="System.Text.Json" Version="8.0.4" />
+  </ItemGroup>
+
+  <!-- Added Explicitly for Bug -->
+  <!-- Can be removed once Azure.DigitalTwins.Core & Azure.Identity fixes the bug -->
+  <ItemGroup>
+    <PackageReference Include="Azure.Core" Version="1.42.0" />
   </ItemGroup>
 
   <ItemGroup>

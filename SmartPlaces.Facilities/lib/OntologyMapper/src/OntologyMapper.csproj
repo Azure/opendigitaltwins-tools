@@ -8,8 +8,8 @@
     <Version>$(VersionPrefix)</Version>
     <Authors>Microsoft</Authors>
     <Description>Support for converting from one DTDL-based Ontology to a different DTDL Based Ontology</Description>
-    <AssemblyVersion>0.8.2</AssemblyVersion>
-    <PackageVersion>0.8.2-preview</PackageVersion>
+    <AssemblyVersion>0.8.3</AssemblyVersion>
+    <PackageVersion>0.8.3-preview</PackageVersion>
     <RepositoryUrl>https://github.com/Azure/opendigitaltwins-tools</RepositoryUrl>
     <PackageProjectUrl>https://github.com/Azure/opendigitaltwins-tools/</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -29,5 +29,11 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <!-- Added Explicitly for CVE-2024-30105 -->
+  <!-- Can be removed once DTDLParser fixes the vulnerability -->
+  <ItemGroup>
+    <PackageReference Include="System.Text.Json" Version="8.0.4" />
   </ItemGroup>
 </Project>

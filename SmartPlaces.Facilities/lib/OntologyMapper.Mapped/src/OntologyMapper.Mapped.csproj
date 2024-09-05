@@ -8,8 +8,8 @@
     <Version>$(VersionPrefix)</Version>
     <Authors>Microsoft</Authors>
     <Description>Support for converting from one Mapped Ontology to a different DTDL Based Ontology</Description>
-    <AssemblyVersion>0.11.1</AssemblyVersion>
-    <PackageVersion>0.11.1-preview</PackageVersion>
+    <AssemblyVersion>0.11.2</AssemblyVersion>
+    <PackageVersion>0.11.2-preview</PackageVersion>
     <RepositoryUrl>https://github.com/Azure/opendigitaltwins-tools</RepositoryUrl>
     <PackageProjectUrl>https://github.com/Azure/opendigitaltwins-tools/</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -28,10 +28,16 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.1" />
-    <PackageReference Include="Microsoft.SmartPlaces.Facilities.OntologyMapper" Version="0.8.1-preview" />
+    <PackageReference Include="Microsoft.SmartPlaces.Facilities.OntologyMapper" Version="0.8.2-preview" />
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <!-- Added Explicitly for CVE-2024-30105 -->
+  <!-- Can be removed once Microsoft.SmartPlaces.Facilities.OntologyMapper fixes the vulnerability -->
+  <ItemGroup>
+    <PackageReference Include="System.Text.Json" Version="8.0.4" />
   </ItemGroup>
 </Project>
