@@ -38,10 +38,10 @@
     </PackageReference>
   </ItemGroup>
 
-  <!-- Added Explicitly for CVE-2024-30105 -->
+  <!-- Added Explicitly for CVE-2024-30105 & CVE-2024-43485 -->
   <!-- Can be removed once Microsoft.Extensions.Hosting & Azure.Storage.Blobs & Azure.Messaging.EventHubs & Azure.Identity & Azure.DigitalTwins.Core & Microsoft.SmartPlaces.Facilities.IngestionManager fixes the vulnerability -->
   <ItemGroup>
-    <PackageReference Include="System.Text.Json" Version="8.0.4" />
+    <PackageReference Include="System.Text.Json" Version="8.0.5" />
   </ItemGroup>
 
   <ItemGroup>
