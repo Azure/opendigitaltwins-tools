@@ -55,9 +55,9 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
-  <!-- Added Explicitly for CVE-2024-30105 -->
+  <!-- Added Explicitly for CVE-2024-30105 & CVE-2024-43485 -->
   <!-- Can be removed once Microsoft.Extensions.Logging.Console & Microsoft.Extensions.Hosting & Azure.Identity & Azure.Extensions.AspNetCore.Configurtation.Secrets & Microsoft.SmartPlaces.Facilities.IngestionManager.Mapped & Microsoft.SmartPlaces.Facilities.OntologyMapper.Mapped fixes the vulnerability -->
   <ItemGroup>
-    <PackageReference Include="System.Text.Json" Version="8.0.4" />
+    <PackageReference Include="System.Text.Json" Version="8.0.5" />
   </ItemGroup>
 </Project>
