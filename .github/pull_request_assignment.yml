@@ -1,8 +1,0 @@
----
-- rule:
-    paths:
-      - ".github/**"
-      - "SmartPlaces.Facilities/**"
-    reviewers:
-      - "Tyler-Angell"
-      - "hammar"

@@ -1,8 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<RuleSet Name="Code Analysis Rules" Description="Everything unless specified otherwise." ToolsVersion="10.0">
-  <IncludeAll Action="Error" />
-  <Include Path="rulesets/CodeStyle.ruleset" Action="Default" />
-  <Include Path="rulesets/Compiler.ruleset" Action="Default" />
-  <Include Path="rulesets/Quality.ruleset" Action="Default" />
-  <Include Path="rulesets/StyleCop.ruleset" Action="Default" />
-</RuleSet>
