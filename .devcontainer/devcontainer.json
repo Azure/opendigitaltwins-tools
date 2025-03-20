@@ -1,0 +1,73 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/dotnet
+{
+  "name": "opendigitaltwins-tools",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  "forwardPorts": [5000, 5001],
+  "portsAttributes": {
+     "5001": {
+       "protocol": "https"
+     }
+  },
+  "runArgs": [
+    "--network", "host", "--cap-add", "NET_ADMIN" // use host networking so that the dev container can access the API when running the container locally
+  ],
+
+  "mounts": [
+    // Keep command history 
+    "type=volume,source=opendigitaltwins-tools-bashhistory,target=/home/codespace/commandhistory",
+    // Mounts the login details from the host machine to azcli works in the container
+    "type=bind,source=${env:HOME}${env:USERPROFILE}/.azure,target=/home/codespace/.azure",
+    // Mount docker socket for docker builds
+    "type=bind,source=/var/run/docker.sock,target=/var/run/docker.sock"
+  ],
+  "customizations": {
+    "vscode": {
+      "settings": {
+        // Only place settings here to enable devcontainer functionality.
+        // Settings for both local and devcontainer should be placed
+        // in .vscode/settings.json to enable identical behavior.
+        "python.pythonPath": "/opt/conda/envs/development/bin/python",
+        "python.formatting.autopep8Path": "/usr/local/py-utils/bin/autopep8",
+        "python.formatting.blackPath": "/usr/local/py-utils/bin/black",
+        "python.formatting.yapfPath": "/usr/local/py-utils/bin/yapf"
+      },
+      // Add extensions you want installed when the container is created into this array
+      "extensions": [
+        "DavidAnson.vscode-markdownlint",
+        "eamodio.gitlens",
+        "esbenp.prettier-vscode",
+        "foxundermoon.shell-format",
+        "GitHub.copilot-chat",
+        "GitHub.copilot",
+        "github.vscode-github-actions",
+        "hediet.vscode-drawio",
+        "mechatroner.rainbow-csv",
+        "mhutchie.git-graph",
+        "ms-azure-devops.azure-pipelines",
+        "ms-azuretools.azure-dev",
+        "ms-azuretools.vscode-azureresourcegroups",
+        "ms-azuretools.vscode-azurestorage",
+        "ms-azuretools.vscode-docker",
+        "ms-dotnettools.csdevkit",
+        "ms-dotnettools.csharp",
+        "ms-python.autopep8",
+        "ms-python.mypy",
+        "ms-python.pylint",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-toolsai.jupyter",
+        "ms-vscode.makefile-tools",
+        "ms-vscode.powershell",
+        "msazurermtools.azurerm-vscode-tools",
+        "mutantdino.resourcemonitor",
+        "redhat.vscode-yaml",
+        "streetsidesoftware.code-spell-checker"
+      ]
+    }
+  },
+  "remoteUser": "codespace"
+}
