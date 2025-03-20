@@ -1,6 +1,6 @@
 ﻿# The OWL2DTDL Converter
 
-**Author:** [Karl Hammar](https://karlhammar.com)
+**Author:** [Karl Hammar](https://hammar.dev)
 
 The OWL2DTDL converter is a tool that translates an OWL ontology or an ontology network (one root ontology reusing other ontologies through `owl:imports` declarations) into a set of DTDL Interface declarations for use, e.g., with the Azure Digital Twins service. This converter is a work-in-progress; if you find bugs, do not hesitate to contact the author.
 
