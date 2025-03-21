@@ -1,0 +1,69 @@
+{
+  "autopep8.args": ["--max-line-length=120"],
+  "debug.internalConsoleOptions": "neverOpen",
+  "cSpell.words": [
+    "autobuild",
+    "azcli",
+    "codespaces",
+    "devcontainer",
+    "digitaltwins",
+    "dtdl",
+    "dtmi",
+    "entra",
+    "historize",
+    "localtime",
+    "opendigitaltwins",
+    "tflint"
+  ],
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.insertSpaces": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnSaveMode": "modifications",
+  "files.associations": {
+    "*.workbook": "jsonc",
+    ".git*": "shellscript"
+  },
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/*/**": true,
+    "**/.python_packages/*/**": true,
+    "**/bin/**": true,
+    "**/obj/**": true
+  },
+  "python.languageServer": "Pylance",
+  "[dockerfile]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+  },
+  "[dotenv]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+  "[ignore]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+  "[json]": {
+    "editor.tabSize": 2
+  },
+  "[jsonc]": {
+    "editor.tabSize": 2
+  },
+  "[markdown]": {
+    "editor.wordWrap": "on"
+  },
+  "[powershell]": {
+    "editor.defaultFormatter": "ms-vscode.powershell",
+    "editor.tabSize": 2
+  },
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.autopep8"
+  },
+  "[shellscript]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+  "markdown.updateLinksOnFileMove.enabled": "prompt",
+  "markdown.updateLinksOnFileMove.enableForDirectories": true,
+  "prettier.tabWidth": 2,
+  "prettier.printWidth": 120,
+  "prettier.arrowParens": "avoid",
+  "prettier.trailingComma": "es5"
+}
